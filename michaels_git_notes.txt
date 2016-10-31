@@ -1,0 +1,13 @@
+
+Do not use git pull. Use git fetch then git merge instead
+
+cd C:/casino-royale					change folder to work directory
+git status							status update
+
+
+git add .							add untracked or changed files to repository
+git commit -m "Comment here"		creates a new tracking node on the repository. overwrites old commits.
+git push 							uploads the latest commit
+
+
+

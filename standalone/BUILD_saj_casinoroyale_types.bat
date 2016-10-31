@@ -28,12 +28,12 @@ IF /I "%1"=="clean" GOTO end
 REM
 REM Generate java classes from IDL
 REM
-echo Processing ..\..\idl\CasinoRoyaleData.idl....
-echo "..\..\..\..\..\bin\idlpp" -I "..\..\..\..\..\etc\idl" -l java ..\..\idl\CasinoRoyaleData.idl
-"..\..\..\..\..\bin\idlpp" -I "..\..\..\..\..\etc\idl" -l java ..\..\idl\CasinoRoyaleData.idl
+echo Processing ..\idl\CasinoRoyaleData.idl....
+echo "C:\HDE\x86_64.win64\bin\idlpp" -I "C:\HDE\x86_64.win64\etc\idl" -l java ..\idl\CasinoRoyaleData.idl
+"C:\HDE\x86_64.win64\bin\idlpp" -I "C:\HDE\x86_64.win64\etc\idl" -l java ..\idl\CasinoRoyaleData.idl
 IF NOT %ERRORLEVEL% == 0 (
   ECHO:
-  ECHO *** Compilation of ..\..\idl\CasinoRoyaleData.idl failed
+  ECHO *** Compilation of ..\idl\CasinoRoyaleData.idl failed
   ECHO:
   GOTO error
 )
@@ -46,8 +46,8 @@ echo Creating class output dir classes\....
 if not exist classes\ echo mkdir classes\
 if not exist classes\ mkdir classes\
 echo Compiling Java classes....
-echo javac -cp "classes\;..\..\..\..\..\jar\dcpssaj.jar;" -d classes\ CasinoRoyaleData\*.java
-javac -cp "classes\;..\..\..\..\..\jar\dcpssaj.jar;" -d classes\ CasinoRoyaleData\*.java
+echo javac -cp "classes\;C:\HDE\x86_64.win64\jar\dcpssaj.jar;" -d classes\ CasinoRoyaleData\*.java
+javac -cp "classes\;C:\HDE\x86_64.win64\jar\dcpssaj.jar;" -d classes\ CasinoRoyaleData\*.java
 IF NOT %ERRORLEVEL% == 0 (
   ECHO:
   ECHO *** Java compilation of CasinoRoyaleData\*.java failed
@@ -60,8 +60,8 @@ REM Build a jar file
 REM
 set JARFLAGS=cvfm
 echo Building a jar file....
-echo echo Class-Path: ..\..\..\..\..\jar\dcpssaj.jar ^> classes\%MANIFEST%
-echo Class-Path: ..\..\..\..\..\jar\dcpssaj.jar > classes\%MANIFEST%
+echo echo Class-Path: C:\HDE\x86_64.win64\jar\dcpssaj.jar ^> classes\%MANIFEST%
+echo Class-Path: C:\HDE\x86_64.win64\jar\dcpssaj.jar > classes\%MANIFEST%
 echo pushd classes\ ^& jar %JARFLAGS% %JARFILE% %MANIFEST%  CasinoRoyaleData\*.class ^& popd
 pushd classes\ & jar %JARFLAGS% %JARFILE% %MANIFEST%  CasinoRoyaleData\*.class & popd
 echo move /y classes\%JARFILE% .
