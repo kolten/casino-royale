@@ -700,3 +700,633 @@ Node        : MLP-ACER
 Process     : javaw.exe <5624>
 Thread      : durability 3496
 Internals   : V6.4.140407OSS/3b83e82/3b83e82/DurabilityService/d_durability.c/476/0/1477516585.179962793
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:14:27 Central Daylight Time 2016
+Description : u_domainNew:Database allocated on heap
+Node        : MLP-ACER
+Process     : java.exe <8940>
+Thread      : spliced 9168
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/user::u_domain::u_domainNew/u_domain.c/706/0/1477944867.106039515
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:14:27 Central Daylight Time 2016
+Description : ---------------------------------------------------------------
+              -- The service is using the following configuration settings --
+              ---------------------------------------------------------------
+              Domain (id)          : ospl (0)
+              Storage              : 10240 Kbytes
+              Storage threshold    : 1024 Kbytes
+              Storage address      : Not available
+              Locking              : default
+              Memory mode          : Heap memory
+              Builtin topics       : true
+              Priority inheritance : false
+Node        : MLP-ACER
+Process     : java.exe <8940>
+Thread      : spliced 9168
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/The OpenSplice domain service/u_domain.c/827/0/1477944867.111593098
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:14:27 Central Daylight Time 2016
+Description : Service cmsoap disabled
+Node        : MLP-ACER
+Process     : java.exe <8940>
+Thread      : spliced 9168
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/OpenSplice domain service/sr_componentInfo.c/439/0/1477944867.112022306
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:14:27 Central Daylight Time 2016
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'splicedaemon' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : MLP-ACER
+Process     : java.exe <8940>
+Thread      : spliced 9168
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/v_serviceChangeState/v_service.c/329/0/1477944867.112683847
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:14:27 Central Daylight Time 2016
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'ddsi2' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : MLP-ACER
+Process     : java.exe <8940>
+Thread      : ddsi2 9644
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/v_serviceChangeState/v_service.c/329/0/1477944867.249018155
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:14:27 Central Daylight Time 2016
+Description : The durability service can by identified by ID: 1285457511
+Node        : MLP-ACER
+Process     : java.exe <8940>
+Thread      : durability 9912
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/DurabilityService/d_durability.c/476/0/1477944867.320808855
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:15:19 Central Daylight Time 2016
+Description : u_domainNew:Database allocated on heap
+Node        : MLP-ACER
+Process     : java.exe <4532>
+Thread      : spliced 8908
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/user::u_domain::u_domainNew/u_domain.c/706/0/1477944919.636195990
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:15:19 Central Daylight Time 2016
+Description : ---------------------------------------------------------------
+              -- The service is using the following configuration settings --
+              ---------------------------------------------------------------
+              Domain (id)          : ospl (0)
+              Storage              : 10240 Kbytes
+              Storage threshold    : 1024 Kbytes
+              Storage address      : Not available
+              Locking              : default
+              Memory mode          : Heap memory
+              Builtin topics       : true
+              Priority inheritance : false
+Node        : MLP-ACER
+Process     : java.exe <4532>
+Thread      : spliced 8908
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/The OpenSplice domain service/u_domain.c/827/0/1477944919.642209106
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:15:19 Central Daylight Time 2016
+Description : Service cmsoap disabled
+Node        : MLP-ACER
+Process     : java.exe <4532>
+Thread      : spliced 8908
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/OpenSplice domain service/sr_componentInfo.c/439/0/1477944919.642565536
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:15:19 Central Daylight Time 2016
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'splicedaemon' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : MLP-ACER
+Process     : java.exe <4532>
+Thread      : spliced 8908
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/v_serviceChangeState/v_service.c/329/0/1477944919.643112310
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:15:19 Central Daylight Time 2016
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'ddsi2' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : MLP-ACER
+Process     : java.exe <4532>
+Thread      : ddsi2 8920
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/v_serviceChangeState/v_service.c/329/0/1477944919.659686751
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:15:19 Central Daylight Time 2016
+Description : The durability service can by identified by ID: 1100540059
+Node        : MLP-ACER
+Process     : java.exe <4532>
+Thread      : durability 10012
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/DurabilityService/d_durability.c/476/0/1477944919.758428937
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:15:26 Central Daylight Time 2016
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'durability' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : MLP-ACER
+Process     : java.exe <4532>
+Thread      : durability 10012
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/v_serviceChangeState/v_service.c/329/0/1477944926.860749415
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:15:30 Central Daylight Time 2016
+Description : u_domainNew:Database allocated on heap
+Node        : MLP-ACER
+Process     : java.exe <9120>
+Thread      : spliced 10224
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/user::u_domain::u_domainNew/u_domain.c/706/0/1477944930.119897115
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:15:30 Central Daylight Time 2016
+Description : ---------------------------------------------------------------
+              -- The service is using the following configuration settings --
+              ---------------------------------------------------------------
+              Domain (id)          : ospl (0)
+              Storage              : 10240 Kbytes
+              Storage threshold    : 1024 Kbytes
+              Storage address      : Not available
+              Locking              : default
+              Memory mode          : Heap memory
+              Builtin topics       : true
+              Priority inheritance : false
+Node        : MLP-ACER
+Process     : java.exe <9120>
+Thread      : spliced 10224
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/The OpenSplice domain service/u_domain.c/827/0/1477944930.125657371
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:15:30 Central Daylight Time 2016
+Description : Service cmsoap disabled
+Node        : MLP-ACER
+Process     : java.exe <9120>
+Thread      : spliced 10224
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/OpenSplice domain service/sr_componentInfo.c/439/0/1477944930.126065586
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:15:30 Central Daylight Time 2016
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'splicedaemon' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : MLP-ACER
+Process     : java.exe <9120>
+Thread      : spliced 10224
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/v_serviceChangeState/v_service.c/329/0/1477944930.126702400
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:15:30 Central Daylight Time 2016
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'ddsi2' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : MLP-ACER
+Process     : java.exe <9120>
+Thread      : ddsi2 8496
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/v_serviceChangeState/v_service.c/329/0/1477944930.143132217
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:15:30 Central Daylight Time 2016
+Description : The durability service can by identified by ID: 1530231067
+Node        : MLP-ACER
+Process     : java.exe <9120>
+Thread      : durability 10120
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/DurabilityService/d_durability.c/476/0/1477944930.349685016
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:18:43 Central Daylight Time 2016
+Description : u_domainNew:Database allocated on heap
+Node        : MLP-ACER
+Process     : java.exe <8752>
+Thread      : spliced 960
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/user::u_domain::u_domainNew/u_domain.c/706/0/1477945123.601084525
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:18:43 Central Daylight Time 2016
+Description : ---------------------------------------------------------------
+              -- The service is using the following configuration settings --
+              ---------------------------------------------------------------
+              Domain (id)          : ospl (0)
+              Storage              : 10240 Kbytes
+              Storage threshold    : 1024 Kbytes
+              Storage address      : Not available
+              Locking              : default
+              Memory mode          : Heap memory
+              Builtin topics       : true
+              Priority inheritance : false
+Node        : MLP-ACER
+Process     : java.exe <8752>
+Thread      : spliced 960
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/The OpenSplice domain service/u_domain.c/827/0/1477945123.620276204
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:18:43 Central Daylight Time 2016
+Description : Service cmsoap disabled
+Node        : MLP-ACER
+Process     : java.exe <8752>
+Thread      : spliced 960
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/OpenSplice domain service/sr_componentInfo.c/439/0/1477945123.620584581
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:18:43 Central Daylight Time 2016
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'splicedaemon' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : MLP-ACER
+Process     : java.exe <8752>
+Thread      : spliced 960
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/v_serviceChangeState/v_service.c/329/0/1477945123.621118292
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:18:43 Central Daylight Time 2016
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'ddsi2' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : MLP-ACER
+Process     : java.exe <8752>
+Thread      : ddsi2 6320
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/v_serviceChangeState/v_service.c/329/0/1477945123.637585898
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:18:43 Central Daylight Time 2016
+Description : The durability service can by identified by ID: 548059942
+Node        : MLP-ACER
+Process     : java.exe <8752>
+Thread      : durability 8268
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/DurabilityService/d_durability.c/476/0/1477945123.736933175
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:19:30 Central Daylight Time 2016
+Description : u_domainNew:Database allocated on heap
+Node        : MLP-ACER
+Process     : java.exe <4200>
+Thread      : spliced 5304
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/user::u_domain::u_domainNew/u_domain.c/706/0/1477945170.770361124
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:19:30 Central Daylight Time 2016
+Description : ---------------------------------------------------------------
+              -- The service is using the following configuration settings --
+              ---------------------------------------------------------------
+              Domain (id)          : ospl (0)
+              Storage              : 10240 Kbytes
+              Storage threshold    : 1024 Kbytes
+              Storage address      : Not available
+              Locking              : default
+              Memory mode          : Heap memory
+              Builtin topics       : true
+              Priority inheritance : false
+Node        : MLP-ACER
+Process     : java.exe <4200>
+Thread      : spliced 5304
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/The OpenSplice domain service/u_domain.c/827/0/1477945170.775993085
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:19:30 Central Daylight Time 2016
+Description : Service cmsoap disabled
+Node        : MLP-ACER
+Process     : java.exe <4200>
+Thread      : spliced 5304
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/OpenSplice domain service/sr_componentInfo.c/439/0/1477945170.776424626
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:19:30 Central Daylight Time 2016
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'splicedaemon' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : MLP-ACER
+Process     : java.exe <4200>
+Thread      : spliced 5304
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/v_serviceChangeState/v_service.c/329/0/1477945170.777102495
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:19:30 Central Daylight Time 2016
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'ddsi2' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : MLP-ACER
+Process     : java.exe <4200>
+Thread      : ddsi2 2292
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/v_serviceChangeState/v_service.c/329/0/1477945170.791618602
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:19:30 Central Daylight Time 2016
+Description : The durability service can by identified by ID: 1468207925
+Node        : MLP-ACER
+Process     : java.exe <4200>
+Thread      : durability 7928
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/DurabilityService/d_durability.c/476/0/1477945170.901764202
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:33 Central Daylight Time 2016
+Description : u_domainNew:Database allocated on heap
+Node        : MLP-ACER
+Process     : java.exe <9156>
+Thread      : spliced 6200
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/user::u_domain::u_domainNew/u_domain.c/706/0/1477945233.386152378
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:33 Central Daylight Time 2016
+Description : ---------------------------------------------------------------
+              -- The service is using the following configuration settings --
+              ---------------------------------------------------------------
+              Domain (id)          : ospl (0)
+              Storage              : 10240 Kbytes
+              Storage threshold    : 1024 Kbytes
+              Storage address      : Not available
+              Locking              : default
+              Memory mode          : Heap memory
+              Builtin topics       : true
+              Priority inheritance : false
+Node        : MLP-ACER
+Process     : java.exe <9156>
+Thread      : spliced 6200
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/The OpenSplice domain service/u_domain.c/827/0/1477945233.391866915
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:33 Central Daylight Time 2016
+Description : Service cmsoap disabled
+Node        : MLP-ACER
+Process     : java.exe <9156>
+Thread      : spliced 6200
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/OpenSplice domain service/sr_componentInfo.c/439/0/1477945233.392452411
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:33 Central Daylight Time 2016
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'splicedaemon' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : MLP-ACER
+Process     : java.exe <9156>
+Thread      : spliced 6200
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/v_serviceChangeState/v_service.c/329/0/1477945233.392995453
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:33 Central Daylight Time 2016
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'ddsi2' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : MLP-ACER
+Process     : java.exe <9156>
+Thread      : ddsi2 9096
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/v_serviceChangeState/v_service.c/329/0/1477945233.409580158
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:33 Central Daylight Time 2016
+Description : The durability service can by identified by ID: 204183459
+Node        : MLP-ACER
+Process     : java.exe <9156>
+Thread      : durability 9116
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/DurabilityService/d_durability.c/476/0/1477945233.516122740
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:40 Central Daylight Time 2016
+Description : u_domainNew:Database allocated on heap
+Node        : MLP-ACER
+Process     : java.exe <7932>
+Thread      : spliced 5488
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/user::u_domain::u_domainNew/u_domain.c/706/0/1477945240.880121121
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:40 Central Daylight Time 2016
+Description : ---------------------------------------------------------------
+              -- The service is using the following configuration settings --
+              ---------------------------------------------------------------
+              Domain (id)          : ospl (0)
+              Storage              : 10240 Kbytes
+              Storage threshold    : 1024 Kbytes
+              Storage address      : Not available
+              Locking              : default
+              Memory mode          : Heap memory
+              Builtin topics       : true
+              Priority inheritance : false
+Node        : MLP-ACER
+Process     : java.exe <7932>
+Thread      : spliced 5488
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/The OpenSplice domain service/u_domain.c/827/0/1477945240.887195128
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:40 Central Daylight Time 2016
+Description : Service cmsoap disabled
+Node        : MLP-ACER
+Process     : java.exe <7932>
+Thread      : spliced 5488
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/OpenSplice domain service/sr_componentInfo.c/439/0/1477945240.887672389
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:40 Central Daylight Time 2016
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'splicedaemon' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : MLP-ACER
+Process     : java.exe <7932>
+Thread      : spliced 5488
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/v_serviceChangeState/v_service.c/329/0/1477945240.888444031
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:40 Central Daylight Time 2016
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'ddsi2' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : MLP-ACER
+Process     : java.exe <7932>
+Thread      : ddsi2 9532
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/v_serviceChangeState/v_service.c/329/0/1477945240.907732749
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:41 Central Daylight Time 2016
+Description : The durability service can by identified by ID: 1922467758
+Node        : MLP-ACER
+Process     : java.exe <7932>
+Thread      : durability 8500
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/DurabilityService/d_durability.c/476/0/1477945241.003971530
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:43 Central Daylight Time 2016
+Description : u_domainNew:Database allocated on heap
+Node        : MLP-ACER
+Process     : java.exe <8376>
+Thread      : spliced 7780
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/user::u_domain::u_domainNew/u_domain.c/706/0/1477945243.123953241
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:43 Central Daylight Time 2016
+Description : ---------------------------------------------------------------
+              -- The service is using the following configuration settings --
+              ---------------------------------------------------------------
+              Domain (id)          : ospl (0)
+              Storage              : 10240 Kbytes
+              Storage threshold    : 1024 Kbytes
+              Storage address      : Not available
+              Locking              : default
+              Memory mode          : Heap memory
+              Builtin topics       : true
+              Priority inheritance : false
+Node        : MLP-ACER
+Process     : java.exe <8376>
+Thread      : spliced 7780
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/The OpenSplice domain service/u_domain.c/827/0/1477945243.129957959
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:43 Central Daylight Time 2016
+Description : Service cmsoap disabled
+Node        : MLP-ACER
+Process     : java.exe <8376>
+Thread      : spliced 7780
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/OpenSplice domain service/sr_componentInfo.c/439/0/1477945243.130424956
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:43 Central Daylight Time 2016
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'splicedaemon' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : MLP-ACER
+Process     : java.exe <8376>
+Thread      : spliced 7780
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/v_serviceChangeState/v_service.c/329/0/1477945243.131123820
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:43 Central Daylight Time 2016
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'ddsi2' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : MLP-ACER
+Process     : java.exe <8376>
+Thread      : ddsi2 9696
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/v_serviceChangeState/v_service.c/329/0/1477945243.153175800
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:43 Central Daylight Time 2016
+Description : The durability service can by identified by ID: 158063483
+Node        : MLP-ACER
+Process     : java.exe <8376>
+Thread      : durability 3204
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/DurabilityService/d_durability.c/476/0/1477945243.251195329
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:43 Central Daylight Time 2016
+Description : u_domainNew:Database allocated on heap
+Node        : MLP-ACER
+Process     : java.exe <9236>
+Thread      : spliced 1652
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/user::u_domain::u_domainNew/u_domain.c/706/0/1477945243.591198411
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:43 Central Daylight Time 2016
+Description : ---------------------------------------------------------------
+              -- The service is using the following configuration settings --
+              ---------------------------------------------------------------
+              Domain (id)          : ospl (0)
+              Storage              : 10240 Kbytes
+              Storage threshold    : 1024 Kbytes
+              Storage address      : Not available
+              Locking              : default
+              Memory mode          : Heap memory
+              Builtin topics       : true
+              Priority inheritance : false
+Node        : MLP-ACER
+Process     : java.exe <9236>
+Thread      : spliced 1652
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/The OpenSplice domain service/u_domain.c/827/0/1477945243.597170006
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:43 Central Daylight Time 2016
+Description : Service cmsoap disabled
+Node        : MLP-ACER
+Process     : java.exe <9236>
+Thread      : spliced 1652
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/OpenSplice domain service/sr_componentInfo.c/439/0/1477945243.597572156
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:43 Central Daylight Time 2016
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'splicedaemon' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : MLP-ACER
+Process     : java.exe <9236>
+Thread      : spliced 1652
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/v_serviceChangeState/v_service.c/329/0/1477945243.598223899
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:43 Central Daylight Time 2016
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'ddsi2' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : MLP-ACER
+Process     : java.exe <9236>
+Thread      : ddsi2 8216
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/v_serviceChangeState/v_service.c/329/0/1477945243.623130115
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:43 Central Daylight Time 2016
+Description : The durability service can by identified by ID: 661436986
+Node        : MLP-ACER
+Process     : java.exe <9236>
+Thread      : durability 464
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/DurabilityService/d_durability.c/476/0/1477945243.823795761
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:43 Central Daylight Time 2016
+Description : u_domainNew:Database allocated on heap
+Node        : MLP-ACER
+Process     : java.exe <8900>
+Thread      : spliced 10212
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/user::u_domain::u_domainNew/u_domain.c/706/0/1477945243.972433265
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:43 Central Daylight Time 2016
+Description : ---------------------------------------------------------------
+              -- The service is using the following configuration settings --
+              ---------------------------------------------------------------
+              Domain (id)          : ospl (0)
+              Storage              : 10240 Kbytes
+              Storage threshold    : 1024 Kbytes
+              Storage address      : Not available
+              Locking              : default
+              Memory mode          : Heap memory
+              Builtin topics       : true
+              Priority inheritance : false
+Node        : MLP-ACER
+Process     : java.exe <8900>
+Thread      : spliced 10212
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/The OpenSplice domain service/u_domain.c/827/0/1477945243.978850397
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:43 Central Daylight Time 2016
+Description : Service cmsoap disabled
+Node        : MLP-ACER
+Process     : java.exe <8900>
+Thread      : spliced 10212
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/OpenSplice domain service/sr_componentInfo.c/439/0/1477945243.979303865
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:43 Central Daylight Time 2016
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'splicedaemon' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : MLP-ACER
+Process     : java.exe <8900>
+Thread      : spliced 10212
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/v_serviceChangeState/v_service.c/329/0/1477945243.979986866
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:43 Central Daylight Time 2016
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'ddsi2' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : MLP-ACER
+Process     : java.exe <8900>
+Thread      : ddsi2 8440
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/v_serviceChangeState/v_service.c/329/0/1477945243.999919863
+========================================================================================
+Report      : INFO
+Date        : Mon Oct 31 15:20:44 Central Daylight Time 2016
+Description : The durability service can by identified by ID: 1509097443
+Node        : MLP-ACER
+Process     : java.exe <8900>
+Thread      : durability 6616
+Internals   : V6.4.140407OSS/3b83e82/3b83e82/DurabilityService/d_durability.c/476/0/1477945244.214477398
