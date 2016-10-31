@@ -1,13 +1,35 @@
 
-Do not use git pull. Use git fetch then git merge instead
+git clone
+	clone an existing repository to current directory
+git init
+	start a new repository in current directory (all folders in directory will become a new repository)
 
-cd C:/casino-royale					change folder to work directory
-git status							status update
+Initialization
+==============
+git push --set-upstream https://github.com/kolten/casino-royale.git master
+	This sets your upstream to the repository we are working with so that git push and git fetch by themselves do not require arguments.
+
+Updating yourself
+=================
+Do not use git pull. Use git fetch then git merge instead, unless you absolutely need to git pull to existing files.
+
+cd C:/casino-royale
+	change folder to work directory
+git status
+	status update
+git fetch
+	fetch from last fetched repository (head)
 
 
-git add .							add untracked or changed files to repository
-git commit -m "Comment here"		creates a new tracking node on the repository. overwrites old commits.
-git push 							uploads the latest commit
+
+Push your changes to repository
+===============================
+git add .
+	add all untracked or changed files to repository
+git commit -m "I added X."
+	creates a new tracking node on the repository. overwrites old commits.
+git push 
+	uploads the latest commit
 
 
 
