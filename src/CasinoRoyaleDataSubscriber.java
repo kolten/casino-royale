@@ -81,7 +81,7 @@ public class CasinoRoyaleDataSubscriber {
 			}
 			try
 			{
-				Thread.sleep(200);
+				Thread.sleep(100);
 			}
 			catch(InterruptedException ie)
 			{

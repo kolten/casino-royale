@@ -64,7 +64,7 @@ public class CasinoRoyaleDataPublisher {
 		int status = CasinoRoyaleWriter.write(msgInstance, HANDLE_NIL.value);
 		ErrorHandler.checkStatus(status, "MsgDataWriter.write");
 		try {
-			Thread.sleep(4000);
+			Thread.sleep(100);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
