@@ -1,2 +1,2 @@
-Class-Path: saj_casinoroyale_types.jar C:\HDE\x86_64.win64\jar\dcpssaj.jar 
+Class-Path: saj_casinoroyale_types.jar ..\dcpssaj.jar 
 Main-Class: CasinoRoyaleDataSubscriber

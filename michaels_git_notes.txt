@@ -7,12 +7,15 @@ git init
 Initialization
 ==============
 git push --set-upstream https://github.com/kolten/casino-royale.git master
-	This sets your upstream to the repository we are working with so that git push and git fetch by themselves do not require arguments.
+	This sets your upstream to the repository we are working with so that git push and git fetch by themselves do not require arguments. This is saved into what is called your upstream.
 
 Updating yourself
 =================
-Do not use git pull. Use git fetch then git merge instead, unless you absolutely need to git pull to existing files.
-
+Avoid git pull. Use git fetch then git merge instead, unless you absolutely need to git pull to update existing files. When you don't add a URL it defaults to your upstream.
+git pull
+	fetch and merge
+git fetch
+	obtain new files from the repository
 cd C:/casino-royale
 	change folder to work directory
 git status

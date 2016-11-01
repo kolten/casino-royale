@@ -31,3 +31,4 @@ GOTO end
 :error
 ECHO An error occurred, exiting now
 :end
+pause

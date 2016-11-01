@@ -32,24 +32,24 @@ echo Creating class output dir classes\....
 if not exist classes\ echo mkdir classes\
 if not exist classes\ mkdir classes\
 echo Compiling Java classes....
-echo javac -sourcepath ..\src -cp "saj_casinoroyale_types.jar;classes\;C:\HDE\x86_64.win64\jar\dcpssaj.jar;" -d classes\ ..\src\CasinoRoyaleDataSubscriber.java
-javac -sourcepath ..\src -cp "saj_casinoroyale_types.jar;classes\;C:\HDE\x86_64.win64\jar\dcpssaj.jar;" -d classes\ ..\src\CasinoRoyaleDataSubscriber.java
+echo javac -sourcepath ..\src -cp "saj_casinoroyale_types.jar;classes\;..\dcpssaj.jar;" -d classes\ ..\src\CasinoRoyaleDataSubscriber.java
+javac -sourcepath ..\src -cp "saj_casinoroyale_types.jar;classes\;..\dcpssaj.jar;" -d classes\ ..\src\CasinoRoyaleDataSubscriber.java
 IF NOT %ERRORLEVEL% == 0 (
   ECHO:
   ECHO *** Java compilation of ..\src\CasinoRoyaleDataSubscriber.java failed
   ECHO:
   GOTO error
 )
-echo javac -sourcepath ..\src -cp "saj_casinoroyale_types.jar;classes\;C:\HDE\x86_64.win64\jar\dcpssaj.jar;" -d classes\ ..\src\DDSEntityManager.java
-javac -sourcepath ..\src -cp "saj_casinoroyale_types.jar;classes\;C:\HDE\x86_64.win64\jar\dcpssaj.jar;" -d classes\ ..\src\DDSEntityManager.java
+echo javac -sourcepath ..\src -cp "saj_casinoroyale_types.jar;classes\;..\dcpssaj.jar;" -d classes\ ..\src\DDSEntityManager.java
+javac -sourcepath ..\src -cp "saj_casinoroyale_types.jar;classes\;..\dcpssaj.jar;" -d classes\ ..\src\DDSEntityManager.java
 IF NOT %ERRORLEVEL% == 0 (
   ECHO:
   ECHO *** Java compilation of ..\src\DDSEntityManager.java failed
   ECHO:
   GOTO error
 )
-echo javac -sourcepath ..\src -cp "saj_casinoroyale_types.jar;classes\;C:\HDE\x86_64.win64\jar\dcpssaj.jar;" -d classes\ ..\src\ErrorHandler.java
-javac -sourcepath ..\src -cp "saj_casinoroyale_types.jar;classes\;C:\HDE\x86_64.win64\jar\dcpssaj.jar;" -d classes\ ..\src\ErrorHandler.java
+echo javac -sourcepath ..\src -cp "saj_casinoroyale_types.jar;classes\;..\dcpssaj.jar;" -d classes\ ..\src\ErrorHandler.java
+javac -sourcepath ..\src -cp "saj_casinoroyale_types.jar;classes\;..\dcpssaj.jar;" -d classes\ ..\src\ErrorHandler.java
 IF NOT %ERRORLEVEL% == 0 (
   ECHO:
   ECHO *** Java compilation of ..\src\ErrorHandler.java failed
@@ -62,8 +62,8 @@ REM Build a jar file
 REM
 set JARFLAGS=cvfm
 echo Building a jar file....
-echo echo Class-Path: saj_casinoroyale_types.jar C:\HDE\x86_64.win64\jar\dcpssaj.jar ^> classes\%MANIFEST%
-echo Class-Path: saj_casinoroyale_types.jar C:\HDE\x86_64.win64\jar\dcpssaj.jar > classes\%MANIFEST%
+echo echo Class-Path: saj_casinoroyale_types.jar ..\dcpssaj.jar ^> classes\%MANIFEST%
+echo Class-Path: saj_casinoroyale_types.jar ..\dcpssaj.jar > classes\%MANIFEST%
 echo echo Main-Class: %MAINCLASS%^>^> classes\%MANIFEST%
 echo Main-Class: %MAINCLASS%>> classes\%MANIFEST%
 echo pushd classes\ ^& jar %JARFLAGS% %JARFILE% %MANIFEST%  CasinoRoyaleDataSubscriber.class DDSEntityManager.class ErrorHandler.class ^& popd

@@ -46,8 +46,8 @@ echo Creating class output dir classes\....
 if not exist classes\ echo mkdir classes\
 if not exist classes\ mkdir classes\
 echo Compiling Java classes....
-echo javac -cp "classes\;C:\HDE\x86_64.win64\jar\dcpssaj.jar;" -d classes\ CasinoRoyaleData\*.java
-javac -cp "classes\;C:\HDE\x86_64.win64\jar\dcpssaj.jar;" -d classes\ CasinoRoyaleData\*.java
+echo javac -cp "classes\;..\dcpssaj.jar;" -d classes\ CasinoRoyaleData\*.java
+javac -cp "classes\;..\dcpssaj.jar;" -d classes\ CasinoRoyaleData\*.java
 IF NOT %ERRORLEVEL% == 0 (
   ECHO:
   ECHO *** Java compilation of CasinoRoyaleData\*.java failed
@@ -60,8 +60,8 @@ REM Build a jar file
 REM
 set JARFLAGS=cvfm
 echo Building a jar file....
-echo echo Class-Path: C:\HDE\x86_64.win64\jar\dcpssaj.jar ^> classes\%MANIFEST%
-echo Class-Path: C:\HDE\x86_64.win64\jar\dcpssaj.jar > classes\%MANIFEST%
+echo echo Class-Path: ..\dcpssaj.jar ^> classes\%MANIFEST%
+echo Class-Path: ..\dcpssaj.jar > classes\%MANIFEST%
 echo pushd classes\ ^& jar %JARFLAGS% %JARFILE% %MANIFEST%  CasinoRoyaleData\*.class ^& popd
 pushd classes\ & jar %JARFLAGS% %JARFILE% %MANIFEST%  CasinoRoyaleData\*.class & popd
 echo move /y classes\%JARFILE% .
