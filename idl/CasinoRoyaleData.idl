@@ -1,10 +1,10 @@
 /**
- * @addtogroup examplesdcpsHelloWorldisocpp
+ * 
  */
 /** @{*/
 /** @file */
 
-module HelloWorldData
+module CasinoRoyaleData
 {
    struct Msg
    {
