@@ -1,0 +1,21 @@
+http://stackoverflow.com/questions/6623161/javac-option-to-compile-all-java-files-under-a-given-directory-recursively
+
+Using Javac
+
+If you need to try something out for a larger project and don't have any proper build tools nearby, you can always use a small trick that javac offers: the classnames to compile can be specified in a file. You simply have to pass the name of the file to javac with the @ prefix.
+
+If you can create a list of all the *.java files in your project, it's easy:
+
+
+# Linux
+$ find -name "*.java" > sources.txt
+$ javac @sources.txt
+
+:: Windows
+dir cr/bjp cr/bjd cr/snooper *.java > sources.txt
+javac @sources.txt
+
+
+
+The advantage is that is is a quick and easy solution.
+The drawback is that you have to regenerate the sources.txt file each time you create a new source or rename an existing one file which is an easy to forget (thus error-prone) and tiresome task.
