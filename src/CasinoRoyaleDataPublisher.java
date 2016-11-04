@@ -1,21 +1,3 @@
-/*
- *                         OpenSplice DDS
- *
- *   This software and documentation are Copyright 2006 to 2013 PrismTech
- *   Limited and its licensees. All rights reserved. See file:
- *
- *                     $OSPL_HOME/LICENSE 
- *
- *   for full copyright notice and license terms. 
- *
- */
-
-/************************************************************************
- * LOGICAL_NAME:    CasinoRoyalePublisher.java
- * FUNCTION:        Publisher's main for the CasinoRoyale OpenSplice programming example.
- * MODULE:          OpenSplice CasinoRoyale example for the java programming language.
- * DATE             September 2010.
- ************************************************************************/
 
 import DDS.DataWriter;
 import DDS.HANDLE_NIL;
@@ -55,11 +37,7 @@ public class CasinoRoyaleDataPublisher {
 		msgInstance.message = "Hello World";
 		msgInstance.student_ID_number = 1000766987; // my edit here
 		msgInstance.name = "Michael Pham";
-		System.out.println("=== [Publisher] writing a message containing :");
-		System.out.println("    userID  : " + msgInstance.userID);
-		System.out.println("    Message : \"" + msgInstance.message + "\"");
-		System.out.println("    student_ID_number  : " + msgInstance.student_ID_number); // my edit here
-		System.out.println("    name : \"" + msgInstance.name + "\"");
+		
 		CasinoRoyaleWriter.register_instance(msgInstance);
 		int status = CasinoRoyaleWriter.write(msgInstance, HANDLE_NIL.value);
 		ErrorHandler.checkStatus(status, "MsgDataWriter.write");

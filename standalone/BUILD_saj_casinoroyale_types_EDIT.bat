@@ -30,7 +30,7 @@ REM Generate java classes from IDL
 REM
 
 
-"..\opensplice\bin\idlpp" -I "..\opensplice\etc\idl" -l java ..\idl\CasinoRoyaleData.idl
+"..\opensplice\bin\idlpp" -I "..\opensplice\etc\idl" -l java ..\idl\cr.idl
 
 
 REM
@@ -49,7 +49,8 @@ REM Build a jar file
 REM
 set JARFLAGS=cvfm
 echo Building a jar file....
-
+echo echo Class-Path: dcpssaj.jar ^> classes\%MANIFEST%
+echo Class-Path: dcpssaj.jar > classes\%MANIFEST%
 pushd classes\ & jar %JARFLAGS% %JARFILE% %MANIFEST%  CasinoRoyaleData\*.class & popd
 move /y classes\%JARFILE% .
 

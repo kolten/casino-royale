@@ -5,16 +5,16 @@ import DDS.ANY_VIEW_STATE;
 import DDS.DataReader;
 import DDS.LENGTH_UNLIMITED;
 import DDS.SampleInfoSeqHolder;
-import CasinoRoyaleData.MsgDataReader;
-import CasinoRoyaleData.MsgDataReaderHelper;
-import CasinoRoyaleData.MsgSeqHolder;
-import CasinoRoyaleData.MsgTypeSupport;
+import CR.*;
 
-public class CasinoRoyaleDataSubscriber {
+public class TesterSub {
 
 	public static void main(String[] args) {
+		
+		System.out.println("Placeholder print to screen - TesterSub");
+		
 		DDSEntityManager mgr = new DDSEntityManager();
-		String partitionName = "CasinoRoyale example";
+		String partitionName = "TesterSub test by Michael";
 
 		// create Domain Participant
 		mgr.createParticipant(partitionName);
@@ -24,7 +24,7 @@ public class CasinoRoyaleDataSubscriber {
 		mgr.registerType(msgTS);
 
 		// create Topic
-		mgr.createTopic("CasinoRoyaleData_Msg");
+		mgr.createTopic("TesterSub_card");
 
 		// create Subscriber
 		mgr.createSubscriber();
@@ -35,29 +35,29 @@ public class CasinoRoyaleDataSubscriber {
 		// Read Events
 
 		DataReader dreader = mgr.getReader();
-		MsgDataReader CasinoRoyaleReader = MsgDataReaderHelper.narrow(dreader);
+		bjDealerDataReader bjDealerReader = bjDealerDataReaderHelper.narrow(dreader);
 
-		MsgSeqHolder msgSeq = new MsgSeqHolder();
+		bjDealerSeqHolder dealerSeq = new bjDealerSeqHolder();
 		SampleInfoSeqHolder infoSeq = new SampleInfoSeqHolder();
 
                 System.out.println ("=== [Subscriber] Ready ...");
 		boolean terminate = false;
 		int count = 0;
-		while (!terminate && count < 1500) { // We dont want the example to run indefinitely
-			CasinoRoyaleReader.take(msgSeq, infoSeq, LENGTH_UNLIMITED.value,
+		while (!terminate && count < 5500) { // We dont want the example to run indefinitely
+			CasinoRoyaleReader.take(dealerSeq, infoSeq, LENGTH_UNLIMITED.value,
 					ANY_SAMPLE_STATE.value, ANY_VIEW_STATE.value,
 					ANY_INSTANCE_STATE.value);
-			for (int i = 0; i < msgSeq.value.length; i++) {
-				if (msgSeq.value[i].message.equals("Hello World")) {
+			for (int i = 0; i < dealerSeq.value.length; i++) {
+				if (dealerSeq.value[i].message.equals("Hello World")) {
 					System.out.println("=== [Subscriber] message received :");
 					System.out.println("    userID  : "
-							+ msgSeq.value[i].userID);
+							+ dealerSeq.value[i].userID);
 					System.out.println("    Message : \""
-							+ msgSeq.value[i].message + "\"");
+							+ dealerSeq.value[i].message + "\"");
 					System.out.println("    student_ID_number  : "
-							+ msgSeq.value[i].student_ID_number); // my edit here
+							+ dealerSeq.value[i].student_ID_number); // my edit here
 					System.out.println("    name : \""
-							+ msgSeq.value[i].name + "\"");
+							+ dealerSeq.value[i].name + "\"");
 					terminate = true;
 				}
 			}
@@ -72,13 +72,12 @@ public class CasinoRoyaleDataSubscriber {
 			++count;
 			
 		}
-                CasinoRoyaleReader.return_loan(msgSeq, infoSeq);
+                CasinoRoyaleReader.return_loan(dealerSeq, infoSeq);
 		
 		// clean up
 		mgr.getSubscriber().delete_datareader(CasinoRoyaleReader);
 		mgr.deleteSubscriber();
 		mgr.deleteTopic();
 		mgr.deleteParticipant();
-
 	}
 }

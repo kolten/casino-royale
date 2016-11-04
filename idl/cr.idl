@@ -1,4 +1,4 @@
-// Rev 2  9/28/2016
+// Rev 3  10/06/2016
 module CR
 {
    const long MAX_PLAYERS = 6;
@@ -7,24 +7,24 @@ module CR
    {
        char suite;                            // holds a char.  
                                               // 'C'=clubs 'H'=hearts 'D'=diamonds 'S'=spades
-       char value;                            // holds a char.  
-                                              // '1','2','3','4','5','6','7','8','9','J','Q','K','A'
-       bool visible;                          // true if anyone other than the dealer can see the card
+       char base_value;                       // 
+                                              // '2','3','4','5','6','7','8','9','T',
+                                              // 'J','Q','K','A'
+       boolean visible;                       // true if anyone other than the dealer can see the card
    };
 
         
    // this structure is maintained by the dealer, and contains all the information
-   // concering a single player
+   // concerning a single player
    struct player_status
    {
        long uuid;                             // unique id for the player
        long wager;                            // amount wagered this hand
-       float payout;                          // amount that the dealer has payed out this hand to this player
-       cards[21];                             // how many is legit ? 
+       card cards[21];                        // how many is legit ? 
                                               // needs to be the max cards a player could ever have
-   }
+   };
 
-   enum (shuffling, waiting, dealing, collecting, paying) bjd_action; 
+   enum bjd_action { shuffling, waiting, dealing, collecting, paying}; 
    struct bjDealer
    {
       long uuid;                              // unique Identifier for the dealer
@@ -32,14 +32,15 @@ module CR
       long active_players;                    // number of players in the game
       player_status players[MAX_PLAYERS];     // one for each possible player
       bjd_action action;                      // current action
+      card cards[21];                         // dealers cards
       long target_uuid;                       // for actions that are addressed to a specific player, this field
                                               // is set to the uid of that player.  It is set to 0 at all other 
                                               // times
    };
-   #pragma keylist bjDealer uuid;
+   #pragma keylist bjDealer uuid
    // bjDealer is the data published by the dealer
    
-   enum { none, joining, exiting, wagering, requesting_a_card } bjp_action;
+   enum bjp_action { none, joining, exiting, wagering, requesting_a_card };
    struct bjPlayer
    {
       long uuid;                             // unique ID for the player
@@ -49,8 +50,7 @@ module CR
       long dealer_id;                        // the UUID of the dealer
       bjp_action action;                     // the current action being taken
    };
-   #pragma keylist bjPlayer uuid;
+   #pragma keylist bjPlayer uuid
    // bjPlayer is the data published by the player
 
-}
-
+};
