@@ -18,8 +18,8 @@ REM Clean any previous output
 REM
 echo Cleaning...
 del /f/s/q classes\%MANIFEST% 2>nul
-del /f/s/q CasinoRoyaleData\*.java  2>nul
-del /f/s/q classes\CasinoRoyaleData\*.class 2>nul
+del /f/s/q CR\*.java  2>nul
+del /f/s/q classes\CR\*.class 2>nul
 
 IF /I "%1"=="clean" GOTO end
 
@@ -41,7 +41,7 @@ if not exist classes\ echo mkdir classes\
 if not exist classes\ mkdir classes\
 echo Compiling Java classes....
 
-javac -cp "classes\;dcpssaj.jar;" -d classes\ CasinoRoyaleData\*.java
+javac -cp "classes\;dcpssaj.jar;" -d classes\ CR\*.java
 
 
 REM
@@ -51,7 +51,7 @@ set JARFLAGS=cvfm
 echo Building a jar file....
 echo echo Class-Path: dcpssaj.jar ^> classes\%MANIFEST%
 echo Class-Path: dcpssaj.jar > classes\%MANIFEST%
-pushd classes\ & jar %JARFLAGS% %JARFILE% %MANIFEST%  CasinoRoyaleData\*.class & popd
+pushd classes\ & jar %JARFLAGS% %JARFILE% %MANIFEST%  CR\*.class & popd
 move /y classes\%JARFILE% .
 
 GOTO end

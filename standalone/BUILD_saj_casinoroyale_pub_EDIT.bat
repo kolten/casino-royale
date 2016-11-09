@@ -41,6 +41,10 @@ REM Build a jar file
 REM
 set JARFLAGS=cvfm
 
+echo echo Class-Path: saj_casinoroyale_types.jar dcpssaj.jar ^> classes\%MANIFEST%
+echo Class-Path: saj_casinoroyale_types.jar dcpssaj.jar > classes\%MANIFEST%
+echo echo Main-Class: %MAINCLASS%^>^> classes\%MANIFEST%
+echo Main-Class: %MAINCLASS%>> classes\%MANIFEST%
 pushd classes\ & jar %JARFLAGS% %JARFILE% %MANIFEST%  *.class & popd
 
 move /y classes\%JARFILE% .

@@ -1,66 +1,64 @@
 
-import DDS.ANY_INSTANCE_STATE;
-import DDS.ANY_SAMPLE_STATE;
-import DDS.ANY_VIEW_STATE;
-import DDS.DataReader;
-import DDS.LENGTH_UNLIMITED;
-import DDS.SampleInfoSeqHolder;
-import CasinoRoyaleData.MsgDataReader;
-import CasinoRoyaleData.MsgDataReaderHelper;
-import CasinoRoyaleData.MsgSeqHolder;
-import CasinoRoyaleData.MsgTypeSupport;
+import DDS.*;
+import CR.*;
 
 public class CasinoRoyaleDataSubscriber2
 {
 	// warning: poor programming standards within
 	// (class variables with void functions that modify class variables)
-	public static DDSEntityManager mgr;
-	public static MsgTypeSupport msgTS;
+	// Subscriber class variables
+	public static DDSEntityManager mgrSub;
+	public static bjDealerTypeSupport typeSupportSub1;
 	public static DataReader reader;
-	public static MsgDataReader typedReader;
-	public static MsgSeqHolder sequence;
+	public static bjDealerDataReader typedReader1;
+	public static bjDealerSeqHolder sequence;
 	public static SampleInfoSeqHolder sampleInfoSequence; // no idea what this does, leaving it in.
 	
 	
 	public static void main(String[] args) {
-		mgr = new DDSEntityManager();
+		mgrSub = new DDSEntityManager();
 		String partitionName = "CasinoRoyale example";
 
 		// create Domain Participant, Type, and register Type
-		mgr.createParticipant(partitionName);
-		msgTS = new MsgTypeSupport();
-		mgr.registerType(msgTS);
+		mgrSub.createParticipant(partitionName);
+		typeSupportSub1 = new bjDealerTypeSupport();
+		mgrSub.registerType(typeSupportSub1);
 
 		// create Topic, subscriber, DataReader
-		mgr.createTopic("CasinoRoyaleData_Msg");
-		mgr.createSubscriber();
-		mgr.createReader();
+		mgrSub.createTopic("Casino_Royale"); // no spaces, should be same as other group's
+		mgrSub.createSubscriber();
+		mgrSub.createReader();
 
 		// set up subscriber to read the p2p connection (on localhost) and sequences to read
-		reader = mgr.getReader();
-		typedReader = MsgDataReaderHelper.narrow(reader);
-		sequence = new MsgSeqHolder();
+		reader = mgrSub.getReader();
+		typedReader1 = bjDealerDataReaderHelper.narrow(reader);
+		sequence = new bjDealerSeqHolder();
 		sampleInfoSequence = new SampleInfoSeqHolder();
 
-		System.out.println ("=== [Subscriber] Ready ...");
+		System.out.println ("=== [Subscriber] Waiting for bjDealer data");
 		
-		boolean terminate = false;
+		int terminate = 0;
 		int count = 0;
 		
-		while (!terminate && count < 1500) { // run for 2.5 minutes or until message receive
-			typedReader.take(sequence, sampleInfoSequence, LENGTH_UNLIMITED.value, ANY_SAMPLE_STATE.value, ANY_VIEW_STATE.value, ANY_INSTANCE_STATE.value);
-			for (int i = 0; i < sequence.value.length; i++) {
-				System.out.println("=== [Subscriber] message received :");
-				System.out.println("    Message : \"" + sequence.value[i].message + "\"");
-				terminate = true;
+		while (terminate < 20) // run until 20 messages received
+		{
+			// put the backlog of messages into sequence
+			typedReader1.take(sequence, sampleInfoSequence, LENGTH_UNLIMITED.value, ANY_SAMPLE_STATE.value, ANY_VIEW_STATE.value, ANY_INSTANCE_STATE.value);
+			for (int i = 0; i < sequence.value.length; i++)
+			{
+				System.out.println("=== [Subscriber] message received :\n");
+				System.out.println("        seqno : " + sequence.value[i].seqno);
+				System.out.println("terminate val : " + terminate);
+				System.out.println();
+				terminate++;
 			}
 			
-			wait100ms();
+			//wait50ms(); // waiting causes information to be missed, if they're close enough in timing together.
 			
 			++count;
 		}
 		// reply that we got the message
-		typedReader.return_loan(sequence, sampleInfoSequence);
+		typedReader1.return_loan(sequence, sampleInfoSequence);
 		
 		// clean up
 		cleanUpSubscriber();
@@ -69,17 +67,17 @@ public class CasinoRoyaleDataSubscriber2
 
 	public static void cleanUpSubscriber()
 	{
-		mgr.getSubscriber().delete_datareader(typedReader);
-		mgr.deleteSubscriber();
-		mgr.deleteTopic();
-		mgr.deleteParticipant();
+		mgrSub.getSubscriber().delete_datareader(typedReader1);
+		mgrSub.deleteSubscriber();
+		mgrSub.deleteTopic();
+		mgrSub.deleteParticipant();
 	}
 
-	public static void wait100ms()
+	public static void wait50ms()
 	{
 		try
 		{
-			Thread.sleep(100);
+			Thread.sleep(50);
 		}
 		catch(InterruptedException ie)
 		{
