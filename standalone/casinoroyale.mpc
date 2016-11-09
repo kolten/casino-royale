@@ -3,7 +3,7 @@
 
 project (saj*types) : saj_typesupport, java_only, java_example, java_ospl_dcpssaj {
     TypeSupport_Files {
-        ../../idl/CasinoRoyaleData.idl >> CasinoRoyaleData/*.java
+        ../idl/CasinoRoyaleData.idl >> CasinoRoyaleData/*.java
     }
 }
 
