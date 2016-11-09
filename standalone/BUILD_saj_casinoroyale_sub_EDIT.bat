@@ -3,7 +3,7 @@
 cd %~dp0
 setlocal
 
-set MAINCLASS=CasinoRoyaleDataSubscriber2
+set MAINCLASS=PlayerMain
 set JARFILE=saj_casinoroyale_sub.jar
 set MANIFEST=saj_casinoroyale_sub.manifest
 
@@ -19,7 +19,7 @@ REM Clean any previous output
 REM
 echo Cleaning...
 del /f/s/q classes\%MANIFEST% 2>nul
-del /f/s/q classes\CasinoRoyaleDataSubscriber2.class classes\DDSEntityManager.class classes\ErrorHandler.class 2>nul
+del /f/s/q classes\PlayerMain.class classes\DDSEntityManager.class classes\ErrorHandler.class 2>nul
 
 IF /I "%1"=="clean" GOTO end
 
