@@ -1,8 +1,28 @@
 Copy of revision 3 cr.idl pasted below
-Each sequence is 5 seconds being spent on that action
+Each sequence spends 5 seconds on that action and handling replies by the other program
 
 Assume bjD ignores invalid sequences
+bjD action
+shuffling (none)
+waiting
+dealing
+collecting
+paying
 
+
+
+
+bjP action
+none
+joining
+exiting
+wagering
+requesting_a_card
+
+
+
+// incorrect notes/assumptions. Based actions off seqno instead of action
+/*
 bjD sequence (sent by Dealer to Player)
 01 shuffling
 
@@ -12,11 +32,12 @@ bjD sequence (sent by Dealer to Player)
 03 waiting for player bet
 	Needs to handle bjP 02 replies
 
-04 accepting wager
+04 accepting wager as legitimate
 
 05 do nothing
 
 06 dealing cards
+	
 
 07 ask player if new card
 	Needs to handle bjP 03 replies
@@ -24,7 +45,7 @@ bjD sequence (sent by Dealer to Player)
 08 send out new cards
 	Needs to handle bjP 04 replies
 
-repeat 07 and 08 until all players have replied with bjP sequence 04
+repeat 07 and 08 until all players have replied with bjP sequence 04, then start sequence 01 again.
 
 bjP sequences (sent by Player to Dealer)
 01 send join request to dealer
@@ -42,7 +63,7 @@ bjP sequences (sent by Player to Dealer)
 Other relevant bjP items
 save card information
 	triggered by bjD 06
-
+*/
 
 
 
