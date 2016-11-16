@@ -1,10 +1,12 @@
 
 import DDS.*;
 import CR.*;
+import java.util.*; // components used: Arraylist
 
 public class DealerMain implements MAX_PLAYERS
 {
-    public static final int value = (int)(6);
+	public static final int value = (int)(6);
+	public static int seqno = 0; // Increment by 1 before sending a pub
 	
 	public static void main(String[] args) {
 		// Declare Publisher variables (bjDealer data publish)
@@ -24,6 +26,11 @@ public class DealerMain implements MAX_PLAYERS
 		
 		// End PubSub declarations
 		
+		// Declare local game objects (server-side)
+		ArrayList<Player> playerList = new ArrayList<Player>();
+		Dealer dealer = new Dealer(); // TODO add constructor params
+		
+		// Instantiate  helper objects to maintain player information
 		mgrPub = new DDSEntityManager(); // bjD type send
 		mgrSub = new DDSEntityManager(); // bjP type receive
 		String partitionName = "CasinoRoyale example";
@@ -68,7 +75,14 @@ public class DealerMain implements MAX_PLAYERS
 		
 		System.out.println ("=== [Publisher] Sending bjDealer data");
 		
-		
+		/*
+		bjD action
+		shuffling (none)
+		waiting
+		dealing
+		collecting
+		paying
+		*/
 		
 		
 		
@@ -105,10 +119,13 @@ public class DealerMain implements MAX_PLAYERS
 	
 	
 	
+	// shuffle the dealer's shoe and return a bjDealer object with the action and its information
+	public static bjDealer dealerShuffle(Dealer dealer)
+	{
+		return null;
+	}
 	
-	
-	
-	
+	//print out message information from a bjPlayer object sent by a player
 	public static void handleSequenceDebug(bjPlayer obj)
 	{
 		System.out.println("\n=== [Subscriber] message received :\n");
