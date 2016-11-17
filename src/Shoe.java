@@ -61,6 +61,7 @@ public class Shoe {
 		cardsUsed = 0;
 	}
 	
+	//Using this function requires a try-catch block.
 	public card drawCard(boolean isVisible){
 		if(cardsUsed >= MIN_CARDS_USED)
 			throw new IllegalStateException("Need to shuffle.");
