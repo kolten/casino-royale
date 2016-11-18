@@ -2,6 +2,7 @@ Copy of revision 3 cr.idl pasted below
 Each sequence spends 5 seconds on that action and handling replies by the other program
 
 Assume bjD ignores invalid sequences
+
 bjD action
 shuffling (none)
 waiting
@@ -18,6 +19,51 @@ joining
 exiting
 wagering
 requesting_a_card
+
+
+1 player example. *action means the action_type doesn't change from the most recent named action_type.
+> or < shows that the other side must be able to read in that piece of data
+
+bjD					bjP
+shuffling>			-
+-					<joining
+-					-
+waiting>			-
+-					<wagering
+-					-
+*echo wager>		-
+-					-
+dealing>			-
+*askTarget>			-
+-					<requesting_a_card (hit)
+*dealTarget>		-
+-					<requesting_a_card (hit)
+*dealTarget>		-
+-					<none (stand)
+-					-
+collecting>			-
+-					*lose money
+paying>				-
+-					*get money
+
+
+
+shuffling>			-
+-					<joining
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
