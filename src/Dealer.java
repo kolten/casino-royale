@@ -1,20 +1,17 @@
-import src.Card;
-import src.PlayerAction;
-import src.Shoe;
-import src.Snooper;
-import src.Player;
-import src.DealerAction;
+
+import DDS.*;
+import CR.*;
 
 public class Dealer {
 
-	long credits;
+	long credits; // TODO: make this a float?
 	long uuid;
 	long seqno;
 	long target_uuid;
 
-	Boolean isHuman;
+	boolean isHuman;
 
-	Player_Status player;
+	player_status player;
 
 	public Dealer(){
 
@@ -58,7 +55,7 @@ public class Dealer {
 
 	public long getSeqno(){
 		// Getter for Sequence Number
-		return getSeqno;
+		return seqno;
 	}
 
 	public long getTarget_uudi(){
@@ -77,56 +74,68 @@ public class Dealer {
 
 	public Card giveCards(){
 		//
+		return null;
 	}
 
 	public void kickPlayer(long uuid){
 		//
+		
 	}
 
 	public long payPlayer(long uuid){
 		// 
+		return 0;
 	}
 
 	public void playHand(){
 
 	}
 
-	public Card sendCardToPlayer(long uuid){
-
+	public Card sendCardToPlayer(Card c){
+		return c;
 	}
 
 	public long setCredit(long credits){
 		// Setter for Dealer
+		this.credits = credits;
+		return credits;
 	}
 
-	public Boolean setIsHuman(Boolean isHuman){
+	public boolean setIsHuman(boolean isHuman){
 		// Setter
+		this.isHuman = isHuman;
+		return isHuman;
 	}
 
 	public long setSeqno(long seqno){
 		// Setter
+		this.seqno = seqno;
+		return seqno;
 	}
 
 	public long setTarget_uuid(long target_uuid){
 		// Setter
-		
+		this.target_uuid = target_uuid;
+		return target_uuid;
 	}
 
 	public long setUuid(long uuid){
-
+		this.uuid = uuid;
+		return uuid;
 	}
 
 	public void shuffleDeck(){
 
 	}
 
-	public Boolean startGame(){
-
+	public boolean startGame(){
+		return true;
 	}
 
-	public void wait(){
-
-	}
+	// This is a default function in Java's Object class
+	// public void wait(){
+	//
+	// }
 	
 	private void sendTestData(){
 	

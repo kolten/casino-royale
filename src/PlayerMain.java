@@ -24,6 +24,10 @@ public class PlayerMain
 		
 		// End PubSub declarations
 		
+		// Declare a local player object
+		Player player;
+		
+		
 		mgrSub = new DDSEntityManager(); // bjD type receive 
 		mgrPub = new DDSEntityManager(); // bjP type send
 		String partitionName = "CasinoRoyale example";

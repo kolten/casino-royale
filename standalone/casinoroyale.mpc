@@ -3,7 +3,11 @@
 
 project (saj*types) : saj_typesupport, java_only, java_example, java_ospl_dcpssaj {
     TypeSupport_Files {
+<<<<<<< HEAD
         ../../idl/CR.idl >> CR/*.java
+=======
+        ../idl/cr.idl >> CR/*.java
+>>>>>>> e8410e5c91e91af529f1d8a3bb0bd743b592f0f1
     }
 }
 
@@ -16,9 +20,13 @@ project (saj*sub) : java_only, java_example, java_ospl_dcpssaj {
         obj_dir_flat = 1
     }
     Source_Files {
+<<<<<<< HEAD
        ../src/PlayerMain.java
        ../src/DDSEntityManager.java
        ../src/ErrorHandler.java
+=======
+        ../src/*.java
+>>>>>>> e8410e5c91e91af529f1d8a3bb0bd743b592f0f1
     }
 }
 
@@ -31,8 +39,12 @@ project (saj*pub) : java_only, java_example, java_ospl_dcpssaj {
         obj_dir_flat = 1
     }
     Source_Files {
+<<<<<<< HEAD
         ../src/DealerMain.java
         ../src/DDSEntityManager.java
         ../src/ErrorHandler.java
+=======
+        ../src/*.java
+>>>>>>> e8410e5c91e91af529f1d8a3bb0bd743b592f0f1
     }
 }
