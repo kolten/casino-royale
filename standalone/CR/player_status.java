@@ -4,6 +4,7 @@ public final class player_status {
 
     public int uuid;
     public int wager;
+    public float payout;
     public CR.card[] cards = new CR.card[21];
 
     public player_status() {
@@ -15,10 +16,12 @@ public final class player_status {
     public player_status(
         int _uuid,
         int _wager,
+        float _payout,
         CR.card[] _cards)
     {
         uuid = _uuid;
         wager = _wager;
+        payout = _payout;
         cards = _cards;
     }
 

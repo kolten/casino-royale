@@ -4,7 +4,7 @@ public final class bjPlayer {
 
     public int uuid;
     public int seqno;
-    public int credits;
+    public float credits;
     public int wager;
     public int dealer_id;
     public CR.bjp_action action = CR.bjp_action.from_int(0);
@@ -15,7 +15,7 @@ public final class bjPlayer {
     public bjPlayer(
         int _uuid,
         int _seqno,
-        int _credits,
+        float _credits,
         int _wager,
         int _dealer_id,
         CR.bjp_action _action)

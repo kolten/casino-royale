@@ -5,7 +5,7 @@ import java.util.*; // components used: Arraylist
 
 public class DealerMain implements MAX_PLAYERS
 {
-	public static final int value = (int)(6);
+	public static final int value = (int)(6); // MAX_Players
 	public static int seqno = 1; // Increments by 1 after sending a pub
 	
 	// Declare local game objects (server-side)
@@ -94,7 +94,7 @@ public class DealerMain implements MAX_PLAYERS
 				bjPlayer obj = readSequence(typedReader, sequence, sampleInfoSequence);
 				handleSequence(obj);
 				handleSequenceDebug(obj);
-				typedReader.return_loan(sequence, sampleInfoSequence);
+				typedReader.return_loan(sequence, sampleInfoSequence); // free memory
 			}
 			
 			//waiting (handle wager receive, echo if received)
@@ -109,7 +109,7 @@ public class DealerMain implements MAX_PLAYERS
 				bjPlayer obj = readSequence(typedReader, sequence, sampleInfoSequence);
 				handleSequence(obj);
 				handleSequenceDebug(obj);
-				typedReader.return_loan(sequence, sampleInfoSequence);
+				typedReader.return_loan(sequence, sampleInfoSequence); // free memory
 				
 				publishInstance(typedWriter,pubInstance); // publish
 				System.out.println("\n[Dealer] player X has wagered Y credits\n");
@@ -134,7 +134,7 @@ public class DealerMain implements MAX_PLAYERS
 				bjPlayer obj = readSequence(typedReader, sequence, sampleInfoSequence);
 				handleSequence(obj);
 				handleSequenceDebug(obj);
-				typedReader.return_loan(sequence, sampleInfoSequence);
+				typedReader.return_loan(sequence, sampleInfoSequence); // free memory
 				
 				if(obj.action.value() == bjp_action._none)
 				{

@@ -7,6 +7,11 @@ public class PlayerMain
 {
 	public static int seqno = 1; // Increments by 1 after sending a pub
 	
+	public static int runtimeFlag = 0; // For helping the publisher know what to publish
+	public static int sequenceFlagWaiting = 0; // For identifying multiple parts of the waiting sequence
+	public static int sequenceFlagDealing = 0; // For identifying multiple parts of the dealing sequence
+	public static boolean askForCard = false;
+	
 	public static void main(String[] args) {
 		// Declare Subscriber variables (bjDealer data subscribe)
 		DDSEntityManager mgrSub;
@@ -27,7 +32,7 @@ public class PlayerMain
 		
 		
 		// Declare a local player object
-		Player player;
+		Player player = new Player();
 		
 		
 		mgrSub = new DDSEntityManager(); // bjD type receive 
@@ -80,12 +85,14 @@ public class PlayerMain
 			bjDealer obj = readSequence(typedReader, sequence, sampleInfoSequence);
 			handleSequence(obj);
 			handleSequenceDebug(obj);
-			typedReader.return_loan(sequence, sampleInfoSequence);
+			typedReader.return_loan(sequence, sampleInfoSequence); // free memory (obj is now null)
 			
 			pubInstance.action=bjp_action.none;
 			
 			Timer.wait(500);
 			publishInstance(typedWriter,pubInstance); // just reply every time
+			if(askForCard) // stop asking for a card flag after asking for a card
+				askForCard=false;
 			
 			if(obj.seqno==0) // uuid needs to be from Dealer, not the empty message which sets it to 0
 				runFlag=false;
@@ -153,27 +160,92 @@ public class PlayerMain
 				if(seqno==0) break; // action and seqno both show as 0 if it's a closed connection
 				System.out.println("Dealer " + obj.uuid + " is shuffling");
 				
+				// need to reply so that dealer knows we joined
+				
 				break;
+			
+			
 			case bjd_action._waiting: // player action when dealer is waiting
-				System.out.println("Dealer " + obj.uuid + " is waiting");
+				
+				// TODO: Lose money after wagering? Or should that be handled in dealer collecting wagers step?
+				
+				if(sequenceFlagWaiting == 0)
+				{
+					System.out.println("Dealer " + obj.uuid + " is waiting for wagers");
+					sequenceFlagWaiting = 1;
+				}
+				else
+				{
+					System.out.println("Dealer has accepted wager of Y credits from player X");
+				}
 				
 				
 				break;
+			
+			
 			case bjd_action._dealing: // player action when dealer is dealing
 				System.out.println("Dealer " + obj.uuid + " is dealing");
+				sequenceFlagWaiting=0; // reset wagering flag
 				
+				
+				if(sequenceFlagDealing == 0) // initial deal, 2 card info
+				{
+					System.out.println("Dealer " + obj.uuid + " is doing initial deal");
+					sequenceFlagDealing = 1;
+					
+					//TODO: receive 2 cards
+				}
+				else if (sequenceFlagDealing == 1) // first round of asking. no card info
+				{
+					System.out.println("Dealer is asking player X if they want a card (first time)");
+					// TODO: if my targetID, set a flag for a reply in main
+					if(obj.target_uuid == -1)
+					{
+						// TODO: if total points of my cards under 17, do it
+						if ( 0 < 17 )
+							askForCard = true;
+					}
+				}
+				else if (sequenceFlagDealing == 2) // second round of asking, with card info from last thing
+				{
+					System.out.println("Dealer is giving a card to player X");
+					System.out.println("Dealer is asking player X if they want a card (repeat)");
+					// TODO: if my targetID, set a flag for a reply in main
+					if(obj.target_uuid == -1)
+					{
+						// TODO: receive a card
+						// TODO: if total points of my cards under 17, do it
+						if ( 0 < 17 )
+							askForCard = true;
+					}
+					
+				}
 				
 				break;
+			
+			
 			case bjd_action._collecting: // player action when dealer is collecting losing wagers
 				System.out.println("Dealer " + obj.uuid + " is collecting wagers");
+				sequenceFlagDealing = 0; // reset dealing flag
+				// TODO: Decrease my wallet? or should that be done in wagering step?
 				
+				// no replies to dealer
 				
 				break;
+			
+			
 			case bjd_action._paying: // player action when dealer is paying out winning bets
 				System.out.println("Dealer " + obj.uuid + " is paying out bets");
 				
+				// float payout = obj.players[0].payout // TODO: 0 should be my array ID in player_status[6] in bjDealer
+				
+				// TODO: Increase my wallet
+				
+				// no replies to dealer
 				
 				break;
+			
+			
 			default:
 				break;
 		}
