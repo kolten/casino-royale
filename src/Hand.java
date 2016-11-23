@@ -1,9 +1,9 @@
-import CR.*;
+import CR.card;
 
 public class Hand {
-	private card cards[21];
+	private card cards[];
 	private int cardsInHand;
-	private int cardHandValue[21];
+	private int cardHandValue[];
 	private int totalHandValue;
 	
 	public Hand()
