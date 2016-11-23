@@ -10,20 +10,26 @@ public class Dealer {
 	long target_uuid;
 
 	boolean isHuman;
+	bjd_action action;
+	Shoe deck;
+	Hand hand;
+
 
 	player_status player;
 
 	public Dealer(){
-
+		credits = 500.0;
+		deck = new Shoe();
+		shuffle();
 	}
 
-	public static void main(String[] args) {
-		
-		System.out.println("Placeholder print to screen - Dealer");
-		
+	public Dealer(long uuid){
+		credits = 500.0;
+		deck = new Shoe();
+		shuffle();
 	}
 
-	public Boolean acceptPlayer(){
+	public boolean acceptPlayer(){
 		// Returns true if there are empty seats, false if not
 		
 		return true;
@@ -33,12 +39,15 @@ public class Dealer {
 		// Asks player for 'hit' or 'stay'
 	}
 
-	public Boolean checkCredits(){
-		// Returns true if Dealer has sufficient credits
-		return true;
+	public boolean checkCredits(){
+		// Returns true if Dealer has sufficient credits, else false
+		if(getCredits() >= 20){
+			return true
+		}
+		return false;
 	}
 
-	public Boolean checkSeats(){
+	public boolean checkSeats(){
 		// Returns true if seats are full, false if not, 6 seats at table
 		return true;
 	}
@@ -48,7 +57,7 @@ public class Dealer {
 		return credits;
 	}
 
-	public Boolean getIsHuman(){
+	public boolean getIsHuman(){
 		// Getter for isHuman
 		return isHuman;
 	}
@@ -72,7 +81,7 @@ public class Dealer {
 		// Takes 
 	}
 
-	public Card giveCards(){
+	public Hand giveCards(){
 		//
 		return null;
 	}
@@ -91,8 +100,11 @@ public class Dealer {
 
 	}
 
-	public Card sendCardToPlayer(Card c){
+
+
+	public Hand sendCardToPlayer(Hand c){
 		return c;
+
 	}
 
 	public long setCredit(long credits){
@@ -124,12 +136,21 @@ public class Dealer {
 		return uuid;
 	}
 
-	public void shuffleDeck(){
-
+	public void shuffle(){
+		action = new bjd_action(0); // Set the action to shuffling
+		deck.shuffle(); // Shuffle deck function in Shoe class
 	}
 
+
 	public boolean startGame(){
-		return true;
+		if(checkCredits() && checkSeats()){
+			return true;	
+		}
+		action = new bjd_action(1); // Set the action to waiting
+		// TODO: Begin restocking the dealer to 500 credits, need to sleep for 30 seconds
+		credits = 500;
+		return false;
+
 	}
 
 	// This is a default function in Java's Object class
