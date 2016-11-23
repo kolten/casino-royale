@@ -12,21 +12,27 @@ public class Dealer {
 	long seqno;
 	long target_uuid;
 
-	Boolean isHuman;
+
+	boolean isHuman;
+	bjd_action action;
+	Shoe deck;
+	Hand hand;
 
 	Player_Status player;
 
 	public Dealer(){
-
+		credits = 500.0;
+		deck = new Shoe();
+		shuffle();
 	}
 
-	public static void main(String[] args) {
-		
-		System.out.println("Placeholder print to screen - Dealer");
-		
+	public Dealer(long uuid){
+		credits = 500.0;
+		deck = new Shoe();
+		shuffle();
 	}
 
-	public Boolean acceptPlayer(){
+	public boolean acceptPlayer(){
 		// Returns true if there are empty seats, false if not
 		
 		return true;
@@ -36,12 +42,15 @@ public class Dealer {
 		// Asks player for 'hit' or 'stay'
 	}
 
-	public Boolean checkCredits(){
-		// Returns true if Dealer has sufficient credits
-		return true;
+	public boolean checkCredits(){
+		// Returns true if Dealer has sufficient credits, else false
+		if(getCredits() >= 20){
+			return true
+		}
+		return false;
 	}
 
-	public Boolean checkSeats(){
+	public boolean checkSeats(){
 		// Returns true if seats are full, false if not, 6 seats at table
 		return true;
 	}
@@ -51,7 +60,7 @@ public class Dealer {
 		return credits;
 	}
 
-	public Boolean getIsHuman(){
+	public boolean getIsHuman(){
 		// Getter for isHuman
 		return isHuman;
 	}
@@ -75,7 +84,7 @@ public class Dealer {
 		// Takes 
 	}
 
-	public Card giveCards(){
+	public Hand giveCards(){
 		//
 	}
 
@@ -91,8 +100,13 @@ public class Dealer {
 
 	}
 
+<<<<<<< Updated upstream
 	public Card sendCardToPlayer(long uuid){
 
+=======
+	public Hand sendCardToPlayer(Hand c){
+		return c;
+>>>>>>> Stashed changes
 	}
 
 	public long setCredit(long credits){
@@ -116,12 +130,24 @@ public class Dealer {
 
 	}
 
-	public void shuffleDeck(){
-
+	public void shuffle(){
+		action = new bjd_action(0); // Set the action to shuffling
+		deck.shuffle(); // Shuffle deck function in Shoe class
 	}
 
+<<<<<<< Updated upstream
 	public Boolean startGame(){
 
+=======
+	public boolean startGame(){
+		if(checkCredits() && checkSeats()){
+			return true;	
+		}
+		action = new bjd_action(1); // Set the action to waiting
+		// TODO: Begin restocking the dealer to 500 credits, need to sleep for 30 seconds
+		credits = 500;
+		return false;
+>>>>>>> Stashed changes
 	}
 
 	public void wait(){
