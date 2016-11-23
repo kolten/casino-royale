@@ -19,7 +19,7 @@ public class Hand {
 		{
 			return false;
 		}
-		else if(testCard.base_value < '1' || (testCard.base_value > '9' && testCard.base_value != 'T' && testCard.base_value != 'J' && testCard.base_value != 'Q' && testCard.base_value != 'K' && testCard.base_value != 'A')
+		else if(testCard.base_value < '1' || (testCard.base_value > '9' && testCard.base_value != 'T' && testCard.base_value != 'J' && testCard.base_value != 'Q' && testCard.base_value != 'K' && testCard.base_value != 'A'))
 		{
 			return false;
 		}
