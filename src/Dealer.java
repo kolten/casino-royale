@@ -42,7 +42,7 @@ public class Dealer {
 	public boolean checkCredits(){
 		// Returns true if Dealer has sufficient credits, else false
 		if(getCredits() >= 20){
-			return true
+			return true;
 		}
 		return false;
 	}

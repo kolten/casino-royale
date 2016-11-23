@@ -1,4 +1,4 @@
-import CR.card;
+import CR.*;
 
 public class Hand {
 	private card cards[21];
