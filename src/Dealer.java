@@ -18,13 +18,13 @@ public class Dealer {
 	player_status player;
 
 	public Dealer(){
-		credits = 500.0;
+		credits = 500.0f;
 		deck = new Shoe();
 		shuffle();
 	}
 
 	public Dealer(int uuid){
-		credits = 500.0;
+		credits = 500.0f;
 		deck = new Shoe();
 		shuffle();
 	}

@@ -19,7 +19,7 @@ public class Player {
 
 	public Player(){
 		hand = new Hand();
-		credits = 100.0;
+		credits = 100.0f;
 		typeOfPlayer = "Mr. Conservative";
 		action = new bjp_action(1);
 	}
@@ -29,7 +29,7 @@ public class Player {
 		this.uuid = uuid;
 		this.dealer_id = dealer_id;
 		hand = new Hand();
-		credits = 100.0;
+		credits = 100.0f;
 		typeOfPlayer = "Mr. Conservative";
 		action = new bjp_action(1);
 	}
