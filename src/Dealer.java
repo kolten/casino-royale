@@ -4,10 +4,10 @@ import CR.*;
 
 public class Dealer {
 
-	long credits; // TODO: make this a float?
-	long uuid;
-	long seqno;
-	long target_uuid;
+	float credits; // TODO: make this a float?
+	int uuid;
+	int seqno;
+	int target_uuid;
 
 	boolean isHuman;
 	bjd_action action;
@@ -23,7 +23,7 @@ public class Dealer {
 		shuffle();
 	}
 
-	public Dealer(long uuid){
+	public Dealer(int uuid){
 		credits = 500.0;
 		deck = new Shoe();
 		shuffle();
@@ -52,7 +52,7 @@ public class Dealer {
 		return true;
 	}
 
-	public long getCredits(){
+	public float getCredits(){
 		// Getter for credits
 		return credits;
 	}
@@ -62,22 +62,22 @@ public class Dealer {
 		return isHuman;
 	}
 
-	public long getSeqno(){
+	public int getSeqno(){
 		// Getter for Sequence Number
 		return seqno;
 	}
 
-	public long getTarget_uudi(){
+	public int getTarget_uudi(){
 		// Getter for Target UUID
 		return target_uuid;
 	}
 
-	public long getUuid(){
+	public int getUuid(){
 		// Getter for uuid
 		return uuid;
 	} 
 
-	public void getWageFromPlayer(long uuid){
+	public void getWageFromPlayer(int uuid){
 		// Takes 
 	}
 
@@ -86,12 +86,12 @@ public class Dealer {
 		return null;
 	}
 
-	public void kickPlayer(long uuid){
+	public void kickPlayer(int uuid){
 		//
 		
 	}
 
-	public long payPlayer(long uuid){
+	public float payPlayer(int uuid){
 		// 
 		return 0;
 	}
@@ -107,7 +107,7 @@ public class Dealer {
 
 	}
 
-	public long setCredit(long credits){
+	public float setCredit(double credits){
 		// Setter for Dealer
 		this.credits = credits;
 		return credits;
@@ -119,25 +119,25 @@ public class Dealer {
 		return isHuman;
 	}
 
-	public long setSeqno(long seqno){
+	public int setSeqno(int seqno){
 		// Setter
 		this.seqno = seqno;
 		return seqno;
 	}
 
-	public long setTarget_uuid(long target_uuid){
+	public int setTarget_uuid(int target_uuid){
 		// Setter
 		this.target_uuid = target_uuid;
 		return target_uuid;
 	}
 
-	public long setUuid(long uuid){
+	public int setUuid(int uuid){
 		this.uuid = uuid;
 		return uuid;
 	}
 
 	public void shuffle(){
-		action = new bjd_action(0); // Set the action to shuffling
+		action = action.shuffling;
 		deck.shuffle(); // Shuffle deck function in Shoe class
 	}
 
@@ -146,7 +146,7 @@ public class Dealer {
 		if(checkCredits() && checkSeats()){
 			return true;	
 		}
-		action = new bjd_action(1); // Set the action to waiting
+		action = action.waiting;
 		// TODO: Begin restocking the dealer to 500 credits, need to sleep for 30 seconds
 		credits = 500;
 		return false;

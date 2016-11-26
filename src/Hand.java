@@ -5,6 +5,8 @@ public class Hand {
 	private int cardsInHand;
 	private int cardHandValue[];
 	private int totalHandValue;
+	private int hasAce;
+	private int knownHandValue[];
 	
 	public Hand()
 	{
@@ -78,7 +80,16 @@ public class Hand {
 		{
 			for(i = cardsInHand - 1; i >= 0; i--)
 			{
-				
+				if(cards[i].base_value == 'A')
+                {
+                    if(cardHandValue[i] == 11)
+                    {
+                        cardHandValue[i] = 1;
+                        totalHandValue -= 10;
+                    }
+                    if(totalHandValue <= 21)
+                        return totalHandValue;
+                }
 			}
 		}
 	}
