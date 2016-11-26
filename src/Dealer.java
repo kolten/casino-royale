@@ -13,9 +13,11 @@ public class Dealer {
 	bjd_action action;
 	Shoe deck;
 	Hand hand;
+	Bank bank;
 
+	bjDealer msg;
 
-	player_status player;
+	player_status players;
 
 	public Dealer(){
 		credits = 500.0f;
@@ -67,7 +69,7 @@ public class Dealer {
 		return seqno;
 	}
 
-	public int getTarget_uudi(){
+	public int getTarget_uuid(){
 		// Getter for Target UUID
 		return target_uuid;
 	}
@@ -148,7 +150,7 @@ public class Dealer {
 		}
 		action = action.waiting;
 		// TODO: Begin restocking the dealer to 500 credits, need to sleep for 30 seconds
-		credits = 500;
+		credits = 500f;
 		return false;
 
 	}
