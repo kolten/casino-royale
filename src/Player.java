@@ -127,7 +127,7 @@ public class Player {
 		if(currentCredits <= 5){
 			wager = 1;
 			credits = credits - 1;
-			this.setCredits(credits)
+			this.setCredits(credits);
 			msg.wager = wager;
 		} else if(currentCredits > 5) {
 			//http://stackoverflow.com/questions/363681/generating-random-integers-in-a-specific-range

@@ -3,7 +3,7 @@
 cd %~dp0
 setlocal
 
-set MAINCLASS=PlayerMain
+set MAINCLASS=PlayerTestMain
 set JARFILE=saj_casinoroyale_sub.jar
 set MANIFEST=saj_casinoroyale_sub.manifest
 
