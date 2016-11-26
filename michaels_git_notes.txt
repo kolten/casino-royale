@@ -1,3 +1,6 @@
+Commit that removed dealermain/playermain:
+35b48b5ea9d0d773c419bbc90343655116d290a4
+
 
 git clone
 	clone an existing repository to current directory
