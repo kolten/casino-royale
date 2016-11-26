@@ -1,7 +1,11 @@
 import CR.*;
 import DDS.*;
+import java.util.Random;
 
 public class Player {
+
+	public static final int MIN_BET = 1;
+	public static final int MAX_BET = 5;
 
 	float credits;
 	int dealer_id;
@@ -16,6 +20,8 @@ public class Player {
 
 	Hand hand;
 	Bank bank;
+
+	Random rand;
 
 	public Player(){
 		hand = new Hand();
@@ -107,11 +113,23 @@ public class Player {
 	}
 
 	public void win(bjDealer dealer){
-
+		
 	}
 
 	public void placeWager(bjDealer dealer){
-
+		int currentCredits = getCredits();
+		if(currentCredits == 1){
+			wager = 1;
+			credits = credits - 1;
+			this.setCredits(credits)
+			msg.wager = wager;
+		} else if(currentCredits > 0) {
+			//http://stackoverflow.com/questions/363681/generating-random-integers-in-a-specific-range
+			wager = rand.next((MAX_BET - MIN_BET) + 1 ) + MIN_BET;
+			credits = credits - wager;
+			this.setCredits(credits);
+			msg.wager = wager;
+		}
 	}
 
 }
