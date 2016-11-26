@@ -92,6 +92,6 @@ public class Hand {
                 }
 			}
 		}
-	}
 	return totalHandValue;
+	}
 }
