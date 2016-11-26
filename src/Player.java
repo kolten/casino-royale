@@ -93,8 +93,12 @@ public class Player {
 
 	/* Core functions */
 
-	public void joinGame(bjDealer dealer){
+	public bjPlayer getMsg(bjPlayer msg){
+		return msg;
+	}
 
+	public void joinGame(bjDealer dealer){
+		
 	}
 
 	public void exitGame(bjDealer dealer){
