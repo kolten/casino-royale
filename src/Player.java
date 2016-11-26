@@ -97,6 +97,10 @@ public class Player {
 		return msg;
 	}
 
+	public int getCurrentHandValue(Hand h){
+		return h.handValue();
+	}
+
 	public void joinGame(bjDealer dealer){
 		
 	}
