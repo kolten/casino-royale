@@ -49,7 +49,7 @@ public class PlayerMain
 			}
 			
 			//=============================================================
-			while( playingInitial ) // the receive2cards step, or initial game state
+			while( playingInitial ) // the receive 2 cards step, or initial game state
 			{
 				read PlayerSub's messages
 				if( foundMessageDealing ) // we respond to dealing messages only
@@ -71,9 +71,10 @@ public class PlayerMain
 						store new card information into player
 					}
 					have Player figure out if we want a new card or not
-					if(wantCard)
+					
+					if(wantCard) // hit
 						PlayerPub a message (request_a_card)
-					else
+					else // stay
 					{
 						PlayerPub a message (none)
 						playing = false
@@ -106,6 +107,7 @@ public class PlayerMain
 			//=============================================================
 			
 			// need to add exiting code somewhere
+
 		}
 		
 		*/
