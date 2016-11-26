@@ -107,7 +107,7 @@ public class Dealer {
 
 	}
 
-	public float setCredit(double credits){
+	public float setCredit(float credits){
 		// Setter for Dealer
 		this.credits = credits;
 		return credits;

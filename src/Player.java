@@ -21,7 +21,7 @@ public class Player {
 		hand = new Hand();
 		credits = 100.0f;
 		typeOfPlayer = "Mr. Conservative";
-		action = new bjp_action(1);
+		action = bjp_action.joining;
 	}
 
 	// Sets player ID and the dealer ID it joined it, not sure if this is correct.
@@ -31,7 +31,7 @@ public class Player {
 		hand = new Hand();
 		credits = 100.0f;
 		typeOfPlayer = "Mr. Conservative";
-		action = new bjp_action(1);
+		action = bjp_action.joining;
 	}
 
 	public float getCredits(){
