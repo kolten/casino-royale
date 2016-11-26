@@ -24,6 +24,7 @@ public class Player {
 	Random rand;
 
 	public Player(){
+		msg = new bjPlayer();
 		hand = new Hand();
 		credits = 100.0f;
 		typeOfPlayer = "Mr. Conservative";
@@ -32,6 +33,7 @@ public class Player {
 
 	// Sets player ID and the dealer ID it joined it, not sure if this is correct.
 	public Player(int uuid, int dealer_id){
+		msg = new bjPlayer();
 		this.uuid = uuid;
 		this.dealer_id = dealer_id;
 		hand = new Hand();
@@ -117,15 +119,15 @@ public class Player {
 	}
 
 	public void placeWager(bjDealer dealer){
-		float currentCredits = getCredits();
-		if(currentCredits == 1){
+		int currentCredits = getCredits();
+		if(currentCredits <= 5){
 			wager = 1;
 			credits = credits - 1;
-			this.setCredits(credits);
+			this.setCredits(credits)
 			msg.wager = wager;
-		} else if(currentCredits > 0) {
+		} else if(currentCredits > 5) {
 			//http://stackoverflow.com/questions/363681/generating-random-integers-in-a-specific-range
-			wager = rand.nextInt((MAX_BET - MIN_BET) + 1 ) + MIN_BET;
+			wager = rand.next((MAX_BET - MIN_BET) + 1 ) + MIN_BET;
 			credits = credits - wager;
 			this.setCredits(credits);
 			msg.wager = wager;

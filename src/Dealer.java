@@ -20,12 +20,14 @@ public class Dealer {
 	player_status players;
 
 	public Dealer(){
+		msg = new bjDealer();
 		credits = 500.0f;
 		deck = new Shoe();
 		shuffle();
 	}
 
 	public Dealer(int uuid){
+		msg = new bjDealer();
 		credits = 500.0f;
 		deck = new Shoe();
 		shuffle();
