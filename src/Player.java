@@ -146,9 +146,8 @@ public class Player {
 			msg.wager = wager;
 		} else if(currentCredits > 5) {
 			//http://stackoverflow.com/questions/363681/generating-random-integers-in-a-specific-range
-			wager = rand.next((MAX_BET - MIN_BET) + 1 ) + MIN_BET;
-			//credits = credits - wager;
 			wager = rand.nextInt((MAX_BET - MIN_BET) + 1 ) + MIN_BET;
+			//credits = credits - 1;
 			this.setCredits(credits);
 			action = bjp_action.wager;
 			msg.wager = wager;

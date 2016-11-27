@@ -17,7 +17,7 @@ public class Dealer {
 
 	bjDealer msg;
 
-	player_status players;
+	player_status players; // don't really need this?
 
 	public Dealer(){
 		msg = new bjDealer();
