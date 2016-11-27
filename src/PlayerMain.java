@@ -5,7 +5,7 @@ import CR.*; // idl stuff
 
 public class PlayerMain
 {
-	public static void main() {
+	public static void main(String[] args) {
 		PlayerMain main = new PlayerMain();
 		main.run();
 	}
