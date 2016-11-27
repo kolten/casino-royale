@@ -61,13 +61,14 @@ public class DealerSub
 		bjpReader.read(bjpSeq, infoSeq, LENGTH_UNLIMITED.value, ANY_SAMPLE_STATE.value, ANY_VIEW_STATE.value, ANY_INSTANCE_STATE.value);
 		if(bjpSeq.value.length != 0 && bjpSeq.value[0] != null && !bjpSeq.value[0].equals(null) && bjpSeq.value[0].uuid != 0 && bjpSeq.value[0].seqno != 0)
 		{
+			int throwaway = bjpSeq.value[0].uuid;
 			msg = copy(bjpSeq.value[0]);
 		}
 		else
 		{
-			msg = null;
+			msg = null; //No values
 		}
-		bjpReader.return_loan(bjpSeq, infoSeq);
+		//bjpReader.return_loan(bjpSeq, infoSeq);
 		return msg;
 	}
 
