@@ -27,6 +27,13 @@ public class Hand {
 		}
 		else return true;
 	}
+
+	public static void printCard(card obj)
+	{
+		System.out.println("           suite :" + obj.suite);
+		System.out.println("      base_value :" + obj.base_value);
+		System.out.println("         visible :" + obj.visible);
+	}
 	
 	public void setCard(card toSet)
 	{
