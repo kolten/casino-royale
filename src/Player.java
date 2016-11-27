@@ -32,6 +32,16 @@ public class Player {
 	}
 
 	// Sets player ID and the dealer ID it joined it, not sure if this is correct.
+	public Player(int uuid){
+		msg = new bjPlayer();
+		this.uuid = uuid;
+		this.dealer_id = dealer_id;
+		hand = new Hand();
+		credits = 100.0f;
+		typeOfPlayer = "Mr. Conservative";
+		action = bjp_action.joining;
+	}
+
 	public Player(int uuid, int dealer_id){
 		msg = new bjPlayer();
 		this.uuid = uuid;
@@ -102,11 +112,11 @@ public class Player {
 	}
 
 	public void joinGame(bjDealer dealer){
-		
+		action = bjp_action.joining;
 	}
 
 	public void exitGame(bjDealer dealer){
-		
+		action = bjp_action.exiting;
 	}
 
 	public void requestCard(bjDealer dealer){
@@ -130,14 +140,16 @@ public class Player {
 		int currentCredits = getCredits();
 		if(currentCredits <= 5){
 			wager = 1;
-			credits = credits - 1;
+			//credits = credits - 1;
 			this.setCredits(credits);
+			action = action.wager;
 			msg.wager = wager;
 		} else if(currentCredits > 5) {
 			//http://stackoverflow.com/questions/363681/generating-random-integers-in-a-specific-range
 			wager = rand.next((MAX_BET - MIN_BET) + 1 ) + MIN_BET;
-			credits = credits - wager;
+			//credits = credits - wager;
 			this.setCredits(credits);
+			action = bjp_action.wager;
 			msg.wager = wager;
 		}
 	}
