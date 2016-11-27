@@ -1,4 +1,4 @@
 @echo off
-java -classpath "%OSPL_HOME%\jar\dcpssaj.jar";classes DealerMain
+java -classpath "%OSPL_HOME%\jar\dcpssaj.jar";classes DealerMain CRexample CR_Dealer CR_Player
 pause
 echo on
