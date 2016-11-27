@@ -93,7 +93,7 @@ public class DealerSub
 	{
 		if(obj != null)
 		{
-			System.out.println("          uuid : " + obj.uuid);
+			System.out.println("\n          uuid : " + obj.uuid);
 			System.out.println("         seqno : " + obj.seqno);
 			System.out.println("       credits : " + obj.credits);
 			System.out.println("         wager : " + obj.wager);

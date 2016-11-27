@@ -69,8 +69,8 @@ public class DealerPub
 						System.out.println("        payout : " + obj.players[i].payout); 
 						for(j = 0; j < 21; j++)
 						{
-							if(cardLogic.isValidCard(obj.players[i].cards[j]))
-								cardLogic.printCard(obj.players[i].cards[j]);
+							//if(cardLogic.isValidCard(obj.players[i].cards[j]))
+								//cardLogic.printCard(obj.players[i].cards[j]);
 						}
 					}
 				}
@@ -78,9 +78,9 @@ public class DealerPub
 			System.out.println("===================");
 			for(j = 0; j < 21; j++)
 			{
-				if(obj.cards[j] != null)
-					if(cardLogic.isValidCard(obj.cards[j]))
-						cardLogic.printCard(obj.cards[j]);
+				//if(obj.cards[j] != null)
+					//if(cardLogic.isValidCard(obj.cards[j]))
+						//cardLogic.printCard(obj.cards[j]);
 			}
 			System.out.println("     dealer_id : " + obj.target_uuid); 
 		}

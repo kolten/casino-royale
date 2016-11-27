@@ -20,6 +20,14 @@ public class DealerMain
 		DealerSub
 		DealerPub
 		
+		statuses should be changed right before DealerPub sends messages, as noted in
+		the statement "DealerPub a message (status)"
+		boolean exiting = false;
+		
+		
+		
+		
+		
 		
 		*/
 	}

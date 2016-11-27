@@ -127,7 +127,7 @@ public class Player {
 	}
 
 	public void placeWager(bjDealer dealer){
-		int currentCredits = getCredits();
+		float currentCredits = getCredits();
 		if(currentCredits <= 5){
 			wager = 1;
 			credits = credits - 1;
@@ -135,7 +135,7 @@ public class Player {
 			msg.wager = wager;
 		} else if(currentCredits > 5) {
 			//http://stackoverflow.com/questions/363681/generating-random-integers-in-a-specific-range
-			wager = rand.next((MAX_BET - MIN_BET) + 1 ) + MIN_BET;
+			wager = rand.nextInt((MAX_BET - MIN_BET) + 1 ) + MIN_BET;
 			credits = credits - wager;
 			this.setCredits(credits);
 			msg.wager = wager;
