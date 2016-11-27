@@ -87,7 +87,7 @@ public class Dealer {
 
 	public Hand giveCards(){
 		//
-		action = bjd_action.dea
+		action = bjd_action.dealing;
 		return null;
 	}
 
