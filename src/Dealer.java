@@ -8,6 +8,7 @@ public class Dealer {
 	int uuid;
 	int seqno;
 	int target_uuid;
+	int activePlayers;
 
 	boolean isHuman;
 	bjd_action action;
@@ -16,14 +17,16 @@ public class Dealer {
 	Bank bank;
 
 	bjDealer msg;
+	
 
-	player_status players;
+	player_status[] players;
 
 	public Dealer(){
 		msg = new bjDealer();
 		credits = 500.0f;
 		deck = new Shoe();
 		shuffle();
+		players = new player_status[6];
 	}
 
 	public Dealer(int uuid){
@@ -31,6 +34,7 @@ public class Dealer {
 		credits = 500.0f;
 		deck = new Shoe();
 		shuffle();
+		players = new player_status[6];
 	}
 
 	public boolean acceptPlayer(){
@@ -162,9 +166,28 @@ public class Dealer {
 	// public void wait(){
 	//
 	// }
+
+	public int setActivePlayers(int activePlayers){
+		this.activePlayers = activePlayers;
+		return activePlayers;
+	}
+
+	public int getActivePlayers(){
+		return activePlayers;
+	}
+
+
+	public bjDealer getMsg(){
+		return msg;
+	}
 	
 	private void sendTestData(){
 	
 	}
+
+	public void join(bjPlayer player){
+		
+	}
+
 	
 }

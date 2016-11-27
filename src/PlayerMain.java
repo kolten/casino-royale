@@ -58,10 +58,9 @@ public class PlayerMain{
 				}
 			}
 		}
+		
 	}
 	
-	
-
 }
 
 
