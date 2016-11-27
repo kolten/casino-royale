@@ -18,14 +18,16 @@ import CR.bjDealerDataReaderHelper;
 import CR.bjDealerSeqHolder;
 import CR.bjDealerTypeSupport;
 
+import java.util.ArrayList;
+
 public class PlayerSub
 {
-	private DDSEntityManager Sub;
-	private bjDealerTypeSupport bjdTS;
-	private DataReader dreader;
-	private bjDealerDataReader bjdReader;
-	private bjDealerSeqHolder bjdSeq;
-	private SampleInfoSeqHolder infoSeq;
+	public DDSEntityManager Sub;
+	public bjDealerTypeSupport bjdTS;
+	public DataReader dreader;
+	public bjDealerDataReader bjdReader;
+	public bjDealerSeqHolder bjdSeq;
+	public SampleInfoSeqHolder infoSeq;
 	
 	public PlayerSub(String partitionName, String TopicName)
 	{
@@ -60,7 +62,7 @@ public class PlayerSub
 	public bjDealer read()
 	{
 		bjDealer msg;
-		bjdReader.read(bjdSeq, infoSeq, LENGTH_UNLIMITED.value, ANY_SAMPLE_STATE.value, ANY_VIEW_STATE.value, ANY_INSTANCE_STATE.value);
+		bjdReader.take(bjdSeq, infoSeq, LENGTH_UNLIMITED.value, ANY_SAMPLE_STATE.value, ANY_VIEW_STATE.value, ANY_INSTANCE_STATE.value);
 		if(bjdSeq.value.length != 0 && bjdSeq.value[0] != null && !bjdSeq.value[0].equals(null) && bjdSeq.value[0].uuid != 0 && bjdSeq.value[0].seqno != 0)
 		{
 			int throwaway = bjdSeq.value[0].uuid;
@@ -136,8 +138,8 @@ public class PlayerSub
 						System.out.println("        payout : " + obj.players[i].payout); 
 						for(j = 0; j < 21; j++)
 						{
-							//if(cardLogic.isValidCard(obj.players[i].cards[j]))
-								//cardLogic.printCard(obj.players[i].cards[j]);
+							if(cardLogic.isValidCard(obj.players[i].cards[j]))
+								cardLogic.printCard(obj.players[i].cards[j]);
 						}
 					}
 				}
@@ -145,8 +147,8 @@ public class PlayerSub
 			System.out.println("===================");
 			for(j = 0; j < 21; j++)
 			{
-				//if(cardLogic.isValidCard(obj.cards[j]))
-					//cardLogic.printCard(obj.cards[j]);
+				if(cardLogic.isValidCard(obj.cards[j]))
+					cardLogic.printCard(obj.cards[j]);
 			}
 			System.out.println("     dealer_id : " + obj.target_uuid); 
 		}
@@ -161,5 +163,6 @@ public class PlayerSub
 		Sub.deleteParticipant();
 	}
 }
+
 
 

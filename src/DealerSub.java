@@ -16,14 +16,16 @@ import CR.bjPlayerDataReaderHelper;
 import CR.bjPlayerSeqHolder;
 import CR.bjPlayerTypeSupport;
 
+import java.util.ArrayList;
+
 public class DealerSub
 {
-	private DDSEntityManager Sub;
-	private bjPlayerTypeSupport bjpTS;
-	private DataReader dreader;
-	private bjPlayerDataReader bjpReader;
-	private bjPlayerSeqHolder bjpSeq;
-	private SampleInfoSeqHolder infoSeq;
+	public DDSEntityManager Sub;
+	public bjPlayerTypeSupport bjpTS;
+	public DataReader dreader;
+	public bjPlayerDataReader bjpReader;
+	public bjPlayerSeqHolder bjpSeq;
+	public SampleInfoSeqHolder infoSeq;
 	
 	public DealerSub(String partitionName, String TopicName)
 	{
@@ -55,20 +57,49 @@ public class DealerSub
         System.out.println ("=== [Subscriber] Ready ...");
 	}
 
-	public bjPlayer read()
+	//Psuedo-Content Filtered Read
+	public ArrayList<bjPlayer> read(int uuid, int size, int playerList[])
 	{
-		bjPlayer msg;
+		ArrayList<bjPlayer> msg = new ArrayList<bjPlayer>();
 		bjpReader.read(bjpSeq, infoSeq, LENGTH_UNLIMITED.value, ANY_SAMPLE_STATE.value, ANY_VIEW_STATE.value, ANY_INSTANCE_STATE.value);
-		if(bjpSeq.value.length != 0 && bjpSeq.value[0] != null && !bjpSeq.value[0].equals(null) && bjpSeq.value[0].uuid != 0 && bjpSeq.value[0].seqno != 0)
+		if(bjpSeq.value.length != 0 && bjpSeq.value[0] != null && !bjpSeq.value[0].equals(null))
 		{
-			int throwaway = bjpSeq.value[0].uuid;
-			msg = copy(bjpSeq.value[0]);
+			for(int j = 0; j < bjpSeq.value.length; j++)
+			{
+				bjPlayer temp = bjpSeq.value[j];
+				if(temp.dealer_id == uuid)
+				{
+					if(temp.action.value() == 1 && size < 6)
+					{
+						for(int i = 0; i < size; i++)
+						{
+							if(temp.uuid != playerList[i])
+							{
+								msg.add(copy(bjpSeq.value[0]));
+							}
+							else System.out.println("Why do you do these things?");
+						}
+							
+					}
+					else 
+					{
+						for(int i = 0; i < size; i++)
+						{
+							if(temp.uuid == playerList[i])
+							{
+								msg.add(copy(bjpSeq.value[0]));
+							}
+							else System.out.println("We have a phantom player.");
+						}
+					}
+				}
+			}
 		}
 		else
 		{
 			msg = null; //No values
 		}
-		//bjpReader.return_loan(bjpSeq, infoSeq);
+		bjpReader.return_loan(bjpSeq, infoSeq);
 		return msg;
 	}
 
@@ -76,13 +107,7 @@ public class DealerSub
 	{
 		if(obj != null)
 		{
-			bjPlayer temp = new bjPlayer();
-			temp.uuid = obj.uuid;
-			temp.seqno = obj.seqno;
-			temp.credits = obj.credits;
-			temp.wager = obj.wager;
-			temp.dealer_id = obj.dealer_id;
-			temp.action = obj.action.from_int(obj.action.value());
+			bjPlayer temp = new bjPlayer(obj.uuid, obj.seqno, obj.credits, obj.wager, obj.dealer_id, obj.action.from_int(obj.action.value()));
 			return temp;
 		}
 		System.out.println("How in the world did this happen");
@@ -93,7 +118,7 @@ public class DealerSub
 	{
 		if(obj != null)
 		{
-			System.out.println("\n          uuid : " + obj.uuid);
+			System.out.println("          uuid : " + obj.uuid);
 			System.out.println("         seqno : " + obj.seqno);
 			System.out.println("       credits : " + obj.credits);
 			System.out.println("         wager : " + obj.wager);
@@ -109,5 +134,6 @@ public class DealerSub
 		Sub.deleteParticipant();
 	}
 }
+
 
 
