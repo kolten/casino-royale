@@ -17,7 +17,7 @@ public class Dealer {
 
 	bjDealer msg;
 
-	player_status players; // don't really need this?
+	player_status players;
 
 	public Dealer(){
 		msg = new bjDealer();
@@ -87,6 +87,7 @@ public class Dealer {
 
 	public Hand giveCards(){
 		//
+		action = bjd_action.dea
 		return null;
 	}
 
