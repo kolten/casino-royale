@@ -63,13 +63,14 @@ public class PlayerSub
 		bjdReader.read(bjdSeq, infoSeq, LENGTH_UNLIMITED.value, ANY_SAMPLE_STATE.value, ANY_VIEW_STATE.value, ANY_INSTANCE_STATE.value);
 		if(bjdSeq.value.length != 0 && bjdSeq.value[0] != null && !bjdSeq.value[0].equals(null) && bjdSeq.value[0].uuid != 0 && bjdSeq.value[0].seqno != 0)
 		{
+			int throwaway = bjdSeq.value[0].uuid;
 			msg = copy(bjdSeq.value[0]);
 		}
 		else
 		{
 			msg = null;
 		}
-		bjdReader.return_loan(bjdSeq, infoSeq);
+		//bjdReader.return_loan(bjdSeq, infoSeq);
 		return msg;
 	}
 
