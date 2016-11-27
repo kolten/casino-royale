@@ -19,8 +19,8 @@ public class DealerMain
 	public void run(String partition, String pubTopic, String subtopic)
 	{
 		dealer = new Dealer();
-		sub = new PlayerSub(partition, subtopic); // Sub needs to have the same topic name as the dealer pub
-		pub = new PlayerPub(partition, pubTopic); // Vice versa
+		sub = new DealerSub(partition, subtopic); // Sub needs to have the same topic name as the dealer pub
+		pub = new DealerPub(partition, pubTopic); // Vice versa
 		timer = new Timer();
 
 		boolean exiting = false;
@@ -30,7 +30,7 @@ public class DealerMain
 			pub.write(dealer.getMsg());
 
 			while(dealer.getActivePlayers() == 0){
-				ArrayList <bjPlayer> players = sub.read(dealer.getUuid());
+				ArrayList<bjPlayer> players = sub.read(dealer.getUuid());
 				int i;
 				for(bjPlayer temp : players){
 					dealer.join(temp);
