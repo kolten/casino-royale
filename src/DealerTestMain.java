@@ -15,7 +15,7 @@ public class DealerTestMain
 		int i, k = 1;
 		while(PubTimer.getTimeMs() < 5000)
 		{
-			for(int j = 0; j < 6; j++)
+			for(int j = 0; j < 2; j++)
 			{
 				bjDealer msg = new bjDealer();
 				msg.uuid = k;

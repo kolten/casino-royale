@@ -30,7 +30,7 @@ public class PlayerTestMain
 		k = 1;
 		while(PubTimer.getTimeMs() < 5000)
 		{
-			for(int j = 0; j < 10; j++)
+			for(int j = 0; j < 2; j++)
 			{
 				bjPlayer msg = new bjPlayer();
 				msg.uuid = k;

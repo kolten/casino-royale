@@ -5,7 +5,7 @@ import CR.*; // idl stuff
 
 public class PlayerMain
 {
-	public static void main() {
+	public static void main(String[] args) {
 		PlayerMain main = new PlayerMain();
 		main.run();
 	}
@@ -24,6 +24,8 @@ public class PlayerMain
 		the statement "PlayerPub a message (status)"
 		boolean exiting = false;
 		
+		ideally, boolean conditions inside while loops should be pulled from the player object and not handled inside playerMain
+		
 		player = new Player();
 		while( !exiting )
 			
@@ -34,9 +36,12 @@ public class PlayerMain
 				if( foundMessageAny ) // we respond to any message
 				{
 					send PlayerPub message (joining)
-					if( nowSeated ) // make sure we got a join confirmation in case we are a 7th player
+					read playerSub's messages
+					
+					if( not7th ) // make sure we got a join confirmation in case we are a 7th player
 						notSeated = false
 				}
+				Timer.wait(5000); // wait some time before starting the join loop again
 			}
 			
 			//=============================================================
@@ -69,10 +74,7 @@ public class PlayerMain
 				read PlayerSub's messages
 				if( foundMessageDealing && target==me ) // we respond to dealing messages only
 				{
-					if( !firstTimeAsking ) // if this is not the first time
-					{
-						store new card information into player
-					}
+					store new card information into player // because of how card information is stored, we don't need to make a special case for the first ask
 					
 					// figure out if we want a card or not
 					if(player.getCurrentHandValue() >= 17){
@@ -82,6 +84,7 @@ public class PlayerMain
 					}
 					
 					PlayerPub a message (requestin_a_card or none)
+					playing = false;
 				}
 			}
 			
@@ -118,8 +121,6 @@ public class PlayerMain
 	}
 	
 	
-// End of main
-
 }
 
 
