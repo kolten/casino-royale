@@ -14,7 +14,7 @@ public class DealerMain
 	{
 		// Do not remove psuedo code or write active code in the middle of it.
 		// psuedo code begins.
-		/*
+		
 		Declare and initialize the following:
 		Dealer dealer; // do not shuffle while initializing
 		ArrayList<Player> localPlayers;
@@ -143,7 +143,7 @@ public class DealerMain
 			// need to add exiting code somewhere
 		}
 		
-		*/
+		
 		// psuedo code ends
 		
 		
@@ -186,7 +186,7 @@ public class PlayerMain
 	{
 		// Do not remove psuedo code or write active code in the middle of it.
 		// psuedo code begins.
-		/*
+		
 		Declare and initialize the following:
 		Player player;
 		PlayerSub
@@ -288,7 +288,7 @@ public class PlayerMain
 
 		}
 		
-		*/
+		
 		// psuedo code ends
 	}
 	
