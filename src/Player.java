@@ -103,7 +103,7 @@ public class Player {
 
 	/* Core functions */
 
-	public bjPlayer getMsg(bjPlayer msg){
+	public bjPlayer getMsg(){
 		return msg;
 	}
 
@@ -112,6 +112,7 @@ public class Player {
 	}
 
 	public void joinGame(bjDealer dealer){
+		dealer_id = dealer.uuid;
 		action = bjp_action.joining;
 	}
 
@@ -142,14 +143,14 @@ public class Player {
 			wager = 1;
 			//credits = credits - 1;
 			this.setCredits(credits);
-			action = action.wagering;
+			action = action.wager;
 			msg.wager = wager;
 		} else if(currentCredits > 5) {
 			//http://stackoverflow.com/questions/363681/generating-random-integers-in-a-specific-range
 			wager = rand.nextInt((MAX_BET - MIN_BET) + 1 ) + MIN_BET;
 			//credits = credits - 1;
 			this.setCredits(credits);
-			action = bjp_action.wagering;
+			action = bjp_action.wager;
 			msg.wager = wager;
 		}
 	}
