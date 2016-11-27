@@ -3,14 +3,15 @@ import DDS.*; // opensplice stuff
 import CR.*; // idl stuff
 
 
-public class PlayerMain
+public class PlayerMain{
+
+
 	Player player;
 	PlayerSub sub;
 	PlayerPub pub;
 	int seatCount;
 	Timer timer;
 
-{
 	public static void main(String[] args) {
 		PlayerMain main = new PlayerMain();
 		main.run(args[0], args[1], args[2]);
@@ -60,6 +61,7 @@ public class PlayerMain
 	}
 	
 	
+
 }
 
 
