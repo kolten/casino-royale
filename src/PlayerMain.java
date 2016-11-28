@@ -26,6 +26,11 @@ public class PlayerMain{
 
 		boolean exiting = false;
 		boolean notSeated = true;
+		boolean wagering = true;
+		boolean playingInitial = true;
+		boolean playing = true;
+		boolean losing = true;
+		boolean winning = true;
 
 		bjDealer temp;
 		// Are you ready ???? 🎺🎺🎺
@@ -57,8 +62,18 @@ public class PlayerMain{
 					// No dealer found
 				}
 			}
+
+			while(wagering){
+				temp = sub.read();
+				if((temp != null) && (temp.target_uuid == player.getUuid())){
+					player.placeWager(temp);
+					pub.write(player.getMsg());
+					wagering = false;
+				}
+			}
+			
 		}
-		
+
 	}
 	
 }
