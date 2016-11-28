@@ -118,7 +118,7 @@ public class Player {
 	public bjPlayer getMsg(){
 		return msg;
 	}
-	
+
 	public void initDeal(bjDealer dealer){
 		if(dealer != null){
 			hand.setCard(dealer.players[getSeatNumber()].cards[0]);
@@ -149,11 +149,11 @@ public class Player {
 		// Hit
 		action = bjp_action.requesting_a_card;
 		if(dealer != null){
-
+			
 		}
 	}
 
-	public void stay(bjDealer dealer){
+	public void stay(){
 		// stay
 		action = bjp_action.none;
 	}

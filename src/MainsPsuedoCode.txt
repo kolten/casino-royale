@@ -240,24 +240,27 @@ public class PlayerMain
 			}
 			//=============================================================
 			
+			not_initial = false;
 			while( playing ) // the request card (hit/stay) step
 			{
 				
 				read PlayerSub's messages
 				if( foundMessageDealing && target==me ) // we respond to dealing messages only
 				{
-					store new card information into player // because of how card information is stored, we don't need to make a special case for the first ask
-					
+					if(not_initial)
+						store new `card information into player // because of how card information is stored, we don't need to make a special case for the first ask
+						
+					not_initial = true; 
 					// figure out if we want a card or not
 					if(player.getCurrentHandValue() >= 17){
 						player.stay();
-						change 
 					} else if(player.getCurrentHandValue() <= 16){
 						player.requestCard();
 					}
 					
 					PlayerPub a message (requestin_a_card or none)
-					playing = false;
+					if(none)
+						playing = false;
 				}
 			}
 			
