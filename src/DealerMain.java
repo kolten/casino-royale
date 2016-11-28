@@ -33,9 +33,9 @@ public class DealerMain
 				// Joining method
 				ArrayList<bjPlayer> players = new ArrayList<bjPlayer>;
 				players.add(sub.read(dealer.getUuid()));
-				int i;
 				for(bjPlayer temp : players){
 					dealer.join(temp);
+					dealer.setActivePlayers(players.size());
 				}
 			}
 		}

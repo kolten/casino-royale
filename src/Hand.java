@@ -97,13 +97,9 @@ public class Hand {
 		return totalHandValue;
 	}
 
-<<<<<<< HEAD
+
 	/* Returns cards in hand.*/
-	public int getNumberOfCard()
-	{
-=======
 	public int getNumberOfCards(){
->>>>>>> cb785cfcc2032e5801161c0532c7c2b9e47c515e
 		return cardsInHand;
 	}
 
