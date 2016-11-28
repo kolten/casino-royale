@@ -31,14 +31,14 @@ public class DealerMain
 
 			while(dealer.getActivePlayers() == 0){
 				// Joining method
-				ArrayList<bjPlayer> players = sub.read(dealer.getUuid());
-				for(bjPlayer temp : players){
+				ArrayList<bjPlayer> playerMessages = sub.read(dealer.getUuid());
+				for(bjPlayer temp : playerMessages){
 					dealer.join(temp);
-					dealer.setActivePlayers(players.size());
+					//dealer.setActivePlayers(players.size());
 				}
 			}
+
 		}
-	
 	}
 	
 }
