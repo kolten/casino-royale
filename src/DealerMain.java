@@ -30,7 +30,8 @@ public class DealerMain
 			pub.write(dealer.getMsg());
 
 			while(dealer.getActivePlayers() == 0){
-				ArrayList<bjPlayer> players = sub.read(dealer.getUuid());
+				// TODO
+				//ArrayList<bjPlayer> players = sub.read(dealer.getUuid());
 				int i;
 				for(bjPlayer temp : players){
 					dealer.join(temp);
