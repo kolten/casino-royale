@@ -102,7 +102,7 @@ public class Hand {
 	return totalHandValue;
 	}
 
-	public int getNumberOfCard(){
+	public int getNumberOfCards(){
 		return cardsInHand;
 	}
 }

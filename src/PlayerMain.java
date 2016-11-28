@@ -98,15 +98,40 @@ public class PlayerMain{
 							player.stay(temp);
 							playing = false;
 
-						} 
+						}
+						
 						else if(player.getCurrentHandValue <= 16){
 								player.requestCard();
 						}
 						pub.write(player.getMsg());
 				}
 			}
-		}
 
+			// Take the L 
+			while ( losing ){
+				temp = sub.read(player.getDealerID());
+				if((temp != null) && temp.target_uuid == player.getUuid()){
+					// TODO: set up bank or subtract from credits
+					// For now,
+					int curCredits = player.getCredits() - player.getWager();
+					player.setCredits(curCredits);
+					losing = false;
+				}
+			}
+
+			// You're a winner, Harry.
+			while(winning){
+				temp = sub.read(player.getDealerID());
+				if((temp != null) && temp.target_uuid == player.getUuid()){
+					// TODO: set up bank or add to credits
+					// For now,
+					int curCredits = player.getCredits() + player.getWager();
+					player.setCredits(curCredits)
+					playingInitial = false;
+				}
+			}
+			// TODO: check if there are no players sitting and exit?
+		}
 	}
 	
 }
