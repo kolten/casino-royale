@@ -123,7 +123,7 @@ public class Hand {
 	/* Empties hand by zeroing all variables.*/
 	public void emptyHand()
 	{
-		totalHandValeu = 0;
+		totalHandValue = 0;
 		hasAce = 0;
 		cardsInHand = 0;
 		for(int i = 0; i < 21; i++)

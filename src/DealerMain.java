@@ -31,8 +31,7 @@ public class DealerMain
 
 			while(dealer.getActivePlayers() == 0){
 				// Joining method
-				ArrayList<bjPlayer> players = new ArrayList<bjPlayer>();
-				players.add(sub.read(dealer.getUuid()));
+				ArrayList<bjPlayer> players = sub.read(dealer.getUuid());
 				for(bjPlayer temp : players){
 					dealer.join(temp);
 					dealer.setActivePlayers(players.size());
