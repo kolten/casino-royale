@@ -67,7 +67,7 @@ public class PlayerMain{
 			// Wagering
 			while(wagering){
 				temp = sub.read(player.getDealerID());
-				if((temp != null) && (temp.target_uuid == player.getUuid()) && temp.action.value()==bjd_action._waiting){
+				if((temp != null) && (temp.target_uuid == player.getUuid()) && (temp.action.value() == bjd_action._waiting)){
 					player.placeWager(temp);
 					pub.write(player.getMsg());
 					wagering = false;
@@ -77,7 +77,7 @@ public class PlayerMain{
 			// Initial playing round?
 			while(playingInitial){
 				temp = sub.read(player.getDealerID());
-				if(temp != null && temp.action.value()==bjd_action._dealing){
+				if((temp != null) && (temp.action.value() == bjd_action._dealing)){
 					
 					player.initDeal(temp);
 					playingInitial = false;
@@ -88,7 +88,7 @@ public class PlayerMain{
 
 			while(playing){
 				temp = sub.read(player.getDealerID());
-				if((temp != null) && temp.target_uuid == player.getUuid() && temp.action.value()==bjd_action._dealing){
+				if((temp != null) && (temp.target_uuid == player.getUuid()) && (temp.action.value() == bjd_action._dealing)){
 					if(not_initial){
 						player.singleDeal(temp);
 					}
@@ -111,7 +111,7 @@ public class PlayerMain{
 			// Take the L 
 			while ( losing ){
 				temp = sub.read(player.getDealerID());
-				if((temp != null) && temp.target_uuid == player.getUuid() && temp.action.value()==bjd_action._collecting){
+				if((temp != null) && (temp.target_uuid == player.getUuid()) && (temp.action.value() == bjd_action._collecting)){
 					// TODO: set up bank or subtract from credits
 					// For now,
 					float curCredits = player.getCredits() - player.getWager();
@@ -123,7 +123,7 @@ public class PlayerMain{
 			// You're a winner, Harry.
 			while(winning){
 				temp = sub.read(player.getDealerID());
-				if((temp != null) && temp.target_uuid == player.getUuid() && temp.action.value()==bjd_action._paying){
+				if((temp != null) && (temp.target_uuid == player.getUuid()) && (temp.action.value()==bjd_action._paying)){
 					// TODO: set up bank or add to credits
 					// For now,
 					float curCredits = player.getCredits() + player.getWager();
