@@ -59,6 +59,30 @@ public class PlayerSub
         System.out.println ("=== [Subscriber] Ready ...");
 	}
 
+	/* @return first valid bjDealer message*/
+	public bjDealer read()
+	{
+		bjDealer msg = null;
+		bjdReader.take(bjdSeq, infoSeq, LENGTH_UNLIMITED.value, ANY_SAMPLE_STATE.value, ANY_VIEW_STATE.value, ANY_INSTANCE_STATE.value);
+		if(bjdSeq.value.length != 0)
+		{
+			for(int i = 0; i < bjdSeq.value.length; i++)
+			{
+				if(bjdSeq.value[i].uuid != 0 && bjdSeq.value[i].seqno != 0)
+				{
+					msg = copy(bjdSeq.value[i]);
+					i = bjdSeq.value.length;
+				}
+			}
+		}
+		else
+		{
+			msg = null;
+		}
+		bjdReader.return_loan(bjdSeq, infoSeq);
+		return msg;
+	}
+
 	/* @param uuid
 	Integer value of the intended dealer uuid.
 	@return bjDealer message that matches the uuid from param*/
@@ -174,6 +198,5 @@ public class PlayerSub
 		Sub.deleteParticipant();
 	}
 }
-
 
 
