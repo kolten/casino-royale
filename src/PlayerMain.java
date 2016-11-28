@@ -35,11 +35,11 @@ public class PlayerMain{
 		bjDealer temp;
 		// Are you ready ???? 🎺🎺🎺
 		while ( !exiting ) {
-
+			// Joining
 			while( notSeated ){
 				temp = sub.read();
 				if(temp != null){
-					seatCount = seatCount + 1;
+					//seatCount = seatCount + 1;
 
 					if(temp.active_players < 6){
 						player.joinGame(temp);
@@ -53,6 +53,7 @@ public class PlayerMain{
 							for(i = 0; i < temp.active_players; i++){
 								if(player.getUuid() == temp.players[i].uuid){
 										notSeated = false;
+										player.setSeatNumber(i);
 								} 
 							}
 						}
@@ -62,9 +63,9 @@ public class PlayerMain{
 					// No dealer found
 				}
 			}
-
+			// Wagering
 			while(wagering){
-				temp = sub.read();
+				temp = sub.read(player.getDealerID());
 				if((temp != null) && (temp.target_uuid == player.getUuid())){
 					player.placeWager(temp);
 					pub.write(player.getMsg());
@@ -72,6 +73,17 @@ public class PlayerMain{
 				}
 			}
 			
+			while(playingInitial){
+				temp = sub.read(player.getDealerID());
+				if(temp != null){
+					
+					player.deal(temp);
+					playingInitial = false;
+				}
+			}
+
+
+
 		}
 
 	}

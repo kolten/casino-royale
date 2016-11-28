@@ -12,6 +12,7 @@ public class Player {
 	int seqno;
 	int uuid;
 	int wager;
+	int seatNumber;
 
 	String typeOfPlayer;
 
@@ -101,10 +102,28 @@ public class Player {
 		return dealer_id;
 	}
 
+	// Sorry T.
+
+	public int setSeatNumber(int seatNumber){
+		this.seatNumber = seatNumber;
+		return seatNumber;
+	}
+
+	public int getSeatNumber(int seatNumber){
+		return seatNumber;
+	}
+
 	/* Core functions */
 
 	public bjPlayer getMsg(){
 		return msg;
+	}
+
+	public void deal(bjDealer dealer){
+		if(dealer != null){
+			hand.setCard(dealer.players[getSeatNumber()].cards[0]);
+			hand.setCard(dealer.players[getSeatNumber()].cards[1]);
+		}
 	}
 
 	public int getCurrentHandValue(Hand h){

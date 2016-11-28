@@ -32,10 +32,10 @@ public class DealerMain
 			while(dealer.getActivePlayers() == 0){
 				// TODO
 				//ArrayList<bjPlayer> players = sub.read(dealer.getUuid());
-				int i;
-				for(bjPlayer temp : players){
-					dealer.join(temp);
-				}
+				// int i;
+				// for(bjPlayer temp : players){
+				// 	dealer.join(temp);
+				// }
 			}
 		}
 	
