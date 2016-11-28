@@ -32,7 +32,6 @@ public class Player {
 		action = bjp_action.joining;
 	}
 
-	// Sets player ID and the dealer ID it joined it, not sure if this is correct.
 	public Player(int uuid){
 		msg = new bjPlayer();
 		this.uuid = uuid;

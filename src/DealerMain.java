@@ -30,12 +30,13 @@ public class DealerMain
 			pub.write(dealer.getMsg());
 
 			while(dealer.getActivePlayers() == 0){
-				// TODO
-				//ArrayList<bjPlayer> players = sub.read(dealer.getUuid());
-				// int i;
-				// for(bjPlayer temp : players){
-				// 	dealer.join(temp);
-				// }
+				// Joining method
+				ArrayList<bjPlayer> players = new ArrayList<bjPlayer>;
+				players.add(sub.read(dealer.getUuid()));
+				int i;
+				for(bjPlayer temp : players){
+					dealer.join(temp);
+				}
 			}
 		}
 	
