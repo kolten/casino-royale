@@ -144,12 +144,10 @@ public class Player {
 		action = bjp_action.exiting;
 	}
 
-	public void requestCard(bjDealer dealer){
+	public void requestCard(){
 		// Hit
 		action = bjp_action.requesting_a_card;
-		if(dealer != null){
-			
-		}
+		
 	}
 
 	public void stay(){

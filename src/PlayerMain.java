@@ -96,7 +96,7 @@ public class PlayerMain{
 					not_initial = true;
 
 					if(player.getCurrentHandValue() >= 17){
-							player.stay(temp);
+							player.stay();
 							playing = false;
 
 						}
