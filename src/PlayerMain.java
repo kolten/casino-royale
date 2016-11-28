@@ -31,6 +31,7 @@ public class PlayerMain{
 		boolean playing = true;
 		boolean losing = true;
 		boolean winning = true;
+		boolean not_initial = false;
 
 		bjDealer temp;
 		// Are you ready ???? 🎺🎺🎺
@@ -73,17 +74,37 @@ public class PlayerMain{
 				}
 			}
 			
+			// Initial playing round?
 			while(playingInitial){
 				temp = sub.read(player.getDealerID());
 				if(temp != null){
 					
-					player.deal(temp);
+					player.initDeal(temp);
 					playingInitial = false;
 				}
 			}
 
+			// Let's play a game.
 
+			while(playing){
+				temp = sub.read(player.getDealerID());
+				if((temp != null) && temp.target_uuid == player.getUuid()){
+					if(not_initial){
+						player.singleDeal(temp);
+					}
 
+					not_initial = true;
+					if(player.getCurrentHandValue() >= 17){
+							player.stay(temp);
+							playing = false;
+
+						} 
+						else if(player.getCurrentHandValue <= 16){
+								player.requestCard();
+						}
+						pub.write(player.getMsg());
+				}
+			}
 		}
 
 	}

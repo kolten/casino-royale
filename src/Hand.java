@@ -101,4 +101,8 @@ public class Hand {
 		}
 	return totalHandValue;
 	}
+
+	public int getNumberOfCard(){
+		return cardsInHand;
+	}
 }

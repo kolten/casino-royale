@@ -251,6 +251,7 @@ public class PlayerMain
 					// figure out if we want a card or not
 					if(player.getCurrentHandValue() >= 17){
 						player.stay();
+						change 
 					} else if(player.getCurrentHandValue() <= 16){
 						player.requestCard();
 					}

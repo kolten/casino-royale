@@ -118,11 +118,17 @@ public class Player {
 	public bjPlayer getMsg(){
 		return msg;
 	}
-
-	public void deal(bjDealer dealer){
+	
+	public void initDeal(bjDealer dealer){
 		if(dealer != null){
 			hand.setCard(dealer.players[getSeatNumber()].cards[0]);
 			hand.setCard(dealer.players[getSeatNumber()].cards[1]);
+		}
+	}
+
+	public void singleDeal(bjDealer dealer){
+		if(dealer != null){
+			hand.setCard(dealer.players[getSeatNumber()].cards[hand.getNumberOfCards()]);
 		}
 	}
 
@@ -141,6 +147,7 @@ public class Player {
 
 	public void requestCard(bjDealer dealer){
 		// Hit
+		action = bjp_action.requesting_a_card;
 		if(dealer != null){
 
 		}
@@ -148,7 +155,7 @@ public class Player {
 
 	public void stay(bjDealer dealer){
 		// stay
-
+		action = bjp_action.none;
 	}
 
 	public void loss(bjDealer dealer){
