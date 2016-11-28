@@ -185,8 +185,12 @@ public class Dealer {
 	
 	}
 
-	public void join(bjPlayer player){
-		
+	public void join(bjPlayer msg){
+		if(getActivePlayers() < 6){
+			player_status player = new player_status(msg.uuid, msg.wager, 0f, new card[21]);
+			players[getActivePlayers()] = player;
+			setActivePlayers(getActivePlayers() + 1);
+		}
 	}
 
 	
