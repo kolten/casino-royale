@@ -120,14 +120,14 @@ public class Player {
 
 	public void initDeal(bjDealer dealer){
 		if(dealer != null){
-			hand.setCard(dealer.players[getSeatNumber()].cards[0]);
-			hand.setCard(dealer.players[getSeatNumber()].cards[1]);
+			hand.addCard(dealer.players[getSeatNumber()].cards[0]);
+			hand.addCard(dealer.players[getSeatNumber()].cards[1]);
 		}
 	}
 
 	public void singleDeal(bjDealer dealer){
 		if(dealer != null){
-			hand.setCard(dealer.players[getSeatNumber()].cards[hand.getNumberOfCards()]);
+			hand.addCard(dealer.players[getSeatNumber()].cards[hand.getNumberOfCards()]);
 		}
 	}
 
