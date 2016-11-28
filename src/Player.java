@@ -141,6 +141,9 @@ public class Player {
 
 	public void requestCard(bjDealer dealer){
 		// Hit
+		if(dealer != null){
+			
+		}
 	}
 
 	public void stay(bjDealer dealer){
