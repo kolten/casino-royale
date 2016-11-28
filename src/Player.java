@@ -132,7 +132,7 @@ public class Player {
 	}
 
 	public int getCurrentHandValue(){
-		return h.getHandValue();
+		return hand.getHandValue();
 	}
 
 	public void joinGame(bjDealer dealer){
