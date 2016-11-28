@@ -94,11 +94,6 @@ public class PlayerMain{
 					}
 
 					not_initial = true;
-					if(player.getCurrentHandValue() == 21){
-						// TODO: Agree on this.
-						player.setWager(player.getWager() * 1.5);
-						playing = false;
-					}
 
 					if(player.getCurrentHandValue() >= 17){
 							player.stay(temp);
@@ -119,7 +114,7 @@ public class PlayerMain{
 				if((temp != null) && temp.target_uuid == player.getUuid()){
 					// TODO: set up bank or subtract from credits
 					// For now,
-					int curCredits = player.getCredits() - player.getWager();
+					float curCredits = player.getCredits() - player.getWager();
 					player.setCredits(curCredits);
 					losing = false;
 				}
@@ -131,7 +126,7 @@ public class PlayerMain{
 				if((temp != null) && temp.target_uuid == player.getUuid()){
 					// TODO: set up bank or add to credits
 					// For now,
-					int curCredits = player.getCredits() + player.getWager();
+					float curCredits = player.getCredits() + player.getWager();
 					player.setCredits(curCredits);
 					playingInitial = false;
 				}
