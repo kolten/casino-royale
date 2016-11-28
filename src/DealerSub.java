@@ -71,11 +71,11 @@ public class DealerSub
 				{
 					if(temp.action.value() == 1 && size < 6)
 					{
-						for(int i = 0; i < size; i++)
+						for(int id: playerList)
 						{
-							if(temp.uuid != playerList[i])
+							if(temp.uuid != id)
 							{
-								msg.add(copy(bjpSeq.value[0]));
+								msg.add(copy(temp));
 							}
 							else System.out.println("Why do you do these things?");
 						}
@@ -83,15 +83,43 @@ public class DealerSub
 					}
 					else 
 					{
-						for(int i = 0; i < size; i++)
+						for(int id: playerList)
 						{
-							if(temp.uuid == playerList[i])
+							if(temp.uuid == id)
 							{
-								msg.add(copy(bjpSeq.value[0]));
+								msg.add(copy(temp));
 							}
 							else System.out.println("We have a phantom player.");
 						}
 					}
+				}
+			}
+		}
+		else
+		{
+			msg = null; //No values
+		}
+		bjpReader.return_loan(bjpSeq, infoSeq);
+		return msg;
+	}
+
+	//Psuedo-Content Filtered Read only for joining
+	public ArrayList<bjPlayer> read(int uuid)
+	{
+		ArrayList<bjPlayer> msg = new ArrayList<bjPlayer>();
+		bjpReader.read(bjpSeq, infoSeq, LENGTH_UNLIMITED.value, ANY_SAMPLE_STATE.value, ANY_VIEW_STATE.value, ANY_INSTANCE_STATE.value);
+		if(bjpSeq.value.length != 0 && bjpSeq.value[0] != null && !bjpSeq.value[0].equals(null))
+		{
+			for(int j = 0; j < bjpSeq.value.length; j++)
+			{
+				bjPlayer temp = bjpSeq.value[j];
+				if(temp.dealer_id == uuid && temp.action.value() == 1)
+				{
+					msg.add(copy(temp));
+				}
+				else if(temp.dealer_id == uuid)
+				{
+					System.out.println("We have a phantom player.");
 				}
 			}
 		}

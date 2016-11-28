@@ -59,20 +59,29 @@ public class PlayerSub
         System.out.println ("=== [Subscriber] Ready ...");
 	}
 
-	public bjDealer read()
+	/* @param uuid
+	Integer value of the intended dealer uuid.
+	@return bjDealer message that matches the uuid from param*/
+	public bjDealer read(int uuid)
 	{
-		bjDealer msg;
+		bjDealer msg = null;
 		bjdReader.take(bjdSeq, infoSeq, LENGTH_UNLIMITED.value, ANY_SAMPLE_STATE.value, ANY_VIEW_STATE.value, ANY_INSTANCE_STATE.value);
-		if(bjdSeq.value.length != 0 && bjdSeq.value[0] != null && !bjdSeq.value[0].equals(null) && bjdSeq.value[0].uuid != 0 && bjdSeq.value[0].seqno != 0)
+		if(bjdSeq.value.length != 0)
 		{
-			int throwaway = bjdSeq.value[0].uuid;
-			msg = copy(bjdSeq.value[0]);
+			for(int i = 0; i < bjdSeq.value.length; i++)
+			{
+				if(bjdSeq.value[i].uuid == uuid )
+				{
+					msg = copy(bjdSeq.value[i]);
+					i = bjdSeq.value.length;
+				}
+			}
 		}
 		else
 		{
 			msg = null;
 		}
-		//bjdReader.return_loan(bjdSeq, infoSeq);
+		bjdReader.return_loan(bjdSeq, infoSeq);
 		return msg;
 	}
 
@@ -80,6 +89,7 @@ public class PlayerSub
 	{
 		if(obj != null)
 		{
+			Hand cardLogic = new Hand();
 			int i, j;
 			bjDealer temp = new bjDealer();
 			temp.uuid = obj.uuid;
@@ -88,17 +98,18 @@ public class PlayerSub
 			temp.players = new player_status[6];
 			for(i = 0; i < 6; i++)
 			{
-				if(obj.players[i] != null)
+				if(obj.players[i] != null && obj.players[i].uuid != 0)
 				{
-					temp.players[i] = new player_status();
-					temp.players[i].uuid = obj.players[i].uuid;
-					temp.players[i].wager = obj.players[i].wager;
-					temp.players[i].payout = obj.players[i].payout;
+					card cardigon[] = new card[21];	//The mighty Cardigon will copy your data!
 					for(j = 0; j < 21; j++)
 					{
-						if(obj.players[i].cards[j] != null)
-							temp.players[i].cards[j] = obj.players[i].cards[j];
+						if(cardLogic.isValidCard(obj.players[i].cards[j]))
+						{
+							cardigon[j] = new card(obj.players[i].cards[j].suite, obj.players[i].cards[j].base_value, obj.players[i].cards[j].visible);
+						}
+						else j = 21;	//Cardigon has ended
 					}
+					temp.players[i] = new player_status(obj.players[i].uuid, obj.players[i].wager, obj.players[i].payout, cardigon);
 				}
 			}
 			temp.action = obj.action.from_int(obj.action.value());
