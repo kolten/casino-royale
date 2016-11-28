@@ -1,5 +1,5 @@
 import DDS.ANY_INSTANCE_STATE;	//DDS imports for Reading
-import DDS.ANY_SAMPLE_STATE;
+import DDS.NOT_READ_SAMPLE_STATE;
 import DDS.ANY_VIEW_STATE;
 import DDS.DataReader;
 import DDS.LENGTH_UNLIMITED;
@@ -17,6 +17,8 @@ import CR.bjDealerDataReader;		//CR imports for Reading Topic
 import CR.bjDealerDataReaderHelper;
 import CR.bjDealerSeqHolder;
 import CR.bjDealerTypeSupport;
+
+import CR.MAX_PLAYERS;
 
 import java.util.ArrayList;
 
@@ -63,7 +65,7 @@ public class PlayerSub
 	public bjDealer read()
 	{
 		bjDealer msg = null;
-		bjdReader.take(bjdSeq, infoSeq, LENGTH_UNLIMITED.value, ANY_SAMPLE_STATE.value, ANY_VIEW_STATE.value, ANY_INSTANCE_STATE.value);
+		bjdReader.take(bjdSeq, infoSeq, LENGTH_UNLIMITED.value, NOT_READ_SAMPLE_STATE.value, ANY_VIEW_STATE.value, ANY_INSTANCE_STATE.value);
 		if(bjdSeq.value.length != 0)
 		{
 			for(int i = 0; i < bjdSeq.value.length; i++)
@@ -83,13 +85,14 @@ public class PlayerSub
 		return msg;
 	}
 
-	/* @param uuid
-	Integer value of the intended dealer uuid.
+	/* Psuedo-Content filter read that will only return the messages from any dealer that  matches the parameters
+	@param uuid
+		Integer value of the intended dealer uuid.
 	@return bjDealer message that matches the uuid from param*/
 	public bjDealer read(int uuid)
 	{
 		bjDealer msg = null;
-		bjdReader.take(bjdSeq, infoSeq, LENGTH_UNLIMITED.value, ANY_SAMPLE_STATE.value, ANY_VIEW_STATE.value, ANY_INSTANCE_STATE.value);
+		bjdReader.take(bjdSeq, infoSeq, LENGTH_UNLIMITED.value, NOT_READ_SAMPLE_STATE.value, ANY_VIEW_STATE.value, ANY_INSTANCE_STATE.value);
 		if(bjdSeq.value.length != 0)
 		{
 			for(int i = 0; i < bjdSeq.value.length; i++)
@@ -113,37 +116,31 @@ public class PlayerSub
 	{
 		if(obj != null)
 		{
-			Hand cardLogic = new Hand();
 			int i, j;
-			bjDealer temp = new bjDealer();
-			temp.uuid = obj.uuid;
-			temp.seqno = obj.seqno;
-			temp.active_players = obj.active_players;
-			temp.players = new player_status[6];
-			for(i = 0; i < 6; i++)
+			player_status team[] = new player_status[MAX_PLAYERS.value];
+			card cardigon[] = new card[21];	//The mighty Cardigon will copy your hand!
+			for(i = 0; i < MAX_PLAYERS.value; i++)	//Copies the full table
 			{
 				if(obj.players[i] != null && obj.players[i].uuid != 0)
 				{
-					card cardigon[] = new card[21];	//The mighty Cardigon will copy your data!
-					for(j = 0; j < 21; j++)
+					for(j = 0; j < 21; j++)	//Copies hand of player @ seat (i+1)
 					{
-						if(cardLogic.isValidCard(obj.players[i].cards[j]))
+						if(obj.players[i].cards[j] != null)
 						{
 							cardigon[j] = new card(obj.players[i].cards[j].suite, obj.players[i].cards[j].base_value, obj.players[i].cards[j].visible);
 						}
-						else j = 21;	//Cardigon has ended
 					}
-					temp.players[i] = new player_status(obj.players[i].uuid, obj.players[i].wager, obj.players[i].payout, cardigon);
+					team[i] = new player_status(obj.players[i].uuid, obj.players[i].wager, obj.players[i].payout, cardigon);
 				}
 			}
-			temp.action = obj.action.from_int(obj.action.value());
-			temp.cards = new card[21];
-			for(i = 0; i < 21; i++)
+			for(i = 0; i < 21; i++)	//Copies dealer's hand
 			{
 				if(obj.cards[i] != null)
-					temp.cards[i] = obj.cards[i];
+				{
+					cardigon[i] = new card(obj.cards[i].suite, obj.cards[i].base_value, obj.cards[i].visible);
+				}
 			}
-			temp.target_uuid = obj.target_uuid;
+			bjDealer temp = new bjDealer(obj.uuid, obj.seqno, obj.active_players, team, obj.action.from_int(obj.action.value()), cardigon, obj.target_uuid);
 			return temp;
 		}
 		System.out.println("Bug Report");
@@ -156,11 +153,11 @@ public class PlayerSub
 		{
 			int i, j;
 			Hand cardLogic = new Hand();
-			System.out.println("\n== [Dealer] Message sent to player :\n");
+			System.out.println("\n== [Player] received message from [Dealer] :\n");
 			System.out.println("          uuid : " + obj.uuid);
 			System.out.println("         seqno : " + obj.seqno);
 			System.out.println("players @ table: " + obj.active_players);
-			for(i = 0; i < 6; i++)
+			for(i = 0; i < MAX_PLAYERS.value; i++)
 			{
 				if(obj.players[i] != null)
 				{
@@ -170,7 +167,8 @@ public class PlayerSub
 						System.out.printf("Players in seat %d:\n", i + 1);
 						System.out.println("          uuid : " + obj.players[i].uuid);
 						System.out.println("         wager : " + obj.players[i].wager);
-						System.out.println("        payout : " + obj.players[i].payout); 
+						System.out.println("        payout : " + obj.players[i].payout);
+						System.out.println("        in hand:");
 						for(j = 0; j < 21; j++)
 						{
 							if(cardLogic.isValidCard(obj.players[i].cards[j]))
@@ -180,12 +178,23 @@ public class PlayerSub
 				}
 			}
 			System.out.println("===================");
+			System.out.print("        action : ");
+			switch(obj.action.value())
+			{
+				case 0: System.out.println("shuffling"); break;
+				case 1: System.out.println("waiting"); break;
+				case 2: System.out.println("dealing"); break;
+				case 3: System.out.println("paying"); break;
+				case 4: System.out.println("collecting"); break;
+				default: System.out.println("ERROR"); break;
+			}
+			System.out.println("        in hand:");
 			for(j = 0; j < 21; j++)
 			{
 				if(cardLogic.isValidCard(obj.cards[j]))
 					cardLogic.printCard(obj.cards[j]);
 			}
-			System.out.println("     dealer_id : " + obj.target_uuid); 
+			System.out.println("     target id : " + obj.target_uuid); 
 		}
 	}
 
@@ -198,5 +207,6 @@ public class PlayerSub
 		Sub.deleteParticipant();
 	}
 }
+
 
 

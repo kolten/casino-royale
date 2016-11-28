@@ -8,11 +8,11 @@ import CR.bjPlayerTypeSupport;
 
 public class PlayerPub
 {
-	private DDSEntityManager Pub;
-	private bjPlayerTypeSupport bjpTS;
-	private DataWriter dwriter;
-	private bjPlayerDataWriter bjpWriter;
-	private String TopicName;
+	public DDSEntityManager Pub;
+	public bjPlayerTypeSupport bjpTS;
+	public DataWriter dwriter;
+	public bjPlayerDataWriter bjpWriter;
+	public String TopicName;
 	
 	public PlayerPub(String partitionName, String topicName)
 	{
@@ -51,7 +51,7 @@ public class PlayerPub
 		if(msg != null)
 		{
 			int status = bjpWriter.write(msg, HANDLE_NIL.value);
-			ErrorHandler.checkStatus(status, TopicName);
+			ErrorHandler.checkStatus(status, "bjPlayerDataWriter.write");
 			return 1;
 		}
 		else System.out.println("For the love of all that is holy don't set off");
@@ -62,11 +62,21 @@ public class PlayerPub
 	{
 		if(obj != null)
 		{
+			System.out.println("[Player] Message sent to dealer :");
 			System.out.println("          uuid : " + obj.uuid);
 			System.out.println("         seqno : " + obj.seqno);
 			System.out.println("       credits : " + obj.credits);
 			System.out.println("         wager : " + obj.wager);
 			System.out.println("      dealerID : " + obj.dealer_id);
+			System.out.print("        action : ");
+			switch(obj.action.value())
+			{
+				case 0: System.out.println("none"); break;
+				case 1: System.out.println("joining"); break;
+				case 2: System.out.println("exiting"); break;
+				case 3: System.out.println("wagering"); break;
+				case 4: System.out.println("requesting a card"); break;
+			}
 		}
 	}
 	public void close()
@@ -78,5 +88,6 @@ public class PlayerPub
 		System.out.println ("Publisher connection closed.");
 	}
 }
+
 
 

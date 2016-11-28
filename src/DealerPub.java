@@ -6,13 +6,15 @@ import CR.bjDealerDataWriter;
 import CR.bjDealerDataWriterHelper;
 import CR.bjDealerTypeSupport;
 
+import CR.MAX_PLAYERS;
+
 public class DealerPub
 {
-	private DDSEntityManager Pub;
-	private bjDealerTypeSupport bjdTS;
-	private DataWriter dwriter;
-	private bjDealerDataWriter bjdWriter;
-	private String TopicName;
+	public DDSEntityManager Pub;
+	public bjDealerTypeSupport bjdTS;
+	public DataWriter dwriter;
+	public bjDealerDataWriter bjdWriter;
+	public String TopicName;
 	
 	public DealerPub(String partitionName, String topicName)
 	{
@@ -52,11 +54,11 @@ public class DealerPub
 		{
 			int i, j;
 			Hand cardLogic = new Hand();
-			System.out.println("\n== [Dealer] Message sent to player :\n");
+			System.out.println("\n== [Dealer] message sent :\n");
 			System.out.println("          uuid : " + obj.uuid);
 			System.out.println("         seqno : " + obj.seqno);
 			System.out.println("players @ table: " + obj.active_players);
-			for(i = 0; i < 6; i++)
+			for(i = 0; i < MAX_PLAYERS.value; i++)
 			{
 				if(obj.players[i] != null)
 				{
@@ -66,23 +68,34 @@ public class DealerPub
 						System.out.printf("Players in seat %d:\n", i + 1);
 						System.out.println("          uuid : " + obj.players[i].uuid);
 						System.out.println("         wager : " + obj.players[i].wager);
-						System.out.println("        payout : " + obj.players[i].payout); 
+						System.out.println("        payout : " + obj.players[i].payout);
+						System.out.println("        in hand:");
 						for(j = 0; j < 21; j++)
 						{
-							//if(cardLogic.isValidCard(obj.players[i].cards[j]))
-								//cardLogic.printCard(obj.players[i].cards[j]);
+							if(cardLogic.isValidCard(obj.players[i].cards[j]))
+								cardLogic.printCard(obj.players[i].cards[j]);
 						}
 					}
 				}
 			}
 			System.out.println("===================");
+			System.out.print("        action : ");
+			switch(obj.action.value())
+			{
+				case 0: System.out.println("shuffling"); break;
+				case 1: System.out.println("waiting"); break;
+				case 2: System.out.println("dealing"); break;
+				case 3: System.out.println("paying"); break;
+				case 4: System.out.println("collecting"); break;
+				default: System.out.println("ERROR"); break;
+			}
+			System.out.println("        in hand:");
 			for(j = 0; j < 21; j++)
 			{
-				//if(obj.cards[j] != null)
-					//if(cardLogic.isValidCard(obj.cards[j]))
-						//cardLogic.printCard(obj.cards[j]);
+				if(cardLogic.isValidCard(obj.cards[j]))
+					cardLogic.printCard(obj.cards[j]);
 			}
-			System.out.println("     dealer_id : " + obj.target_uuid); 
+			System.out.println("     target id : " + obj.target_uuid); 
 		}
 	}
 
@@ -91,7 +104,7 @@ public class DealerPub
 		if(msg != null)
 		{
 			int status = bjdWriter.write(msg, HANDLE_NIL.value);
-			ErrorHandler.checkStatus(status, TopicName);
+			ErrorHandler.checkStatus(status, "bjDealerDataWriter.write");
 			return 1;
 		}
 		else System.out.println("Everything is terrible");
@@ -107,5 +120,6 @@ public class DealerPub
 		System.out.println ("Publisher connection closed.");
 	}
 }
+
 
 
