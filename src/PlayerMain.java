@@ -94,12 +94,18 @@ public class PlayerMain{
 					}
 
 					not_initial = true;
+					if(player.getCurrentHandValue() == 21){
+						// TODO: Agree on this.
+						player.setWager(player.getWager() * 1.5);
+						playing = false;
+					}
+
 					if(player.getCurrentHandValue() >= 17){
 							player.stay(temp);
 							playing = false;
 
 						}
-						
+
 						else if(player.getCurrentHandValue <= 16){
 								player.requestCard();
 						}
