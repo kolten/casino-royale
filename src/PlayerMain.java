@@ -106,7 +106,7 @@ public class PlayerMain{
 
 						}
 
-						else if(player.getCurrentHandValue <= 16){
+						else if(player.getCurrentHandValue() <= 16){
 								player.requestCard();
 						}
 						pub.write(player.getMsg());
