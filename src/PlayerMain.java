@@ -132,7 +132,7 @@ public class PlayerMain{
 					// TODO: set up bank or add to credits
 					// For now,
 					int curCredits = player.getCredits() + player.getWager();
-					player.setCredits(curCredits)
+					player.setCredits(curCredits);
 					playingInitial = false;
 				}
 			}
