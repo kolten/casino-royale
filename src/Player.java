@@ -109,7 +109,7 @@ public class Player {
 		return seatNumber;
 	}
 
-	public int getSeatNumber(int seatNumber){
+	public int getSeatNumber(){
 		return seatNumber;
 	}
 
@@ -142,7 +142,7 @@ public class Player {
 	public void requestCard(bjDealer dealer){
 		// Hit
 		if(dealer != null){
-			
+
 		}
 	}
 
