@@ -65,8 +65,11 @@ public class DealerMain
 					timer.start();
 					while(timer.getTimeMs() < 4500){
 						ArrayList<bjPlayer> playerMessages = sub.read(dealer.getUuid());
-						for(bjPlayer temp : playerMessages){
-							dealer.join(temp);
+						if(playerMessages != null){
+							for(bjPlayer temp : playerMessages){
+	
+								dealer.join(temp);
+							}
 						}
 						timer.wait(200); 
 					}
