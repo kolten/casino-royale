@@ -215,13 +215,13 @@ public class Dealer {
 	}
 
 	public void nextSeat(boolean notRead){
-		
+
 	}
 
 	public boolean stillWagering(){
 		int i;
 		for(i = 0; i < getActivePlayers(); i++){
-			if(player_status[i] == 0){
+			if(players[i].wager == 0){
 				return false;
 			}
 		}
