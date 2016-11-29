@@ -62,9 +62,11 @@ public class DealerMain
 
 				while(dealer.getActivePlayers() == 0) {
 					pub.write(dealer.getMsg());
+					System.out.printf("writing to pub");
 					timer.start();
 					while(timer.getTimeMs() < 4500){
 						ArrayList<bjPlayer> playerMessages = sub.read(dealer.getUuid());
+						System.out.printf("reading from sub");
 						if(playerMessages != null){
 							for(bjPlayer temp : playerMessages){
 	
