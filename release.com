@@ -6,7 +6,7 @@ export SPLICE_ORB
 SPLICE_JDK=jdk
 export SPLICE_JDK
 
-OSPL_HOME="@@INSTALLDIR@@/opensplice-linux"
+OSPL_HOME="$(pwd)/opensplice-linux"
 PATH=$OSPL_HOME/bin:$PATH
 LD_LIBRARY_PATH=$OSPL_HOME/lib${LD_LIBRARY_PATH:+:}$LD_LIBRARY_PATH
 CPATH=$OSPL_HOME/include:$OSPL_HOME/include/sys:${CPATH:=}
