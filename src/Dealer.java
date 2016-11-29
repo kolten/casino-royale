@@ -10,6 +10,7 @@ public class Dealer {
 	int target_uuid;
 	int activePlayers;
 	int atTable; // Number of players in game;
+	int targetSeat;
 
 	boolean isHuman;
 	bjd_action action;
@@ -28,6 +29,7 @@ public class Dealer {
 		deck = new Shoe();
 		shuffle();
 		players = new player_status[6];
+		setTargetSeat(0);
 	}
 
 	public Dealer(int uuid){
@@ -36,6 +38,7 @@ public class Dealer {
 		deck = new Shoe();
 		shuffle();
 		players = new player_status[6];
+		setTargetSeat(0);
 	}
 
 	public boolean acceptPlayer(){
@@ -215,7 +218,9 @@ public class Dealer {
 	}
 
 	public void nextSeat(boolean notRead){
-
+		if((getNumberAtTable() == 0) && (getActivePlayers() > getTargetSeat()) && (!notRead)){
+			
+		}
 	}
 
 	public boolean stillWagering(){
@@ -230,6 +235,15 @@ public class Dealer {
 
 	public boolean allWagered(){
 		return !stillWagering();
+	}
+
+	public int getTargetSeat(){
+		return targetSeat;
+	}
+
+	public int setTargetSeat(int targetSeat){
+		this.targetSeat = targetSeat;
+		return targetSeat;
 	}
 
 	

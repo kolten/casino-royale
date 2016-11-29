@@ -18,6 +18,7 @@ public class DealerMain
 	boolean notReadFromPlayer = true;
 	boolean stillWagering = true;
 	boolean allWagered = true;
+	boolean exiting = false;
 
 	public static void main(String[] args) {
 		DealerMain main = new DealerMain();
@@ -30,9 +31,6 @@ public class DealerMain
 		sub = new DealerSub(partition, subtopic); // Sub needs to have the same topic name as the dealer pub
 		pub = new DealerPub(partition, pubTopic); // Vice versa
 		timer = new Timer();
-
-		boolean exiting = false;
-		boolean allWagered = false; 
 
 		// while( !exiting ){
 		// 	dealer.shuffle();
@@ -79,6 +77,21 @@ public class DealerMain
 				//Breaks from loop if any players have joined.
 				pub.write(dealer.getMsg());
 				timer.start();
+
+				// TODOOOO
+				dealer.nextSeat(notReadFromPlayer);
+
+				while(timer.getTimeMs() < 4500){
+					ArrayList<bjPlayer> playerMessages = sub.read(dealer.getUuid(), dealer.getActivePlayers(), dealer.getTarget_uuid());
+					System.out.printf("reading from sub");
+					if(playerMessages != null){
+						for(bjPlayer temp : playerMessages){
+
+							dealer.join(temp);
+						}
+					}
+					timer.wait(200); 
+				}
 			}
 		}
 	}
