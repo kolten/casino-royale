@@ -1,0 +1,153 @@
+gameCount = 0;
+notReadFromPlayer = true;
+kcount = 0;			//Kick counter for unresponsive players
+jcount = 0;			//Join counter if all wagered and less than 6 players
+
+while(Played less than 5 games)	//Game loop.
+{
+	d.shuffle();
+	while((still wagering) || (Players < 6 && all wagered && count < 2))
+	{
+		while(No player at table)	//Gets players at table from factory
+		{
+			Publish();
+			Timer.start();
+			while(Still not time to publish)	//Reads from messages for 5s.
+			{
+				Read any joining message for dealer.
+				loop each
+				{
+					Add player/s to table.
+				}
+				Time buffer;
+			}
+		}
+			//Breaks from loop if any players have joined.
+
+		Publish();
+		Timer.start();
+
+		nextPlayer(notReadFromPlayer);		//if target player seat is 0, set to 1. if seat # is last available player, go to next seat unless 6.
+							//if have read from player, go to next seat.
+		while(Still not time to publish)
+		{
+			Read joining/wagering/exiting message for dealer
+			loop each message
+			{
+				if(joining message && players < 6 && target_uuid doesn’t match)	//joining message not from players at table.
+				{
+					Add player to last seat available	//Actually players in game.
+					jcount = 0;
+				}
+				else if(target_uuid matches && Read from player)
+				{
+					print bad things, since player is still trying to send messages or joining.
+				}
+				else if(target_uuid matches && notReadFromPlayer)	//Message from target player.
+				{
+					Add wager || Kick player	//Dealer needs to interpret message. If unintended message, wtf.
+					notReadFromPlayer = false;
+					kcount = 0 ;
+				}
+			}
+				//Tries to read 1 message from targeted player or joining messages
+				//More than 1 message from target player or messages from players not targeted is bad.
+			Time buffer;
+		}	//Have read all messages as possible.
+		if(notReadFromPlayer)
+		{
+			kcount++;
+		}
+		if(kcount >= 2 && still wagering)
+		{
+			kickPlayer at target_uuid;
+			goes back seat.
+			noReadFromPlayer = false;
+		}
+		if(all wagered && players < 6)
+		{
+			jcount++;
+		}
+	}
+		//Breaks if (all have waged and have sent two unanswered messages
+	target_uuid = 0;
+
+		//Special condition break only if table is full and all have wagered.
+	while(players at table == 6 && all wagered)
+	{
+		Publish();
+		timer.start();
+		while(still not time to publish && all wagered && players at table are 6)
+		{
+			Read joining messages.
+			Print out bad things are happening, since players are still sending messages
+			Time buffer;
+		}
+	}
+	Dealer.startGame();	//boolean in factory that will prevent any new joined players to play game.
+				//Auto sets target_uuid to 0;
+	Dealing();
+	Publish();
+	timer.start();
+	while(still not time to publish)
+	{
+		Read joining messages.
+		if( still not full table)
+			add player to table, but not to game table.
+		print bad things if message is anything else.
+		Time buffer;
+	}
+
+	notReadFrom = false;
+	while(still dealing cards)
+	{
+		setNextSeat(notReadFrom);
+		Publish();
+		while(still not time to publish)
+		{
+			Read joining/none/requesting.
+			if(response from player)
+			{
+				RequestCard(t_uuid);
+				wait until can break from while loop.
+			}
+		}
+		if(requesting)
+		{
+			NotReadFrom = true;
+		}
+		if(none/no response)
+		{
+			NotReadFrom = false;
+		}
+	}
+	
+	Dealer.endGme();
+	setPayoutsForLoss();
+	Publish();
+	
+	while(still not time for publish)
+	{
+		Read joining messages.
+		if( still not full table)
+			add player to table, but not to game table.
+		print bad things if message is anything else.
+		Time buffer;
+	}
+	
+	setPayoutsForWin();
+	Publish();
+	while(still not time for publish)
+	{
+		Read joining messages.
+		if( still not full table)
+			add player to table, but not to game table.
+		print bad things if message is anything else.
+		Time buffer;
+	}
+	
+	Reset flags;
+	Zero wager/ payout/ hand;
+
+	gameCount ++;
+}
