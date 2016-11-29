@@ -132,6 +132,13 @@ public class PlayerMain{
 				}
 			}
 			// TODO: check if there are no players sitting and exit?
+			exiting = false;
+			wagering = true;
+			playingInitial = true;
+			playing = true;
+			losing = true;
+			winning = true;
+			not_initial = false;
 		}
 	}
 	

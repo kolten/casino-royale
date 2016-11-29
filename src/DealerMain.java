@@ -11,6 +11,14 @@ public class DealerMain
 	DealerPub pub;
 	Timer timer;
 
+	int gameCount = 0;
+	int kcount = 0;			//Kick counter for unresponsive players
+	int jcount = 0;			//Join counter if all wagered and less than 6 players
+
+	boolean notReadFromPlayer = true;
+	boolean stillWagering = true;
+	boolean allWagered = true;
+
 	public static void main(String[] args) {
 		DealerMain main = new DealerMain();
 		main.run(args[0], args[1], args[2]);
@@ -24,23 +32,51 @@ public class DealerMain
 		timer = new Timer();
 
 		boolean exiting = false;
+		boolean allWagered = false; 
 
-		while( !exiting ){
+		// while( !exiting ){
+		// 	dealer.shuffle();
+		// 	pub.write(dealer.getMsg());
+
+		// 	dealer.waiting(); // Dealer action set to waiting
+
+		// 	while(dealer.getActivePlayers() == 0 || !allWagered){
+		// 		// Joining method / waiting
+		// 		ArrayList<bjPlayer> playerMessages = sub.read(dealer.getUuid());
+		// 		for(bjPlayer temp : playerMessages){
+		// 			dealer.join(temp);
+
+		// 			// take wager from player
+		// 			dealer.getWagerFromPlayer(temp);
+		// 			allWagered = true;
+		// 		}
+		// 		// Wait 5 seconds
+		// 		timer.wait(5000);
+		// 	}
+
+		while(gameCount < 5){
 			dealer.shuffle();
-			pub.write(dealer.getMsg());
+			while((stillWagering) || (dealer.getActivePlayers() < 6) && allWagered && jcount < 2){
+				//pub.write(dealer.getMsg());
+				//timer.start();
 
-			while(dealer.getActivePlayers() == 0){
-				// Joining method
-				ArrayList<bjPlayer> playerMessages = sub.read(dealer.getUuid());
-				for(bjPlayer temp : playerMessages){
-					dealer.join(temp);
-					//dealer.setActivePlayers(players.size());
+				while(dealer.getActivePlayers() == 0) {
+					pub.write(dealer.getMsg());
+					timer.start();
+					while(timer.getTimeMs() < 4500){
+						ArrayList<bjPlayer> playerMessages = sub.read(dealer.getUuid());
+						for(bjPlayer temp : playerMessages){
+							dealer.join(temp);
+						}
+						timer.wait(200); 
+					}
 				}
+				//Breaks from loop if any players have joined.
+				pub.write(dealer.getMsg());
+				timer.start();
 			}
-
 		}
 	}
-	
 }
 
 

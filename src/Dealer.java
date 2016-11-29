@@ -9,6 +9,7 @@ public class Dealer {
 	int seqno;
 	int target_uuid;
 	int activePlayers;
+	int atTable; // Number of players in game;
 
 	boolean isHuman;
 	bjd_action action;
@@ -49,7 +50,7 @@ public class Dealer {
 
 	public boolean checkCredits(){
 		// Returns true if Dealer has sufficient credits, else false
-		if(getCredits() >= 20){
+		if(getCredits() >= getActivePlayers() * 20){
 			return true;
 		}
 		return false;
@@ -85,8 +86,16 @@ public class Dealer {
 		return uuid;
 	} 
 
-	public void getWageFromPlayer(int uuid){
+	public void getWagerFromPlayer(bjPlayer msg){
 		// Takes 
+		if(msg.action.value() == bjp_action._wagering){
+			int i;
+			for(i = 0; i < 6; i++){
+				if(msg.uuid == players[i].uuid){
+					players[i].wager = msg.wager;
+				}
+			}
+		}
 	}
 
 	public Hand giveCards(){
@@ -152,20 +161,21 @@ public class Dealer {
 
 
 	public boolean startGame(){
-		if(checkCredits() && checkSeats()){
+		if(checkCredits()){
+			setNumberAtTable(getActivePlayers());
+			setTarget_uuid(0);
 			return true;	
 		}
-		action = action.waiting;
+		action = bjd_action.waiting;
 		// TODO: Begin restocking the dealer to 500 credits, need to sleep for 30 seconds
 		credits = 500f;
 		return false;
 
 	}
 
-	// This is a default function in Java's Object class
-	// public void wait(){
-	//
-	// }
+	public void waiting(){
+		action = bjd_action.waiting;
+	}
 
 	public int setActivePlayers(int activePlayers){
 		this.activePlayers = activePlayers;
@@ -187,10 +197,39 @@ public class Dealer {
 
 	public void join(bjPlayer msg){
 		if(getActivePlayers() < 6){
+			// Assuming players do not leave
 			player_status player = new player_status(msg.uuid, msg.wager, 0f, new card[21]);
 			players[getActivePlayers()] = player;
 			setActivePlayers(getActivePlayers() + 1);
 		}
+	}
+
+	public int setNumberAtTable(int count){
+		this.atTable = count;
+		return count;
+	}
+
+	// Sorry Tarek.
+	public int getNumberAtTable(){
+		return atTable;
+	}
+
+	public void nextSeat(boolean notRead){
+		
+	}
+
+	public boolean stillWagering(){
+		int i;
+		for(i = 0; i < getActivePlayers(); i++){
+			if(player_status[i] == 0){
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public boolean allWagered(){
+		return !stillWagering();
 	}
 
 	
