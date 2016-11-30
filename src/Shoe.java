@@ -1,6 +1,6 @@
-import java.util.ArrayList;
-import java.lang.Math;
 import CR.card;
+
+import java.lang.Math;
 
 /* Adapted from source code provided by math.hws.edu/javanotes/ and author David J. Eck.
 Licensed under Creative Commons Attribution Noncommercial Sharealike 3.0.
@@ -12,16 +12,14 @@ Licensed under Creative Commons Attribution Noncommercial Sharealike 3.0.
 + added variables size and MIN_CARDS_USED
 */
 public class Shoe {
-	private int cardsUsed;		//Index of where to draw the card and how many have cards are left
-	private ArrayList<card> deck;	//ArrayList of all 312 cards used
-	private final int MIN_CARDS_USED = 104;	//Constant to track the minimum amount of cards used before shuffle is needed.
-
-	public static final int size = 312;
+	private int cardsUsed;	//Index of where to draw the card and how many have cards are left
+	private card deck[];	//Array of all 312 cards used
+	public static final int size = 312;	//Size of deck.
 
 	public Shoe(){
 		//Set global variables
+		deck = new card[size];
 		cardsUsed = 0;
-		deck = new ArrayList<card>();
 
 		//Populate deck with 52 unique cards 6 times.
 		int i, j, k;
@@ -44,28 +42,27 @@ public class Shoe {
 					default: base++; break;
 				}
 				for(k = 0; k < 6; k++){
-					deck.add(new card(suite, base, true));
+					deck[cardsUsed]=new card(suite, base, true);
+					cardsUsed++;
 				}
 			}
 		}
+		cardsUsed = 0;
 	}
 
 	public void shuffle(){
 		int i;
-		for (i = deck.size()-1; i > 0; i-- ) {
+		for (i = size-1; i > 0; i-- ) {
 			int rand = (int)(Math.random()*(i+1));	//Chooses a random number inclusively between 0 and i.
-			card temp = deck.get(i);		
-			deck.set(i, deck.get(rand));		//Swaps cards at indices i and rand.
-			deck.set(rand, temp);			
+			card temp = deck[i];
+			deck[i] = deck[rand];		//Swaps cards at indices i and rand.
+			deck[rand] = temp;
 		}
 		cardsUsed = 0;
 	}
 	
-	//Using this function requires a try-catch block.
 	public card drawCard(boolean isVisible){
-		if(cardsUsed >= MIN_CARDS_USED)
-			throw new IllegalStateException("Need to shuffle.");
-		card toSend = deck.get(cardsUsed);
+		card toSend = deck[cardsUsed];
 		toSend.visible = isVisible;
 		cardsUsed++;
 		return toSend;
