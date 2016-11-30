@@ -285,7 +285,7 @@ public class Dealer {
 		@return 
 	*/
 	public bjDealer getMsg(){
-		return new bjDealer(getUuid(), getSeqno(), getActivePlayers(), players, action, new card[21], getTarget_uuid());
+		return new bjDealer(getUuid(), getSeqno(), getActivePlayers(), players, action, hand.getHand(), getTarget_uuid());
 	}
 
 	/*

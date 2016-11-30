@@ -9,10 +9,8 @@ public class Hand {
 	/* Constructor for hand that sets all starter values to 0.*/
 	public Hand()
 	{
-		cardsInHand = 0;
 		cards = new card[21];
-		totalHandValue = 0;
-		hasAce = 0;
+		emptyHand();
 	}
 	
 	/* Checks if a valid poker card, based off of suite */
@@ -128,7 +126,12 @@ public class Hand {
 		cardsInHand = 0;
 		for(int i = 0; i < 21; i++)
 		{
-			cards[i] = null;
+			cards[i] = new card('\0', '\0', true);
 		}
+	}
+	
+	public card[] getHand()
+	{
+		return cards;
 	}
 }
