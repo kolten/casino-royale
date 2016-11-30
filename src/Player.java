@@ -133,6 +133,7 @@ public class Player {
 	}
 
 	public int getSeatNumber(){
+		System.out.printf("Seat number is: %d\n", seatNumber);
 		return seatNumber;
 	}
 
