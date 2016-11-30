@@ -27,21 +27,43 @@ public class Dealer {
 	player_status[] players;
 
 	public Dealer(){
-		msg = new bjDealer();
 		credits = 500.0f;
+		uuid = 1;
+		seqno = 1;
+		target_uuid = 0;
+		activePlayers = 0;
+		atTable = 0;
+		targetSeat = 0;
+		
+		isHuman = false;
+		
+		action  = new bjd_action();
 		deck = new Shoe();
-		shuffle();
+		hand = new Hand();
+		bank = new Bank();
+		msg = new bjDealer();
 		players = new player_status[6];
-		setTargetSeat(0);
+		shuffle();
 	}
 
 	public Dealer(int uuid){
-		msg = new bjDealer();
 		credits = 500.0f;
+		this.uuid = uuid;
+		seqno = 1;
+		target_uuid = 0;
+		activePlayers = 0;
+		atTable = 0;
+		targetSeat = 0;
+
+		isHuman = false;
+		
+		action  = new bjd_action();
 		deck = new Shoe();
-		shuffle();
+		hand = new Hand();
+		bank = new Bank();
+		msg = new bjDealer();
 		players = new player_status[6];
-		setTargetSeat(0);
+		shuffle();
 	}
 
 	// Keeping? Reply:
@@ -285,8 +307,16 @@ public class Dealer {
 		@return 
 	*/
 	public bjDealer getMsg(){
-		return new bjDealer(getUuid(), getSeqno(), getActivePlayers(), players, action, hand.getHand(), getTarget_uuid());
-	}
+		bjDealer temp = new bjDealer(getUuid(), getSeqno(), getActivePlayers(), players, action, hand.getHand(), getTarget_uuid());
+		if(temp != null){
+			return 	temp;
+		}
+		else{
+			System.out.println("This function is broken.");
+			return new bjDealer();
+		}
+		
+}
 
 	/*
 		getNumberAtTable
