@@ -1,6 +1,5 @@
 import CR.*;
-import DDS.*;
-import java.util.Random;
+import java.util.Math;
 
 public class Player {
 
