@@ -58,7 +58,9 @@ public class DealerMain {
 				timer.wati(buffer);
 			}
 		}
-		playerMessages.clear();
+		if(playerMessages != null){
+			playerMessages.clear();
+		}
 		 * */
 
 		while(gameCount < 5){
@@ -82,7 +84,9 @@ public class DealerMain {
 						}
 						timer.wait(buffer); 
 					}
-					playerMessages.clear();
+					if(playerMessages != null){
+						playerMessages.clear();
+					}
 				}	//Breaks from loop if any players have joined.
 				
 				pub.write(dealer.getMsg());
@@ -118,7 +122,9 @@ public class DealerMain {
 					}
 					timer.wait(buffer);
 				}
-				playerMessages.clear();
+				if(playerMessages != null){
+					playerMessages.clear();
+				}
 				
 				if(notReadFromPlayer){
 					kcount++;
