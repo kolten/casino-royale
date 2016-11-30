@@ -95,6 +95,7 @@ public class PlayerSub
 				if(bjdSeq.value[i].uuid == uuid )
 				{
 					msg = copy(bjdSeq.value[i]);
+					printMsg(msg);
 					i = bjdSeq.value.length;
 				}
 			}
