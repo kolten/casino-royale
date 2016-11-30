@@ -142,10 +142,11 @@ public class Dealer {
 	*/
 	public void getWagerFromPlayer(bjPlayer msg){
 		// Takes 
-		if(action.value() == bjp_action._wagering){
+		if(msg.action.value() == bjp_action._wagering){
 			int i;
 			for(i = 0; i < MAX_PLAYERS.value; i++){
 				if(msg.uuid == players[i].uuid){
+					System.out.println("Setting wager");
 					players[i].wager = msg.wager;
 					i = MAX_PLAYERS.value;
 				}

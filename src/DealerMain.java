@@ -120,6 +120,7 @@ public class DealerMain {
 									if(notReadFromPlayer){
 										dealer.getWagerFromPlayer(playerMessages.get(i));
 										System.out.println("It works!");
+										kcount = 0;
 										notReadFromPlayer = false;
 									}
 									break;
