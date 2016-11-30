@@ -66,13 +66,13 @@ public class DealerMain {
 				
 				while(dealer.getActivePlayers() == 0) {		//Loop for empty table
 					pub.write(dealer.getMsg());
-					System.out.printf("Lonely: Single and ready to mingle.");
+					System.out.println("Lonely: Single and ready to mingle.");
 					timer.start();
 					while(timer.getTimeMs() < 4400){	//Read loop, with buffer
 						playerMessages = sub.read(dealer.getUuid());	//Read only joining messages
 						System.out.println("Searching for Players in your area.");
 						if(playerMessages != null && !playerMessages.isEmpty()){
-							System.out.prtinln("");
+							System.out.println("");
 							for(i = 0; i < playerMessages.size() && i < MAX_PLAYERS.value; i++){
 								if(playerMessages.get(i).action.value() == CR.bjp_action._joining){
 									dealer.join(playerMessages.get(i));
@@ -85,7 +85,7 @@ public class DealerMain {
 				}	//Breaks from loop if any players have joined.
 				
 				pub.write(dealer.getMsg());
-				System.out.printf("I need a wager, and I need it now!");
+				System.out.println("I need a wager, and I need it now!");
 				timer.start();
 
 				dealer.nextSeat(notReadFromPlayer);
@@ -122,12 +122,23 @@ public class DealerMain {
 				}
 				if(kcount >= 2 && dealer.stillWagering()){
 					dealer.kickPlayer(PlayerMessages.get(i).uuid);
-					
 					notReadFromPlayer = false;
+					kcount = 0;
+				}
+				if(dealer.allWagered() && dealer.getActivePlayers() < MAX_PLAYERS.value){
+					jcount++;
 				}
 				
-				
-			}
+				/*
+				if(!dealer.startGame()){
+					jcount = 0;
+					while(jcount < 4){
+						BankerMagic
+					}
+				}*/
+			}	//Breaks if all have wagered with full table or join counter has reached 2.
+			
+			dealer.setTargetSeat(0);
 		}
 	}
 }
