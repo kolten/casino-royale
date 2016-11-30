@@ -53,8 +53,8 @@ public class DealerMain {
 						default: System.out.println("Everything is broken."); break;
 					}
 				}
-				Timer.wait(buffer);
 			}
+			Timer.wait(buffer);
 		}
 		if(playerMessages != null){
 			playerMessages.clear();
@@ -179,8 +179,8 @@ public class DealerMain {
 								default: System.out.println("Scary things are happening"); break;
 							}
 						}
-						Timer.wait(buffer);
 					}
+					Timer.wait(buffer);
 				}
 				if(playerMessages != null){
 					playerMessages.clear();
@@ -205,8 +205,8 @@ public class DealerMain {
 							default: System.out.println("I really want some crackers."); break;
 						}
 					}
-					Timer.wait(buffer);
 				}
+				Timer.wait(buffer);
 			}
 			if(playerMessages != null){
 				playerMessages.clear();
