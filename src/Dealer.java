@@ -294,7 +294,7 @@ public class Dealer {
 		if(getActivePlayers() < MAX_PLAYERS.value){
 			// Assuming players do not leave
 			Hand temp = new Hand();
-			player_status player = new player_status(msg.uuid, msg.wager, msg.payout, temp.getHand());
+			player_status player = new player_status(msg.uuid, msg.wager, 0f, temp.getHand());
 			players[getActivePlayers()] = player;
 			setActivePlayers(getActivePlayers() + 1);
 		}
