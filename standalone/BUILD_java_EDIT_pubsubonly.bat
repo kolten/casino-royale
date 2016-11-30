@@ -1,5 +1,7 @@
 @echo off
 
+echo JUnit included in compile script
+
 call BUILD_saj_casinoroyale_pub_EDIT.bat %*
 
 cd %~dp0

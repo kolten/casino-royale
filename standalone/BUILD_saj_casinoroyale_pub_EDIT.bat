@@ -33,7 +33,7 @@ if not exist classes\ echo mkdir classes\
 if not exist classes\ mkdir classes\
 echo Compiling Java classes....
 
-javac -sourcepath ..\src -cp "saj_casinoroyale_types.jar;classes\;dcpssaj.jar;" -d classes\ ..\src\*.java
+javac -sourcepath ..\src -cp "saj_casinoroyale_types.jar;classes\;dcpssaj.jar;hamcrest-core-1.3.jar;junit-4.12.jar;" -d classes\ ..\src\*.java
 
 
 REM
@@ -42,7 +42,7 @@ REM
 set JARFLAGS=cvfm
 
 echo echo Class-Path: saj_casinoroyale_types.jar dcpssaj.jar ^> classes\%MANIFEST%
-echo Class-Path: saj_casinoroyale_types.jar dcpssaj.jar > classes\%MANIFEST%
+echo Class-Path: saj_casinoroyale_types.jar dcpssaj.jar hamcrest-core-1.3.jar junit-4.12.jar > classes\%MANIFEST%
 echo echo Main-Class: %MAINCLASS%^>^> classes\%MANIFEST%
 echo Main-Class: %MAINCLASS%>> classes\%MANIFEST%
 pushd classes\ & jar %JARFLAGS% %JARFILE% %MANIFEST%  *.class & popd

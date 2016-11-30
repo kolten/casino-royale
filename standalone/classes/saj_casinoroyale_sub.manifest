@@ -1,2 +1,2 @@
-Class-Path: saj_casinoroyale_types.jar dcpssaj.jar 
+Class-Path: saj_casinoroyale_types.jar dcpssaj.jar hamcrest-core-1.3.jar junit-4.12.jar 
 Main-Class: PlayerMain
