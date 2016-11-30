@@ -78,10 +78,11 @@ public class DealerMain {
 						playerMessages = sub.read(dealer.getUuid());	//Read only joining messages
 						System.out.println("Searching for Players in your area.");
 						if(playerMessages != null && !playerMessages.isEmpty()){
-							System.out.println("");
+							System.out.println("Someone is possibly joining");
 							for(i = 0; i < playerMessages.size() && i < MAX_PLAYERS.value; i++){
 								if(playerMessages.get(i).action.value() == CR.bjp_action._joining){
 									dealer.join(playerMessages.get(i));
+									System.out.println("Someone is joing! o_o");
 								}
 							}
 						}

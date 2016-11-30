@@ -26,7 +26,7 @@ public class Player {
 	Random rand;
 
 	public Player(){
-		uuid = 1;
+		uuid = (int)(Math.random()*8096);
 		seqno = 1;
 		credits = 100.0f;
 		wager = 0;
@@ -44,7 +44,7 @@ public class Player {
 	}
 
 	public Player(int uuid){
-		uuid = 1;
+		this.uuid = uuid;
 		seqno = 1;
 		credits = 100.0f;
 		wager = 0;
