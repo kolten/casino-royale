@@ -216,6 +216,10 @@ public class Dealer {
 		return false;
 	}
 
+	public void dealing(){
+		action = bjd_action._dealing;
+		
+	}
 	
 	/** **/
 	public void drawCard(int uuid){
