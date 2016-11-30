@@ -112,10 +112,12 @@ public class DealerMain {
 										dealer.kickPlayer(playerMessages.get(i).uuid);
 										notReadFromPlayer = false;
 									}
+									System.out.println("God damn it.");
 									break;
 								case CR.bjp_action._wagering:
 									if(notReadFromPlayer){
 										dealer.getWagerFromPlayer(playerMessages.get(i));
+										System.out.println("It works!");
 										notReadFromPlayer = false;
 									}
 									break;

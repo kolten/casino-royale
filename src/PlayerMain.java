@@ -58,6 +58,7 @@ public class PlayerMain{
 								if(player.getUuid() == temp.players[i].uuid){
 										notSeated = false;
 										player.setSeatNumber(i);
+										System.out.println("I'm a real boy");
 								} 
 							}
 						}
@@ -67,6 +68,7 @@ public class PlayerMain{
 					// No dealer found
 				}
 			}
+			System.out.println("Oh boy, I'm going to wager again");
 			// Wagering
 			while(wagering){
 				temp = sub.read(player.getDealerID());
@@ -74,6 +76,7 @@ public class PlayerMain{
 					player.placeWager(temp);
 					pub.write(player.getMsg());
 					wagering = false;
+					System.out.println("I'm suprised I made it this far.");
 				}
 			}
 			
