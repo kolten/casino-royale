@@ -63,10 +63,11 @@ public class DealerMain {
 		}
 		 * */
 
+		dealer.shuffle();
+
 		while(gameCount < 5){
-			dealer.shuffle();
+			if(dealer.getCardsLeftInDeck() < 250)
 			while((stillWagering) || ((dealer.getActivePlayers() < 6) && allWagered && jcount < 2) || (dealer.getAction() == bjd_action._shuffling) ){
-				
 				while(dealer.getActivePlayers() == 0) {		//Loop for empty table
 					pub.write(dealer.getMsg());
 					System.out.println("Lonely: Single and ready to mingle.");
@@ -87,6 +88,7 @@ public class DealerMain {
 					if(playerMessages != null){
 						playerMessages.clear();
 					}
+					dealer.waiting();
 				}	//Breaks from loop if any players have joined.
 				
 				pub.write(dealer.getMsg());

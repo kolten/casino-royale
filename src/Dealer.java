@@ -359,4 +359,8 @@ public class Dealer {
 	public int getAction(){
 		return action.value();
 	}
+	
+	public int getCardsLeftInDeck(){
+		return 312 - deck.getCardsUsed();
+	}
 }
