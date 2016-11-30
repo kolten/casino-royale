@@ -41,6 +41,7 @@ public class PlayerMain{
 		while ( !exiting ) {
 			// Joining
 			while( notSeated ){
+				temp = null;
 				temp = sub.read();
 				if(temp != null){
 					//seatCount = seatCount + 1;
@@ -71,9 +72,10 @@ public class PlayerMain{
 			System.out.println("Oh boy, I'm going to wager again");
 			// Wagering
 			while(wagering){
+				temp = null;
 				temp = sub.read(player.getDealerID());
 				System.out.println("I need a dealer in my life.");
-				if((temp != null) && (temp.target_uuid == player.getUuid()) && (temp.action.value() == bjd_action._waiting)){
+				if(temp != null && temp.target_uuid == player.getUuid() && temp.action.value() == bjd_action._waiting){
 					player.placeWager(temp);
 					pub.write(player.getMsg());
 					wagering = false;
@@ -84,6 +86,7 @@ public class PlayerMain{
 			
 			// Initial playing round?
 			while(playingInitial){
+				temp = null;
 				temp = sub.read(player.getDealerID());
 				if(temp != null && temp.action.value() == bjd_action._dealing){
 					
@@ -95,6 +98,7 @@ public class PlayerMain{
 			// Let's play a game.
 
 			while(playing){
+				temp = null;
 				temp = sub.read(player.getDealerID());
 				if((temp != null) && (temp.target_uuid == player.getUuid()) && (temp.action.value() == bjd_action._dealing)){
 					if(not_initial){
