@@ -157,7 +157,8 @@ public class DealerMain {
 				}*/
 			}	//Breaks if all have wagered with full table or join counter has reached 2.
 			
-			dealer.setTargetSeat(0);
+			dealer.startGame();
+			
 			System.out.println("I'm logic's end.");
 			gameCount++;
 		}
