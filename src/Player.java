@@ -1,5 +1,5 @@
 import CR.*;
-import java.util.Math;
+import java.lang.Math;
 
 public class Player {
 
