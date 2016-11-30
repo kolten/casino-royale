@@ -75,7 +75,7 @@ public class DealerSub
 				bjPlayer temp = bjpSeq.value[j];
 				if(temp.dealer_id == uuid)
 				{
-					if(temp.action.value() == 1 && size < MAX_PLAYERS.value)
+					if(temp.action.value() == bjp_action._joining && size < MAX_PLAYERS.value)
 					{
 						if(temp.uuid == target)
 						{
@@ -123,7 +123,7 @@ public class DealerSub
 				if(bjpSeq.value[j] != null && !bjpSeq.value[j].equals(null) && bjpSeq.value[j].seqno != 0)
 				{
 					bjPlayer temp = bjpSeq.value[j];
-					if(temp.dealer_id == uuid && temp.action.value() == 1)
+					if(temp.dealer_id == uuid && temp.action.value() == bjp_action._joining)
 					{
 						printMsg(temp);
 						msg.add(copy(temp));
@@ -156,7 +156,7 @@ public class DealerSub
 	{
 		if(obj != null)
 		{
-			bjPlayer temp = new bjPlayer(obj.uuid, obj.seqno, obj.credits, obj.wager, obj.dealer_id, obj.action.from_int(obj.action.value()));
+			bjPlayer temp = new bjPlayer(obj.uuid, obj.seqno, obj.credits, obj.wager, obj.dealer_id, bjp_action.from_int(obj.action.value()));
 			return temp;
 		}
 		System.out.println("How in the world did this happen");
