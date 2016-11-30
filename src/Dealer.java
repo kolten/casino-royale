@@ -36,8 +36,8 @@ public class Dealer {
 		targetSeat = 0;
 		
 		isHuman = false;
-		
-		action  = new bjd_action();
+
+		action  = CR.bjd_action.shuffling;
 		deck = new Shoe();
 		hand = new Hand();
 		bank = new Bank();
@@ -57,7 +57,7 @@ public class Dealer {
 
 		isHuman = false;
 		
-		action  = new bjd_action();
+		action  = CR.bjd_action.shuffling;
 		deck = new Shoe();
 		hand = new Hand();
 		bank = new Bank();
