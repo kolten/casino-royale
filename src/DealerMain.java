@@ -34,7 +34,7 @@ public class DealerMain {
 		sub = new DealerSub(partition, subtopic); // Sub needs to have the same topic name as the dealer pub
 		pub = new DealerPub(partition, pubTopic); // Vice versa
 		timer = new Timer();
-		ArrayList<bjPlayer> playerMessages;
+		ArrayList<bjPlayer> playerMessages = null;
 		
 		int i, j;
 
@@ -58,6 +58,7 @@ public class DealerMain {
 				timer.wati(buffer);
 			}
 		}
+		playerMessages.clear();
 		 * */
 
 		while(gameCount < 5){
@@ -117,6 +118,8 @@ public class DealerMain {
 					}
 					timer.wait(buffer);
 				}
+				playerMessages.clear();
+				
 				if(notReadFromPlayer){
 					kcount++;
 				}
