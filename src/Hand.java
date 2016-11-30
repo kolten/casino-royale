@@ -181,6 +181,7 @@ public class Hand {
 	 * @param card object to print it's values.**/
 	public static void printCard(card obj)
 	{
+		System.out.println("Printing the following card");
 		System.out.println("           suite :" + obj.suite);
 		System.out.println("      base_value :" + obj.base_value);
 		System.out.println("         visible :" + obj.visible);
