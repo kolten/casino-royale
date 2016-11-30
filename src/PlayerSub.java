@@ -199,6 +199,10 @@ public class PlayerSub
 			}
 			System.out.println("     target id : " + obj.target_uuid); 
 		}
+		else
+		{
+			System.out.println("Printing bad message for bad read.");
+		}
 	}
 }
 

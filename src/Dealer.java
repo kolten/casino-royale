@@ -32,7 +32,7 @@ public class Dealer {
 	
 	/** Constructor that initializes all private variables and sets uuid to parameter */
 	public Dealer(){
-		uuid = 1;
+		uuid = (int)(Math.random()*8096);
 		seqno = 1;
 		active_players = 0;
 		players = new player_status[MAX_PLAYERS.value];
