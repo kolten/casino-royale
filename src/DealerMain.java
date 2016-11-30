@@ -147,7 +147,7 @@ public class DealerMain {
 				if(dealer.allWagered() && dealer.getActivePlayers() < MAX_PLAYERS.value){
 					System.out.printf("Jcount received: %d\n", jcount);
 					System.out.println("All wagered? " + dealer.allWagered());
-					System.out.println("Still wagering? " +dealer.allWagered());
+					System.out.println("Still wagering? " +dealer.stillWagering());
 					jcount++;
 				}
 				
