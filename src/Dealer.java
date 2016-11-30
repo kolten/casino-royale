@@ -291,7 +291,7 @@ public class Dealer {
 		@return 
 	*/
 	public void join(bjPlayer msg){
-		if(getActivePlayers() < MAX_PLAYER.value){
+		if(getActivePlayers() < MAX_PLAYERS.value){
 			// Assuming players do not leave
 			Hand temp = new Hand();
 			player_status player = new player_status(msg.uuid, msg.wager, msg.payout, temp.getHand());
