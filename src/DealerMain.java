@@ -115,7 +115,7 @@ public class DealerMain {
 									break;
 								case CR.bjp_action._wagering:
 									if(notReadFromPlayer){
-										//dealer.wager(playerMessages.get(i).uuid, playerMessages.get(i).wager);
+										dealer.getWagerFromPlayer(playerMessages.get(i));
 										notReadFromPlayer = false;
 									}
 									break;

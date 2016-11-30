@@ -144,9 +144,10 @@ public class Dealer {
 		// Takes 
 		if(action.value() == bjp_action._wagering){
 			int i;
-			for(i = 0; i < 6; i++){
+			for(i = 0; i < MAX_PLAYERS.value; i++){
 				if(msg.uuid == players[i].uuid){
 					players[i].wager = msg.wager;
+					i = MAX_PLAYERS.value;
 				}
 			}
 		}
@@ -342,7 +343,8 @@ public class Dealer {
 	*/
 	public void nextSeat(boolean notRead){
 		if((getNumberAtTable() == 0) && (getActivePlayers() > getTargetSeat()) && (!notRead)){
-			
+			targetSeat++;
+			target_uuid = players[targetSeat-1].uuid;
 		}
 	}
 
