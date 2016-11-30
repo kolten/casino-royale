@@ -121,7 +121,7 @@ public class DealerMain {
 					kcount++;
 				}
 				if(kcount >= 2 && dealer.stillWagering()){
-					dealer.kickPlayer(PlayerMessages.get(i).uuid);
+					dealer.kickPlayer(playerMessages.get(i).uuid);
 					notReadFromPlayer = false;
 					kcount = 0;
 				}
