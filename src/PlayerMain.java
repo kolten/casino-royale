@@ -85,7 +85,7 @@ public class PlayerMain{
 			// Initial playing round?
 			while(playingInitial){
 				temp = sub.read(player.getDealerID());
-				if((temp != null) && (temp.action.value() == bjd_action._dealing)){
+				if(temp != null && temp.action.value() == bjd_action._dealing){
 					
 					player.initDeal(temp);
 					playingInitial = false;
