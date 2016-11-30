@@ -43,12 +43,16 @@ public class Shoe {
 				}
 				for(k = 0; k < 6; k++){
 					deck[cardsUsed]=new card(suite, base, true);
-					Hand.printCard(deck[cardsUsed]);
+					//Hand.printCard(deck[cardsUsed]);
 					cardsUsed++;
 				}
 			}
 		}
 		cardsUsed = 0;
+		shuffle();
+		shuffle();
+		shuffle();
+		shuffle();
 	}
 
 	public void shuffle(){

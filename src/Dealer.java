@@ -222,7 +222,7 @@ public class Dealer {
 		hand.addCard(deck.drawCard(true));
 		hand.addCard(deck.drawCard(true));
 		for(i = 0; i < getNumberAtTable(); i++){
-			players[i].cards[0] = deck.drawCard(true);
+			players[i].cards[0] = deck.drawCard(false);
 			players[i].cards[1] = deck.drawCard(true);
 		}
 	}
