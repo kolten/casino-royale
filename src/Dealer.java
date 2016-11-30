@@ -209,8 +209,10 @@ public class Dealer {
 			setNumberAtTable(getActivePlayers());
 			setTargetSeat(0);
 			setTarget_uuid(0);
+			System.out.println("startGame() returns... True! :)");
 			return true;	
 		}
+		System.out.println("startGame() returns... False! :( )");
 		return false;
 	}
 
