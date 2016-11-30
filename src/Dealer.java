@@ -4,7 +4,6 @@
 */
 
 
-import DDS.*;
 import CR.*;
 
 public class Dealer {
@@ -318,9 +317,11 @@ public class Dealer {
 	public bjDealer getMsg(){
 		bjDealer temp = new bjDealer(uuid, seqno, activePlayers, players, action, hand.getHand(), target_uuid);
 		if(temp != null){
+			seqno++;
 			return 	temp;
 		}
 		else{
+			seqno++;
 			System.out.println("This function is broken.");
 			return new bjDealer();
 		}
@@ -344,8 +345,12 @@ public class Dealer {
 	*/
 	public void nextSeat(boolean notRead){
 		if((getNumberAtTable() == 0) && (getActivePlayers() > getTargetSeat()) && (!notRead)){
+			System.out.println("I'm moving on from you.");
 			targetSeat++;
 			target_uuid = players[targetSeat-1].uuid;
+		}
+		else if((getNumberAtTable() == 0) && (getActivePlayers() == getTargetSeat()) && (!notRead)){
+			System.out.println("How does this even happen");
 		}
 	}
 
