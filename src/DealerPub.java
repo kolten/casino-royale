@@ -101,7 +101,7 @@ public class DealerPub
 			}
 			System.out.println("===================");
 			System.out.print("        action : ");
-			if(action != null){
+			if(obj.action != null){
 			switch(obj.action.value())
 				{
 					case 0: System.out.println("shuffling"); break;
