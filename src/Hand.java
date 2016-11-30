@@ -74,7 +74,10 @@ public class Hand {
 				cardsInHand++;
 			}
 		}
-		else System.out.println("Given bad card, request another!");
+		else{
+			printCard(toSet);
+			System.out.println("Given bad card, request another!");
+		}
 	}
 
 	/** Flips all invisible cards to visible. **/

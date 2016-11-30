@@ -65,6 +65,7 @@ public class Shoe {
 		card toSend = deck[cardsUsed];
 		toSend.visible = isVisible;
 		cardsUsed++;
+		Hand.printCard(toSend);
 		return toSend;
 	}
 	
