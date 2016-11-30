@@ -382,7 +382,7 @@ public class Dealer {
 		if(stillWagering()){
 			return false;
 		} else {
-			return true:
+			return true;
 		}
 	}
 
