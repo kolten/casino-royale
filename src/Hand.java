@@ -6,14 +6,14 @@ public class Hand {
 	private int totalHandValue;	//Total hand value
 	private int hasAce;		//Number of aces in hand that have a value of 11.
 	
-	public static final card[] EmptyHand = {new card('\0', '\0', true), new card('\0', '\0', true), new card('\0', '\0', true), 
+	/*public static final card[] EmptyHand = {new card('\0', '\0', true), new card('\0', '\0', true), new card('\0', '\0', true), 
 		new card('\0', '\0', true), new card('\0', '\0', true), new card('\0', '\0', true), 
 		new card('\0', '\0', true), new card('\0', '\0', true), new card('\0', '\0', true), 
 		new card('\0', '\0', true), new card('\0', '\0', true), new card('\0', '\0', true), 
 		new card('\0', '\0', true), new card('\0', '\0', true), new card('\0', '\0', true), 
 		new card('\0', '\0', true), new card('\0', '\0', true), new card('\0', '\0', true), 
 		new card('\0', '\0', true), new card('\0', '\0', true), new card('\0', '\0', true)};
-
+	 */
 	/** Constructor for hand that sets all starter values to 0. **/
 	public Hand()
 	{
@@ -27,11 +27,11 @@ public class Hand {
 		totalHandValue = 0;
 		hasAce = 0;
 		cardsInHand = 0;
-		/*for(int i = 0; i < 21; i++)
+		for(int i = 0; i < 21; i++)
 		{
 			cards[i] = new card('\0', '\0', true);
-		}*/
-		cards = Hand.EmptyHand;
+		}
+		//cards = Hand.EmptyHand;
 	}
 	
 	/** Adds card to hand if space is available and is a valid card
