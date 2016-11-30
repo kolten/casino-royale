@@ -134,7 +134,7 @@ public class DealerMain {
 					playerMessages.clear();
 				}
 				
-				if(notReadFromPlayer){
+				if(notReadFromPlayer && dealer.stillWagering()){
 					System.out.println("kCount received");
 					kcount++;
 				}
@@ -145,7 +145,7 @@ public class DealerMain {
 					kcount = 0;
 				}
 				if(dealer.allWagered() && dealer.getActivePlayers() < MAX_PLAYERS.value){
-					System.out.println("Jcount received");
+					System.out.printf("Jcount received: %d\n", jcount);
 					jcount++;
 				}
 				

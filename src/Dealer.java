@@ -351,6 +351,7 @@ public class Dealer {
 		}
 		else if((getNumberAtTable() == 0) && (getActivePlayers() == getTargetSeat()) && (!notRead)){
 			System.out.println("How does this even happen");
+			target_uuid = 0;
 		}
 	}
 
