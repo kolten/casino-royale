@@ -43,6 +43,7 @@ public class Shoe {
 				}
 				for(k = 0; k < 6; k++){
 					deck[cardsUsed]=new card(suite, base, true);
+					Hand.printCard(deck[cardsUsed]);
 					cardsUsed++;
 				}
 			}

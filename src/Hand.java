@@ -164,7 +164,7 @@ public class Hand {
 	{
 		if(testCard != null)
 		{
-			if(testCard.suite != 'C' || testCard.suite != 'H' || testCard.suite != 'D' || testCard.suite != 'S')
+			if(testCard.suite != 'C' && testCard.suite != 'H' && testCard.suite != 'D' && testCard.suite != 'S')
 			{
 				return false;
 			}
@@ -181,7 +181,6 @@ public class Hand {
 	 * @param card object to print it's values.**/
 	public static void printCard(card obj)
 	{
-		System.out.println("Printing the following card");
 		System.out.println("           suite :" + obj.suite);
 		System.out.println("      base_value :" + obj.base_value);
 		System.out.println("         visible :" + obj.visible);
