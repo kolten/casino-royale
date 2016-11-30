@@ -17,7 +17,7 @@ public class Hand {
 	/** Constructor for hand that sets all starter values to 0. **/
 	public Hand()
 	{
-		//cards = new card[21];
+		cards = new card[21];
 		emptyHand();			//Initializes and sets variables to 0.
 	}
 
