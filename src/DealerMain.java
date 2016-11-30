@@ -2,21 +2,7 @@ import CR.*; // idl stuff
 import java.util.ArrayList;
 
 public class DealerMain {
-	
-	Dealer dealer;
-	DealerSub sub;
-	DealerPub pub;
-	Timer timer;
 
-	int gameCount = 0;
-	int kcount = 0;			//Kick counter for unresponsive players
-	int jcount = 0;			//Join counter if all wagered and less than 6 players
-	int buffer = 200;
-
-	boolean notReadFromPlayer = true;
-	boolean stillWagering = true;
-	boolean allWagered = true;
-	boolean exiting = false;
 
 	public static void main(String[] args) {
 		DealerMain main = new DealerMain();
@@ -29,14 +15,26 @@ public class DealerMain {
 	}
 	
 	public void run(String partition, String pubTopic, String subtopic)
-	{
+	{	
+		Dealer dealer;
+		DealerSub sub;
+		DealerPub pub;
+		Timer timer;
+
+		int gameCount = 0;
+		int kcount = 0;			//Kick counter for unresponsive players
+		int jcount = 0;			//Join counter if all wagered and less than 6 players
+		int buffer = 200;
+
+		boolean notReadFromPlayer = true;
+		
 		dealer = new Dealer();
 		sub = new DealerSub(partition, subtopic); // Sub needs to have the same topic name as the dealer pub
 		pub = new DealerPub(partition, pubTopic); // Vice versa
 		timer = new Timer();
 		ArrayList<bjPlayer> playerMessages = new ArrayList<bjPlayer>();
 		
-		int i, j;
+		int i;
 
 		/* Generic PubSub loop.
 		pub.write(dealer.getMsg());
@@ -65,11 +63,11 @@ public class DealerMain {
 
 		notReadFromPlayer = false;
 		dealer.shuffle();
-		while(gameCount < 1){
+		while(gameCount < 5){
 			if(dealer.getCardsLeftInDeck() < 250){
 				dealer.shuffle();
 			}
-			while((stillWagering) || ((dealer.getActivePlayers() < 6) && allWagered && jcount < 2) || (dealer.getAction() == bjd_action._shuffling) ){
+			while(dealer.stillWagering() || (dealer.isFullTable() && !dealer.stillWagering() && jcount < 2) || (dealer.sameAction(bjd_action.shuffling)) ){
 				while(dealer.getActivePlayers() == 0) {		//Loop for empty table
 					pub.write(dealer.getMsg());
 					System.out.println("Lonely: Single and ready to mingle.");
@@ -86,7 +84,7 @@ public class DealerMain {
 								}
 							}
 						}
-						timer.wait(buffer); 
+						Timer.wait(buffer); 
 					}
 					if(playerMessages != null){
 						playerMessages.clear();
@@ -118,7 +116,7 @@ public class DealerMain {
 									break;
 								case CR.bjp_action._wagering:
 									if(notReadFromPlayer){
-										dealer.getWagerFromPlayer(playerMessages.get(i));
+										dealer.setWagertoPlayer(playerMessages.get(i));
 										System.out.println("It works!");
 										kcount = 0;
 										notReadFromPlayer = false;
@@ -128,7 +126,7 @@ public class DealerMain {
 							}
 						}
 					}
-					timer.wait(buffer);
+					Timer.wait(buffer);
 				}
 				if(playerMessages != null){
 					playerMessages.clear();
@@ -144,9 +142,8 @@ public class DealerMain {
 					notReadFromPlayer = false;
 					kcount = 0;
 				}
-				if(dealer.allWagered() && dealer.getActivePlayers() < MAX_PLAYERS.value){
+				if(!dealer.stillWagering() && dealer.getActivePlayers() < MAX_PLAYERS.value){
 					System.out.printf("Jcount received: %d\n", jcount);
-					System.out.println("All wagered? " + dealer.allWagered());
 					System.out.println("Still wagering? " +dealer.stillWagering());
 					jcount++;
 				}
