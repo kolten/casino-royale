@@ -26,7 +26,6 @@ public class Player {
 	Random rand;
 
 	public Player(){
-		uuid = 1;
 		seqno = 1;
 		credits = 100.0f;
 		wager = 0;
@@ -170,6 +169,7 @@ public class Player {
 	}
 
 	public void joinGame(bjDealer dealer){
+		uuid = dealer.seqno;
 		dealer_id = dealer.uuid;
 		action = bjp_action.joining;
 	}
