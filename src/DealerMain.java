@@ -55,9 +55,9 @@ public class DealerMain {
 				}
 			}
 			Timer.wait(buffer);
-		}
-		if(playerMessages != null){
-			playerMessages.clear();
+			if(playerMessages != null){
+				playerMessages.clear();
+			}
 		}
 		 * */
 
@@ -85,9 +85,9 @@ public class DealerMain {
 							}
 						}
 						Timer.wait(buffer); 
-					}
-					if(playerMessages != null){
-						playerMessages.clear();
+						if(playerMessages != null){
+							playerMessages.clear();
+						}
 					}
 					dealer.waiting();
 				}	//Breaks from loop if any players have joined.
@@ -127,9 +127,9 @@ public class DealerMain {
 						}
 					}
 					Timer.wait(buffer);
-				}
-				if(playerMessages != null){
-					playerMessages.clear();
+					if(playerMessages != null){
+						playerMessages.clear();
+					}
 				}
 				
 				if(noReply && dealer.stillWagering()){
@@ -181,9 +181,9 @@ public class DealerMain {
 						}
 					}
 					Timer.wait(buffer);
-				}
-				if(playerMessages != null){
-					playerMessages.clear();
+					if(playerMessages != null){
+						playerMessages.clear();
+					}
 				}
 			}
 			
@@ -207,9 +207,9 @@ public class DealerMain {
 					}
 				}
 				Timer.wait(buffer);
-			}
-			if(playerMessages != null){
-				playerMessages.clear();
+				if(playerMessages != null){
+					playerMessages.clear();
+				}
 			}
 			
 			noReply = true;
