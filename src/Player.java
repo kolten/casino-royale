@@ -121,7 +121,7 @@ public class Player {
 		}
 		else{
 			System.out.println("This function is broken.");
-			return new bjDealer();
+			return new bjPlayer();
 		}
 	}
 

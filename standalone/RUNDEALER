@@ -1,2 +1,2 @@
 echo -e "\t\tRunning Dealer..."
-java -cp dcpssaj.jar:classes DealerMain
+java -cp dcpssaj.jar:classes DealerMain a c b

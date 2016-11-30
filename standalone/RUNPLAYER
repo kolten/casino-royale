@@ -1,2 +1,2 @@
 echo -e "\t\tRunning Player..."
-java -cp dcpssaj.jar:classes PlayerMain
+java -cp dcpssaj.jar:classes PlayerMain a b c
