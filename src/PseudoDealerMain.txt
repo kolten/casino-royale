@@ -6,7 +6,7 @@ jcount = 0;			//Join counter if all wagered and less than 6 players
 while(Played less than 5 games)	//Game loop.
 {
 	d.shuffle();
-	while((still wagering) || (Players < 6 && all wagered && count < 2))
+	while((still wagering) || (Players < 6 && all wagered && jcount < 2))
 	{
 		while(No player at table)	//Gets players at table from factory
 		{
@@ -27,7 +27,7 @@ while(Played less than 5 games)	//Game loop.
 		Publish();
 		Timer.start();
 
-		nextPlayer(notReadFromPlayer);		//if target player seat is 0, set to 1. if seat # is last available player, go to next seat unless 6.
+		nextSeat(notReadFromPlayer);		//if target player seat is 0, set to 1. if seat # is last available player, go to next seat unless 6.
 							//if have read from player, go to next seat.
 		while(Still not time to publish)
 		{
@@ -68,6 +68,15 @@ while(Played less than 5 games)	//Game loop.
 		{
 			jcount++;
 		}
+		jcount = 1;
+		if(!Dealer.startGame()){  //boolean in factory that will prevent any new joined players to play game.
+			Publish();
+			timer.start();			  //Auto sets target_uuid to 0;
+			while(still not time to publish){
+				readJoiningMessages();
+		};
+
+	}
 	}
 		//Breaks if (all have waged and have sent two unanswered messages
 	target_uuid = 0;
@@ -84,8 +93,8 @@ while(Played less than 5 games)	//Game loop.
 			Time buffer;
 		}
 	}
-	Dealer.startGame();	//boolean in factory that will prevent any new joined players to play game.
-				//Auto sets target_uuid to 0;
+
+		
 	Dealing();
 	Publish();
 	timer.start();

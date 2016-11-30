@@ -1,6 +1,10 @@
 
 import DDS.*;
 import CR.*;
+/*
+	Dealer.java
+	[Insert Class Description here]
+*/
 
 public class Dealer {
 
@@ -13,14 +17,12 @@ public class Dealer {
 	int targetSeat;
 
 	boolean isHuman;
+
 	bjd_action action;
 	Shoe deck;
 	Hand hand;
 	Bank bank;
-
 	bjDealer msg;
-	
-
 	player_status[] players;
 
 	public Dealer(){
@@ -41,16 +43,27 @@ public class Dealer {
 		setTargetSeat(0);
 	}
 
+	// Keeping? Reply:
 	public boolean acceptPlayer(){
 		// Returns true if there are empty seats, false if not
 		
 		return true;
 	}
 
+	// Keeping? Reply:
 	public void askPlayer(){
 		// Asks player for 'hit' or 'stay'
 	}
 
+	/*
+		This function uses the getCredits and getActivePlayers getter(s)
+		to check how many credits the dealer should have before starting
+		a game. If the dealer has less than the require amount, this function
+		will return false, signaling the need for restocking of credits.
+		Function: checkCredits
+		@param  none
+		@return  true/false
+	*/
 	public boolean checkCredits(){
 		// Returns true if Dealer has sufficient credits, else false
 		if(getCredits() >= getActivePlayers() * 20){
@@ -59,6 +72,7 @@ public class Dealer {
 		return false;
 	}
 
+	// Keeping? Reply:
 	public boolean checkSeats(){
 		// Returns true if seats are full, false if not, 6 seats at table
 		return true;
@@ -69,6 +83,7 @@ public class Dealer {
 		return credits;
 	}
 
+	// Keeping? Reply:
 	public boolean getIsHuman(){
 		// Getter for isHuman
 		return isHuman;
@@ -89,6 +104,13 @@ public class Dealer {
 		return uuid;
 	} 
 
+	/*
+		This function iterates through the current players at a table
+		and sets the current players state to wagering.
+		Function: getWagerFromPlayer
+		@param  msg
+		@return none
+	*/
 	public void getWagerFromPlayer(bjPlayer msg){
 		// Takes 
 		if(msg.action.value() == bjp_action._wagering){
@@ -101,28 +123,55 @@ public class Dealer {
 		}
 	}
 
+	/*
+		This function sets the current state of the dealer
+		to dealing.
+		Function: giveCards
+		@param  none
+		@return null
+	*/
 	public Hand giveCards(){
 		//
 		action = bjd_action.dealing;
-		return null;
+		return null; // Do we still want this???????
 	}
 
+	/*
+		Function: 
+		@param  
+		@return 
+	*/
 	public void kickPlayer(int uuid){
-		//
 		
 	}
+	/*
 
-	public float payPlayer(int uuid){
+		Function: 
+		@param  
+		@return 
+	*/
+	public float payPlayer(int uuid){ //Might want to change this parameter to bjPlayer player
 		// 
 		return 0;
 	}
 
+	/*
+		Function: 
+		
+		@param  
+		@return 
+	*/
 	public void playHand(){
 
 	}
 
 
-
+	/*
+		Function: 
+		
+		@param  
+		@return 
+	*/
 	public Hand sendCardToPlayer(Hand c){
 		return c;
 
@@ -157,12 +206,23 @@ public class Dealer {
 		return uuid;
 	}
 
+	/*
+		Function: 
+		
+		@param  
+		@return 
+	*/
 	public void shuffle(){
 		action = action.shuffling;
 		deck.shuffle(); // Shuffle deck function in Shoe class
 	}
 
-
+	/*
+		Function: 
+		
+		@param  
+		@return 
+	*/
 	public boolean startGame(){
 		if(checkCredits()){
 			setNumberAtTable(getActivePlayers());
@@ -176,6 +236,12 @@ public class Dealer {
 
 	}
 
+	/*
+		Function: 
+		
+		@param  
+		@return 
+	*/
 	public void waiting(){
 		action = bjd_action.waiting;
 	}
@@ -189,15 +255,12 @@ public class Dealer {
 		return activePlayers;
 	}
 
-
-	public bjDealer getMsg(){
-		return msg;
-	}
-	
-	private void sendTestData(){
-	
-	}
-
+	/*
+		Function: 
+		
+		@param  
+		@return 
+	*/
 	public void join(bjPlayer msg){
 		if(getActivePlayers() < 6){
 			// Assuming players do not leave
@@ -207,22 +270,50 @@ public class Dealer {
 		}
 	}
 
+	// These are the most recently added functions
+
 	public int setNumberAtTable(int count){
 		this.atTable = count;
 		return count;
 	}
 
-	// Sorry Tarek.
+	/*
+		Function: 
+		
+		@param  
+		@return 
+	*/
+	public bjDealer getMsg(){
+		return msg;
+	}
+
+	/*
+		getNumberAtTable
+		@param none 
+		@return atTable
+	*/
 	public int getNumberAtTable(){
 		return atTable;
 	}
 
+	/*
+		Function: setNumberAtTable
+		
+		@param notRead 
+		@return none
+	*/
 	public void nextSeat(boolean notRead){
 		if((getNumberAtTable() == 0) && (getActivePlayers() > getTargetSeat()) && (!notRead)){
 			
 		}
 	}
 
+	/*
+		Function: stillWagering
+		
+		@param none 
+		@return true/false
+	*/	
 	public boolean stillWagering(){
 		int i;
 		for(i = 0; i < getActivePlayers(); i++){
@@ -233,14 +324,32 @@ public class Dealer {
 		return true;
 	}
 
+	/*
+		Function: 
+		
+		@param  
+		@return 
+	*/
 	public boolean allWagered(){
 		return !stillWagering();
 	}
 
+	/*
+		Function: 
+		
+		@param  
+		@return 
+	*/
 	public int getTargetSeat(){
 		return targetSeat;
 	}
 
+	/*
+		Function: 
+		
+		@param  
+		@return 
+	*/
 	public int setTargetSeat(int targetSeat){
 		this.targetSeat = targetSeat;
 		return targetSeat;
