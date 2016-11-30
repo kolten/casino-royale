@@ -26,7 +26,7 @@ public class DealerMain {
 		int jcount = 0;			//Join counter if all wagered and less than 6 players
 		int buffer = 200;
 
-		boolean notReadFromPlayer = true;
+		boolean noReply = true;
 		
 		dealer = new Dealer();
 		sub = new DealerSub(partition, subtopic); // Sub needs to have the same topic name as the dealer pub
@@ -53,7 +53,7 @@ public class DealerMain {
 						default: System.out.println("Everything is broken."); break;
 					}
 				}
-				timer.wati(buffer);
+				Timer.wait(buffer);
 			}
 		}
 		if(playerMessages != null){
@@ -61,7 +61,7 @@ public class DealerMain {
 		}
 		 * */
 
-		notReadFromPlayer = false;
+		noReply = false;
 		dealer.shuffle();
 		while(gameCount < 1){
 			if(dealer.getCardsLeftInDeck() < 250){
@@ -96,8 +96,8 @@ public class DealerMain {
 				System.out.println("I need a wager, and I need it now!");
 				timer.start();
 
-				dealer.nextSeat(notReadFromPlayer);
-				notReadFromPlayer = true;
+				dealer.nextSeat(noReply);
+				noReply = true;
 				
 				while(timer.getTimeMs() < 4400){	//Read loop for wagering, exiting, or joining messages.
 					playerMessages = sub.read(dealer.getUuid(), dealer.getActivePlayers(), dealer.getTarget_uuid());
@@ -108,18 +108,18 @@ public class DealerMain {
 							switch(playerMessages.get(i).action.value()){
 								case CR.bjp_action._joining: dealer.join(playerMessages.get(i)); break;
 								case CR.bjp_action._exiting:
-									if(notReadFromPlayer){
+									if(noReply){
 										dealer.kickPlayer(playerMessages.get(i).uuid);
-										notReadFromPlayer = false;
+										noReply = false;
 									}
 									System.out.println("God damn it.");
 									break;
 								case CR.bjp_action._wagering:
-									if(notReadFromPlayer){
+									if(noReply){
 										dealer.setWagertoPlayer(playerMessages.get(i));
 										System.out.println("It works!");
 										kcount = 0;
-										notReadFromPlayer = false;
+										noReply = false;
 									}
 									break;
 								default: System.out.println("Why do bad things happen to bad code?"); break;
@@ -132,14 +132,14 @@ public class DealerMain {
 					playerMessages.clear();
 				}
 				
-				if(notReadFromPlayer && dealer.stillWagering()){
+				if(noReply && dealer.stillWagering()){
 					System.out.println("kCount received");
 					kcount++;
 				}
 				if(kcount >= 2 && dealer.stillWagering()){
 					System.out.println("Booom, get out the way.");
 					dealer.kickPlayer(dealer.getTarget_uuid());
-					notReadFromPlayer = false;
+					noReply = false;
 					kcount = 0;
 				}
 				if(!dealer.stillWagering() && dealer.getActivePlayers() < MAX_PLAYERS.value){
@@ -156,8 +156,63 @@ public class DealerMain {
 					}
 				}*/
 			}	//Breaks if all have wagered with full table or join counter has reached 2.
+
+				//Special condition break only if table is full and all have wagered.
+			while(dealer.isFullTable() && !dealer.stillWagering())
+			{
+				pub.write(dealer.getMsg());
+				
+				System.out.println("Special break for good players.");
+				
+				timer.start();
+				
+				while(timer.getTimeMs() < 4400){	//Read for joining, etc.
+					playerMessages = sub.read(dealer.getUuid());
+					System.out.println("I don't need your messages. >:(");
+					if(playerMessages != null && !playerMessages.isEmpty()){
+						for(i = 0; i < playerMessages.size(); i++){
+							switch(playerMessages.get(i).action.value()){
+								case CR.bjp_action._joining: 
+									System.out.println("Why are you still joining, dingus.");
+									dealer.join(playerMessages.get(i));
+									break;
+								default: System.out.println("Scary things are happening"); break;
+							}
+						}
+						Timer.wait(buffer);
+					}
+				}
+				if(playerMessages != null){
+					playerMessages.clear();
+				}
+			}
 			
 			dealer.startGame();
+			dealer.dealingInitial();
+			pub.write(dealer.getMsg());
+			
+			System.out.println("First time dealing, be gentle.");
+			
+			timer.start();
+			
+			while(timer.getTimeMs() < 4400){	//Read for joining, etc.
+				playerMessages = sub.read(dealer.getUuid());
+				System.out.println("Reading for posterity's sake. I don't care what you send.");
+				if(playerMessages != null && !playerMessages.isEmpty()){
+					for(i = 0; i < playerMessages.size(); i++){
+						switch(playerMessages.get(i).action.value()){
+							case CR.bjp_action._joining: dealer.join(playerMessages.get(i)); break;
+							default: System.out.println("I really want some crackers."); break;
+						}
+					}
+					Timer.wait(buffer);
+				}
+			}
+			if(playerMessages != null){
+				playerMessages.clear();
+			}
+			
+			noReply = true;
 			
 			System.out.println("I'm logic's end.");
 			gameCount++;
