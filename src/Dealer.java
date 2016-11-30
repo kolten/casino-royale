@@ -1,10 +1,11 @@
-
-import DDS.*;
-import CR.*;
 /*
 	Dealer.java
 	[Insert Class Description here]
 */
+
+
+import DDS.*;
+import CR.*;
 
 public class Dealer {
 
@@ -150,7 +151,7 @@ public class Dealer {
 		@param  
 		@return 
 	*/
-	public float payPlayer(int uuid){ //Might want to change this parameter to bjPlayer player
+	public float payPlayer(int uuid){ 
 		// 
 		return 0;
 	}
