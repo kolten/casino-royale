@@ -12,9 +12,8 @@ public class PlayerPub
 	public bjPlayerTypeSupport bjpTS;
 	public DataWriter dwriter;
 	public bjPlayerDataWriter bjpWriter;
-	public String TopicName;
 	
-	public PlayerPub(String partitionName, String topicName)
+	public PlayerPub(String partitionName, String TopicName)
 	{
 		Pub = new DDSEntityManager();
 
@@ -26,7 +25,7 @@ public class PlayerPub
 		Pub.registerType(bjpTS);
 
 		// create Topic
-		Pub.createTopic(topicName);
+		Pub.createTopic(TopicName);
 
 		// create Publisher
 		Pub.createPublisher();
@@ -36,9 +35,8 @@ public class PlayerPub
 
 		dwriter = Pub.getWriter();
 		bjpWriter = bjPlayerDataWriterHelper.narrow(dwriter);
-		TopicName = topicName;
-
-	        System.out.println ("=== [Publisher] Ready ...");
+		
+		System.out.println ("=== [Publisher] Ready ...");
 	}
 
 	public void registerUUID(bjPlayer msg)
@@ -50,12 +48,22 @@ public class PlayerPub
 	{
 		if(msg != null)
 		{
+			printMsg(msg);
 			int status = bjpWriter.write(msg, HANDLE_NIL.value);
 			ErrorHandler.checkStatus(status, "bjPlayerDataWriter.write");
 			return 1;
 		}
 		else System.out.println("For the love of all that is holy don't set off");
 		return 0;
+	}
+	
+	public void close()
+	{
+		Pub.getPublisher().delete_datawriter(bjpWriter);
+		Pub.deletePublisher();
+		Pub.deleteTopic();
+		Pub.deleteParticipant();
+		System.out.println ("Publisher connection closed.");
 	}
 
 	public static void printMsg(bjPlayer obj)
@@ -78,14 +86,6 @@ public class PlayerPub
 				case 4: System.out.println("requesting a card"); break;
 			}
 		}
-	}
-	public void close()
-	{
-		Pub.getPublisher().delete_datawriter(bjpWriter);
-		Pub.deletePublisher();
-		Pub.deleteTopic();
-		Pub.deleteParticipant();
-		System.out.println ("Publisher connection closed.");
 	}
 }
 

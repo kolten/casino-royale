@@ -61,11 +61,10 @@ public class DealerSub
 		ID of dealer
 	@param size
 		Number of players at the table
-	@param playerList[]
-		Array of players' UUID
-	@return ArrayList of bjPlayer messages that are either joining messages or  messages from players at the table.
-	*/
-	public ArrayList<bjPlayer> read(int uuid, int size, int playerList[])
+	@param target
+		UUID of the player wanted.
+	@return ArrayList of bjPlayer messages that are either joining messages or  messages from players at the table.*/
+	public ArrayList<bjPlayer> read(int uuid, int size, int target)
 	{
 		ArrayList<bjPlayer> msg = new ArrayList<bjPlayer>();
 		bjpReader.read(bjpSeq, infoSeq, LENGTH_UNLIMITED.value, NOT_READ_SAMPLE_STATE.value, ANY_VIEW_STATE.value, ANY_INSTANCE_STATE.value);
@@ -76,33 +75,23 @@ public class DealerSub
 				bjPlayer temp = bjpSeq.value[j];
 				if(temp.dealer_id == uuid)
 				{
-					boolean invalidID = true;
 					if(temp.action.value() == 1 && size < MAX_PLAYERS.value)
 					{
-						for(int i = 0; i < size && invalidID; i++)	//Checks if player is already at table
+						if(temp.uuid == target)
 						{
-							if(temp.uuid == playerList[i])
-							{
-								invalidID = false;
-							}
-						}
-						if(!invalidID)
-						{
+							printMsg(temp);
 							msg.add(copy(temp));	//Player isn't at the table, and has met the conditions.
 						}
 						else System.out.println("Why do you do these things?");
 					}
 					else 
 					{
-						for(int i = 0; i < size && invalidID; i++)	//Checks if player is at the table
+						if(temp.uuid == target)
 						{
-							if(temp.uuid == playerList[i])
-							{
-								msg.add(copy(temp));
-								invalidID = false;
-							}
+							printMsg(temp);
+							msg.add(copy(temp));
 						}
-						if(invalidID)
+						else 
 						{
 							System.out.println("We have a phantom player.");
 						}
@@ -125,22 +114,25 @@ public class DealerSub
 	public ArrayList<bjPlayer> read(int uuid)
 	{
 		ArrayList<bjPlayer> msg = new ArrayList<bjPlayer>();
-		int j, i = 1;
+		int j, i = 0;
 		bjpReader.read(bjpSeq, infoSeq, LENGTH_UNLIMITED.value, NOT_READ_SAMPLE_STATE.value, ANY_VIEW_STATE.value, ANY_INSTANCE_STATE.value);
 		if(bjpSeq.value.length != 0)
 		{
-			boolean isValidID = true;
-			for(j = 0; j < bjpSeq.value.length && i <= MAX_PLAYERS.value && bjpSeq.value[j] != null && !bjpSeq.value[j].equals(null) && bjpSeq.value[j].seqno != 0; j++)
+			for(j = 0; j < bjpSeq.value.length && i < MAX_PLAYERS.value; j++)
 			{
-				bjPlayer temp = bjpSeq.value[j];
-				if(temp.dealer_id == uuid && temp.action.value() == 1)
+				if(bjpSeq.value[j] != null && !bjpSeq.value[j].equals(null) && bjpSeq.value[j].seqno != 0)
 				{
-					msg.add(copy(temp));
-					i++;
-				}
-				else if(temp.dealer_id == uuid)
-				{
-					System.out.println("We have a phantom player.");
+					bjPlayer temp = bjpSeq.value[j];
+					if(temp.dealer_id == uuid && temp.action.value() == 1)
+					{
+						printMsg(temp);
+						msg.add(copy(temp));
+						i++;
+					}
+					else if(temp.dealer_id == uuid)
+					{
+						System.out.println("We have a phantom player.");
+					}
 				}
 			}
 		}
@@ -150,6 +142,14 @@ public class DealerSub
 		}
 		bjpReader.return_loan(bjpSeq, infoSeq);
 		return msg;
+	}
+	
+	public void close()
+	{
+		Sub.getSubscriber().delete_datareader(bjpReader);
+		Sub.deleteSubscriber();
+		Sub.deleteTopic();
+		Sub.deleteParticipant();
 	}
 
 	public static bjPlayer copy(bjPlayer obj)
@@ -183,14 +183,6 @@ public class DealerSub
 				case 4: System.out.println("requesting a card"); break;
 			}
 		}
-	}
-
-	public void close()
-	{
-		Sub.getSubscriber().delete_datareader(bjpReader);
-		Sub.deleteSubscriber();
-		Sub.deleteTopic();
-		Sub.deleteParticipant();
 	}
 }
 

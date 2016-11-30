@@ -14,9 +14,8 @@ public class DealerPub
 	public bjDealerTypeSupport bjdTS;
 	public DataWriter dwriter;
 	public bjDealerDataWriter bjdWriter;
-	public String TopicName;
 	
-	public DealerPub(String partitionName, String topicName)
+	public DealerPub(String partitionName, String TopicName)
 	{
 		Pub = new DDSEntityManager();
 
@@ -28,7 +27,7 @@ public class DealerPub
 		Pub.registerType(bjdTS);
 
 		// create Topic
-		Pub.createTopic(topicName);
+		Pub.createTopic(TopicName);
 
 		// create Publisher
 		Pub.createPublisher();
@@ -38,15 +37,37 @@ public class DealerPub
 
 		dwriter = Pub.getWriter();
 		bjdWriter = bjDealerDataWriterHelper.narrow(dwriter);
-		TopicName = topicName;
 		
-	        System.out.println ("=== [Publisher] Ready ...");
+		System.out.println ("=== [Publisher] Ready ...");
 	}
 
 	public void registerUUID(bjDealer msg)
 	{
 		bjdWriter.register_instance(msg);
 	}
+
+	public int write(bjDealer msg)
+	{
+		if(msg != null)
+		{
+			printMsg(msg);
+			int status = bjdWriter.write(msg, HANDLE_NIL.value);
+			ErrorHandler.checkStatus(status, "bjDealerDataWriter.write");
+			return 1;
+		}
+		else System.out.println("Everything is terrible");
+		return 0;
+	}
+	
+	public void close()
+	{
+		Pub.getPublisher().delete_datawriter(bjdWriter);
+		Pub.deletePublisher();
+		Pub.deleteTopic();
+		Pub.deleteParticipant();
+		System.out.println ("Publisher connection closed.");
+	}
+	
 
 	public static void printMsg(bjDealer obj)
 	{
@@ -97,27 +118,6 @@ public class DealerPub
 			}
 			System.out.println("     target id : " + obj.target_uuid); 
 		}
-	}
-
-	public int write(bjDealer msg)
-	{
-		if(msg != null)
-		{
-			int status = bjdWriter.write(msg, HANDLE_NIL.value);
-			ErrorHandler.checkStatus(status, "bjDealerDataWriter.write");
-			return 1;
-		}
-		else System.out.println("Everything is terrible");
-		return 0;
-	}
-	
-	public void close()
-	{
-		Pub.getPublisher().delete_datawriter(bjdWriter);
-		Pub.deletePublisher();
-		Pub.deleteTopic();
-		Pub.deleteParticipant();
-		System.out.println ("Publisher connection closed.");
 	}
 }
 

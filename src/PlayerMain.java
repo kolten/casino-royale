@@ -1,10 +1,8 @@
 
-import DDS.*; // opensplice stuff
 import CR.*; // idl stuff
 
 
 public class PlayerMain{
-
 
 	Player player;
 	PlayerSub sub;
@@ -14,7 +12,12 @@ public class PlayerMain{
 
 	public static void main(String[] args) {
 		PlayerMain main = new PlayerMain();
-		main.run(args[0], args[1], args[2]);
+		if(args != null){
+			main.run(args[0], args[1], args[2]);
+		}
+		else {
+			main.run("Casino Royale", "bjPlayer", "bjDealer");
+		}
 	}
 	
 	public void run(String partition, String pubTopic, String subtopic)

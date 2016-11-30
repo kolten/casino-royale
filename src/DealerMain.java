@@ -1,11 +1,8 @@
-
-import DDS.*; // opensplice stuff
 import CR.*; // idl stuff
 import java.util.ArrayList;
 
-public class DealerMain
-
-{
+public class DealerMain {
+	
 	Dealer dealer;
 	DealerSub sub;
 	DealerPub pub;
@@ -14,6 +11,7 @@ public class DealerMain
 	int gameCount = 0;
 	int kcount = 0;			//Kick counter for unresponsive players
 	int jcount = 0;			//Join counter if all wagered and less than 6 players
+	int buffer = 200;
 
 	boolean notReadFromPlayer = true;
 	boolean stillWagering = true;
@@ -22,7 +20,12 @@ public class DealerMain
 
 	public static void main(String[] args) {
 		DealerMain main = new DealerMain();
-		main.run(args[0], args[1], args[2]);
+		if(args != null){
+			main.run(args[0], args[1], args[2]);
+		}
+		else {
+			main.run("Casino Royale", "bjDealer", "bjPlayer");
+		}
 	}
 	
 	public void run(String partition, String pubTopic, String subtopic)
@@ -31,67 +34,99 @@ public class DealerMain
 		sub = new DealerSub(partition, subtopic); // Sub needs to have the same topic name as the dealer pub
 		pub = new DealerPub(partition, pubTopic); // Vice versa
 		timer = new Timer();
+		ArrayList<bjPlayer> playerMessages;
+		
+		int i, j;
 
-		// while( !exiting ){
-		// 	dealer.shuffle();
-		// 	pub.write(dealer.getMsg());
-
-		// 	dealer.waiting(); // Dealer action set to waiting
-
-		// 	while(dealer.getActivePlayers() == 0 || !allWagered){
-		// 		// Joining method / waiting
-		// 		ArrayList<bjPlayer> playerMessages = sub.read(dealer.getUuid());
-		// 		for(bjPlayer temp : playerMessages){
-		// 			dealer.join(temp);
-
-		// 			// take wager from player
-		// 			dealer.getWagerFromPlayer(temp);
-		// 			allWagered = true;
-		// 		}
-		// 		// Wait 5 seconds
-		// 		timer.wait(5000);
-		// 	}
+		/* Generic PubSub loop.
+		pub.write(dealer.getMsg());
+		
+		System.out.println("State: Writing to be noticed.");
+		
+		timer.start();
+		
+		while(timer.getTimeMs() < 4400){	//Read for joining, etc.
+			playerMessages = sub.read(dealer.getUuid(), dealer.getActivePlayers(), dealer.getTarget_uuid());
+			System.out.println("State: Reading, now");
+			if(playerMessages != null && !playerMessages.isEmpty()){
+				for(i = 0; i < playerMessages.size(); i++){
+					switch(playerMessages.get(i).action.value()){
+						case CR.bjp_action._joining: dealer.join(); break;
+						default: System.out.println("Everything is broken."); break;
+					}
+				}
+				timer.wati(buffer);
+			}
+		}
+		 * */
 
 		while(gameCount < 5){
 			dealer.shuffle();
 			while((stillWagering) || (dealer.getActivePlayers() < 6) && allWagered && jcount < 2){
-				//pub.write(dealer.getMsg());
-				//timer.start();
-
-				while(dealer.getActivePlayers() == 0) {
+				
+				while(dealer.getActivePlayers() == 0) {		//Loop for empty table
 					pub.write(dealer.getMsg());
-					System.out.printf("writing to pub");
+					System.out.printf("Lonely: Single and ready to mingle.");
 					timer.start();
-					while(timer.getTimeMs() < 4500){
-						ArrayList<bjPlayer> playerMessages = sub.read(dealer.getUuid());
-						System.out.printf("reading from sub");
-						if(playerMessages != null){
-							for(bjPlayer temp : playerMessages){
-	
-								dealer.join(temp);
+					while(timer.getTimeMs() < 4400){	//Read loop, with buffer
+						playerMessages = sub.read(dealer.getUuid());	//Read only joining messages
+						System.out.println("Searching for Players in your area.");
+						if(playerMessages != null && !playerMessages.isEmpty()){
+							System.out.prtinln("");
+							for(i = 0; i < playerMessages.size() && i < MAX_PLAYERS.value; i++){
+								if(playerMessages.get(i).action.value() == CR.bjp_action._joining){
+									dealer.join(playerMessages.get(i));
+								}
 							}
 						}
-						timer.wait(200); 
+						timer.wait(buffer); 
 					}
-				}
-				//Breaks from loop if any players have joined.
+					playerMessages.clear();
+				}	//Breaks from loop if any players have joined.
+				
 				pub.write(dealer.getMsg());
+				System.out.printf("I need a wager, and I need it now!");
 				timer.start();
 
-				// TODOOOO
 				dealer.nextSeat(notReadFromPlayer);
-
-				while(timer.getTimeMs() < 4500){
-					ArrayList<bjPlayer> playerMessages = sub.read(dealer.getUuid(), dealer.getActivePlayers(), dealer.getTarget_uuid());
-					System.out.printf("reading from sub");
-					if(playerMessages != null){
-						for(bjPlayer temp : playerMessages){
-
-							dealer.join(temp);
+				notReadFromPlayer = true;
+				
+				while(timer.getTimeMs() < 4400){	//Read loop for wagering, exiting, or joining messages.
+					playerMessages = sub.read(dealer.getUuid(), dealer.getActivePlayers(), dealer.getTarget_uuid());
+					
+					if(playerMessages != null && !playerMessages.isEmpty()){
+						System.out.println("Wager/Exit/Join messages have been read. :D");
+						for(i = 0; i < playerMessages.size(); i++){
+							switch(playerMessages.get(i).action.value()){
+								case CR.bjp_action._joining: dealer.join(playerMessages.get(i)); break;
+								case CR.bjp_action._exiting:
+									if(notReadFromPlayer){
+										dealer.kickPlayer(playerMessages.get(i).uuid);
+										notReadFromPlayer = false;
+									}
+									break;
+								case CR.bjp_action._wagering:
+									if(notReadFromPlayer){
+										dealer.wager(playerMessages.get(i).uuid, playerMessages.get(i).wager);
+										notReadFromPlayer = false;
+									}
+									break;
+								default: System.out.println("Why do bad things happen to bad code?"); break;
+							}
 						}
 					}
-					timer.wait(200); 
+					timer.wait(buffer);
 				}
+				if(notReadFromPlayer){
+					kcount++;
+				}
+				if(kcount >= 2 && dealer.stillWagering()){
+					dealer.kickPlayer(PlayerMessages.get(i).uuid);
+					
+					notReadFromPlayer = false;
+				}
+				
+				
 			}
 		}
 	}

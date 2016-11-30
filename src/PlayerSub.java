@@ -111,6 +111,14 @@ public class PlayerSub
 		bjdReader.return_loan(bjdSeq, infoSeq);
 		return msg;
 	}
+	
+	public void close()
+	{
+		Sub.getSubscriber().delete_datareader(bjdReader);
+		Sub.deleteSubscriber();
+		Sub.deleteTopic();
+		Sub.deleteParticipant();
+	}
 
 	public static bjDealer copy(bjDealer obj)
 	{
@@ -196,15 +204,6 @@ public class PlayerSub
 			}
 			System.out.println("     target id : " + obj.target_uuid); 
 		}
-	}
-
-
-	public void close()
-	{
-		Sub.getSubscriber().delete_datareader(bjdReader);
-		Sub.deleteSubscriber();
-		Sub.deleteTopic();
-		Sub.deleteParticipant();
 	}
 }
 
