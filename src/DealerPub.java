@@ -74,6 +74,7 @@ public class DealerPub
 		if(obj != null)
 		{
 			int i, j;
+			Hand cardLogic = new Hand();
 			System.out.println("\n== [Dealer] message sent :\n");
 			System.out.println("          uuid : " + obj.uuid);
 			System.out.println("         seqno : " + obj.seqno);
@@ -92,8 +93,8 @@ public class DealerPub
 						System.out.println("        in hand:");
 						for(j = 0; j < 21; j++)
 						{
-							if(Hand.isValidCard(obj.players[i].cards[j]))
-								Hand.printCard(obj.players[i].cards[j]);
+							if(cardLogic.isValidCard(obj.players[i].cards[j]))
+								cardLogic.printCard(obj.players[i].cards[j]);
 						}
 					}
 				}
@@ -114,8 +115,8 @@ public class DealerPub
 			System.out.println("        in hand:");
 			for(j = 0; j < 21; j++)
 			{
-				if(Hand.isValidCard(obj.cards[j]))
-					Hand.printCard(obj.cards[j]);
+				if(cardLogic.isValidCard(obj.cards[j]))
+					cardLogic.printCard(obj.cards[j]);
 			}
 			System.out.println("     target id : " + obj.target_uuid); 
 		}

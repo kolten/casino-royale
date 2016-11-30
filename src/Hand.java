@@ -6,37 +6,40 @@ public class Hand {
 	private int totalHandValue;	//Total hand value
 	private int hasAce;		//Number of aces in hand that have a value of 11.
 	
-	public static final card[] EmptyHand = {new card('\0', '\0', true), new card('\0', '\0', true), new card('\0', '\0', true), 
-		new card('\0', '\0', true), new card('\0', '\0', true), new card('\0', '\0', true), 
-		new card('\0', '\0', true), new card('\0', '\0', true), new card('\0', '\0', true), 
-		new card('\0', '\0', true), new card('\0', '\0', true), new card('\0', '\0', true), 
-		new card('\0', '\0', true), new card('\0', '\0', true), new card('\0', '\0', true), 
-		new card('\0', '\0', true), new card('\0', '\0', true), new card('\0', '\0', true), 
-		new card('\0', '\0', true), new card('\0', '\0', true), new card('\0', '\0', true)};
-
-	/** Constructor for hand that sets all starter values to 0. **/
+	/* Constructor for hand that sets all starter values to 0.*/
 	public Hand()
 	{
-		//cards = new card[21];
-		emptyHand();			//Initializes and sets variables to 0.
-	}
-
-	/** Empties hand by zeroing all variables, and places "null" cards into every slot of card array. **/
-	public void emptyHand()
-	{
-		totalHandValue = 0;
-		hasAce = 0;
-		cardsInHand = 0;
-		/*for(int i = 0; i < 21; i++)
-		{
-			cards[i] = new card('\0', '\0', true);
-		}*/
-		cards = Hand.EmptyHand;
+		cards = new card[21];
+		emptyHand();
 	}
 	
-	/** Adds card to hand if space is available and is a valid card
-	 * and adjusts total hand value accordingly.
-	 * @param card object to add to hand. **/
+	/* Checks if a valid poker card, based off of suite */
+	public static boolean isValidCard(card testCard)
+	{
+		if(testCard != null)
+		{
+			if(testCard.suite != 'C' || testCard.suite != 'H' || testCard.suite != 'D' || testCard.suite != 'S')
+			{
+				return false;
+			}
+			else if(testCard.base_value < '1' || (testCard.base_value > '9' && testCard.base_value != 'T' && testCard.base_value != 'J' && testCard.base_value != 'Q' && testCard.base_value != 'K' && testCard.base_value != 'A'))
+			{
+				return false;
+			}
+			else return true;
+		}
+		else return false;
+	}
+
+	/* Prints card from parameter, regardless if visible or not.*/
+	public static void printCard(card obj)
+	{
+		System.out.println("           suite :" + obj.suite);
+		System.out.println("      base_value :" + obj.base_value);
+		System.out.println("         visible :" + obj.visible);
+	}
+	
+	/* Adds card to hand if space is available, it is a valid poker card. Ajusts total hand value according to card's base value.*/
 	public void addCard(card toSet)
 	{
 		if(isValidCard(toSet) && cardsInHand < 21)
@@ -76,33 +79,8 @@ public class Hand {
 		}
 		else System.out.println("Given bad card, request another!");
 	}
-
-	/** Flips all invisible cards to visible. **/
-	public void flipCard()
-	{
-		int i;
-		for(i = 0; i < getNumberOfCards(); i++)
-		{
-			cards[i].visible = true;
-		}
-	}
 	
-	/**============= Getters && Setters ==============**/
-
-	/** @return the number of cards in hand.**/
-	public int getNumberOfCards()
-	{
-		return cardsInHand;
-	}
-	
-	/** @return returns card array that represents hand **/
-	public card[] getHand()
-	{
-		return cards;
-	}
-	
-	/** Calculates and gets totalHandValue. 
-	 * @return hand value according to blackjack rules.**/
+	/* Calculates and gets totalHandValue.*/
 	public int getHandValue()
 	{
 		if(totalHandValue > 21 && hasAce == 1)	//If there is an ace in hand and current hand value is a bust, it will change the ace value from 11 to 1.
@@ -116,126 +94,44 @@ public class Hand {
 		}
 		return totalHandValue;
 	}
-	
-	
 
-	/**=================== Static methods ==============**/
-	
-	/** Checks if there are only two valid cards in the hand that have a value of 21.
-	 * @param card array representing hand to check.
-	 * @return true if the value was an Ace and a ten point card. **/
-	public static boolean blackJack(card hand[])
-	{
-		if(hand != null && hand.length != 21)
-		{
-			if(isValidCard(hand[1]) && isValidCard(hand[2]) && !isValidCard(hand[3]))
-			{
-				switch(hand[1].base_value)
-				{
-					case 'A':
-						if(hand[2].base_value == 'T' || hand[2].base_value == 'J' || hand[2].base_value == 'Q' || hand[2].base_value == 'K')
-						{
-							return true;
-						}
-						return false;
-					case 'T':
-					case 'J':
-					case 'Q':
-					case 'K':
-						if(hand[2].base_value == 'A')
-						{
-							return true;
-						}
-					default: return false;
-				}
-			}
-		}
-		return false;
-	}
-	
-	
-	/** Checks if a valid poker card, based off of suite 
-	 * @param card object to test if it is a valid poker card. 
-	 * @return true if it is a valid poker card, and false if invalid. **/
-	public static boolean isValidCard(card testCard)
-	{
-		if(testCard != null)
-		{
-			if(testCard.suite != 'C' || testCard.suite != 'H' || testCard.suite != 'D' || testCard.suite != 'S')
-			{
-				return false;
-			}
-			else if(testCard.base_value < '1' || (testCard.base_value > '9' && testCard.base_value != 'T' && testCard.base_value != 'J' && testCard.base_value != 'Q' && testCard.base_value != 'K' && testCard.base_value != 'A'))
-			{
-				return false;
-			}
-			else return true;
-		}
-		else return false;
+
+	/* Returns cards in hand.*/
+	public int getNumberOfCards(){
+		return cardsInHand;
 	}
 
-	/** Prints card from parameter, regardless if visible or not. 
-	 * @param card object to print it's values.**/
-	public static void printCard(card obj)
+	/* Non useful setters and getters
+	private void setHandValue(int totalHandValue)
 	{
-		System.out.println("           suite :" + obj.suite);
-		System.out.println("      base_value :" + obj.base_value);
-		System.out.println("         visible :" + obj.visible);
+		this.totalHandValue = totalHandValue;
+	}
+
+	private void setCardsInHand(int cardsInHand)
+	{
+		this.cardsInHand = cardsInHand;
 	}
 	
-	/** Calculate hand based off of the given card array
-	 * @param card array to calculate hand value
-	 * @return total hand value **/
-	public static int calculateHandValue(card hand[])
+	private void setHasAce(int hasAce)
 	{
-		int i, total, aceNum = 0;
-		total = 0;
-		for(i = 0; i < hand.length; i++)
+		this.hasAce = hasAce;
+	}
+	*/
+
+	/* Empties hand by zeroing all variables.*/
+	public void emptyHand()
+	{
+		totalHandValue = 0;
+		hasAce = 0;
+		cardsInHand = 0;
+		for(int i = 0; i < 21; i++)
 		{
-			if(isValidCard(hand[i]))
-			{
-				if(hand[i].visible)
-				{
-					switch(hand[i].base_value)
-					{
-						case '2': total += 2; break;
-						case '3': total += 3; break;
-						case '4': total += 4; break;
-						case '5': total += 5; break;
-						case '6': total += 6; break;
-						case '7': total += 7; break;
-						case '8': total += 8; break;
-						case '9': total += 9; break;
-						case 'T': total += 10; break;
-						case 'J': total += 10; break;
-						case 'Q': total += 10; break;
-						case 'K': total += 10; break;
-						case 'A':
-							if(total <= 10)
-							{
-								total += 11;
-								aceNum++;
-							}
-							else if(total > 10)
-							{
-								total += 1;
-							}
-							break;
-						default: System.out.println("Computer has failed at calculating. Everything is wrong."); break;
-					}
-				}
-				else System.out.println("Invisible entity lurks in your hand. Consider exorcism.");
-			}
+			cards[i] = new card('\0', '\0', true);
 		}
-		if(total > 21 && aceNum == 1)
-		{
-			total -= 10;
-			aceNum--;
-		}
-		else if(aceNum > 1)
-		{
-			System.out.println("Smoking aces are ruining the game.");
-		}
-		return total;
+	}
+	
+	public card[] getHand()
+	{
+		return cards;
 	}
 }

@@ -5,6 +5,9 @@ import DDS.DataReader;
 import DDS.LENGTH_UNLIMITED;
 import DDS.SampleInfoSeqHolder;
 
+import DDS.DataWriter;			//DDS imports for Writing
+import DDS.HANDLE_NIL;
+
 import CR.bjDealer;
 import CR.bjd_action;
 import CR.card;
@@ -16,6 +19,8 @@ import CR.bjDealerSeqHolder;
 import CR.bjDealerTypeSupport;
 
 import CR.MAX_PLAYERS;
+
+import java.util.ArrayList;
 
 public class PlayerSub
 {
@@ -143,7 +148,7 @@ public class PlayerSub
 					cardigon[i] = new card(obj.cards[i].suite, obj.cards[i].base_value, obj.cards[i].visible);
 				}
 			}
-			bjDealer temp = new bjDealer(obj.uuid, obj.seqno, obj.active_players, team, bjd_action.from_int( obj.action.value() ), cardigon, obj.target_uuid);
+			bjDealer temp = new bjDealer(obj.uuid, obj.seqno, obj.active_players, team, obj.action.from_int(obj.action.value()), cardigon, obj.target_uuid);
 			return temp;
 		}
 		System.out.println("Bug Report");
@@ -155,6 +160,7 @@ public class PlayerSub
 		if(obj != null)
 		{
 			int i, j;
+			Hand cardLogic = new Hand();
 			System.out.println("\n== [Player] received message from [Dealer] :\n");
 			System.out.println("          uuid : " + obj.uuid);
 			System.out.println("         seqno : " + obj.seqno);
@@ -173,8 +179,8 @@ public class PlayerSub
 						System.out.println("        in hand:");
 						for(j = 0; j < 21; j++)
 						{
-							if(Hand.isValidCard(obj.players[i].cards[j]))
-								Hand.printCard(obj.players[i].cards[j]);
+							if(cardLogic.isValidCard(obj.players[i].cards[j]))
+								cardLogic.printCard(obj.players[i].cards[j]);
 						}
 					}
 				}
@@ -193,8 +199,8 @@ public class PlayerSub
 			System.out.println("        in hand:");
 			for(j = 0; j < 21; j++)
 			{
-				if(Hand.isValidCard(obj.cards[j]))
-					Hand.printCard(obj.cards[j]);
+				if(cardLogic.isValidCard(obj.cards[j]))
+					cardLogic.printCard(obj.cards[j]);
 			}
 			System.out.println("     target id : " + obj.target_uuid); 
 		}

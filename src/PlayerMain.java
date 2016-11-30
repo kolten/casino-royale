@@ -50,7 +50,7 @@ public class PlayerMain{
 						pub.write(player.getMsg());
 						//notSeated = false;
 						//timer.start();   ??? maybe ???
-						Timer.wait(5000); // Wait 5 seconds
+						timer.wait(5000); // Wait 5 seconds
 						temp = sub.read();
 						if(temp != null){
 							int i = 0;

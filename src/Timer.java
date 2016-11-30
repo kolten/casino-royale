@@ -1,7 +1,7 @@
 
 public class Timer
 {
-	private long startTime;
+	static long startTime;
 	
 	public static void wait(int milliseconds)
 	{
@@ -15,12 +15,12 @@ public class Timer
 		}
 	}
 	
-	public void start()
+	public static void start()
 	{
 		startTime = System.currentTimeMillis();
 	}
 	
-	public long getTimeMs()
+	public static long getTimeMs()
 	{
 		return System.currentTimeMillis() - startTime;
 	}
