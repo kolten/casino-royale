@@ -36,11 +36,11 @@ public class Dealer {
 		seqno = 1;
 		active_players = 0;
 		players = new player_status[MAX_PLAYERS.value];
+		hand = new Hand();
 		for(int i = 0; i < MAX_PLAYERS.value; i++){
-			players[i] = new player_status(0, 0, 0f, Hand.EmptyHand);
+			players[i] = new player_status(0, 0, 0f, hand.getHand());
 		}
 		action  = CR.bjd_action.shuffling;
-		hand = new Hand();
 		target_uuid = 0;
 		
 		//isHuman = false;
@@ -60,11 +60,11 @@ public class Dealer {
 		seqno = 1;
 		active_players = 0;
 		players = new player_status[MAX_PLAYERS.value];
+		hand = new Hand();
 		for(int i = 0; i < MAX_PLAYERS.value; i++){
-			players[i] = new player_status(0, 0, 0f, Hand.EmptyHand);
+			players[i] = new player_status(0, 0, 0f, hand.getHand());
 		}
 		action  = CR.bjd_action.shuffling;
-		hand = new Hand();
 		target_uuid = 0;
 		
 		//isHuman = false;
