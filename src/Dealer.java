@@ -356,5 +356,7 @@ public class Dealer {
 		return targetSeat;
 	}
 
-	
+	public int getAction(){
+		return action.value();
+	}
 }

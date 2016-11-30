@@ -65,7 +65,7 @@ public class DealerMain {
 
 		while(gameCount < 5){
 			dealer.shuffle();
-			while((stillWagering) || (dealer.getActivePlayers() < 6) && allWagered && jcount < 2){
+			while((stillWagering) || ((dealer.getActivePlayers() < 6) && allWagered && jcount < 2) || (dealer.getAction() == bjd_action._shuffling) ){
 				
 				while(dealer.getActivePlayers() == 0) {		//Loop for empty table
 					pub.write(dealer.getMsg());
