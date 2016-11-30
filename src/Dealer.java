@@ -368,6 +368,7 @@ public class Dealer {
 				return true;
 			}
 		}
+		System.out.println("debug statement stillWagering()");
 		return false;
 	}
 
@@ -378,7 +379,11 @@ public class Dealer {
 		@return 
 	*/
 	public boolean allWagered(){
-		return !stillWagering();
+		if(stillWagering()){
+			return false;
+		} else {
+			return true:
+		}
 	}
 
 	/*
