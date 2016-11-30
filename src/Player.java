@@ -7,16 +7,17 @@ public class Player {
 	public static final int MIN_BET = 1;
 	public static final int MAX_BET = 5;
 
-	float credits;
-	int dealer_id;
-	int seqno;
 	int uuid;
+	int seqno;
+	float credits;
 	int wager;
+	int dealer_id;
+	bjp_action action;
+	
 	int seatNumber;
 
 	String typeOfPlayer;
 
-	bjp_action action;
 	bjPlayer msg;
 
 	Hand hand;
@@ -25,31 +26,57 @@ public class Player {
 	Random rand;
 
 	public Player(){
-		msg = new bjPlayer();
-		hand = new Hand();
+		uuid = 1;
+		seqno = 1;
 		credits = 100.0f;
+		wager = 0;
+		dealer_id = 0;
+		action = CR.bjp_action.joining;
+		
+		seatNumber = 0;
+
 		typeOfPlayer = "Mr. Conservative";
-		action = bjp_action.joining;
+		
+		msg = new bjPlayer();
+		
+		hand = new Hand();
+		bank = new Bank();
 	}
 
 	public Player(int uuid){
-		msg = new bjPlayer();
-		this.uuid = uuid;
-		this.dealer_id = dealer_id;
-		hand = new Hand();
+		uuid = 1;
+		seqno = 1;
 		credits = 100.0f;
+		wager = 0;
+		dealer_id = 0;
+		action = CR.bjp_action.joining;
+		
+		seatNumber = 0;
+
 		typeOfPlayer = "Mr. Conservative";
-		action = bjp_action.joining;
+		
+		msg = new bjPlayer();
+		
+		hand = new Hand();
+		bank = new Bank();
 	}
 
 	public Player(int uuid, int dealer_id){
-		msg = new bjPlayer();
-		this.uuid = uuid;
-		this.dealer_id = dealer_id;
-		hand = new Hand();
+		uuid = 1;
+		seqno = 1;
 		credits = 100.0f;
+		wager = 0;
+		dealer_id = 0;
+		action = CR.bjp_action.joining;
+		
+		seatNumber = 0;
+
 		typeOfPlayer = "Mr. Conservative";
-		action = bjp_action.joining;
+		
+		msg = new bjPlayer();
+		
+		hand = new Hand();
+		bank = new Bank();
 	}
 
 	public float getCredits(){
