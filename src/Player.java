@@ -201,17 +201,10 @@ public class Player {
 		float currentCredits = getCredits();
 		if(currentCredits <= 5){
 			wager = 1;
-			//credits = credits - 1;
-			this.setCredits(credits);
 			action = bjp_action.wagering;
-			wager = wager;
 		} else if(currentCredits > 5) {
-			//http://stackoverflow.com/questions/363681/generating-random-integers-in-a-specific-range
 			wager = 1;
-			//credits = credits - 1;
-			this.setCredits(credits);
 			action = bjp_action.wagering;
-			wager = wager;
 		}
 	}
 

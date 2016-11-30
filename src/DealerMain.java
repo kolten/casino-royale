@@ -133,14 +133,17 @@ public class DealerMain {
 				}
 				
 				if(notReadFromPlayer){
+					System.out.println("kCount received");
 					kcount++;
 				}
 				if(kcount >= 2 && dealer.stillWagering()){
+					System.out.println("Booom, get out the way.");
 					dealer.kickPlayer(dealer.getTarget_uuid());
 					notReadFromPlayer = false;
 					kcount = 0;
 				}
 				if(dealer.allWagered() && dealer.getActivePlayers() < MAX_PLAYERS.value){
+					System.out.println("Jcount received");
 					jcount++;
 				}
 				
@@ -154,7 +157,13 @@ public class DealerMain {
 			}	//Breaks if all have wagered with full table or join counter has reached 2.
 			
 			dealer.setTargetSeat(0);
+			System.out.println("I'm logic's end.");
+			gameCount++;
 		}
+		System.out.println("I'm an end, I am legion.");
+		
+		sub.close();
+		pub.close();
 	}
 }
 

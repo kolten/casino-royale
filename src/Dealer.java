@@ -358,10 +358,10 @@ public class Dealer {
 		int i;
 		for(i = 0; i < getActivePlayers(); i++){
 			if(players[i].wager == 0){
-				return false;
+				return true;
 			}
 		}
-		return true;
+		return false;
 	}
 
 	/*
