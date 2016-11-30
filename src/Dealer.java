@@ -43,6 +43,9 @@ public class Dealer {
 		bank = new Bank();
 		msg = new bjDealer();
 		players = new player_status[6];
+		for(int i = 0; i < 6; i++){
+			players[i] = new player_status(0, 0, 0f, hand.getHand());
+		}
 		shuffle();
 	}
 
@@ -63,6 +66,9 @@ public class Dealer {
 		bank = new Bank();
 		msg = new bjDealer();
 		players = new player_status[6];
+		for(int i = 0; i < 6; i++){
+			players[i] = new player_status(0, 0, 0f, hand.getHand());
+		}
 		shuffle();
 	}
 
