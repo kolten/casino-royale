@@ -22,8 +22,6 @@ public class Player {
 	Hand hand;
 	Bank bank;
 
-	Random rand;
-
 	public Player(){
 		uuid = (int)(Math.random()*8096);
 		seqno = 1;
