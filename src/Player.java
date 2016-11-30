@@ -140,15 +140,8 @@ public class Player {
 
 	public bjPlayer getMsg(){
 		bjPlayer temp = new bjPlayer(uuid, seqno, credits, wager, dealer_id, action);
-		if(temp != null){
-			seqno++;
-			return 	temp;
-		}
-		else{
-			seqno++;
-			System.out.println("This function is broken.");
-			return new bjPlayer();
-		}
+		seqno++;
+		return 	temp;
 	}
 
 	public void initDeal(bjDealer dealer){
