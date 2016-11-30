@@ -72,6 +72,7 @@ public class PlayerMain{
 			// Wagering
 			while(wagering){
 				temp = sub.read(player.getDealerID());
+				System.out.println("I need a dealer in my life.");
 				if((temp != null) && (temp.target_uuid == player.getUuid()) && (temp.action.value() == bjd_action._waiting)){
 					player.placeWager(temp);
 					pub.write(player.getMsg());
@@ -79,6 +80,7 @@ public class PlayerMain{
 					System.out.println("I'm suprised I made it this far.");
 				}
 			}
+			System.out.println("I'm actually in game!");
 			
 			// Initial playing round?
 			while(playingInitial){

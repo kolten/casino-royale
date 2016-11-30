@@ -63,6 +63,7 @@ public class DealerMain {
 		}
 		 * */
 
+		notReadFromPlayer = false;
 		dealer.shuffle();
 		while(gameCount < 5){
 			if(dealer.getCardsLeftInDeck() < 250){
