@@ -101,14 +101,16 @@ public class DealerPub
 			}
 			System.out.println("===================");
 			System.out.print("        action : ");
+			if(action != null){
 			switch(obj.action.value())
-			{
-				case 0: System.out.println("shuffling"); break;
-				case 1: System.out.println("waiting"); break;
-				case 2: System.out.println("dealing"); break;
-				case 3: System.out.println("paying"); break;
-				case 4: System.out.println("collecting"); break;
-				default: System.out.println("ERROR"); break;
+				{
+					case 0: System.out.println("shuffling"); break;
+					case 1: System.out.println("waiting"); break;
+					case 2: System.out.println("dealing"); break;
+					case 3: System.out.println("paying"); break;
+					case 4: System.out.println("collecting"); break;
+					default: System.out.println("ERROR"); break;
+				}
 			}
 			System.out.println("        in hand:");
 			for(j = 0; j < 21; j++)

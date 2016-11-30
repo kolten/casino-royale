@@ -114,7 +114,7 @@ public class Dealer {
 	*/
 	public void getWagerFromPlayer(bjPlayer msg){
 		// Takes 
-		if(msg.action.value() == bjp_action._wagering){
+		if(action.value() == bjp_action._wagering){
 			int i;
 			for(i = 0; i < 6; i++){
 				if(msg.uuid == players[i].uuid){
@@ -214,7 +214,7 @@ public class Dealer {
 		@return 
 	*/
 	public void shuffle(){
-		msg.action = action.shuffling;
+		action = action.shuffling;
 		deck.shuffle(); // Shuffle deck function in Shoe class
 	}
 
