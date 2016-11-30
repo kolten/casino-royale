@@ -307,7 +307,7 @@ public class Dealer {
 		@return 
 	*/
 	public bjDealer getMsg(){
-		bjDealer temp = new bjDealer(getUuid(), getSeqno(), getActivePlayers(), players, action, hand.getHand(), getTarget_uuid());
+		bjDealer temp = new bjDealer(uuid, seqno, activePlayers, players, action, hand.getHand(), target_uuid);
 		if(temp != null){
 			return 	temp;
 		}
