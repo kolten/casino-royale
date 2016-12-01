@@ -327,6 +327,7 @@ public class Dealer {
 			players[i].cards = temp.getHand();
 		}
 		setNumberAtTable(0);
+		waiting();
 	}
 	
 	public void resetSeating(){
