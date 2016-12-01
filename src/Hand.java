@@ -67,8 +67,8 @@ public class Hand {
 						break;
 					default: System.out.println("Major error, please fix."); break;
 				}
-				cardsInHand++;
 			}
+			cardsInHand++;
 		}
 		else{
 			printCard(toSet);
