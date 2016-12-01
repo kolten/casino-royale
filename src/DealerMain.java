@@ -215,7 +215,7 @@ public class DealerMain {
 				Timer.wait(buffer);
 			}
 			
-			noReply = false;
+			noReply = true;
 			while(stillDealing){
 				dealer.nextSeat(noReply);
 				noReply = true;
