@@ -137,6 +137,8 @@ public class PlayerSub
 					team[i] = new player_status(obj.players[i].uuid, obj.players[i].wager, obj.players[i].payout, cardigon);
 				}
 			}
+			cardigon = null;
+			cardigon = new card[21];
 			for(i = 0; i < 21; i++)	//Copies dealer's hand
 			{
 				if(obj.cards[i] != null)

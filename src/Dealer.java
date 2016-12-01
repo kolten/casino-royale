@@ -223,13 +223,16 @@ public class Dealer {
 		System.out.println("Giving myself some cards.");
 		card temp = deck.drawCard(false);
 		hand.addCard(new card(temp.suite, temp.base_value, temp.visible));
+		temp = null;
 		temp = deck.drawCard(true);
 		hand.addCard(new card(temp.suite, temp.base_value, temp.visible));
 		for(i = 0; i < getNumberAtTable(); i++){
 			System.out.println("Giving player " + i + "  some cards.");
-			 temp = deck.drawCard(true);
+			temp = null;
+			temp = deck.drawCard(true);
 			players[i].cards[0] = new card(temp.suite, temp.base_value, temp.visible);
-			 temp = deck.drawCard(true);
+			temp = null;
+			temp = deck.drawCard(true);
 			players[i].cards[1] = new card(temp.suite, temp.base_value, temp.visible);
 		}
 	}
