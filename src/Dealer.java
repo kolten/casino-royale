@@ -38,7 +38,8 @@ public class Dealer {
 		players = new player_status[MAX_PLAYERS.value];
 		hand = new Hand();
 		for(int i = 0; i < MAX_PLAYERS.value; i++){
-			players[i] = new player_status(0, 0, 0f, Hand.EMPTY_HAND);
+			Hand temp = new Hand();
+			players[i] = new player_status(0, 0, 0f, temp.getHand());
 		}
 		action  = CR.bjd_action.shuffling;
 		target_uuid = 0;
@@ -62,7 +63,8 @@ public class Dealer {
 		players = new player_status[MAX_PLAYERS.value];
 		hand = new Hand();
 		for(int i = 0; i < MAX_PLAYERS.value; i++){
-			players[i] = new player_status(0, 0, 0f, Hand.EMPTY_HAND);
+			Hand temp = new Hand();
+			players[i] = new player_status(0, 0, 0f, temp.getHand());
 		}
 		action  = CR.bjd_action.shuffling;
 		target_uuid = 0;
@@ -153,7 +155,8 @@ public class Dealer {
 				}
 			}
 			if(notAtTable){
-				player_status player = new player_status(msg.uuid, msg.wager, 0f, Hand.EMPTY_HAND);
+				Hand temp = new Hand();
+				player_status player = new player_status(msg.uuid, msg.wager, 0f, temp.getHand());
 				players[getActivePlayers()] = player;
 				setActivePlayers(getActivePlayers() + 1);
 			}
@@ -302,9 +305,10 @@ public class Dealer {
 		resetSeating();
 		int i;
 		for(i = 0;  i < getNumberAtTable(); i++){
+			Hand temp = new Hand();
 			players[i].wager = 0;
 			players[i].payout = 0f;
-			players[i].cards = Hand.EMPTY_HAND;
+			players[i].cards = temp.getHand();
 		}
 		setNumberAtTable(0);
 	}

@@ -13,7 +13,7 @@ public class Hand {
 	/** Constructor for hand that sets all starter values to 0. **/
 	public Hand()
 	{
-		//cards = new card[21];
+		cards = new card[21];
 		emptyHand();			//Initializes and sets variables to 0.
 	}
 
@@ -23,11 +23,11 @@ public class Hand {
 		totalHandValue = 0;
 		hasAce = 0;
 		cardsInHand = 0;
-		/*for(int i = 0; i < 21; i++)
+		for(int i = 0; i < 21; i++)
 		{
 			cards[i] = new card('\0', '\0', true);
-		}*/
-		cards = Hand.EMPTY_HAND;
+		}
+		//cards = Hand.EMPTY_HAND;
 	}
 	
 	/** Adds card to hand if space is available and is a valid card
