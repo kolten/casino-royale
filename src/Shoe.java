@@ -68,14 +68,18 @@ public class Shoe {
 	}
 	
 	public card drawCard(boolean isVisible){
-		card toSend = deck[cardsUsed];
-		toSend.visible = isVisible;
-		cardsUsed++;
+		card toSend = new card(deck[cardsUsed].suite, deck[cardsUsed].base_value, isVisble);
+		setCardsUsed(getCardsUsed()+1);
+		System.out.println("Card coming your way!");
 		Hand.printCard(toSend);
 		return toSend;
 	}
 	
 	public int getCardsUsed(){
 		return cardsUsed;
+	}
+	
+	private void setCardsUsed(int cardsUsed){
+		this.cardsUsed = cardsUsed;
 	}
 }

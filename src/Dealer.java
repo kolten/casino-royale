@@ -217,9 +217,11 @@ public class Dealer {
 	public void dealingInitial(){
 		int i;
 		action = bjd_action.dealing;
+		System.out.println("Giving myself some cards.");
 		hand.addCard(deck.drawCard(false));
 		hand.addCard(deck.drawCard(true));
 		for(i = 0; i < getNumberAtTable(); i++){
+			System.out.println("Giving player " + i + "  some cards.");
 			players[i].cards[0] = deck.drawCard(true);
 			players[i].cards[1] = deck.drawCard(true);
 		}
