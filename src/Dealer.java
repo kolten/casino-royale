@@ -346,12 +346,12 @@ public class Dealer {
 			System.out.println("End of table reached.");
 			setTarget_uuid(0);
 		}
-		else if(getNumberAtTable() > 0 && getNumberAtTable() > getTargetSeat() && (!noReply)){
+		else if(getNumberAtTable() > 0 && getNumberAtTable() > getTargetSeat() && noReply){
 			System.out.println("Targeting next player for response.");
 			setTargetSeat(getTargetSeat()+1);
 			setTarget_uuid(players[getTargetSeat()-1].uuid);
 		}
-		else if(getNumberAtTable() > 0 && getNumberAtTable() == getTargetSeat() && (!noReply)){
+		else if(getNumberAtTable() > 0 && getNumberAtTable() == getTargetSeat() && noReply){
 			System.out.println("Dealing phase should be done... Probably.");
 			setTarget_uuid(0);
 		}

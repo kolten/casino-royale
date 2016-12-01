@@ -239,12 +239,6 @@ public class DealerMain {
 										noReply = false;
 									}
 									break;
-								case CR.bjp_action._none:
-									if(noReply){
-										System.out.println("Voluntary staying hand, good choice!");
-										noReply = false;
-									}
-									break;
 								default: System.out.println("Logic is so twisted, it has it's own stop?"); break;
 							}
 						}
@@ -253,11 +247,6 @@ public class DealerMain {
 						playerMessages.clear();
 					}
 					Timer.wait(buffer);
-				}
-				if(noReply)
-				{
-					System.out.println("You're unresponsiveness impresses me.");
-					noReply = false;
 				}
 				if(dealer.getTarget_uuid() == 0){
 					dealer.resetSeating();
