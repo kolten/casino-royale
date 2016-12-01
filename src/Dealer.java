@@ -339,7 +339,7 @@ public class Dealer {
 	public void nextSeat(boolean noReply){
 		if((getNumberAtTable() == 0) && (getActivePlayers() > getTargetSeat()) && (!noReply)){
 			System.out.println("I'm moving on from you.");
-			targetSeat++;
+			setTargetSeat(getTargetSeat()+1);
 			setTarget_uuid(players[targetSeat-1].uuid);
 		}
 		else if((getNumberAtTable() == 0) && (getActivePlayers() == getTargetSeat()) && (!noReply)){
@@ -348,6 +348,7 @@ public class Dealer {
 		}
 		else if(getNumberAtTable() > 0 && getNumberAtTable() > getTargetSeat() && (!noReply)){
 			System.out.println("Targeting next player for response.");
+			setTargetSeat(getTargetSeat()+1);
 			setTarget_uuid(players[getTargetSeat()-1].uuid);
 		}
 		else if(getNumberAtTable() > 0 && getNumberAtTable() == getTargetSeat() && (!noReply)){
