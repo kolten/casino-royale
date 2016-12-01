@@ -52,7 +52,7 @@ public class DealerMain {
 			if(playerMessages != null && !playerMessages.isEmpty()){
 				for(i = 0; i < playerMessages.size(); i++){
 					switch(playerMessages.get(i).action.value()){
-						case CR.bjp_action._joining: dealer.join(); break;
+						case CR.bjp_action._joining: dealer.join(playerMessages.get(i)); break;
 						default: System.out.println("Everything is broken."); break;
 					}
 				}
@@ -279,7 +279,7 @@ public class DealerMain {
 				if(playerMessages != null && !playerMessages.isEmpty()){
 					for(i = 0; i < playerMessages.size(); i++){
 						switch(playerMessages.get(i).action.value()){
-							case CR.bjp_action._joining: dealer.join(); break;
+							case CR.bjp_action._joining: dealer.join(playerMessages.get(i)); break;
 							default: System.out.println("Set the noose."); break;
 						}
 					}
@@ -304,7 +304,7 @@ public class DealerMain {
 				if(playerMessages != null && !playerMessages.isEmpty()){
 					for(i = 0; i < playerMessages.size(); i++){
 						switch(playerMessages.get(i).action.value()){
-							case CR.bjp_action._joining: dealer.join(); break;
+							case CR.bjp_action._joining: dealer.join(playerMessages.get(i)); break;
 							default: System.out.println("I see the light, and it's orange."); break;
 						}
 					}
@@ -329,7 +329,7 @@ public class DealerMain {
 				if(playerMessages != null && !playerMessages.isEmpty()){
 					for(i = 0; i < playerMessages.size(); i++){
 						switch(playerMessages.get(i).action.value()){
-							case CR.bjp_action._joining: dealer.join(); break;
+							case CR.bjp_action._joining: dealer.join(playerMessages.get(i)); break;
 							default: System.out.println("Cut my life into pieces."); break;
 						}
 					}
