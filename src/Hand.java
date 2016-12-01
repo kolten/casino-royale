@@ -6,18 +6,14 @@ public class Hand {
 	private int totalHandValue;	//Total hand value
 	private int hasAce;		//Number of aces in hand that have a value of 11.
 	
-	/*public static final card[] EmptyHand = {new card('\0', '\0', true), new card('\0', '\0', true), new card('\0', '\0', true), 
-		new card('\0', '\0', true), new card('\0', '\0', true), new card('\0', '\0', true), 
-		new card('\0', '\0', true), new card('\0', '\0', true), new card('\0', '\0', true), 
-		new card('\0', '\0', true), new card('\0', '\0', true), new card('\0', '\0', true), 
-		new card('\0', '\0', true), new card('\0', '\0', true), new card('\0', '\0', true), 
-		new card('\0', '\0', true), new card('\0', '\0', true), new card('\0', '\0', true), 
-		new card('\0', '\0', true), new card('\0', '\0', true), new card('\0', '\0', true)};
-	 */
+	public static final card NON_CARD = new card('\0', '\0', true);
+	public static final card[] EMPTY_HAND = {NON_CARD, NON_CARD, NON_CARD, NON_CARD, NON_CARD, NON_CARD, NON_CARD, NON_CARD, NON_CARD,
+		NON_CARD, NON_CARD, NON_CARD, NON_CARD, NON_CARD, NON_CARD, NON_CARD, NON_CARD, NON_CARD, NON_CARD, NON_CARD, NON_CARD,};
+	
 	/** Constructor for hand that sets all starter values to 0. **/
 	public Hand()
 	{
-		cards = new card[21];
+		//cards = new card[21];
 		emptyHand();			//Initializes and sets variables to 0.
 	}
 
@@ -27,11 +23,11 @@ public class Hand {
 		totalHandValue = 0;
 		hasAce = 0;
 		cardsInHand = 0;
-		for(int i = 0; i < 21; i++)
+		/*for(int i = 0; i < 21; i++)
 		{
 			cards[i] = new card('\0', '\0', true);
-		}
-		//cards = Hand.EmptyHand;
+		}*/
+		cards = Hand.EMPTY_HAND;
 	}
 	
 	/** Adds card to hand if space is available and is a valid card
@@ -119,8 +115,6 @@ public class Hand {
 		}
 		return totalHandValue;
 	}
-	
-	
 
 	/**=================== Static methods ==============**/
 	

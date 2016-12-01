@@ -3,7 +3,6 @@ import java.util.ArrayList;
 
 public class DealerMain {
 
-
 	public static void main(String[] args) {
 		DealerMain main = new DealerMain();
 		if(args != null){
@@ -14,22 +13,26 @@ public class DealerMain {
 		}
 	}
 	
-	public void run(String partition, String pubTopic, String subtopic)
+	public void run(String partition, String pubTopic, String subTopic)
 	{	
 		Dealer dealer;
 		DealerSub sub;
 		DealerPub pub;
 		Timer timer;
 
+		int buffer = 200;
+		//int pubBuffer = 5000;		Hardcoded publish time buffer?
+		
+		/** Condition counters. **/
 		int gameCount = 0;
 		int kcount = 0;			//Kick counter for unresponsive players
 		int jcount = 0;			//Join counter if all wagered and less than 6 players
-		int buffer = 200;
 
 		boolean noReply = true;
+		boolean stillDealing = false;
 		
 		dealer = new Dealer();
-		sub = new DealerSub(partition, subtopic); // Sub needs to have the same topic name as the dealer pub
+		sub = new DealerSub(partition, subTopic); // Sub needs to have the same topic name as the dealer pub
 		pub = new DealerPub(partition, pubTopic); // Vice versa
 		timer = new Timer();
 		ArrayList<bjPlayer> playerMessages = new ArrayList<bjPlayer>();
@@ -54,10 +57,10 @@ public class DealerMain {
 					}
 				}
 			}
-			Timer.wait(buffer);
 			if(playerMessages != null){
 				playerMessages.clear();
 			}
+			Timer.wait(buffer);
 		}
 		 * */
 
@@ -84,10 +87,10 @@ public class DealerMain {
 								}
 							}
 						}
-						Timer.wait(buffer); 
 						if(playerMessages != null){
 							playerMessages.clear();
 						}
+						Timer.wait(buffer); 
 					}
 					dealer.waiting();
 				}	//Breaks from loop if any players have joined.
@@ -126,10 +129,10 @@ public class DealerMain {
 							}
 						}
 					}
-					Timer.wait(buffer);
 					if(playerMessages != null){
 						playerMessages.clear();
 					}
+					Timer.wait(buffer);
 				}
 				
 				if(noReply && dealer.stillWagering()){
@@ -139,7 +142,7 @@ public class DealerMain {
 				if(kcount >= 2 && dealer.stillWagering()){
 					System.out.println("Booom, get out the way.");
 					dealer.kickPlayer(dealer.getTarget_uuid());
-					noReply = false;
+					//noReply = false;
 					kcount = 0;
 				}
 				if(!dealer.stillWagering() && dealer.getActivePlayers() < MAX_PLAYERS.value){
@@ -180,10 +183,10 @@ public class DealerMain {
 							}
 						}
 					}
-					Timer.wait(buffer);
 					if(playerMessages != null){
 						playerMessages.clear();
 					}
+					Timer.wait(buffer);
 				}
 			}
 			
@@ -206,13 +209,138 @@ public class DealerMain {
 						}
 					}
 				}
-				Timer.wait(buffer);
 				if(playerMessages != null){
 					playerMessages.clear();
 				}
+				Timer.wait(buffer);
 			}
 			
-			noReply = true;
+			noReply = false;
+			while(stillDealing){
+				dealer.nextSeat(noReply);
+				noReply = true;
+				
+				pub.write(dealer.getMsg());
+				System.out.println("Listen here " + dealer.getTarget_uuid() + ", I need an answer.");
+				timer.start();
+				
+				while(timer.getTimeMs() < 4400){	//Reading for dealing with your problems.
+					playerMessages = sub.read(dealer.getUuid(), dealer.getActivePlayers(), dealer.getTarget_uuid());
+					
+					if(playerMessages != null && !playerMessages.isEmpty()){
+						System.out.println("Let's hope that player " + dealer.getTarget_uuid() + " had replied!");
+						for(i = 0; i < playerMessages.size(); i++){
+							switch(playerMessages.get(i).action.value()){
+								case CR.bjp_action._joining: dealer.join(playerMessages.get(i)); break;
+								case CR.bjp_action._requesting_a_card:
+									if(noReply){
+										System.out.println("I'll gladly give you a card.");
+										dealer.giving_Card(playerMessages.get(i).uuid);
+										noReply = false;
+									}
+									break;
+								case CR.bjp_action._none:
+									if(noReply){
+										System.out.println("Voluntary staying hand, good choice!");
+										noReply = false;
+									}
+									break;
+								default: System.out.println("Logic is so twisted, it has it's own stop?"); break;
+							}
+						}
+					}
+					if(playerMessages != null){
+						playerMessages.clear();
+					}
+					Timer.wait(buffer);
+				}
+				if(noReply)
+				{
+					System.out.println("You're unresponsiveness impresses me.");
+					noReply = false;
+				}
+				if(dealer.getTarget_uuid() == 0){
+					dealer.resetSeating();
+					stillDealing = false;
+				}
+			}	//Breaks if all have wagered with full table or join counter has reached 2.
+
+			dealer.dealSelf();
+			
+			pub.write(dealer.getMsg());
+			
+			System.out.println("My hand might be smoking!");
+			
+			timer.start();
+			
+			while(timer.getTimeMs() < 4400){	//Read for joining
+				playerMessages = sub.read(dealer.getUuid());
+				System.out.println("The fact I have to do this speaks volumes of your abilites to join.");
+				if(playerMessages != null && !playerMessages.isEmpty()){
+					for(i = 0; i < playerMessages.size(); i++){
+						switch(playerMessages.get(i).action.value()){
+							case CR.bjp_action._joining: dealer.join(); break;
+							default: System.out.println("Set the noose."); break;
+						}
+					}
+				}
+				if(playerMessages != null){
+					playerMessages.clear();
+				}
+				Timer.wait(buffer);
+			}
+			
+			dealer.collecting();
+			
+			pub.write(dealer.getMsg());
+			
+			System.out.println("Congratulations, time to supeona some people!");
+			
+			timer.start();
+			
+			while(timer.getTimeMs() < 4400){	//Read for joining
+				playerMessages = sub.read(dealer.getUuid());
+				System.out.println("Yep, people are still joining this late in the game.");
+				if(playerMessages != null && !playerMessages.isEmpty()){
+					for(i = 0; i < playerMessages.size(); i++){
+						switch(playerMessages.get(i).action.value()){
+							case CR.bjp_action._joining: dealer.join(); break;
+							default: System.out.println("I see the light, and it's orange."); break;
+						}
+					}
+				}
+				if(playerMessages != null){
+					playerMessages.clear();
+				}
+				Timer.wait(buffer);
+			}
+			
+			dealer.paying();
+			
+			pub.write(dealer.getMsg());
+			
+			System.out.println("Paying people to cover my hide.");
+			
+			timer.start();
+			
+			while(timer.getTimeMs() < 4400){	//Read for joining
+				playerMessages = sub.read(dealer.getUuid());
+				System.out.println("Reading joining messages has now become my only job.");
+				if(playerMessages != null && !playerMessages.isEmpty()){
+					for(i = 0; i < playerMessages.size(); i++){
+						switch(playerMessages.get(i).action.value()){
+							case CR.bjp_action._joining: dealer.join(); break;
+							default: System.out.println("Cut my life into pieces."); break;
+						}
+					}
+				}
+				if(playerMessages != null){
+					playerMessages.clear();
+				}
+				Timer.wait(buffer);
+			}
+			
+			dealer.endGame();
 			
 			System.out.println("I'm logic's end.");
 			gameCount++;

@@ -55,6 +55,7 @@ public class Shoe {
 		shuffle();
 	}
 
+	/** Shuffles deck, but only really badly.**/
 	public void shuffle(){
 		int i;
 		for (i = size-1; i > 0; i-- ) {
