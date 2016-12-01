@@ -131,10 +131,12 @@ public class PlayerSub
 					{
 						if(obj.players[i].cards[j] != null)
 						{
-							cardigon[j] = new card(obj.players[i].cards[j].suite, obj.players[i].cards[j].base_value, obj.players[i].cards[j].visible);
+							card temp = obj.players[i].cards[j];
+							cardigon[j] = new card(temp.suite, temp.base_value, temp.visible);
 						}
 					}
 					team[i] = new player_status(obj.players[i].uuid, obj.players[i].wager, obj.players[i].payout, cardigon);
+					cardigon = new card[21];
 				}
 			}
 			cardigon = null;
