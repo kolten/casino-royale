@@ -115,7 +115,10 @@ public class DealerPub
 			for(j = 0; j < 21; j++)
 			{
 				if(Hand.isValidCard(obj.cards[j]))
+				{
 					Hand.printCard(obj.cards[j]);
+					System.out.println("Cards index: " + j);
+				}
 			}
 			System.out.println("     target id : " + obj.target_uuid); 
 		}
