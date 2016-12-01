@@ -10,6 +10,7 @@ import CR.bjPlayer;
 import CR.bjp_action;
 
 import CR.MAX_PLAYERS;
+import CR.card;
 
 public class Dealer {
 
