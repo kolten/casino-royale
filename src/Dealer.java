@@ -246,7 +246,7 @@ public class Dealer {
 		
 		hand.flipCard();
 		card dealer_hand[] = hand.getHand();
-		System.out.println("I reveal my trap card!"");
+		System.out.println("I reveal my trap card!");
 		for(i = 0; i < hand.getNumberOfCards(); i++){
 			Hand.printCard(dealer_hand[i]);
 		}
