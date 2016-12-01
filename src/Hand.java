@@ -38,35 +38,32 @@ public class Hand {
 		if(isValidCard(toSet) && cardsInHand < 21)
 		{
 			cards[cardsInHand] = new card(toSet.suite, toSet.base_value, toSet.visible);
-			if(toSet.visible)
+			switch(cards[cardsInHand].base_value)
 			{
-				switch(cards[cardsInHand].base_value)
-				{
-					case '2': totalHandValue += 2; break;
-					case '3': totalHandValue += 3; break;
-					case '4': totalHandValue += 4; break;
-					case '5': totalHandValue += 5; break;
-					case '6': totalHandValue += 6; break;
-					case '7': totalHandValue += 7; break;
-					case '8': totalHandValue += 8; break;
-					case '9': totalHandValue += 9; break;
-					case 'T': totalHandValue += 10; break;
-					case 'J': totalHandValue += 10; break;
-					case 'Q': totalHandValue += 10; break;
-					case 'K': totalHandValue += 10; break;
-					case 'A':
-						if(totalHandValue <= 10)
-						{
-							totalHandValue += 11;
-							hasAce++;
-						}
-						else if(totalHandValue > 10)
-						{
-							totalHandValue += 1;
-						}
-						break;
-					default: System.out.println("Major error, please fix."); break;
-				}
+				case '2': totalHandValue += 2; break;
+				case '3': totalHandValue += 3; break;
+				case '4': totalHandValue += 4; break;
+				case '5': totalHandValue += 5; break;
+				case '6': totalHandValue += 6; break;
+				case '7': totalHandValue += 7; break;
+				case '8': totalHandValue += 8; break;
+				case '9': totalHandValue += 9; break;
+				case 'T': totalHandValue += 10; break;
+				case 'J': totalHandValue += 10; break;
+				case 'Q': totalHandValue += 10; break;
+				case 'K': totalHandValue += 10; break;
+				case 'A':
+					if(totalHandValue <= 10)
+					{
+						totalHandValue += 11;
+						hasAce++;
+					}
+					else if(totalHandValue > 10)
+					{
+						totalHandValue += 1;
+					}
+					break;
+				default: System.out.println("Major error, please fix."); break;
 			}
 			cardsInHand++;
 		}
