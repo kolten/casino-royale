@@ -243,7 +243,7 @@ public class Dealer {
 		int i, j;
 		for(i = 0; i < getNumberAtTable(); i++){
 			if(players[i].uuid == uuid){
-				for(j = 3; j < 21; j++){
+				for(j = 2; j < 21; j++){
 					if(!Hand.isValidCard(players[i].cards[j])){
 						card temp = deck.drawCard(true);
 						players[i].cards[j] = new card(temp.suite, temp.base_value, temp.visible);
