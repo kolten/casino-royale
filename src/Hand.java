@@ -98,7 +98,7 @@ public class Hand {
 	public card[] getHand()
 	{
 		int i;
-		card temp[] = new cards[21];
+		card temp[] = new card[21];
 		for(i = 0; i < 21; i++){
 			temp[i] = new card(cards[i].suite, cards[i].base_value, cards[i].visible);
 		}
