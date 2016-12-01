@@ -100,7 +100,7 @@ public class Hand {
 		int i;
 		card temp[] = new cards[21];
 		for(i = 0; i < 21; i++){
-			temp[i] = new card(cards[i].suite, cards[i].base_value, cards[i].visible)
+			temp[i] = new card(cards[i].suite, cards[i].base_value, cards[i].visible);
 		}
 		return temp;
 	}
