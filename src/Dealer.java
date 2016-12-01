@@ -269,7 +269,7 @@ public class Dealer {
 				player_hand_value = Hand.calculateHandValue(players[i].cards);
 					//Shouldn't calculate loss for players that bust, but for testing later.
 				if(player_hand_value > 21 || player_hand_value < hand.getHandValue()){
-						players[i].payout = (float)(wager);
+						players[i].payout = (float)(players[i].wager);
 				}
 			}
 		}
@@ -286,7 +286,7 @@ public class Dealer {
 		for(i = 0; i < getNumberAtTable(); i++){
 			player_hand_value = Hand.calculateHandValue(players[i].cards);
 			if(hand.getHandValue() > 21 || player_hand_value > hand.getHandValue() && player_hand_value <= 21){
-				players[i].payout = (float)(wager);
+				players[i].payout = (float)(players[i].wager);
 				if(Hand.blackJack(players[i].cards)){
 					players[i].payout = 1.5f * players[i].payout;
 				}
@@ -301,7 +301,7 @@ public class Dealer {
 		for(i = 0;  i < getNumberAtTable(); i++){
 			players[i].wager = 0;
 			players[i].payout = 0f;
-			players[i].cards = Hand.EmptyHand;
+			players[i].cards = Hand.EMPTY_HAND;
 		}
 		setNumberAtTable(0);
 	}
