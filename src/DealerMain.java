@@ -315,6 +315,8 @@ public class DealerMain {
 				Timer.wait(buffer);
 			}
 			
+			dealer.resetPayouts();
+			
 			dealer.paying();
 			
 			pub.write(dealer.getMsg());

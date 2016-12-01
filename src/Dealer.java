@@ -221,12 +221,16 @@ public class Dealer {
 		int i;
 		action = bjd_action.dealing;
 		System.out.println("Giving myself some cards.");
-		hand.addCard(deck.drawCard(false));
-		hand.addCard(deck.drawCard(true));
+		card temp = deck.drawCard(false);
+		hand.addCard(new card(temp.suite, temp.base_value, temp.visible));
+		temp = deck.drawCard(true);
+		hand.addCard(new card(temp.suite, temp.base_value, temp.visible));
 		for(i = 0; i < getNumberAtTable(); i++){
 			System.out.println("Giving player " + i + "  some cards.");
-			players[i].cards[0] = deck.drawCard(true);
-			players[i].cards[1] = deck.drawCard(true);
+			 temp = deck.drawCard(true);
+			players[i].cards[0] = new card(temp.suite, temp.base_value, temp.visible);
+			 temp = deck.drawCard(true);
+			players[i].cards[1] = new card(temp.suite, temp.base_value, temp.visible);
 		}
 	}
 	
@@ -238,7 +242,8 @@ public class Dealer {
 			if(players[i].uuid == uuid){
 				for(j = 3; j < 21; j++){
 					if(!Hand.isValidCard(players[i].cards[j])){
-						players[i].cards[j] = deck.drawCard(true);
+						card temp = deck.drawCard(true);
+						players[i].cards[j] = new card(temp.suite, temp.base_value, temp.visible);
 						return;
 					}
 				}
@@ -256,10 +261,11 @@ public class Dealer {
 		for(i = 0; i < hand.getNumberOfCards(); i++){
 			Hand.printCard(dealer_hand[i]);
 		}
-
+		
 		System.out.printf("\n\nMy next trick revolves around %d\n", hand.getHandValue());
 		while(hand.getHandValue() < 17){
-			hand.addCard(deck.drawCard(true));
+			card temp = deck.drawCard(true);
+			hand.addCard(new card(temp.suite, temp.base_value, temp.visible));
 			System.out.println("Maybe I'll be better next time with " + hand.getHandValue());
 		}
 		
@@ -274,7 +280,7 @@ public class Dealer {
 			for(i = 0; i < getNumberAtTable(); i++){
 				player_hand_value = Hand.calculateHandValue(players[i].cards);
 					//Shouldn't calculate loss for players that bust, but for testing later.
-				if(player_hand_value > 21 || player_hand_value < hand.getHandValue()){
+				if(player_hand_value > 21 || player_hand_value <= hand.getHandValue()){
 						players[i].payout = (float)(players[i].wager);
 				}
 			}
@@ -291,12 +297,19 @@ public class Dealer {
 		action = bjd_action.paying;
 		for(i = 0; i < getNumberAtTable(); i++){
 			player_hand_value = Hand.calculateHandValue(players[i].cards);
-			if(hand.getHandValue() > 21 || player_hand_value > hand.getHandValue() && player_hand_value <= 21){
+			if(hand.getHandValue() > 21 || player_hand_value >= hand.getHandValue() && player_hand_value <= 21){
 				players[i].payout = (float)(players[i].wager);
 				if(Hand.blackJack(players[i].cards)){
 					players[i].payout = 1.5f * players[i].payout;
 				}
 			}
+		}
+	}
+	
+	public void resetPayouts(){
+		int i;
+		for(i = 0; i < getNumberAtTable(); i++){
+			players[i].payout = 0f;
 		}
 	}
 	
