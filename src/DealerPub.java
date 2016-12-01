@@ -106,8 +106,8 @@ public class DealerPub
 					case 0: System.out.println("shuffling"); break;
 					case 1: System.out.println("waiting"); break;
 					case 2: System.out.println("dealing"); break;
-					case 3: System.out.println("paying"); break;
-					case 4: System.out.println("collecting"); break;
+					case 3: System.out.println("collecting"); break;
+					case 4: System.out.println("paying"); break;
 					default: System.out.println("ERROR"); break;
 				}
 			}

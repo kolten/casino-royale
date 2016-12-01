@@ -29,7 +29,7 @@ public class DealerMain {
 		int jcount = 0;			//Join counter if all wagered and less than 6 players
 
 		boolean noReply = true;
-		boolean stillDealing = false;
+		boolean stillDealing = true;
 		
 		dealer = new Dealer();
 		sub = new DealerSub(partition, subTopic); // Sub needs to have the same topic name as the dealer pub
@@ -294,7 +294,7 @@ public class DealerMain {
 			
 			pub.write(dealer.getMsg());
 			
-			System.out.println("Congratulations, time to supeona some people!");
+			System.out.println("Congratulations, time to soup some people!");
 			
 			timer.start();
 			
