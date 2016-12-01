@@ -321,11 +321,13 @@ public class Dealer {
 		resetSeating();
 		int i;
 		for(i = 0;  i < getNumberAtTable(); i++){
-			Hand temp = new Hand();
+			Hand temp1 = new Hand();
 			players[i].wager = 0;
 			players[i].payout = 0f;
-			players[i].cards = temp.getHand();
+			players[i].cards = temp1.getHand();
 		}
+		hand.emptyHand();
+		
 		setNumberAtTable(0);
 		waiting();
 	}
