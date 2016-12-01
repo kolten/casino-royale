@@ -74,7 +74,7 @@ public class PlayerMain{
 			while(wagering){
 				temp = null;
 				temp = sub.read(player.getDealerID());
-				System.out.println("I need a dealer in my life.");
+				//System.out.println("I need a dealer in my life.");
 				if(temp != null && temp.target_uuid == player.getUuid() && temp.action.value() == bjd_action._waiting){
 					player.placeWager(temp);
 					pub.write(player.getMsg());
