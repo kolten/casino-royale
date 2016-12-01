@@ -335,6 +335,8 @@ public class DealerMain {
 			
 			System.out.println("I'm logic's end.");
 			gameCount++;
+			noReply = false;
+			stillDealing = true;
 		}
 		System.out.println("I'm an end, I am legion.");
 		
