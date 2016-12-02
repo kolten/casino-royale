@@ -68,6 +68,7 @@ public class PlayerSub
 				if(bjdSeq.value[i].uuid != 0 && bjdSeq.value[i].seqno != 0)
 				{
 					msg = copy(bjdSeq.value[i]);
+					printMsg(msg);
 					i = bjdSeq.value.length;
 				}
 			}

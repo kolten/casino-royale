@@ -238,7 +238,7 @@ public class DealerMain {
 		while(timer.getTimeMs() < pubBuffer){	//Read for joining
 			playerMessages = sub.read(dealer.getUuid());
 			if(playerMessages != null && !playerMessages.isEmpty()){
-				System.out.println(playerMessages.size() + " messages received at " + timer.getTimeMs() + " after publishing.");
+				System.out.println(playerMessages.size() + " messages received at " + timer.getTimeMs() + " ms after publishing.");
 				for(j = 0; j < playerMessages.size(); j++){
 					System.out.println("~~~~~~~~|Message " + j + "|~~~~~~~~");
 					switch(playerMessages.get(j).action.value()){

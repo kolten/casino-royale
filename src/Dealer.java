@@ -188,8 +188,9 @@ public class Dealer {
 	}
 
 	/** Kicks players with matching uuid from table. 
-	 * @param  */
+	 * @param uuid of the player to kick */
 	public void kickPlayer(int uuid){
+		/**
 		int i;
 		for(i = 0; i < getActivePlayers(); i++){
 			if(players[i].uuid == uuid){
@@ -197,7 +198,7 @@ public class Dealer {
 				setActivePlayers(getActivePlayers() - 1);
 				players[i] = new player_status(0, 0, 0f, temp.getHand());
 			}
-		}
+		}**/
 	}
 
 	/** Finalizes players at table, and resets target_uuid and target_seat
