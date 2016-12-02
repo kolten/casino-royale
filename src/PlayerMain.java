@@ -27,7 +27,7 @@ public class PlayerMain{
 		timer = new Timer();
 
 		final int buffer = 500;
-		final int bufferLong = 5000;
+		final int bufferLong = 6000;
 
 		boolean notSeated = true;
 		boolean wagering = true;

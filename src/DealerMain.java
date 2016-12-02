@@ -21,8 +21,8 @@ public class DealerMain {
 
 	public void run(String partition, String pubTopic, String subTopic)
 	{
-		final int buffer = 500;			//Hardcoded read buffer.
-		final int pubBuffer = 5000;	//Hardcoded publish time buffer.
+		final int buffer = 100;			//Hardcoded read buffer.
+		final int pubBuffer = 4500;	//Hardcoded publish time buffer.
 		
 		/** Condition counters. **/
 		int gameCount = 0;				//Number of games played.
