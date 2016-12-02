@@ -196,7 +196,7 @@ public class Player {
 			wager = 1;
 			action = bjp_action.wagering;
 		} else if(currentCredits > 5) {
-			wager = 1;
+			wager = (int)(4 * Math.random()) + 1; // wager random value between 1 and 5
 			action = bjp_action.wagering;
 		}
 	}

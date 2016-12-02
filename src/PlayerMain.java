@@ -28,6 +28,9 @@ public class PlayerMain{
 		pub = new PlayerPub(partition, pubTopic); // Vice versa
 		timer = new Timer();
 
+		final int buffer = 500;
+		final int bufferLong = 5000;
+
 		boolean notSeated = true;
 		boolean wagering = true;
 		boolean playingInitial = true;
@@ -51,7 +54,7 @@ public class PlayerMain{
 						pub.write(player.getMsg());
 						//notSeated = false;
 						//timer.start();   ??? maybe ???
-						Timer.wait(5000); // Wait 5 seconds
+						timer.wait(bufferLong); // Wait 5 seconds
 						temp = sub.read();
 						if(temp != null){
 							int i = 0;
@@ -139,8 +142,8 @@ public class PlayerMain{
 			}
 
 			// Take the L 
+			System.out.println("Looking for collecting message");
 			while ( losing ){
-				System.out.println("Looking for collecting message");
 				temp = sub.read(player.getDealerID());
 				if((temp != null) && (temp.target_uuid == player.getUuid()) && (temp.action.value() == bjd_action._collecting)){
 					System.out.println("Dealer is collecting credits!");
@@ -156,12 +159,12 @@ public class PlayerMain{
 					player.setCredits(curCredits);
 					losing = false;
 				}
-				Timer.wait(500); 
+				timer.wait(buffer); 
 			}
 
 			// You're a winner, Harry.
+			System.out.println("Looking for paying message");
 			while(winning){
-				System.out.println("Looking for paying message");
 				temp = sub.read(player.getDealerID());
 				if((temp != null) && (temp.target_uuid == player.getUuid()) && (temp.action.value() == bjd_action._paying)){
 					System.out.println("Dealer is paying out credits!");
@@ -177,7 +180,7 @@ public class PlayerMain{
 					player.setCredits(curCredits);
 					winning = false;
 				}
-				Timer.wait(500); 
+				timer.wait(buffer); 
 			}
 
 			System.out.println("I am removing my cards from my hand.");
@@ -195,6 +198,7 @@ public class PlayerMain{
 			notSeated = false;
 		}
 		System.out.println("Exiting, leaving table");
+		System.out.println("We left the table with " + player.getCredits() + " credits.");
 
 		sub.close();
 		pub.close();

@@ -84,7 +84,8 @@ public class DealerMain {
 							for(i = 0; i < playerMessages.size() && i < MAX_PLAYERS.value; i++){
 								if(playerMessages.get(i).action.value() == CR.bjp_action._joining){
 									dealer.join(playerMessages.get(i));
-									System.out.println("Someone is joing! o_o");
+									// System.out.println("Someone is joing! o_o");
+									System.out.println("A player has joined.");
 								}
 							}
 						}
@@ -195,13 +196,15 @@ public class DealerMain {
 			dealer.dealingInitial();
 			pub.write(dealer.getMsg());
 			
-			System.out.println("First time dealing, be gentle.");
+			// System.out.println("First time dealing, be gentle.");
+			System.out.println("Beginning first dealing step");
 			
 			timer.start();
 			
+			// System.out.println("Reading for posterity's sake. I don't care what you send.");
+			System.out.println("Looking for replies in case of new player join.");
 			while(timer.getTimeMs() < bufferLoop){	//Read for joining, etc.
 				playerMessages = sub.read(dealer.getUuid());
-				System.out.println("Reading for posterity's sake. I don't care what you send.");
 				if(playerMessages != null && !playerMessages.isEmpty()){
 					for(i = 0; i < playerMessages.size(); i++){
 						switch(playerMessages.get(i).action.value()){
@@ -222,7 +225,11 @@ public class DealerMain {
 				noReply = true;
 				
 				pub.write(dealer.getMsg());
-				System.out.println("Listen here " + dealer.getTarget_uuid() + ", I need an answer.");
+				// System.out.println("Listen here " + dealer.getTarget_uuid() + ", I need an answer.");
+				if(dealer.getTarget_uuid() != 0)
+				{
+					System.out.println("Looking for reply from player uuid " + dealer.getTarget_uuid());
+				}
 				timer.start();
 				
 				while(timer.getTimeMs() < bufferLoop){	//Reading for dealing with your problems.
@@ -259,13 +266,13 @@ public class DealerMain {
 			
 			pub.write(dealer.getMsg());
 			
-			System.out.println("My hand might be smoking!");
+			System.out.println("Dealer has dealt his own hand.");
 			
 			timer.start();
-			
+			// System.out.println("The fact I have to do this speaks volumes of your abilites to join.");
+			System.out.println("Looking for replies in case of new player join.");
 			while(timer.getTimeMs() < bufferLoop){	//Read for joining
 				playerMessages = sub.read(dealer.getUuid());
-				System.out.println("The fact I have to do this speaks volumes of your abilites to join.");
 				if(playerMessages != null && !playerMessages.isEmpty()){
 					for(i = 0; i < playerMessages.size(); i++){
 						switch(playerMessages.get(i).action.value()){
@@ -279,27 +286,30 @@ public class DealerMain {
 				}
 				Timer.wait(buffer);
 			}
-			Timer.wait(500);
 			
 			dealer.resetPayouts();
 			
 			dealer.collecting();
 			dealer.resetSeating();
 			
+			// Note: Players wait for their collection to end even if they lose 0
 			for(i = 0; i < dealer.getActivePlayers(); i++)
 			{
 				dealer.nextSeat(true);
+				timer.wait(buffer);
 				pub.write(dealer.getMsg());
 			}
 
 			
-			System.out.println("Congratulations, time to soup some people!");
+			System.out.println("Dealer has finished collecting losses.");
+			// System.out.println("Congratulations, time to soup some people!");
 			
 			timer.start();
 			
+			// System.out.println("Yep, people are still joining this late in the game.");
+			System.out.println("Looking for replies in case of new player join.");
 			while(timer.getTimeMs() < bufferLoop){	//Read for joining
 				playerMessages = sub.read(dealer.getUuid());
-				System.out.println("Yep, people are still joining this late in the game.");
 				if(playerMessages != null && !playerMessages.isEmpty()){
 					for(i = 0; i < playerMessages.size(); i++){
 						switch(playerMessages.get(i).action.value()){
@@ -319,19 +329,23 @@ public class DealerMain {
 			dealer.paying();
 			dealer.resetSeating();
 			
+			// Note: Players wait for their paying to end even if they win 0
 			for(i = 0; i < dealer.getActivePlayers(); i++)
 			{
 				dealer.nextSeat(true);
+				timer.wait(buffer);
 				pub.write(dealer.getMsg());
 			}
 			
-			System.out.println("Paying people to cover my hide.");
+			// System.out.println("Paying people to cover my hide.");
+			System.out.println("Dealer has finished paying out wins.");
 			
 			timer.start();
 			
+			// System.out.println("Reading joining messages has now become my only job.");
+			System.out.println("Looking for replies in case of new player join.");
 			while(timer.getTimeMs() < bufferLoop){	//Read for joining
 				playerMessages = sub.read(dealer.getUuid());
-				System.out.println("Reading joining messages has now become my only job.");
 				if(playerMessages != null && !playerMessages.isEmpty()){
 					for(i = 0; i < playerMessages.size(); i++){
 						switch(playerMessages.get(i).action.value()){
@@ -357,6 +371,7 @@ public class DealerMain {
 		// System.out.println("I'm an end, I am legion.");
 		System.out.println("Exiting, Leaving table");
 		
+		System.out.println("We left the table with " + dealer.creditsInBank() + " credits.");
 		sub.close();
 		pub.close();
 	}
