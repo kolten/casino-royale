@@ -11,8 +11,9 @@ import CR.MAX_PLAYERS;
 public class DealerPub
 {
 	public DDSEntityManager Pub;
-	public bjDealerTypeSupport bjdTS;
 	public DataWriter dwriter;
+	
+	public bjDealerTypeSupport bjdTS;
 	public bjDealerDataWriter bjdWriter;
 	
 	public DealerPub(String partitionName, String TopicName)

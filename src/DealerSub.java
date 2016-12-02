@@ -20,11 +20,12 @@ import java.util.ArrayList;
 public class DealerSub
 {
 	public DDSEntityManager Sub;
-	public bjPlayerTypeSupport bjpTS;
 	public DataReader dreader;
+	public SampleInfoSeqHolder infoSeq;
+	
+	public bjPlayerTypeSupport bjpTS;
 	public bjPlayerDataReader bjpReader;
 	public bjPlayerSeqHolder bjpSeq;
-	public SampleInfoSeqHolder infoSeq;
 	
 	public DealerSub(String partitionName, String TopicName)
 	{
@@ -186,6 +187,3 @@ public class DealerSub
 		}
 	}
 }
-
-
-

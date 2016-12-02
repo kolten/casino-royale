@@ -1,6 +1,4 @@
-
 import CR.*; // idl stuff
-
 
 public class PlayerMain{
 
@@ -205,5 +203,3 @@ public class PlayerMain{
 	}
 	
 }
-
-

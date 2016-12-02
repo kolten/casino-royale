@@ -60,7 +60,7 @@ public class PlayerSub
 	public bjDealer read()
 	{
 		bjDealer msg = null;
-		bjdReader.take(bjdSeq, infoSeq, LENGTH_UNLIMITED.value, NOT_READ_SAMPLE_STATE.value, ANY_VIEW_STATE.value, ANY_INSTANCE_STATE.value);
+		bjdReader.read(bjdSeq, infoSeq, LENGTH_UNLIMITED.value, NOT_READ_SAMPLE_STATE.value, ANY_VIEW_STATE.value, ANY_INSTANCE_STATE.value);
 		if(bjdSeq.value.length != 0)
 		{
 			for(int i = 0; i < bjdSeq.value.length; i++)
@@ -87,7 +87,7 @@ public class PlayerSub
 	public bjDealer read(int uuid)
 	{
 		bjDealer msg = null;
-		bjdReader.take(bjdSeq, infoSeq, LENGTH_UNLIMITED.value, NOT_READ_SAMPLE_STATE.value, ANY_VIEW_STATE.value, ANY_INSTANCE_STATE.value);
+		bjdReader.read(bjdSeq, infoSeq, LENGTH_UNLIMITED.value, NOT_READ_SAMPLE_STATE.value, ANY_VIEW_STATE.value, ANY_INSTANCE_STATE.value);
 		if(bjdSeq.value.length != 0)
 		{
 			for(int i = 0; i < bjdSeq.value.length; i++)
@@ -210,6 +210,3 @@ public class PlayerSub
 		}
 	}
 }
-
-
-

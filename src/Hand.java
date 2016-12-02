@@ -6,10 +6,6 @@ public class Hand {
 	private int totalHandValue;	//Total hand value
 	private int hasAce;		//Number of aces in hand that have a value of 11.
 	
-	public static final card NON_CARD = new card('\0', '\0', true);
-	public static final card[] EMPTY_HAND = {NON_CARD, NON_CARD, NON_CARD, NON_CARD, NON_CARD, NON_CARD, NON_CARD, NON_CARD, NON_CARD,
-		NON_CARD, NON_CARD, NON_CARD, NON_CARD, NON_CARD, NON_CARD, NON_CARD, NON_CARD, NON_CARD, NON_CARD, NON_CARD, NON_CARD,};
-	
 	/** Constructor for hand that sets all starter values to 0. **/
 	public Hand()
 	{

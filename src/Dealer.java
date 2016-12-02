@@ -23,8 +23,6 @@ public class Dealer {
 	private Hand hand;					//Holds dealer hand and card logic.
 	private int target_uuid;
 
-	//boolean isHuman; Will not do human interaction
-
 	private Shoe deck;		//Holds all 6 decks and logic for decks
 	private Bank bank;		//Holds credits and logic
 	private int atTable;	//Number of players in game
@@ -82,7 +80,7 @@ public class Dealer {
 	/** @return bjDealer message that contains all the significant values of DealerFactory**/
 	public bjDealer getMsg(){
 		bjDealer temp = new bjDealer(uuid, seqno, active_players, players, action, hand.getHand(), target_uuid);
-		nextSeqno();
+		seqno++;
 		return 	temp;
 	}
 
@@ -109,7 +107,7 @@ public class Dealer {
 				return true;
 			}
 		}
-		System.out.println("debug statement stillWagering()");
+		System.out.println("Not all players have made a wager.");
 		return false;
 	}
 	
@@ -117,7 +115,7 @@ public class Dealer {
 	 * @return  true if there are sufficient credits, else false **/
 	public boolean checkCredits(){
 		// Returns true if Dealer has sufficient credits, else false
-		if(creditsInBank() >= getActivePlayers() * 20){
+		if(bank.getCredits() >= getActivePlayers() * 20){
 			return true;
 		}
 		return false;
@@ -127,7 +125,7 @@ public class Dealer {
 	 * @param value within the bjd_action
 	 * @return true if action.value is same as the given value, else false. **/
 	public boolean sameAction(bjd_action action){
-		if(this.action.value() == action.value()){
+		if(getActionValue() == action.value()){
 			return true;
 		}
 		return false;
@@ -137,8 +135,15 @@ public class Dealer {
 	
 	/** Changes state to shuffling, and shuffles deck. **/
 	public void shuffle(){
-		action = bjd_action.shuffling;
-		deck.shuffle(); // Shuffle deck function in Shoe class
+		if(deck.getCardsUsed() > 104){
+			action = bjd_action.shuffling;
+			deck.shuffle(); // Shuffle deck function in Shoe class
+		}
+	}
+
+	/** Sets current action to waiting. */
+	public void waiting(){
+		action = bjd_action.waiting;
 	}
 
 	/** Adds player to the table, if player is not already at the table.
@@ -166,15 +171,9 @@ public class Dealer {
 		}
 	}
 
-	/** Sets current action to waiting. */
-	public void waiting(){
-		action = bjd_action.waiting;
-	}
-
 	/** Iterates through the current players at a table and
 	 * sets the current players state to wagering.
-	 * @param  msg
-	 * @return none */
+	 * @param bjPlayer message with nonzero wager */
 	public void setWagertoPlayer(bjPlayer msg){
 		if(msg.action.value() == bjp_action._wagering){
 			int i;
@@ -191,7 +190,6 @@ public class Dealer {
 	/** Kicks players with matching uuid from table. 
 	 * @param  */
 	public void kickPlayer(int uuid){
-		/*//Not doing this yet. But eventaully.
 		int i;
 		for(i = 0; i < getActivePlayers(); i++){
 			if(players[i].uuid == uuid){
@@ -199,8 +197,7 @@ public class Dealer {
 				setActivePlayers(getActivePlayers() - 1);
 				players[i] = new player_status(0, 0, 0f, temp.getHand());
 			}
-		}*/
-		
+		}
 	}
 
 	/** Finalizes players at table, and resets target_uuid and target_seat
@@ -216,6 +213,10 @@ public class Dealer {
 		return false;
 	}
 
+	public void restockCredits(){
+		bank.setCredits(500f);
+	}
+	
 	/**	Sets action to dealing, and gives cards to all players in game.**/
 	public void dealingInitial(){
 		int i;
@@ -238,20 +239,25 @@ public class Dealer {
 	}
 	
 	/** Gives a card to the player with the uuid given
-	 * @param uuid of the intended player **/
-	public void giving_Card(int uuid){
+	 * @param uuid of the intended player
+	 * @returns true if a card was given, false if a card **/
+	public boolean giving_Card(int uuid){
 		int i, j;
 		for(i = 0; i < getNumberAtTable(); i++){
 			if(players[i].uuid == uuid){
-				for(j = 2; j < 21; j++){
-					if(!Hand.isValidCard(players[i].cards[j])){
-						card temp = deck.drawCard(true);
-						players[i].cards[j] = new card(temp.suite, temp.base_value, temp.visible);
-						return;
+				if(Hand.calculateHandValue(players[i].cards) <= 21){
+					for(j = 2; j < 21; j++){
+						if(!Hand.isValidCard(players[i].cards[j])){
+							card temp = deck.drawCard(true);
+							players[i].cards[j] = new card(temp.suite, temp.base_value, temp.visible);
+							return true;
+						}
 					}
 				}
+				else return false;
 			}
 		}
+		return false;
 	}
 
 	/** Finishes logic of dealing own hand. **/
@@ -285,6 +291,7 @@ public class Dealer {
 					//Shouldn't calculate loss for players that bust, but for testing later.
 				if(player_hand_value > 21 || player_hand_value <= hand.getHandValue()){
 						players[i].payout = (float)(players[i].wager);
+						bank.addCredits(players[i].payout);
 				}
 			}
 		}
@@ -305,6 +312,7 @@ public class Dealer {
 				if(Hand.blackJack(players[i].cards)){
 					players[i].payout = 1.5f * players[i].payout;
 				}
+				bank.subtractCredits(players[i].payout);
 			}
 		}
 	}
@@ -337,74 +345,42 @@ public class Dealer {
 		setTargetSeat(0);
 	}
 
-	/** Targets the player at the next seat, should that player exist and a reply was given.
+	/** Targets the player at the next seat, dependent on sequence and whether a reply was given.
+	 * In the wager phase and a reply was given, the next player will be targeted.
+	 * In the dealing phase and none/no reply, the next player will be targetd.
+	 * When the last player is targeted, the target_uuid will be set to 0.
 	 * @param boolean representing if a reply was received **/
 	public void nextSeat(boolean noReply){
-		if((getNumberAtTable() == 0) && (getActivePlayers() > getTargetSeat()) && (!noReply)){
-			System.out.println("I'm moving on from you.");
-			setTargetSeat(getTargetSeat()+1);
-			setTarget_uuid(players[targetSeat-1].uuid);
+		if(getNumberAtTable() == 0 && !noReply){
+			if(getActivePlayers() > getTargetSeat()){
+				System.out.println("I'm moving on from you.");
+				setTargetSeat(getTargetSeat()+1);
+				setTarget_uuid(players[targetSeat-1].uuid);
+			}
+			else if(getActivePlayers() == getTargetSeat()){
+				System.out.println("End of table reached.");
+				setTarget_uuid(0);
+			}
 		}
-		else if((getNumberAtTable() == 0) && (getActivePlayers() == getTargetSeat()) && (!noReply)){
-			System.out.println("End of table reached.");
-			setTarget_uuid(0);
+		else if(getNumberAtTable() > 0 && noReply){
+			if(getNumberAtTable() > getTargetSeat()){
+				System.out.println("Targeting next player for response.");
+				setTargetSeat(getTargetSeat()+1);
+				setTarget_uuid(players[getTargetSeat()-1].uuid);
+			}
+			else if(getNumberAtTable() == getTargetSeat()){
+				System.out.println("Dealing phase should be done... Probably.");
+				setTarget_uuid(0);
+			}
 		}
-		else if(getNumberAtTable() > 0 && getNumberAtTable() > getTargetSeat() && noReply){
-			System.out.println("Targeting next player for response.");
-			setTargetSeat(getTargetSeat()+1);
-			setTarget_uuid(players[getTargetSeat()-1].uuid);
-		}
-		else if(getNumberAtTable() > 0 && getNumberAtTable() == getTargetSeat() && noReply){
-			System.out.println("Dealing phase should be done... Probably.");
-			setTarget_uuid(0);
-		}
+		
 	}
 
-	public void nextSeqno() {
-		seqno++;
-	}
-
-	/**=========== Deck Methods ========**/
-	
-	public int getCardsLeftInDeck(){
-		return Shoe.size - deck.getCardsUsed();
-	}
-	
-	/**=========== Bank Methods =========**/
-	
-	/**=========== Bank Methods ========**/
-	
-	/** @return the total credits in bank **/
-	public float creditsInBank() {
-		return bank.getCredits();
-	}
-
-	public void restockCredits(){
-		bank.setCredits(500f);
-	}
-	
-	/** @param bank the bank to set **/
-	public void addCredits(float credits) {
-		bank.addCredits(credits);
-	}
-	
-	public void subtractCredits(float credits)
-	{
-		bank.subtractCredits(credits);
-	}
-	
-	/**=============== Getters && Setters ==============**/
-	
 	/**============ Getters && Setters ===================**/
 
 	/** @return the uuid **/
 	public int getUuid() {
 		return uuid;
-	}
-
-	/** @return the seqno **/
-	public int getSeqno() {
-		return seqno;
 	}
 
 	/** @return the activePlayers **/

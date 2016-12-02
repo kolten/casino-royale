@@ -69,7 +69,7 @@ public class Shoe {
 	
 	public card drawCard(boolean isVisible){
 		card toSend = new card(deck[cardsUsed].suite, deck[cardsUsed].base_value, isVisible);
-		setCardsUsed(getCardsUsed()+1);
+		cardsUsed++;
 		System.out.println("Card coming your way!");
 		Hand.printCard(toSend);
 		return toSend;
@@ -77,9 +77,5 @@ public class Shoe {
 	
 	public int getCardsUsed(){
 		return cardsUsed;
-	}
-	
-	private void setCardsUsed(int cardsUsed){
-		this.cardsUsed = cardsUsed;
 	}
 }
