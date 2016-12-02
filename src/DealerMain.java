@@ -125,7 +125,7 @@ public class DealerMain {
 						joinPubSub(buffer, pubBuffer);
 						jcount++;
 					}
-					delaer.restockCredits();
+					dealer.restockCredits();
 				}
 			}	//Breaks if all have wagered with full table or join counter has reached 2.
 
