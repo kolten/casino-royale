@@ -6,12 +6,12 @@ public class UnitTestMain {
     public static void main(String[] args) {
 
         // test the UnitTestDealer class
-        Result result = JUnitCore.runClasses(UnitTestDealer.class);
+        Result dealerTest = JUnitCore.runClasses(UnitTestDealer.class);
             
-        for (Failure failure : result.getFailures()) {
+        for (Failure failure : dealerTest.getFailures()) {
             System.out.println(failure.toString());
         }
             
-        System.out.println(result.wasSuccessful());
+        System.out.println(dealerTest.wasSuccessful());
     }
 }

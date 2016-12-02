@@ -9,6 +9,7 @@ public class PlayerMain{
 	PlayerPub pub;
 	int seatCount;
 	Timer timer;
+	boolean exiting = false;
 
 	public static void main(String[] args) {
 		PlayerMain main = new PlayerMain();
@@ -27,7 +28,6 @@ public class PlayerMain{
 		pub = new PlayerPub(partition, pubTopic); // Vice versa
 		timer = new Timer();
 
-		boolean exiting = false;
 		boolean notSeated = true;
 		boolean wagering = true;
 		boolean playingInitial = true;
@@ -122,36 +122,48 @@ public class PlayerMain{
 
 			// Take the L 
 			while ( losing ){
+				System.out.println("Looking for collecting message");
 				temp = sub.read(player.getDealerID());
 				if((temp != null) && (temp.target_uuid == player.getUuid()) && (temp.action.value() == bjd_action._collecting)){
 					// TODO: set up bank or subtract from credits
 					// For now,
-					float curCredits = player.getCredits() - player.getWager();
+					// float curCredits = player.getCredits() - player.getWager();
+					// uses the payout from message rather than locally subtracting what we waged
+					float curCredits = player.getCredits() - temp.players[player.getSeatNumber()].payout;
 					player.setCredits(curCredits);
 					losing = false;
+					System.out.println("We lost!");
 				}
+				Timer.wait(500); 
 			}
 
 			// You're a winner, Harry.
 			while(winning){
+				System.out.println("Looking for paying message");
 				temp = sub.read(player.getDealerID());
-				if((temp != null) && (temp.target_uuid == player.getUuid()) && (temp.action.value()==bjd_action._paying)){
+				if((temp != null) && (temp.target_uuid == player.getUuid()) && (temp.action.value() == bjd_action._paying)){
 					// TODO: set up bank or add to credits
 					// For now,
-					float curCredits = player.getCredits() + player.getWager();
+					// float curCredits = player.getCredits() + player.getWager();
+					// uses the payout from message rather than locally adding what we waged
+					float curCredits = player.getCredits() + temp.players[player.getSeatNumber()].payout;
 					player.setCredits(curCredits);
-					playingInitial = false;
+					winning = false;
+					System.out.println("We won!");
 				}
+				Timer.wait(500); 
 			}
 			// TODO: check if there are no players sitting and exit?
-			exiting = false;
+			// exiting = true;
 			wagering = true;
 			playingInitial = true;
 			playing = true;
 			losing = true;
 			winning = true;
 			not_initial = false;
+			notSeated = false;
 		}
+		System.out.println("Exiting, leaving table");
 	}
 	
 }

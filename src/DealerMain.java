@@ -20,7 +20,7 @@ public class DealerMain {
 		DealerPub pub;
 		Timer timer;
 
-		int buffer = 200;
+		int buffer = 500;
 		//int pubBuffer = 5000;		Hardcoded publish time buffer?
 		
 		/** Condition counters. **/
@@ -278,10 +278,19 @@ public class DealerMain {
 				}
 				Timer.wait(buffer);
 			}
+			Timer.wait(500);
+			
+			dealer.resetPayouts();
 			
 			dealer.collecting();
+			dealer.resetSeating();
 			
-			pub.write(dealer.getMsg());
+			for(i = 0; i < dealer.getActivePlayers(); i++)
+			{
+				dealer.nextSeat(true);
+				pub.write(dealer.getMsg());
+			}
+
 			
 			System.out.println("Congratulations, time to soup some people!");
 			
@@ -307,8 +316,13 @@ public class DealerMain {
 			dealer.resetPayouts();
 			
 			dealer.paying();
+			dealer.resetSeating();
 			
-			pub.write(dealer.getMsg());
+			for(i = 0; i < dealer.getActivePlayers(); i++)
+			{
+				dealer.nextSeat(true);
+				pub.write(dealer.getMsg());
+			}
 			
 			System.out.println("Paying people to cover my hide.");
 			
