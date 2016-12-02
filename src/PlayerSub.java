@@ -114,6 +114,7 @@ public class PlayerSub
 		Sub.deleteSubscriber();
 		Sub.deleteTopic();
 		Sub.deleteParticipant();
+		System.out.println ("Subscriber connection closed.");
 	}
 
 	public static bjDealer copy(bjDealer obj)

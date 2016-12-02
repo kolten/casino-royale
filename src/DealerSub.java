@@ -150,6 +150,7 @@ public class DealerSub
 		Sub.deleteSubscriber();
 		Sub.deleteTopic();
 		Sub.deleteParticipant();
+		System.out.println ("Subscriber connection closed.");
 	}
 
 	public static bjPlayer copy(bjPlayer obj)

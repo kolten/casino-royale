@@ -201,4 +201,7 @@ public class Player {
 		}
 	}
 
+	public void endGame(){
+		hand.emptyHand();
+	}
 }

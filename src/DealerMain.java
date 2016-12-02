@@ -20,7 +20,8 @@ public class DealerMain {
 		DealerPub pub;
 		Timer timer;
 
-		int buffer = 500;
+		final int buffer = 500;
+		final int bufferLoop = 4400;
 		//int pubBuffer = 5000;		Hardcoded publish time buffer?
 		
 		/** Condition counters. **/
@@ -46,7 +47,7 @@ public class DealerMain {
 		
 		timer.start();
 		
-		while(timer.getTimeMs() < 4400){	//Read for joining, etc.
+		while(timer.getTimeMs() < bufferLoop){	//Read for joining, etc.
 			playerMessages = sub.read(dealer.getUuid(), dealer.getActivePlayers(), dealer.getTarget_uuid());
 			System.out.println("State: Reading, now");
 			if(playerMessages != null && !playerMessages.isEmpty()){
@@ -75,7 +76,7 @@ public class DealerMain {
 					pub.write(dealer.getMsg());
 					System.out.println("Lonely: Single and ready to mingle.");
 					timer.start();
-					while(timer.getTimeMs() < 4400){	//Read loop, with buffer
+					while(timer.getTimeMs() < bufferLoop){	//Read loop, with buffer
 						playerMessages = sub.read(dealer.getUuid());	//Read only joining messages
 						System.out.println("Searching for Players in your area.");
 						if(playerMessages != null && !playerMessages.isEmpty()){
@@ -102,7 +103,7 @@ public class DealerMain {
 				dealer.nextSeat(noReply);
 				noReply = true;
 				
-				while(timer.getTimeMs() < 4400){	//Read loop for wagering, exiting, or joining messages.
+				while(timer.getTimeMs() < bufferLoop){	//Read loop for wagering, exiting, or joining messages.
 					playerMessages = sub.read(dealer.getUuid(), dealer.getActivePlayers(), dealer.getTarget_uuid());
 					
 					if(playerMessages != null && !playerMessages.isEmpty()){
@@ -169,7 +170,7 @@ public class DealerMain {
 				
 				timer.start();
 				
-				while(timer.getTimeMs() < 4400){	//Read for joining, etc.
+				while(timer.getTimeMs() < bufferLoop){	//Read for joining, etc.
 					playerMessages = sub.read(dealer.getUuid());
 					System.out.println("I don't need your messages. >:(");
 					if(playerMessages != null && !playerMessages.isEmpty()){
@@ -198,7 +199,7 @@ public class DealerMain {
 			
 			timer.start();
 			
-			while(timer.getTimeMs() < 4400){	//Read for joining, etc.
+			while(timer.getTimeMs() < bufferLoop){	//Read for joining, etc.
 				playerMessages = sub.read(dealer.getUuid());
 				System.out.println("Reading for posterity's sake. I don't care what you send.");
 				if(playerMessages != null && !playerMessages.isEmpty()){
@@ -224,7 +225,7 @@ public class DealerMain {
 				System.out.println("Listen here " + dealer.getTarget_uuid() + ", I need an answer.");
 				timer.start();
 				
-				while(timer.getTimeMs() < 4400){	//Reading for dealing with your problems.
+				while(timer.getTimeMs() < bufferLoop){	//Reading for dealing with your problems.
 					playerMessages = sub.read(dealer.getUuid(), dealer.getActivePlayers(), dealer.getTarget_uuid());
 					
 					if(playerMessages != null && !playerMessages.isEmpty()){
@@ -262,7 +263,7 @@ public class DealerMain {
 			
 			timer.start();
 			
-			while(timer.getTimeMs() < 4400){	//Read for joining
+			while(timer.getTimeMs() < bufferLoop){	//Read for joining
 				playerMessages = sub.read(dealer.getUuid());
 				System.out.println("The fact I have to do this speaks volumes of your abilites to join.");
 				if(playerMessages != null && !playerMessages.isEmpty()){
@@ -296,7 +297,7 @@ public class DealerMain {
 			
 			timer.start();
 			
-			while(timer.getTimeMs() < 4400){	//Read for joining
+			while(timer.getTimeMs() < bufferLoop){	//Read for joining
 				playerMessages = sub.read(dealer.getUuid());
 				System.out.println("Yep, people are still joining this late in the game.");
 				if(playerMessages != null && !playerMessages.isEmpty()){
@@ -328,7 +329,7 @@ public class DealerMain {
 			
 			timer.start();
 			
-			while(timer.getTimeMs() < 4400){	//Read for joining
+			while(timer.getTimeMs() < bufferLoop){	//Read for joining
 				playerMessages = sub.read(dealer.getUuid());
 				System.out.println("Reading joining messages has now become my only job.");
 				if(playerMessages != null && !playerMessages.isEmpty()){
@@ -347,12 +348,14 @@ public class DealerMain {
 			
 			dealer.endGame();
 			
-			System.out.println("I'm logic's end.");
+			// System.out.println("I'm logic's end.");
+			System.out.println("The round has ended.");
 			gameCount++;
 			noReply = false;
 			stillDealing = true;
 		}
-		System.out.println("I'm an end, I am legion.");
+		// System.out.println("I'm an end, I am legion.");
+		System.out.println("Exiting, Leaving table");
 		
 		sub.close();
 		pub.close();

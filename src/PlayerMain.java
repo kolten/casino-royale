@@ -59,7 +59,8 @@ public class PlayerMain{
 								if(player.getUuid() == temp.players[i].uuid){
 										notSeated = false;
 										player.setSeatNumber(i);
-										System.out.println("I'm a real boy");
+										// System.out.println("I'm a real boy");
+										System.out.println("I have joined a game at seat " + player.getSeatNumber());
 								} 
 							}
 						}
@@ -69,7 +70,8 @@ public class PlayerMain{
 					// No dealer found
 				}
 			}
-			System.out.println("Oh boy, I'm going to wager again");
+			// System.out.println("Oh boy, I'm going to wager again");
+			System.out.println("I am starting the wagering sequence");
 			// Wagering
 			while(wagering){
 				temp = null;
@@ -81,10 +83,23 @@ public class PlayerMain{
 					wagering = false;
 					System.out.println("I'm suprised I made it this far.");
 				}
+				else if(temp != null && temp.seqno == 0) // this is a quick fix to go to the end of the loop.
+				{
+					System.out.println("The dealer has left the table.");
+					exiting = true;
+					wagering = false;
+				}
+				// TODO: Clean up this quick fix. This assumes dealers only exit during wagering
 			}
+			if(exiting)
+			{
+				continue;
+			}
+			// see above TODO about the exiting quick fix
+
 			System.out.println("I'm actually in game!");
 			
-			// Initial playing round?
+			// Initial playing round - 2 cards, no requests yet
 			while(playingInitial){
 				temp = null;
 				temp = sub.read(player.getDealerID());
@@ -97,6 +112,7 @@ public class PlayerMain{
 
 			// Let's play a game.
 
+			System.out.println("I am preparing to hit or stay");
 			while(playing){
 				temp = null;
 				temp = sub.read(player.getDealerID());
@@ -110,13 +126,15 @@ public class PlayerMain{
 					if(player.getCurrentHandValue() >= 17){
 							player.stay();
 							playing = false;
-
+							System.out.println("I am going to stop requesting (Stay).");
 						}
 
 						else if(player.getCurrentHandValue() <= 16){
-								player.requestCard();
+							player.requestCard();
+							System.out.println("I am going to request a card (Hit).");
 						}
 						pub.write(player.getMsg());
+						System.out.println("My hand has a value of " + player.getCurrentHandValue());
 				}
 			}
 
@@ -125,14 +143,18 @@ public class PlayerMain{
 				System.out.println("Looking for collecting message");
 				temp = sub.read(player.getDealerID());
 				if((temp != null) && (temp.target_uuid == player.getUuid()) && (temp.action.value() == bjd_action._collecting)){
+					System.out.println("Dealer is collecting credits!");
 					// TODO: set up bank or subtract from credits
 					// For now,
 					// float curCredits = player.getCredits() - player.getWager();
 					// uses the payout from message rather than locally subtracting what we waged
 					float curCredits = player.getCredits() - temp.players[player.getSeatNumber()].payout;
+					
+					if(curCredits < player.getCredits())
+						System.out.println("We lost! We now have " + curCredits + " credits");
+					
 					player.setCredits(curCredits);
 					losing = false;
-					System.out.println("We lost!");
 				}
 				Timer.wait(500); 
 			}
@@ -142,17 +164,26 @@ public class PlayerMain{
 				System.out.println("Looking for paying message");
 				temp = sub.read(player.getDealerID());
 				if((temp != null) && (temp.target_uuid == player.getUuid()) && (temp.action.value() == bjd_action._paying)){
+					System.out.println("Dealer is paying out credits!");
 					// TODO: set up bank or add to credits
 					// For now,
 					// float curCredits = player.getCredits() + player.getWager();
 					// uses the payout from message rather than locally adding what we waged
 					float curCredits = player.getCredits() + temp.players[player.getSeatNumber()].payout;
+					
+					if(curCredits > player.getCredits())
+						System.out.println("We won! We now have " + curCredits + " credits");
+					
 					player.setCredits(curCredits);
 					winning = false;
-					System.out.println("We won!");
 				}
 				Timer.wait(500); 
 			}
+
+			System.out.println("I am removing my cards from my hand.");
+			player.endGame();
+
+			System.out.println("The round has ended.");
 			// TODO: check if there are no players sitting and exit?
 			// exiting = true;
 			wagering = true;
@@ -164,6 +195,9 @@ public class PlayerMain{
 			notSeated = false;
 		}
 		System.out.println("Exiting, leaving table");
+
+		sub.close();
+		pub.close();
 	}
 	
 }
