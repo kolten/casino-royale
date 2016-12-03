@@ -26,6 +26,10 @@ public class PlayerSub
 	public bjDealerSeqHolder bjdSeq;
 	public SampleInfoSeqHolder infoSeq;
 	
+	/** Constructor for OpenSplice DDS entities and Subscriber for usage.
+	 * @param partitionName to use for the DDS Partition.
+	 * @param TopicName to use to publish information under.
+	 */
 	public PlayerSub(String partitionName, String TopicName)
 	{
 		Sub = new DDSEntityManager();
@@ -108,7 +112,7 @@ public class PlayerSub
 		bjdReader.return_loan(bjdSeq, infoSeq);
 		return msg;
 	}
-	
+	/** Deletes and closes DDS Writer, Publisher, Topic, and Partition. **/
 	public void close()
 	{
 		Sub.getSubscriber().delete_datareader(bjdReader);
@@ -118,6 +122,7 @@ public class PlayerSub
 		System.out.println ("Subscriber connection closed.");
 	}
 
+	/** Copies the object to prevent DDS from releasing topic data. **/
 	public static bjDealer copy(bjDealer obj)
 	{
 		if(obj != null)
@@ -156,7 +161,9 @@ public class PlayerSub
 		System.out.println("Bug Report");
 		return null;
 	}
-
+	
+	/** Prints all values of the bjDealer object, primarily for debugging purposes.
+	 * @param bjDealer object to print out. */
 	public static void printMsg(bjDealer obj)
 	{
 		if(obj != null)

@@ -153,7 +153,7 @@ public class DealerSub
 		Sub.deleteParticipant();
 		System.out.println ("Subscriber connection closed.");
 	}
-
+	
 	/** Copies the object to prevent DDS from releasing topic data. **/
 	public static bjPlayer copy(bjPlayer obj)
 	{
@@ -166,8 +166,8 @@ public class DealerSub
 		return null;
 	}
 
-	/** Prints all values of the bjDealer object, primarily for debugging purposes.
-	 * @param bjDealer object to print out. */
+	/** Prints all values of the bjPlayer object, primarily for debugging purposes.
+	 * @param bjPlayer object to print out. */
 	public static void printMsg(bjPlayer obj)
 	{
 		if(obj != null)
