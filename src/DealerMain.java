@@ -21,8 +21,8 @@ public class DealerMain {
 
 	public void run(String partition, String pubTopic, String subTopic)
 	{
-		final int buffer = 100;			//Hardcoded read buffer.
-		final int pubBuffer = 4500;	//Hardcoded publish time buffer.
+		final int buffer = 200;		//Hardcoded read buffer. // Make sure this matches DealerMain buffer
+		final int pubBuffer = 4400;	//Hardcoded publish time buffer.
 		
 		/** Condition counters. **/
 		int gameCount = 0;				//Number of games played.
@@ -41,7 +41,7 @@ public class DealerMain {
 
 		int i;
 
-		while(gameCount < 2){
+		while(gameCount < 1){
 			dealer.shuffle();
 			
 			while(dealer.stillWagering() || (dealer.isFullTable() && !dealer.stillWagering() && jcount < 2) || dealer.sameAction(bjd_action.shuffling)){
@@ -216,12 +216,10 @@ public class DealerMain {
 			stillDealing = true;
 			kcount = 0;
 			jcount = 0;
-			
-			System.out.println(timer.getTimeMs() + " ms after publishing.");
 		}
 		
 		System.out.println("Exiting, Leaving table");
-		
+		timer.wait(buffer);
 		sub.close();
 		pub.close();
 	}

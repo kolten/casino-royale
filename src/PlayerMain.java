@@ -26,8 +26,8 @@ public class PlayerMain{
 		pub = new PlayerPub(partition, pubTopic); // Vice versa
 		timer = new Timer();
 
-		final int buffer = 500;
-		final int bufferLong = 6000;
+		final int buffer = 200; 		// Make sure this matches DealerMain buffer
+		final int bufferLong = 4700; 	// Dealer's combined buffer time is ~4600 ms, don't go under that. Don't go over buffer+pubBuffer
 
 		boolean notSeated = true;
 		boolean wagering = true;
@@ -73,6 +73,8 @@ public class PlayerMain{
 			}
 			// System.out.println("Oh boy, I'm going to wager again");
 			System.out.println("I am starting the wagering sequence");
+
+			timer.start();
 			// Wagering
 			while(wagering){
 				temp = null;
@@ -84,7 +86,7 @@ public class PlayerMain{
 					wagering = false;
 					System.out.println("I'm suprised I made it this far.");
 				}
-				else if(temp != null && temp.seqno == 0) // this is a quick fix to go to the end of the loop.
+				else if(timer.getTimeMs() > bufferLong*2 || temp != null && temp.seqno == 0) // this is a quick fix to go to the end of the loop.
 				{
 					System.out.println("The dealer has left the table.");
 					exiting = true;
@@ -143,7 +145,7 @@ public class PlayerMain{
 			System.out.println("Looking for collecting message");
 			while ( losing ){
 				temp = sub.read(player.getDealerID());
-				if((temp != null) && (temp.target_uuid == player.getUuid()) && (temp.action.value() == bjd_action._collecting)){
+				if((temp != null) && (temp.action.value() == bjd_action._collecting)){
 					System.out.println("Dealer is collecting credits!");
 					// TODO: set up bank or subtract from credits
 					// For now,
@@ -157,14 +159,13 @@ public class PlayerMain{
 					player.setCredits(curCredits);
 					losing = false;
 				}
-				timer.wait(buffer); 
 			}
 
 			// You're a winner, Harry.
 			System.out.println("Looking for paying message");
 			while(winning){
 				temp = sub.read(player.getDealerID());
-				if((temp != null) && (temp.target_uuid == player.getUuid()) && (temp.action.value() == bjd_action._paying)){
+				if((temp != null) && (temp.action.value() == bjd_action._paying)){
 					System.out.println("Dealer is paying out credits!");
 					// TODO: set up bank or add to credits
 					// For now,
@@ -178,7 +179,6 @@ public class PlayerMain{
 					player.setCredits(curCredits);
 					winning = false;
 				}
-				timer.wait(buffer); 
 			}
 
 			System.out.println("I am removing my cards from my hand.");
