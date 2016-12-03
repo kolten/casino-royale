@@ -22,11 +22,14 @@ public class DealerSub
 	public DDSEntityManager Sub;
 	public DataReader dreader;
 	public SampleInfoSeqHolder infoSeq;
-	
+
 	public bjPlayerTypeSupport bjpTS;
 	public bjPlayerDataReader bjpReader;
 	public bjPlayerSeqHolder bjpSeq;
-	
+
+	/** Constructor for OpenSplice DDS entities and Subscriber for usage.
+	 * @param partitionName to use for the DDS Partition.
+	 * @param TopicName to use to publish information under. */
 	public DealerSub(String partitionName, String TopicName)
 	{
 		Sub = new DDSEntityManager();
@@ -54,16 +57,13 @@ public class DealerSub
 		bjpSeq = new bjPlayerSeqHolder();
 		infoSeq = new SampleInfoSeqHolder();
 
-        System.out.println ("=== [Subscriber] Ready ...");
+		System.out.println ("=== [Subscriber] Ready ...");
 	}
 
-	/* Psuedo Content filter for read. The parameters will check if conditions match with the exception of joining messages
-	@param uuid
-		ID of dealer
-	@param size
-		Number of players at the table
-	@param target
-		UUID of the player wanted.
+	/** Pseudo-Content filter for read. The parameters will check if conditions match with the exception of joining messages
+	@param UUID of the dealer to read from
+	@param size: Number of players at the table
+	@param target: UUID of the player wanted.
 	@return ArrayList of bjPlayer messages that are either joining messages or  messages from players at the table.*/
 	public ArrayList<bjPlayer> read(int uuid, int size, int target)
 	{
@@ -108,9 +108,8 @@ public class DealerSub
 		return msg;
 	}
 
-	/*Psuedo-Content Filtered Read only for joining, and used only when there are no players at the table
-	@param uuid
-		Dealer ID number
+	/** Pseudo-Content Filtered Read only for joining, and used only when there are no players at the table
+	@param ID of the dealer to read from.
 	@return all joining messages intended for specific dealer*/
 	public ArrayList<bjPlayer> read(int uuid)
 	{
@@ -144,7 +143,8 @@ public class DealerSub
 		bjpReader.return_loan(bjpSeq, infoSeq);
 		return msg;
 	}
-	
+
+	/** Deletes and closes DDS Writer, Publisher, Topic, and Partition. **/
 	public void close()
 	{
 		Sub.getSubscriber().delete_datareader(bjpReader);
@@ -154,6 +154,7 @@ public class DealerSub
 		System.out.println ("Subscriber connection closed.");
 	}
 
+	/** Copies the object to prevent DDS from releasing topic data. **/
 	public static bjPlayer copy(bjPlayer obj)
 	{
 		if(obj != null)
@@ -165,6 +166,8 @@ public class DealerSub
 		return null;
 	}
 
+	/** Prints all values of the bjDealer object, primarily for debugging purposes.
+	 * @param bjDealer object to print out. */
 	public static void printMsg(bjPlayer obj)
 	{
 		if(obj != null)
@@ -178,11 +181,11 @@ public class DealerSub
 			System.out.print("        action : ");
 			switch(obj.action.value())
 			{
-				case 0: System.out.println("none"); break;
-				case 1: System.out.println("joining"); break;
-				case 2: System.out.println("exiting"); break;
-				case 3: System.out.println("wagering"); break;
-				case 4: System.out.println("requesting a card"); break;
+			case 0: System.out.println("none"); break;
+			case 1: System.out.println("joining"); break;
+			case 2: System.out.println("exiting"); break;
+			case 3: System.out.println("wagering"); break;
+			case 4: System.out.println("requesting a card"); break;
 			}
 		}
 	}

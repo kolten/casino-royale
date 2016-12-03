@@ -1,6 +1,7 @@
 import CR.card;
 
 public class Hand {
+	/** Global variables **/
 	private card cards[];		//Array of cards that represent hands.
 	private int cardsInHand;	//Number of cards that are in hand
 	private int totalHandValue;	//Total hand value
@@ -147,7 +148,6 @@ public class Hand {
 		}
 		return false;
 	}
-	
 	
 	/** Checks if a valid poker card, based off of suite 
 	 * @param card object to test if it is a valid poker card. 

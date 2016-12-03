@@ -1,7 +1,7 @@
 /** Dealer.java
 		A Factory object that holds all the data required for manipulating and producing
 	bjDealer objects.
-**/
+ **/
 import CR.bjDealer;
 import CR.player_status;
 import CR.bjd_action;
@@ -27,7 +27,7 @@ public class Dealer {
 	private Bank bank;		//Holds credits and logic
 	private int atTable;	//Number of players in game
 	private int targetSeat;	//Seat number of the targeted player.
-	
+
 	/** Constructor that initializes all private variables and sets uuid to parameter */
 	public Dealer(){
 		uuid = (int)(Math.random()*8096);
@@ -41,14 +41,14 @@ public class Dealer {
 		}
 		action  = CR.bjd_action.shuffling;
 		target_uuid = 0;
-		
+
 		//isHuman = false;
 
 		deck = new Shoe();
 		bank = new Bank(500f);
 		atTable = 0;
 		targetSeat = 0;
-		
+
 		shuffle();
 	}
 
@@ -66,17 +66,17 @@ public class Dealer {
 		}
 		action  = CR.bjd_action.shuffling;
 		target_uuid = 0;
-		
+
 		//isHuman = false;
 
 		deck = new Shoe();
 		bank = new Bank(500f);
 		atTable = 0;
 		targetSeat = 0;
-		
+
 		shuffle();
 	}
-	
+
 	/** @return bjDealer message that contains all the significant values of DealerFactory**/
 	public bjDealer getMsg(){
 		bjDealer temp = new bjDealer(uuid, seqno, active_players, players, action, hand.getHand(), target_uuid);
@@ -110,7 +110,7 @@ public class Dealer {
 		System.out.println("Not all players have made a wager.");
 		return false;
 	}
-	
+
 	/** Checks how many credits the dealer should have before starting a game.
 	 * @return  true if there are sufficient credits, else false **/
 	public boolean checkCredits(){
@@ -132,7 +132,7 @@ public class Dealer {
 	}
 
 	/**========== Sequencing Methods =============**/
-	
+
 	/** Changes state to shuffling, and shuffles deck. **/
 	public void shuffle(){
 		if(deck.getCardsUsed() > 104){
@@ -214,10 +214,11 @@ public class Dealer {
 		return false;
 	}
 
+	/** Sets credit amount stored in the bank to 500. **/
 	public void restockCredits(){
 		bank.setCredits(500f);
 	}
-	
+
 	/**	Sets action to dealing, and gives cards to all players in game.**/
 	public void dealingInitial(){
 		int i;
@@ -238,7 +239,7 @@ public class Dealer {
 			players[i].cards[1] = new card(temp.suite, temp.base_value, temp.visible);
 		}
 	}
-	
+
 	/** Gives a card to the player with the uuid given
 	 * @param uuid of the intended player
 	 * @returns true if a card was given, false if a card **/
@@ -264,24 +265,24 @@ public class Dealer {
 	/** Finishes logic of dealing own hand. **/
 	public void dealSelf(){
 		int i;
-		
+
 		hand.flipCard();
 		card dealer_hand[] = hand.getHand();
 		System.out.println("I reveal my trap card!");
 		for(i = 0; i < hand.getNumberOfCards(); i++){
 			Hand.printCard(dealer_hand[i]);
 		}
-		
+
 		System.out.printf("\n\nMy next trick revolves around %d\n", hand.getHandValue());
 		while(hand.getHandValue() < 17){
 			card temp = deck.drawCard(true);
 			hand.addCard(new card(temp.suite, temp.base_value, temp.visible));
 			System.out.println("Maybe I'll be better next time with " + hand.getHandValue());
 		}
-		
+
 		System.out.println("I received the luck of the gods. May the Casino Gods have mercy on thy soul.");
 	}
-	
+
 	/** Finds and calculates payouts for the loser's of the game.**/
 	public void collecting(){
 		int i, player_hand_value;
@@ -289,10 +290,10 @@ public class Dealer {
 		if(hand.getHandValue() <= 21){
 			for(i = 0; i < getNumberAtTable(); i++){
 				player_hand_value = Hand.calculateHandValue(players[i].cards);
-					//Shouldn't calculate loss for players that bust, but for testing later.
+				//Shouldn't calculate loss for players that bust, but for testing later.
 				if(player_hand_value > 21 || player_hand_value <= hand.getHandValue()){
-						players[i].payout = (float)(players[i].wager);
-						bank.addCredits(players[i].payout);
+					players[i].payout = (float)(players[i].wager);
+					bank.addCredits(players[i].payout);
 				}
 			}
 		}
@@ -301,7 +302,7 @@ public class Dealer {
 			System.out.println("Dealer busted, but I tried to collect, for no reason.");
 		}
 	}
-	
+
 	/** Finds and calculates payouts for the winner's of the game.**/
 	public void paying(){
 		int i, player_hand_value;
@@ -317,14 +318,15 @@ public class Dealer {
 			}
 		}
 	}
-	
+
+	/** Payouts and set back to 0. **/
 	public void resetPayouts(){
 		int i;
 		for(i = 0; i < getNumberAtTable(); i++){
 			players[i].payout = 0f;
 		}
 	}
-	
+
 	/** Zeros all values **/
 	public void endGame(){
 		resetSeating();
@@ -336,11 +338,12 @@ public class Dealer {
 			players[i].cards = temp1.getHand();
 		}
 		hand.emptyHand();
-		
+
 		setNumberAtTable(0);
 		waiting();
 	}
-	
+
+	/** Sets target seat and uuid to 0.**/
 	public void resetSeating(){
 		setTarget_uuid(0);
 		setTargetSeat(0);
@@ -374,7 +377,7 @@ public class Dealer {
 				setTarget_uuid(0);
 			}
 		}
-		
+
 	}
 
 	/**============ Getters && Setters ===================**/

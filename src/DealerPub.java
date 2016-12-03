@@ -16,6 +16,9 @@ public class DealerPub
 	public bjDealerTypeSupport bjdTS;
 	public bjDealerDataWriter bjdWriter;
 	
+	/** Constructor for OpenSplice DDS entities and Publisher for usage.
+	 * @param partitionName to use for the DDS Partition.
+	 * @param TopicName to use to publish information under. */
 	public DealerPub(String partitionName, String TopicName)
 	{
 		Pub = new DDSEntityManager();
@@ -42,11 +45,17 @@ public class DealerPub
 		System.out.println ("=== [Publisher] Ready ...");
 	}
 
+	/** Register's the UUID value into OpenSplice.
+	 * @param bjDealer object with specific UUID to register.
+	 */
 	public void registerUUID(bjDealer msg)
 	{
 		bjdWriter.register_instance(msg);
 	}
 
+	/** Writes bjDealer object from the parameter's.
+	 * @param bjDealer object to write.
+	 * @return 1 for valid object, 0 for null object. */
 	public int write(bjDealer msg)
 	{
 		if(msg != null)
@@ -60,6 +69,7 @@ public class DealerPub
 		return 0;
 	}
 	
+	/** Deletes and closes DDS Writer, Publisher, Topic, and Partition. **/
 	public void close()
 	{
 		Pub.getPublisher().delete_datawriter(bjdWriter);
@@ -68,8 +78,9 @@ public class DealerPub
 		Pub.deleteParticipant();
 		System.out.println ("Publisher connection closed.");
 	}
-	
 
+	/** Prints all values of the bjDealer object, primarily for debugging purposes.
+	 * @param bjDealer object to print out. */
 	public static void printMsg(bjDealer obj)
 	{
 		if(obj != null)
