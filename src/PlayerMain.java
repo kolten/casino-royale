@@ -9,6 +9,13 @@ public class PlayerMain{
 	Timer timer;
 	boolean exiting = false;
 
+	/**
+	* Main function. Creates an instance of PlayerMain and calls a run() function. 
+	* The arguments are the OpenSplice partition name, bjPlayer topic name, and
+	* bjDealer topic name. If the arguments are empty, default arguments are used.
+	* 
+	* @param args This takes in arguments when running the executable.
+	*/
 	public static void main(String[] args) {
 		PlayerMain main = new PlayerMain();
 		if(args != null){
@@ -19,6 +26,14 @@ public class PlayerMain{
 		}
 	}
 	
+	/**
+	* The primary function that drives the program logic.
+	* Makes use of a Player factory object and precise timing with DealerMain's logic to run correctly.
+	* 
+	* @param partition OpenSplice partition name
+	* @param pubTopic OpenSplice bjPlayer topic name
+	* @param subtopic OpenSplice bjDealer topic name
+	*/
 	public void run(String partition, String pubTopic, String subtopic)
 	{
 		player = new Player();
