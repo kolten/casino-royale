@@ -19,6 +19,7 @@ clean depend generated realclean check-syntax $(CUSTOM_TARGETS):
 	@$(MAKE) -f Makefile.saj_casinoroyale_types $(@)
 	@$(MAKE) -f Makefile.saj_casinoroyale_pub $(@)
 	@$(MAKE) -f Makefile.saj_casinoroyale_sub $(@)
+	@$(MAKE) -f Makefile.saj_casinoroyale_junit $(@)
 
 .PHONY: saj_casinoroyale_types
 saj_casinoroyale_types:
@@ -32,7 +33,12 @@ saj_casinoroyale_pub: saj_casinoroyale_types
 saj_casinoroyale_sub: saj_casinoroyale_types
 	@$(MAKE) -f Makefile.saj_casinoroyale_sub all
 
+.PHONY: saj_casinoroyale_junit
+saj_casinoroyale_junit: saj_casinoroyale_types
+	@$(MAKE) -f Makefile.saj_casinoroyale_junit all
+
 project_name_list:
+	@echo saj_casinoroyale_junit
 	@echo saj_casinoroyale_pub
 	@echo saj_casinoroyale_sub
 	@echo saj_casinoroyale_types
