@@ -2,21 +2,26 @@ public class Bank {
 	
 	private float credits;
 	
+	/**
+	* Default constructor that initializes with 0 credits
+	*/
 	public Bank()
 	{
 		setCredits(0);
 	}
 	
 	/**
-	 * @param c
-	 */
+	* Default constructor that initializes with a defined number of credits
+	* @param c Number of credits to start with
+	*/
 	public Bank(float c)
 	{
 		setCredits(c);
 	}
 	
 	/**
-	 * @param c
+	* Increases credits by the amount specified.
+	 * @param c Number of credits to add
 	 */
 	public void addCredits(float c)
 	{
@@ -24,24 +29,19 @@ public class Bank {
 	}
 	
 	/**
-	 * @param c
+	* Decreases credits by the amount specified.
+	 * @param c Number of credits to remove
 	 */
 	public void subtractCredits(float c)
 	{
 		credits -= c;
 	}
 	
-	/**
-	 * @return
-	 */
 	public float getCredits()
 	{
 		return credits;
 	}
 	
-	/**
-	 * @param c
-	 */
 	public void setCredits(float c)
 	{
 		credits = c;
