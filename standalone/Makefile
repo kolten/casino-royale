@@ -13,7 +13,7 @@
 #----------------------------------------------------------------------------
 
 
-all: saj_casinoroyale_types saj_casinoroyale_pub saj_casinoroyale_sub
+all: saj_casinoroyale_types saj_casinoroyale_pub saj_casinoroyale_sub saj_casinoroyale_junit
 
 clean depend generated realclean check-syntax $(CUSTOM_TARGETS):
 	@$(MAKE) -f Makefile.saj_casinoroyale_types $(@)
