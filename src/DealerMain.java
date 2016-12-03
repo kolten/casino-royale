@@ -47,7 +47,7 @@ public class DealerMain {
 
 		int i;
 
-		while(gameCount < 1){
+		while(gameCount < 2){
 			dealer.shuffle();
 
 			while(dealer.stillWagering() || (dealer.isFullTable() && !dealer.stillWagering() && jcount < 2) || dealer.sameAction(bjd_action.shuffling)){

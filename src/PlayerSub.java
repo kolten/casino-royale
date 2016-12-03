@@ -60,7 +60,9 @@ public class PlayerSub
         System.out.println ("=== [Subscriber] Ready ...");
 	}
 
-	/** @return first valid bjDealer message */
+	/** Reads the first valid bjDealer message off the OpenSplice subscriber
+	  * @return first valid bjDealer message
+	  */
 	public bjDealer read()
 	{
 		bjDealer msg = null;
@@ -85,10 +87,11 @@ public class PlayerSub
 		return msg;
 	}
 
-	/* Psuedo-Content filter read that will only return the messages from any dealer that  matches the parameters
-	@param uuid
-		Integer value of the intended dealer uuid.
-	@return bjDealer message that matches the uuid from param */
+	/** Psuedo-Content filter read that will only return the messages from any dealer that matches the parameters.
+	 * Reads the first valid bjDealer message off the OpenSplice subscriber from the target dealer uuid.
+	 * @param uuid Integer value of the intended dealer uuid.
+	 * @return bjDealer message that matches the uuid from param 
+	 */
 	public bjDealer read(int uuid)
 	{
 		bjDealer msg = null;

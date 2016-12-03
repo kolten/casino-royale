@@ -213,7 +213,7 @@ public class Player {
 	*/
 	public void placeWager(bjDealer dealer){
 		float currentCredits = getCredits();
-		if(currentCredits <= 5){
+		if(currentCredits <= 5 || currentCredits == 100){
 			wager = 1;
 			action = bjp_action.wagering;
 		} else if(currentCredits > 5) {
