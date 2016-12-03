@@ -118,7 +118,7 @@ public class Hand {
 	/**=================== Static methods ==============**/
 	
 	/** Checks if there are only two valid cards in the hand that have a value of 21.
-	 * @param card array representing hand to check.
+	 * @param hand representing a card array to check.
 	 * @return true if the value was an Ace and a ten point card. **/
 	public static boolean blackJack(card hand[])
 	{
@@ -150,7 +150,7 @@ public class Hand {
 	}
 	
 	/** Checks if a valid poker card, based off of suite 
-	 * @param card object to test if it is a valid poker card. 
+	 * @param testCard to test if it is a valid poker card. 
 	 * @return true if it is a valid poker card, and false if invalid. **/
 	public static boolean isValidCard(card testCard)
 	{

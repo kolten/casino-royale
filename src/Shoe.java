@@ -14,11 +14,12 @@ Licensed under Creative Commons Attribution Noncommercial Sharealike 3.0.
 public class Shoe {
 	private int cardsUsed;	//Index of where to draw the card and how many have cards are left
 	private card deck[];	//Array of all 312 cards used
-	public static final int size = 312;	//Size of deck.
+	public static final int SIZE = 312;	//Size of deck.
 
+	/** Constructor that initializes the entire deck of SIZE **/
 	public Shoe(){
 		//Set global variables
-		deck = new card[size];
+		deck = new card[SIZE];
 		cardsUsed = 0;
 
 		//Populate deck with 52 unique cards 6 times.
@@ -42,8 +43,7 @@ public class Shoe {
 					default: base++; break;
 				}
 				for(k = 0; k < 6; k++){
-					deck[cardsUsed]=new card(suite, base, true);
-					//Hand.printCard(deck[cardsUsed]);
+					deck[cardsUsed]=new card(suite, base, false);
 					cardsUsed++;
 				}
 			}
@@ -55,10 +55,10 @@ public class Shoe {
 		shuffle();
 	}
 
-	/** Shuffles deck, but only really badly.**/
+	/** Shuffles deck by randomly swapping from the top to bottom.**/
 	public void shuffle(){
 		int i;
-		for (i = size-1; i > 0; i-- ) {
+		for (i = SIZE-1; i > 0; i-- ) {
 			int rand = (int)(Math.random()*(i+1));	//Chooses a random number inclusively between 0 and i.
 			card temp = deck[i];
 			deck[i] = deck[rand];		//Swaps cards at indices i and rand.
@@ -67,6 +67,9 @@ public class Shoe {
 		cardsUsed = 0;
 	}
 	
+	/** Draws the card at the top of the deck at the index cardsUsed.
+	 * @param isVisible boolean to set the card.
+	 * @return  clone of card object at index cardsUsed from deck.*/
 	public card drawCard(boolean isVisible){
 		card toSend = new card(deck[cardsUsed].suite, deck[cardsUsed].base_value, isVisible);
 		cardsUsed++;
