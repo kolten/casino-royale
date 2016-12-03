@@ -101,7 +101,7 @@ public class PlayerMain{
 					wagering = false;
 					System.out.println("I'm suprised I made it this far.");
 				}
-				else if(timer.getTimeMs() > bufferLong*2 || temp != null && temp.seqno == 0) // this is a quick fix to go to the end of the loop.
+				else if(timer.getTimeMs() > bufferLong*10 || (temp != null && temp.seqno == 0)) // this is a quick fix to go to the end of the loop.
 				{
 					System.out.println("The dealer has left the table.");
 					exiting = true;
