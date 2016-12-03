@@ -3,6 +3,10 @@ public class Timer
 {
 	private long startTime;
 	
+	/**
+	* Removes credits from the Bank.
+	* @param milliseconds Number of milliseconds to pause the program.
+	*/
 	public static void wait(int milliseconds)
 	{
 		try
@@ -15,11 +19,18 @@ public class Timer
 		}
 	}
 	
+	/**
+	* Starts a timer by saving the system clock time in milliseconds.
+	*/
 	public void start()
 	{
 		startTime = System.currentTimeMillis();
 	}
 	
+	/**
+	* Looks at the time passed since Timer.start() was called.
+	* @return Milliseconds that have passed since Timer.start() was called.
+	*/
 	public long getTimeMs()
 	{
 		return System.currentTimeMillis() - startTime;
