@@ -68,7 +68,7 @@ public class PlayerMain{
 						//notSeated = false;
 						//timer.start();   ??? maybe ???
 						timer.wait(bufferLong); // Wait 5 seconds
-						temp = sub.read();
+						temp = sub.read(temp.uuid);
 						if(temp != null){
 							int i = 0;
 							for(i = 0; i < temp.active_players; i++){
