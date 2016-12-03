@@ -22,14 +22,14 @@ TESTDIRSTART  = test -d
 TESTDIREND    = ||
 TOUCH         = touch
 GENFLAGS      =  
-CLASSES       =  $(CLASSDIR)DealerMain$(CLASSEXT) $(CLASSDIR)DDSEntityManager$(CLASSEXT) $(CLASSDIR)ErrorHandler$(CLASSEXT)
-JARCLASSES    =  DealerMain$(CLASSEXT) DDSEntityManager$(CLASSEXT) ErrorHandler$(CLASSEXT)
+CLASSES       =  $(CLASSDIR)DealerMain$(CLASSEXT) $(CLASSDIR)DDSEntityManager$(CLASSEXT) $(CLASSDIR)ErrorHandler$(CLASSEXT) $(CLASSDIR)UnitTestMain$(CLASSEXT)
+JARCLASSES    =  DealerMain$(CLASSEXT) DDSEntityManager$(CLASSEXT) ErrorHandler$(CLASSEXT) UnitTestMain$(CLASSEXT)
 JAREXT        = .jar
-MAINCLASS     = DealerMain
+MAINCLASS     = DealerMain UnitTestMain
 JARFILE       = $(LTARGETDIR)$(LIBPREFIX)saj_casinoroyale_pub$(LIBSUFFIX)$(JAREXT)
 MANIFEST      = saj_casinoroyale_pub.manifest
 JARFLAGS      = cvfm
-SRC           = ../src/DealerMain.java ../src/DDSEntityManager.java ../src/ErrorHandler.java
+SRC           = ../src/DealerMain.java ../src/DDSEntityManager.java ../src/ErrorHandler.java ../src/UnitTestMain.java
 
 #----------------------------------------------------------------------------
 #       Local targets
@@ -60,6 +60,10 @@ $(CLASSDIR)DDSEntityManager$(CLASSEXT): ../src/DDSEntityManager.java
 $(CLASSDIR)ErrorHandler$(CLASSEXT): ../src/ErrorHandler.java
 	@$(TESTDIRSTART) "$(CLASSDIR)" $(TESTDIREND) $(MKDIR) "$(CLASSDIR)"
 	$(COMPILE.java) $(EXPORTFLAGS) $(OUTPUT_OPTION) ../src/ErrorHandler.java
+
+$(CLASSDIR)UnitTestMain$(CLASSEXT): ../src/UnitTestMain.java
+	@$(TESTDIRSTART) "$(CLASSDIR)" $(TESTDIREND) $(MKDIR) "$(CLASSDIR)"
+	$(COMPILE.java) $(EXPORTFLAGS) $(OUTPUT_OPTION) ../src/UnitTestMain.java
 
 clean:
 	-$(RM) $(CLASSES)
