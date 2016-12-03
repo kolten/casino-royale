@@ -51,7 +51,8 @@ public class PlayerPub
 
 	/** Writes bjDealer object from the parameter's.
 	 * @param msg bjDealer object to write.
-	 * @return 1 for valid object, 0 for null object. */
+	 * @return 1 for valid object, 0 for null object.
+	 */
 	public int write(bjPlayer msg)
 	{
 		if(msg != null)
@@ -65,7 +66,9 @@ public class PlayerPub
 		return 0;
 	}
 	
-	/** Deletes and closes DDS Writer, Publisher, Topic, and Partition. **/
+	/** Deletes and closes DDS Writer, Publisher, Topic, and Partition.
+	 *
+	 */
 	public void close()
 	{
 		Pub.getPublisher().delete_datawriter(bjpWriter);
@@ -76,7 +79,8 @@ public class PlayerPub
 	}
 
 	/** Prints all values of the bjDealer object, primarily for debugging purposes.
-	 * @param obj bjDealer object to print out. */
+	 * @param obj bjDealer object to print out. 
+	 */
 	public static void printMsg(bjPlayer obj)
 	{
 		if(obj != null)

@@ -4,7 +4,7 @@ public class Timer
 	private long startTime;
 	
 	/**
-	* Removes credits from the Bank.
+	* Calls Thread.sleep() for a number of milliseconds
 	* @param milliseconds Number of milliseconds to pause the program.
 	*/
 	public static void wait(int milliseconds)

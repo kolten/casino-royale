@@ -60,7 +60,7 @@ public class PlayerSub
         System.out.println ("=== [Subscriber] Ready ...");
 	}
 
-	/* @return first valid bjDealer message*/
+	/** @return first valid bjDealer message */
 	public bjDealer read()
 	{
 		bjDealer msg = null;
@@ -88,7 +88,7 @@ public class PlayerSub
 	/* Psuedo-Content filter read that will only return the messages from any dealer that  matches the parameters
 	@param uuid
 		Integer value of the intended dealer uuid.
-	@return bjDealer message that matches the uuid from param*/
+	@return bjDealer message that matches the uuid from param */
 	public bjDealer read(int uuid)
 	{
 		bjDealer msg = null;
@@ -112,7 +112,7 @@ public class PlayerSub
 		bjdReader.return_loan(bjdSeq, infoSeq);
 		return msg;
 	}
-	/** Deletes and closes DDS Writer, Publisher, Topic, and Partition. **/
+	/** Deletes and closes DDS Writer, Publisher, Topic, and Partition. */
 	public void close()
 	{
 		Sub.getSubscriber().delete_datareader(bjdReader);
@@ -122,7 +122,7 @@ public class PlayerSub
 		System.out.println ("Subscriber connection closed.");
 	}
 
-	/** Copies the object to prevent DDS from releasing topic data. **/
+	/** Copies the object to prevent DDS from releasing topic data. */
 	public static bjDealer copy(bjDealer obj)
 	{
 		if(obj != null)

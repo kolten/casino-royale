@@ -77,7 +77,10 @@ public class Dealer {
 		shuffle();
 	}
 
-	/** @return bjDealer message that contains all the significant values of DealerFactory**/
+	/** 
+	  * Creates the player's current message to be passed to the OpenSplice publisher
+	  * @return bjDealer message that contains all the significant values of DealerFactory
+	  */
 	public bjDealer getMsg(){
 		bjDealer temp = new bjDealer(uuid, seqno, active_players, players, action, hand.getHand(), target_uuid);
 		seqno++;
