@@ -3,13 +3,13 @@
 #----------------------------------------------------------------------------
 JAVAC         = javac
 JAR           = jar
-JAVACFLAGS    = $(GENFLAGS)
+JAVACFLAGS    = $(GENFLAGS) -sourcepath ../src
 CLASSEXT      = .class
 CLASSDIR      = classes/
 OUTPUT_OPTION = -d $(CLASSDIR)
+JAVACCPATH    = "saj_casinoroyale_types.jar:$(CLASSDIR):dcpssaj.jar:junit-4.12.jar:hamcrest-core-1.3.jar:”
 COMPILE.java  = $(JAVAC) $(JAVACFLAGS) -cp $(JAVACCPATH) 
-JAVACCPATH    = "$(CLASSDIR):dcpssaj.jar:junit-4.12.jar:hamcrest-core-1.3.jar:"
-MAKEFILE      = Makefile.saj_casinoroyale_types
+MAKEFILE      = Makefile.saj_casinoroyale_junit
 DEPENDENCIES  = $(MAKEFILE)
 LTARGETDIR    = ./
 CAT           = cat
@@ -22,13 +22,14 @@ TESTDIRSTART  = test -d
 TESTDIREND    = ||
 TOUCH         = touch
 GENFLAGS      =  
-CLASSES       =  $(CLASSDIR)CR/*$(CLASSEXT)
-JARCLASSES    =  CR/*$(CLASSEXT)
+CLASSES       =  $(CLASSDIR)UnitTestMain$(CLASSEXT)
+JARCLASSES    =  UnitTestMain$(CLASSEXT)
 JAREXT        = .jar
-JARFILE       = $(LTARGETDIR)$(LIBPREFIX)saj_casinoroyale_types$(LIBSUFFIX)$(JAREXT)
-MANIFEST      = saj_casinoroyale_types.manifest
+MAINCLASS     = UnitTestMain
+JARFILE       = $(LTARGETDIR)$(LIBPREFIX)saj_casinoroyale_junit$(LIBSUFFIX)$(JAREXT)
+MANIFEST      = saj_casinoroyale_junit.manifest
 JARFLAGS      = cvfm
-SRC           = CR/*.java
+SRC           = ../src/UnitTestMain.java
 
 #----------------------------------------------------------------------------
 #       Local targets
@@ -42,29 +43,21 @@ $(JARFILE): $(CLASSES) $(CLASSDIR)$(MANIFEST)
 	$(MV) $(CLASSDIR)/$(JARFILE) .
 
 $(CLASSDIR)$(MANIFEST):
-	echo Class-Path: dcpssaj.jar > $(CLASSDIR)$(MANIFEST)
-
-GENERATED_DIRTY = CR
-
-CR: ../idl/cr.idl
-	$(OSPL_HOME)/bin/idlpp -I $(OSPL_HOME)/etc/idl -l java ../idl/cr.idl
-
-.PRECIOUS: $(GENERATED_DIRTY)
-$(CLASSES): $(GENERATED_DIRTY)
+	echo Class-Path: saj_casinoroyale_types.jar dcpssaj.jar junit-4.12.jar hamcrest-core-1.3.jar > $(CLASSDIR)$(MANIFEST)
+	echo Main-Class: $(MAINCLASS) >> $(CLASSDIR)$(MANIFEST)
 
 generated: $(GENERATED_DIRTY)
 	@-:
 
-$(CLASSDIR)CR/*$(CLASSEXT): CR
+$(CLASSDIR)UnitTestMain$(CLASSEXT): ../src/UnitTestMain.java
 	@$(TESTDIRSTART) "$(CLASSDIR)" $(TESTDIREND) $(MKDIR) "$(CLASSDIR)"
-	$(COMPILE.java) $(EXPORTFLAGS) $(OUTPUT_OPTION) CR/*.java
+	$(COMPILE.java) $(EXPORTFLAGS) $(OUTPUT_OPTION) ../src/UnitTestMain.java
 
 clean:
 	-$(RM) $(CLASSES)
 
 realclean: clean
-	-$(RM) $(SHLIB) $(JARFILE)
-	-$(RM) $(GENERATED_DIRTY)
+	-$(RM) $(BIN)
 	-$(RM) $(CLASSDIR)$(MANIFEST)
 
 check-syntax:
