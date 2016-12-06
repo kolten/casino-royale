@@ -4,14 +4,14 @@ import static org.junit.Assert.assertEquals;
 
 public class UnitTestDealer {
 
-    final int test_uuid = 42;
-    Dealer dealer = new Dealer(test_uuid);
+	final int Start_at_table = 0;
+    Dealer dealer = new Dealer();
 
     @Test
     public void sampleDealerTest() {
 
         System.out.println("Inside sampleDealerTest()");    
-        assertEquals(test_uuid, dealer.getUuid());  
+        assertEquals(Start_at_table, dealer.getNumberAtTable());
            
     }
 }

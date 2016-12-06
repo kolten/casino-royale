@@ -7,8 +7,8 @@ JAVACFLAGS    = $(GENFLAGS) -sourcepath ../src
 CLASSEXT      = .class
 CLASSDIR      = classes/
 OUTPUT_OPTION = -d $(CLASSDIR)
+JAVACCPATH    = "saj_casinoroyale_types.jar:$(CLASSDIR):dcpssaj.jar:junit-4.12.jar:hamcrest-core-1.3.jar:”
 COMPILE.java  = $(JAVAC) $(JAVACFLAGS) -cp $(JAVACCPATH) 
-JAVACCPATH    = "saj_casinoroyale_types.jar:$(CLASSDIR):dcpssaj.jar:junit-4.12.jar:hamcrest-core-1.3.jar”
 MAKEFILE      = Makefile.saj_casinoroyale_junit
 DEPENDENCIES  = $(MAKEFILE)
 LTARGETDIR    = ./
@@ -43,7 +43,7 @@ $(JARFILE): $(CLASSES) $(CLASSDIR)$(MANIFEST)
 	$(MV) $(CLASSDIR)/$(JARFILE) .
 
 $(CLASSDIR)$(MANIFEST):
-	echo Class-Path: saj_casinoroyale_types.jar dcpssaj.jar junit-4.12.jar hamcrest-core-1.3.jar> $(CLASSDIR)$(MANIFEST)
+	echo Class-Path: saj_casinoroyale_types.jar dcpssaj.jar junit-4.12.jar hamcrest-core-1.3.jar > $(CLASSDIR)$(MANIFEST)
 	echo Main-Class: $(MAINCLASS) >> $(CLASSDIR)$(MANIFEST)
 
 generated: $(GENERATED_DIRTY)
