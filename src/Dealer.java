@@ -42,8 +42,6 @@ public class Dealer {
 		action  = CR.bjd_action.shuffling;
 		target_uuid = 0;
 
-		//isHuman = false;
-
 		deck = new Shoe();
 		bank = new Bank(500f);
 		atTable = 0;
@@ -67,8 +65,6 @@ public class Dealer {
 		action  = CR.bjd_action.shuffling;
 		target_uuid = 0;
 
-		//isHuman = false;
-
 		deck = new Shoe();
 		bank = new Bank(500f);
 		atTable = 0;
@@ -77,11 +73,10 @@ public class Dealer {
 		shuffle();
 	}
 
-	/** 
-	  * Creates the player's current message to be passed to the OpenSplice publisher
-	  * @return bjDealer message that contains all the significant values of DealerFactory
-	  */
+	/** Creates the player's current message to be passed to the OpenSplice publisher
+	  * @return bjDealer message that contains all the significant values of DealerFactory **/
 	public bjDealer getMsg(){
+		System.out.println("Current credits in bank: " + bank.getCredits());
 		bjDealer temp = new bjDealer(uuid, seqno, active_players, players, action, hand.getHand(), target_uuid);
 		seqno++;
 		return 	temp;
@@ -162,11 +157,14 @@ public class Dealer {
 					notAtTable = false;
 				}
 			}
-			if(notAtTable){
+			if(notAtTable && msg.credits > msg.wager){
 				Hand temp = new Hand();
 				player_status player = new player_status(msg.uuid, msg.wager, 0f, temp.getHand());
 				players[getActivePlayers()] = player;
 				setActivePlayers(getActivePlayers() + 1);
+			}
+			else if(notAtTable){
+				System.out.println("Player " + msg.uuid + " does not have enough credits to play.");
 			}
 		}
 		else {
@@ -193,15 +191,19 @@ public class Dealer {
 	/** Kicks players with matching uuid from table. 
 	 * @param uuid of the player to kick */
 	public void kickPlayer(int uuid){
-		/**
 		int i;
 		for(i = 0; i < getActivePlayers(); i++){
 			if(players[i].uuid == uuid){
 				Hand temp = new Hand();
 				setActivePlayers(getActivePlayers() - 1);
 				players[i] = new player_status(0, 0, 0f, temp.getHand());
+				for(;i < getActivePlayers()-1; i++){
+					player_status temp2 = players[i];
+					players[i] = players[i+1];
+					players[i] = temp2;
+				}
 			}
-		}**/
+		}
 	}
 
 	/** Finalizes players at table, and resets target_uuid and target_seat
@@ -210,14 +212,14 @@ public class Dealer {
 		if(checkCredits()){
 			setNumberAtTable(getActivePlayers());
 			resetSeating();
-			System.out.println("startGame() returns... True! :)");
+			System.out.println("The BlackJack game has started. Will soon commence dealing.");
 			return true;	
 		}
 		System.out.println("startGame() returns... False! :( )");
 		return false;
 	}
 
-	/** Sets credit amount stored in the bank to 500. **/
+	/** Restock credit amount stored in the bank to 500. **/
 	public void restockCredits(){
 		bank.setCredits(500f);
 	}
@@ -240,6 +242,9 @@ public class Dealer {
 			temp = null;
 			temp = deck.drawCard(true);
 			players[i].cards[1] = new card(temp.suite, temp.base_value, temp.visible);
+		}
+		if(hand.getHandValue() == 21){
+			hand.flipCard();
 		}
 	}
 
@@ -294,8 +299,9 @@ public class Dealer {
 			for(i = 0; i < getNumberAtTable(); i++){
 				player_hand_value = Hand.calculateHandValue(players[i].cards);
 				//Shouldn't calculate loss for players that bust, but for testing later.
-				if(player_hand_value > 21 || player_hand_value <= hand.getHandValue()){
+				if(player_hand_value > 21 || player_hand_value < hand.getHandValue()){
 					players[i].payout = (float)(players[i].wager);
+					players[i].wager = 0;
 					bank.addCredits(players[i].payout);
 				}
 			}
@@ -312,11 +318,12 @@ public class Dealer {
 		action = bjd_action.paying;
 		for(i = 0; i < getNumberAtTable(); i++){
 			player_hand_value = Hand.calculateHandValue(players[i].cards);
-			if(hand.getHandValue() > 21 || player_hand_value >= hand.getHandValue() && player_hand_value <= 21){
+			if(hand.getHandValue() > 21 || (player_hand_value > hand.getHandValue() && player_hand_value <= 21)){
 				players[i].payout = (float)(players[i].wager);
 				if(Hand.blackJack(players[i].cards)){
 					players[i].payout = 1.5f * players[i].payout;
 				}
+				players[i].wager = 0;
 				bank.subtractCredits(players[i].payout);
 			}
 		}

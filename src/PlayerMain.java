@@ -41,7 +41,7 @@ public class PlayerMain{
 		pub = new PlayerPub(partition, pubTopic); // Vice versa
 		timer = new Timer();
 
-		final int buffer = 200; 		// Make sure this matches DealerMain buffer
+		//final int buffer = 200; 		// Make sure this matches DealerMain buffer
 		final int bufferLong = 4700; 	// Dealer's combined buffer time is ~4600 ms, don't go under that. Don't go over buffer+pubBuffer
 
 		boolean notSeated = true;
@@ -67,7 +67,7 @@ public class PlayerMain{
 						pub.write(player.getMsg());
 						//notSeated = false;
 						//timer.start();   ??? maybe ???
-						timer.wait(bufferLong); // Wait 5 seconds
+						Timer.wait(bufferLong); // Wait 5 seconds
 						temp = sub.read(temp.uuid);
 						if(temp != null){
 							int i = 0;

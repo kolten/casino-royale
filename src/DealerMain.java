@@ -18,17 +18,17 @@ public class DealerMain {
 	private DealerSub sub;
 	private DealerPub pub;
 	private Timer timer;
+	private Timer systimer;
 	private ArrayList<bjPlayer> playerMessages;
 
 	/** Runs the entirety of the Casino Royale Blackjack game.
 	 * @param partion name (Participant) to use of the OpenSplice Domain.
-	 * @param pubTopic name to use for publisher to use.
-	 * @param subTopic name to use for subscriber to use.
-	 */
+	 * @param pubTopic name to use for publisher to use. Should be same as subTopic for PlayerMain.
+	 * @param subTopic name to use for subscriber to use. Should be same as pubTopic for PlayerMain. */
 	public void run(String partition, String pubTopic, String subTopic)
 	{
-		final int buffer = 200;		//Hardcoded read buffer. // Make sure this matches DealerMain buffer
-		final int pubBuffer = 4400;	//Hardcoded publish time buffer.
+		final int buffer = 200;		//Hard-coded read buffer.
+		final int pubBuffer = 5000;	//Hard-coded publish time buffer.
 
 		/** Condition counters. **/
 		int gameCount = 0;				//Number of games played.
@@ -43,168 +43,115 @@ public class DealerMain {
 		sub = new DealerSub(partition, subTopic);	// Sub needs to have the same topic name as the dealer pub
 		pub = new DealerPub(partition, pubTopic);	// Vice versa
 		timer = new Timer();						//Timer to keep publish time.
+		systimer = new Timer();
 		playerMessages = new ArrayList<bjPlayer>();
 
-		int i;
-
+		timer.start();
+		systimer.start();
 		while(gameCount < 2){
-			dealer.shuffle();
-
-			while(dealer.stillWagering() || (dealer.isFullTable() && !dealer.stillWagering() && jcount < 2) || dealer.sameAction(bjd_action.shuffling)){
-				//Empty table loop.
+			dealer.shuffle();	//Will only shuffle when there a predetermined amount of cards are used.
+				//Waiting loop for reading Joining/Wagering/Exiting messages from the player.
+			while(dealer.stillWagering() || (!dealer.isFullTable() && !dealer.stillWagering() && jcount < 2) || dealer.sameAction(bjd_action.shuffling)){
+					//Empty table and shuffling loop that will repeat until at least one player has joined.
 				while(dealer.getActivePlayers() == 0 || dealer.sameAction(bjd_action.shuffling)) {
 
 					System.out.println("Table is being set, please wait.");
 
-					pubSubJoin(buffer, pubBuffer);
+					pubSubAction(buffer, pubBuffer, bjd_action.shuffling);
 
 					dealer.waiting();
 				}	//Breaks from loop if any players have joined.
 
-
-				dealer.nextSeat(noReply);
+				dealer.nextSeat(noReply);	//Targets the next player.
 				noReply = true;
 
 				System.out.println("A player is required for wagers.");
 
-				pub.write(dealer.getMsg());
-				timer.start();
-				//Read loop for wagering, exiting, or joining messages.
-				while(timer.getTimeMs() < pubBuffer){
-					playerMessages = sub.read(dealer.getUuid(), dealer.getActivePlayers(), dealer.getTarget_uuid());
-
-					if(playerMessages != null && !playerMessages.isEmpty()){
-						System.out.println(playerMessages.size() + " messages received at " + timer.getTimeMs() + " after publishing.");
-						for(i = 0; i < playerMessages.size(); i++){
-							System.out.println("~~~~~~~~|Message " + i + "|~~~~~~~~");
-							switch(playerMessages.get(i).action.value()){
-							case CR.bjp_action._joining:
-								jcount = 0;
-								dealer.join(playerMessages.get(i));
-								break;
-							case CR.bjp_action._exiting:
-								if(noReply){
-									dealer.kickPlayer(playerMessages.get(i).uuid);
-									kcount = 0;
-									noReply = false;
-								}
-								break;
-							case CR.bjp_action._wagering:
-								if(noReply){
-									dealer.setWagertoPlayer(playerMessages.get(i));
-									System.out.println("Wager has been received.");
-									kcount = 0;
-									noReply = false;
-								}
-								break;
-							default: System.out.println("Why do bad things happen to bad code?"); break;
-							}
-						}
-					}
-					if(playerMessages != null){
-						playerMessages.clear();
-					}
-					Timer.wait(buffer);
+				noReply = pubSubAction(buffer, pubBuffer, bjd_action.waiting);
+				
+				if(!noReply){
+					jcount = 0;
+					kcount = 0;
 				}
-
-				if(noReply && dealer.stillWagering()){
+				else if(noReply && dealer.stillWagering()){		//Kick timer starts here iff there are players still wagering.
 					kcount++;
 					System.out.println("Player " + dealer.getTarget_uuid() + "will be kicked in " + (2 - kcount) + " messages.");
 				}
-				if(kcount >= 2 && dealer.stillWagering()){
-					System.out.println("Player " + dealer.getTarget_uuid() + " has been kicked from table.");
-					dealer.kickPlayer(dealer.getTarget_uuid());
-					//noReply = false;
-					kcount = 0;
-				}
-				if(!dealer.stillWagering() && dealer.getActivePlayers() < MAX_PLAYERS.value){
+				else if(!dealer.stillWagering() && dealer.getActivePlayers() < MAX_PLAYERS.value){
 					jcount++;
 					System.out.println((2-jcount) + " messages until game starts.");
 				}
-
-				System.out.println(timer.getTimeMs() + " ms after publishing.");
-
-				if(!dealer.startGame()){
+				if(kcount >= 2 && dealer.stillWagering()){		//Kick timer resets after player has been kicked.
+					System.out.println("Player " + dealer.getTarget_uuid() + " has been kicked from table.");
+					//dealer.kickPlayer(dealer.getTarget_uuid());
+					//noReply = false;
+					kcount = 0;
+				}
+					//Should there be less than the MAX_PLAYERS at the table and all have wagered, a joining counter will start.
+						//This counter will allow for 10s for players to join.
+				if(!dealer.stillWagering() && (dealer.isFullTable() || jcount >= 2) && !dealer.startGame()){
+						//Start game will check credits and will only enter this conditional if dealer has insufficient credits.
+						//The waiting phase will repeat 4 times (or 30s).
 					System.out.println("Restocking credits; Please wait for 30s until restocking has finished.");
 					jcount = 0;
 					while(jcount < 4){
-						pubSubJoin(buffer, pubBuffer);
+						pubSubAction(buffer, pubBuffer, bjd_action.shuffling);
 						jcount++;
 					}
 					dealer.restockCredits();
+					if(dealer.stillWagering()){	//If any players have joined during this phase, the join counter is reset.
+						noReply = true;
+						jcount = 0;
+					}
+					else {
+						dealer.startGame();
+					}
 				}
 			}	//Breaks if all have wagered with full table or join counter has reached 2.
 
-			//Special condition break only if table is full and all have wagered.
+				//Special conditional waiting phase if table is full and all have wagered. Does nothing.
 			if(dealer.isFullTable() && !dealer.stillWagering()){
 				System.out.println("All players have wagered. Dealing will start soon.");
 
-				pubSubJoin(buffer, pubBuffer);
+				pubSubAction(buffer, pubBuffer, bjd_action.shuffling);
 			}
 
 			dealer.startGame();
 
-			dealer.dealingInitial();
+			dealer.dealingInitial();		//First card of initial dealing phase.
 
 			System.out.printf("\n\nEvery player receives 2 card.\n\n");
 
-			pubSubJoin(buffer, pubBuffer);
-
+			pubSubAction(buffer, pubBuffer, bjd_action.shuffling);	//Read only joining messages, since initial dealing does not require a response.
+			
+			stillDealing = true;
 			noReply = true;
-			while(stillDealing){
+			while(stillDealing){		//Second dealing phase that repeats until all player have stayed their hand.
 				dealer.nextSeat(noReply);
-				noReply = true;
+				noReply = true;			//No Reply or None elicits that they are staying hand.
+										//Seats only change when a hand is stayed.
 
 				System.out.println("Player " + dealer.getTarget_uuid() + ": Hit or stay?");
 
-				pub.write(dealer.getMsg());
-				timer.start();
-
-				while(timer.getTimeMs() < pubBuffer){	//Reading for dealing with your problems.
-					playerMessages = sub.read(dealer.getUuid(), dealer.getActivePlayers(), dealer.getTarget_uuid());
-					if(playerMessages != null && !playerMessages.isEmpty()){
-						System.out.println(playerMessages.size() + " messages received at " + timer.getTimeMs() + " after publishing.");
-						for(i = 0; i < playerMessages.size(); i++){
-							System.out.println("~~~~~~~~|Message " + i + "~~~~~~~~");
-							switch(playerMessages.get(i).action.value()){
-							case CR.bjp_action._joining: dealer.join(playerMessages.get(i)); break;
-							case CR.bjp_action._requesting_a_card:
-								if(noReply){
-									System.out.println("A card has been requested.");
-									noReply = !dealer.giving_Card(playerMessages.get(i).uuid);
-								}
-								break;
-							case CR.bjp_action._none:
-								System.out.println("Staying hand.");
-								break;
-							default: System.out.println("Logic is so twisted, it has it's own stop?"); break;
-							}
-						}
-					}
-					if(playerMessages != null){
-						playerMessages.clear();
-					}
-					Timer.wait(buffer);
-				}
+				noReply = pubSubAction(buffer, pubBuffer, bjd_action.dealing);
+				
 				if(dealer.getTarget_uuid() == 0){
 					dealer.resetSeating();
 					stillDealing = false;
 				}
-
-				System.out.println(timer.getTimeMs() + " ms after publishing.");
 			}	//When all players at table has been targeted at some point
 
 			dealer.dealSelf();
 
 			System.out.println("Finished dealing. Preparing to divy up the payouts.");
 
-			pubSubJoin(buffer, pubBuffer);
+			pubSubAction(buffer, pubBuffer, bjd_action.shuffling);
 
 			dealer.collecting();
 
 			System.out.println("Collecting from players.");
 
-			pubSubJoin(buffer, pubBuffer);
+			pubSubAction(buffer, pubBuffer, bjd_action.collecting);
 
 			dealer.resetPayouts();
 
@@ -212,7 +159,7 @@ public class DealerMain {
 
 			System.out.println("Paying players.");
 
-			pubSubJoin(buffer, pubBuffer);
+			pubSubAction(buffer, pubBuffer, bjd_action.paying);
 
 			dealer.endGame();
 
@@ -226,20 +173,29 @@ public class DealerMain {
 
 		System.out.println("Exiting, Leaving table");
 		Timer.wait(buffer);
+		
 		sub.close();
 		pub.close();
 	}
 
-	/** PubSub loop that read only joining messages from the player
+	/** PubSub loop that will read joining messages and specific responses from player based off of the current dealer action.
+	 * Waiting and Dealing are only times when specific responses are needed, and thus are the only ones checked.
+	 * Shuffling will be used as the default action for reading joining messages only.
 	 * @param buffer to affect how often the messages will be read.
-	 * @param pubBuffer to affect how long until next publish. **/
-	public void pubSubJoin(int buffer, int pubBuffer){
+	 * @param pubBuffer to affect how long until next publish.
+	 * @param action to show parse what responses are necessary from the player
+	 * @return boolean if a reply was read or not.**/
+	public boolean pubSubAction(int buffer, int pubBuffer, bjd_action action){
+		boolean noReply = true;
 		int j;
 
 		pub.write(dealer.getMsg());
+		System.out.println("Sent message at " + systimer.getTimeMs() + " ms from System Time.");
+		System.out.println("Local timer at " + timer.getTimeMs() + " ms after publishing.");
+		
 		timer.start();
 
-		while(timer.getTimeMs() < pubBuffer){	//Read for joining
+		while(timer.getTimeMs() < pubBuffer - buffer){	//Read for joining
 			playerMessages = sub.read(dealer.getUuid());
 			if(playerMessages != null && !playerMessages.isEmpty()){
 				System.out.println(playerMessages.size() + " messages received at " + timer.getTimeMs() + " ms after publishing.");
@@ -250,6 +206,31 @@ public class DealerMain {
 						System.out.println("Player " + playerMessages.get(j).uuid + " has joined the table.");
 						dealer.join(playerMessages.get(j));
 						break;
+					case CR.bjp_action._wagering:
+						if(noReply && action.value() == bjd_action._waiting){
+							dealer.setWagertoPlayer(playerMessages.get(j));
+							System.out.println("Player " + playerMessages.get(j).uuid + " has chosen to wager " + playerMessages.get(j).wager + " credits.");
+							noReply = false;
+						}
+						break;
+					case CR.bjp_action._exiting:
+						if(noReply && action.value() == bjd_action._waiting){
+							System.out.println("Player " + playerMessages.get(j).uuid + " has chosen to leave.");
+							dealer.kickPlayer(playerMessages.get(j).uuid);;
+							noReply = false;
+						}
+						break;
+					case CR.bjp_action._requesting_a_card:
+						if(noReply && action.value() == bjd_action._dealing){
+							System.out.println("A card has been requested.");
+							noReply = !dealer.giving_Card(playerMessages.get(j).uuid);
+						}
+						break;
+					case CR.bjp_action._none:	//None response is interpreted as the no response.
+						if(noReply && action.value() == bjd_action._dealing){
+							System.out.println("Player " + playerMessages.get(j).uuid + " has chosen to stay hand.");
+							break;
+						}
 					default: System.out.println("Function has failed."); break;
 					}
 				}
@@ -260,6 +241,10 @@ public class DealerMain {
 			Timer.wait(buffer);
 		}
 
+		while(timer.getTimeMs() < pubBuffer - 10);
+		
 		System.out.println(timer.getTimeMs() + " ms after publishing.");
+		
+		return noReply;
 	}
 }
