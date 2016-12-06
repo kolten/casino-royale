@@ -66,7 +66,6 @@ public class PlayerMain{
 						player.joinGame(temp);
 						pub.write(player.getMsg());
 						//notSeated = false;
-						//timer.start();   ??? maybe ???
 						Timer.wait(bufferLong); // Wait 5 seconds
 						temp = sub.read(temp.uuid);
 						if(temp != null){
@@ -75,7 +74,6 @@ public class PlayerMain{
 								if(player.getUuid() == temp.players[i].uuid){
 										notSeated = false;
 										player.setSeatNumber(i);
-										// System.out.println("I'm a real boy");
 										System.out.println("I have joined a game at seat " + player.getSeatNumber());
 								} 
 							}
@@ -86,7 +84,6 @@ public class PlayerMain{
 					// No dealer found
 				}
 			}
-			// System.out.println("Oh boy, I'm going to wager again");
 			System.out.println("I am starting the wagering sequence");
 
 			timer.start();
@@ -94,12 +91,11 @@ public class PlayerMain{
 			while(wagering){
 				temp = null;
 				temp = sub.read(player.getDealerID());
-				//System.out.println("I need a dealer in my life.");
 				if(temp != null && temp.target_uuid == player.getUuid() && temp.action.value() == bjd_action._waiting){
 					player.placeWager(temp);
 					pub.write(player.getMsg());
 					wagering = false;
-					System.out.println("I'm suprised I made it this far.");
+					System.out.println("A wager has been made.");
 				}
 				else if(timer.getTimeMs() > bufferLong*10 || (temp != null && temp.seqno == 0)) // this is a quick fix to go to the end of the loop.
 				{

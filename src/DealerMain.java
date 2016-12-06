@@ -177,7 +177,7 @@ public class DealerMain {
 		sub.close();
 		pub.close();
 	}
-
+	
 	/** PubSub loop that will read joining messages and specific responses from player based off of the current dealer action.
 	 * Waiting and Dealing are only times when specific responses are needed, and thus are the only ones checked.
 	 * Shuffling will be used as the default action for reading joining messages only.
@@ -196,7 +196,13 @@ public class DealerMain {
 		timer.start();
 
 		while(timer.getTimeMs() < pubBuffer - buffer){	//Read for joining
-			playerMessages = sub.read(dealer.getUuid());
+			if(action.value() == bjd_action._dealing){
+				playerMessages = sub.read(dealer.getUuid(), dealer.getNumberAtTable(), dealer.getTarget_uuid());
+			}
+			else if(action.value() == bjd_action._waiting){
+				playerMessages = sub.read(dealer.getUuid(), dealer.getActivePlayers(), dealer.getTarget_uuid());
+			}
+			else playerMessages = sub.read(dealer.getUuid());
 			if(playerMessages != null && !playerMessages.isEmpty()){
 				System.out.println(playerMessages.size() + " messages received at " + timer.getTimeMs() + " ms after publishing.");
 				for(j = 0; j < playerMessages.size(); j++){
