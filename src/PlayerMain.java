@@ -42,7 +42,7 @@ public class PlayerMain{
 		timer = new Timer();
 
 		//final int buffer = 200; 		// Make sure this matches DealerMain buffer
-		final int bufferLong = 4700; 	// Dealer's combined buffer time is ~4600 ms, don't go under that. Don't go over buffer+pubBuffer
+		final int bufferLong = 6000; 	// Dealer's combined buffer time is ~4600 ms, don't go under that. Don't go over buffer+pubBuffer
 
 		boolean notSeated = true;
 		boolean wagering = true;
