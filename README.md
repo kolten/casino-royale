@@ -10,6 +10,6 @@ To compile the program, run ```BUILD_java_EDIT.bat``` located in \casino-royale\
 
 To run a player, run ```RUN_PlayerMain.bat``` located in \casino-royale\standalone.
 
-To run a dealer, run ````RUN_DealerMain.bat``` located in \casino-royale\standalone.
+To run a dealer, run ```RUN_DealerMain.bat``` located in \casino-royale\standalone.
 
 The above three batch scripts contain all the necessary classpaths and arguments.
