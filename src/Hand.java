@@ -141,7 +141,6 @@ public class Hand {
 					case 'J':
 					case 'Q':
 					case 'K':
-						System.out.println("[Debug] 10 point found 1");
 						if(hand[1].base_value == 'A')
 						{
 							return true;
