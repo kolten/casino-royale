@@ -40,16 +40,16 @@ public class UnitTestHand {
 		System.out.println("Inside only 3 card testHandValue()");
 		hand.emptyHand();
 		hand.addCard(new card('C', '3', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(3, hand.getHandValue());
 		hand.emptyHand();
 		hand.addCard(new card('H', '3', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(3, hand.getHandValue());
 		hand.emptyHand();
 		hand.addCard(new card('D', '3', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(3, hand.getHandValue());
 		hand.emptyHand();
 		hand.addCard(new card('S', '3', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(3, hand.getHandValue());
 		hand.emptyHand();
 	}
 	
@@ -58,16 +58,16 @@ public class UnitTestHand {
 		System.out.println("Inside only 4 card testHandValue()");
 		hand.emptyHand();
 		hand.addCard(new card('C', '4', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(4, hand.getHandValue());
 		hand.emptyHand();
 		hand.addCard(new card('H', '4', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(4, hand.getHandValue());
 		hand.emptyHand();
 		hand.addCard(new card('D', '4', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(4, hand.getHandValue());
 		hand.emptyHand();
 		hand.addCard(new card('S', '4', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(4, hand.getHandValue());
 		hand.emptyHand();
 	}
 
@@ -76,16 +76,16 @@ public class UnitTestHand {
 		System.out.println("Inside only 5 card testHandValue()");
 		hand.emptyHand();
 		hand.addCard(new card('C', '5', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(5, hand.getHandValue());
 		hand.emptyHand();
 		hand.addCard(new card('H', '5', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(5, hand.getHandValue());
 		hand.emptyHand();
 		hand.addCard(new card('D', '5', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(5, hand.getHandValue());
 		hand.emptyHand();
 		hand.addCard(new card('S', '5', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(5, hand.getHandValue());
 		hand.emptyHand();
 	}
 
@@ -94,16 +94,16 @@ public class UnitTestHand {
 		System.out.println("Inside only 6 card testHandValue()");
 		hand.emptyHand();
 		hand.addCard(new card('C', '6', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(6, hand.getHandValue());
 		hand.emptyHand();
 		hand.addCard(new card('H', '6', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(6, hand.getHandValue());
 		hand.emptyHand();
 		hand.addCard(new card('D', '6', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(6, hand.getHandValue());
 		hand.emptyHand();
 		hand.addCard(new card('S', '6', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(6, hand.getHandValue());
 		hand.emptyHand();
 	}
 
@@ -112,16 +112,16 @@ public class UnitTestHand {
 		System.out.println("Inside only 7 card testHandValue()");
 		hand.emptyHand();
 		hand.addCard(new card('C', '7', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(7, hand.getHandValue());
 		hand.emptyHand();
 		hand.addCard(new card('H', '7', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(7, hand.getHandValue());
 		hand.emptyHand();
 		hand.addCard(new card('D', '7', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(7, hand.getHandValue());
 		hand.emptyHand();
 		hand.addCard(new card('S', '7', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(7, hand.getHandValue());
 		hand.emptyHand();
 	}
 
@@ -130,16 +130,16 @@ public class UnitTestHand {
 		System.out.println("Inside only 8 card testHandValue()");
 		hand.emptyHand();
 		hand.addCard(new card('C', '8', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(8, hand.getHandValue());
 		hand.emptyHand();
 		hand.addCard(new card('H', '8', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(8, hand.getHandValue());
 		hand.emptyHand();
 		hand.addCard(new card('D', '8', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(8, hand.getHandValue());
 		hand.emptyHand();
 		hand.addCard(new card('S', '8', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(8, hand.getHandValue());
 		hand.emptyHand();
 	}
 
@@ -148,16 +148,16 @@ public class UnitTestHand {
 		System.out.println("Inside only 9 card testHandValue()");
 		hand.emptyHand();
 		hand.addCard(new card('C', '9', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(9, hand.getHandValue());
 		hand.emptyHand();
 		hand.addCard(new card('H', '9', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(9, hand.getHandValue());
 		hand.emptyHand();
 		hand.addCard(new card('D', '9', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(9, hand.getHandValue());
 		hand.emptyHand();
 		hand.addCard(new card('S', '9', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(9, hand.getHandValue());
 		hand.emptyHand();
 	}
 
@@ -196,16 +196,16 @@ public class UnitTestHand {
 		assertEquals(HAND_START, hand.getHandValue());
 		hand.emptyHand();
 		hand.addCard(new card('C', 'A', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(11, hand.getHandValue());
 		hand.emptyHand();
 		hand.addCard(new card('H', 'A', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(11, hand.getHandValue());
 		hand.emptyHand();
 		hand.addCard(new card('D', 'A', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(11, hand.getHandValue());
 		hand.emptyHand();
 		hand.addCard(new card('S', 'A', true));
-		assertEquals(2, hand.getHandValue());
+		assertEquals(11, hand.getHandValue());
 		hand.emptyHand();
 	}
 
