@@ -243,12 +243,6 @@ public class UnitTestHand {
 			hand.addCard(new card(suite, '2', true));
 			assertEquals(NOT_BLACKJACK, Hand.blackJack(hand.getHand()));
 			hand.emptyHand();
-			hand.addCard(new card(suite, 'A', true));
-			hand.addCard(new card(suite, 'Q', true));
-			assertEquals(BLACKJACK, Hand.blackJack(hand.getHand()));
-			hand.addCard(new card(suite, '2', true));
-			assertEquals(NOT_BLACKJACK, Hand.blackJack(hand.getHand()));
-			hand.emptyHand();
 		}
 	}
 }
