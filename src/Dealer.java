@@ -15,7 +15,7 @@ import CR.card;
 public class Dealer {
 
 	/** Private variable declarations **/
-	private final int uuid;
+	private int uuid;
 	private int seqno;
 	private int active_players;
 	private player_status[] players;
@@ -392,66 +392,151 @@ public class Dealer {
 	}
 
 	/**============ Getters && Setters ===================**/
-
-	/** @return the uuid **/
+	
+	/**
+	 * @return the uuid
+	 */
 	public int getUuid() {
 		return uuid;
 	}
+	
+	/**
+	 * @return the seqno
+	 */
+	public int getSeqno() {
+		return seqno;
+	}
 
-	/** @return the activePlayers **/
+	/**
+	 * @param seqno the seqno to set
+	 */
+	public void setSeqno(int seqno) {
+		this.seqno = seqno;
+	}
+
+	/**
+	 * @return the active_players
+	 */
 	public int getActivePlayers() {
 		return active_players;
 	}
 
-	/** @param activePlayers the activePlayers to set **/
-	public void setActivePlayers(int activePlayers) {
-		this.active_players = activePlayers;
+	/**
+	 * @param active_players the active_players to set
+	 */
+	public void setActivePlayers(int active_players) {
+		this.active_players = active_players;
 	}
 
-	/** @return the action **/
+	/**
+	 * @return the players
+	 */
+	public player_status[] getPlayers() {
+		return players;
+	}
+
+	/**
+	 * @param players the players to set
+	 */
+	public void setPlayers(player_status[] players) {
+		this.players = players;
+	}
+
+	/**
+	 * @return the action
+	 */
 	public int getActionValue() {
 		return action.value();
 	}
 
-	/** @param action the action to set **/
-	public void setActionValue(int value) {
-		if(value < 5)
-		{
-			action = bjd_action.from_int(value);
-		}
+	/**
+	 * @param action the action to set
+	 */
+	public void setAction(bjd_action action) {
+		this.action = action;
 	}
 
-	/** @return the target_uuid **/
+	/**
+	 * @return the hand
+	 */
+	public Hand getHand() {
+		return hand;
+	}
+
+	/**
+	 * @param hand the hand to set
+	 */
+	public void setHand(Hand hand) {
+		this.hand = hand;
+	}
+
+	/**
+	 * @return the target_uuid
+	 */
 	public int getTarget_uuid() {
 		return target_uuid;
 	}
 
-	/** @param target_uuid the target_uuid to set **/
+	/**
+	 * @param target_uuid the target_uuid to set
+	 */
 	public void setTarget_uuid(int target_uuid) {
 		this.target_uuid = target_uuid;
 	}
 
-	/** @return the atTable **/
+	/**
+	 * @return the deck
+	 */
+	public Shoe getDeck() {
+		return deck;
+	}
+
+	/**
+	 * @param deck the deck to set
+	 */
+	public void setDeck(Shoe deck) {
+		this.deck = deck;
+	}
+
+	/**
+	 * @return the bank
+	 */
+	public Bank getBank() {
+		return bank;
+	}
+
+	/**
+	 * @param bank the bank to set
+	 */
+	public void setBank(Bank bank) {
+		this.bank = bank;
+	}
+
+	/**
+	 * @return the atTable
+	 */
 	public int getNumberAtTable() {
 		return atTable;
 	}
 
-	/** @param atTable the number of players in game **/
+	/**
+	 * @param atTable the atTable to set
+	 */
 	public void setNumberAtTable(int atTable) {
 		this.atTable = atTable;
 	}
 
-	/** @return the targetSeat **/
+	/**
+	 * @return the targetSeat
+	 */
 	public int getTargetSeat() {
 		return targetSeat;
 	}
 
-	/** @param targetSeat the seat to set the target_uuid to **/
+	/**
+	 * @param targetSeat the targetSeat to set
+	 */
 	public void setTargetSeat(int targetSeat) {
 		this.targetSeat = targetSeat;
-	}
-
-	public Bank getBank(){
-		return bank;
 	}
 }

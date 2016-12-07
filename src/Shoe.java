@@ -120,8 +120,35 @@ public class Shoe {
 		Hand.printCard(toSend);
 		return toSend;
 	}
-	
-	public int getCardsUsed(){
+
+	/**============ Getters && Setters ===================**/
+	/**
+	 * @return the cardsUsed
+	 */
+	public int getCardsUsed() {
 		return cardsUsed;
 	}
+
+	/**
+	 * @param cardsUsed the cardsUsed to set
+	 */
+	public void setCardsUsed(int cardsUsed) {
+		this.cardsUsed = cardsUsed;
+	}
+
+	/**
+	 * @return the deck
+	 */
+	public card[] getDeck() {
+		return deck;
+	}
+
+	/**
+	 * @param deck the deck to set
+	 */
+	public void setDeck(card[] deck) {
+		this.deck = deck;
+	}
+	
+	
 }

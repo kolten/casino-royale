@@ -257,4 +257,91 @@ public class DealerMain {
 		
 		return noReply;
 	}
+
+	
+	/**
+	 * @return the dealer
+	 */
+	public Dealer getDealer() {
+		return dealer;
+	}
+
+	/**
+	 * @param dealer the dealer to set
+	 */
+	public void setDealer(Dealer dealer) {
+		this.dealer = dealer;
+	}
+
+	/**
+	 * @return the sub
+	 */
+	public DealerSub getSub() {
+		return sub;
+	}
+
+	/**
+	 * @param sub the sub to set
+	 */
+	public void setSub(DealerSub sub) {
+		this.sub = sub;
+	}
+
+	/**
+	 * @return the pub
+	 */
+	public DealerPub getPub() {
+		return pub;
+	}
+
+	/**
+	 * @param pub the pub to set
+	 */
+	public void setPub(DealerPub pub) {
+		this.pub = pub;
+	}
+
+	/**
+	 * @return the timer
+	 */
+	public Timer getTimer() {
+		return timer;
+	}
+
+	/**
+	 * @param timer the timer to set
+	 */
+	public void setTimer(Timer timer) {
+		this.timer = timer;
+	}
+
+	/**
+	 * @return the systimer
+	 */
+	public Timer getSystimer() {
+		return systimer;
+	}
+
+	/**
+	 * @param systimer the systimer to set
+	 */
+	public void setSystimer(Timer systimer) {
+		this.systimer = systimer;
+	}
+
+	/**
+	 * @return the playerMessages
+	 */
+	public ArrayList<bjPlayer> getPlayerMessages() {
+		return playerMessages;
+	}
+
+	/**
+	 * @param playerMessages the playerMessages to set
+	 */
+	public void setPlayerMessages(ArrayList<bjPlayer> playerMessages) {
+		this.playerMessages = playerMessages;
+	}
+
+
 }
