@@ -74,7 +74,7 @@ public class Dealer {
 	}
 
 	/** Creates the player's current message to be passed to the OpenSplice publisher
-	  * @return bjDealer message that contains all the significant values of DealerFactory **/
+	 * @return bjDealer message that contains all the significant values of DealerFactory **/
 	public bjDealer getMsg(){
 		System.out.println("[Dealer " + getUuid() + "] Current credits in bank: " + bank.getCredits());
 		bjDealer temp = new bjDealer(uuid, seqno, active_players, players, action, hand.getHand(), target_uuid);
@@ -188,6 +188,24 @@ public class Dealer {
 		}
 	}
 
+	/** Removes players with matching uuid from table. 
+	 * @param uuid of the player to kick */
+	public void exiting(int uuid){
+		int i;
+		for(i = 0; i < getActivePlayers(); i++){
+			if(players[i].uuid == uuid){
+				Hand temp = new Hand();
+				setActivePlayers(getActivePlayers() - 1);
+				players[i] = new player_status(0, 0, 0f, temp.getHand());
+				for(;i < getActivePlayers()-1; i++){
+					player_status temp2 = players[i];
+					players[i] = players[i+1];
+					players[i] = temp2;
+				}
+			}
+		}
+	}
+	
 	/** Kicks players with matching uuid from table. 
 	 * @param uuid of the player to kick */
 	public void kickPlayer(int uuid){
@@ -393,14 +411,14 @@ public class Dealer {
 	}
 
 	/**============ Getters && Setters ===================**/
-	
+
 	/**
 	 * @return the uuid
 	 */
 	public int getUuid() {
 		return uuid;
 	}
-	
+
 	/**
 	 * @return the seqno
 	 */

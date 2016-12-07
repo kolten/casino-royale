@@ -76,7 +76,7 @@ public class DealerMain {
 				}
 				else if(noReply && dealer.stillWagering()){		//Kick timer starts here iff there are players still wagering.
 					kcount++;
-					//System.out.println("[Dealer " + dealer.getUuid() + "] Player " + dealer.getTarget_uuid() + "will be kicked in " + (2 - kcount) + " messages.");
+					System.out.println("[Dealer " + dealer.getUuid() + "] Player " + dealer.getTarget_uuid() + "will be kicked in " + (2 - kcount) + " messages.");
 				}
 				else if(!dealer.stillWagering() && dealer.getActivePlayers() < MAX_PLAYERS.value){
 					jcount++;
@@ -224,7 +224,7 @@ public class DealerMain {
 					case CR.bjp_action._exiting:
 						if(noReply && action.value() == bjd_action._waiting){
 							System.out.println("[Dealer " + dealer.getUuid() + "] Player " + playerMessages.get(j).uuid + " has chosen to leave.");
-							dealer.kickPlayer(playerMessages.get(j).uuid);;
+							dealer.exiting(playerMessages.get(j).uuid);;
 							noReply = false;
 						}
 						break;
