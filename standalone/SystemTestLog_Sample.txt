@@ -1,0 +1,6727 @@
+[Player] [Subscriber] Ready ...
+[Player] [Subscriber] Ready ...
+[Player] [Publisher] Ready ...
+[Player] [Publisher] Ready ...
+[Dealer] [Subscriber] Ready ...
+[Dealer] [Publisher] Ready ...
+[Dealer] Not all players have made a wager.
+[Dealer] Not all players have made a wager.
+[Dealer] Table is being set, please wait.
+[Dealer] Current credits in bank: 500.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 1
+players @ table: 0
+===================
+        action : shuffling
+        in hand:
+     target id : 0
+
+== [Player] received message from [Dealer] :
+
+[Dealer] Sent message at 0 ms from System Time.
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 1
+players @ table: 0
+===================
+          uuid : 654
+[Dealer] Local timer at 0 ms after publishing.
+         seqno : 1
+players @ table: 0
+===================
+        action :         action : shuffling
+        in hand:
+shuffling
+        in hand:
+     target id : 0
+     target id : 0
+[Player] Message sent to dealer :
+[Player] Message sent to dealer :
+          uuid : 2180
+          uuid : 7787
+         seqno : 1
+         seqno : 1
+       credits : 100.0
+       credits : 100.0
+         wager : 0
+         wager : 0
+      dealerID : 654
+      dealerID : 654
+        action :         action : joining
+joining
+[Dealer] received message from [Player] :
+          uuid : 2180
+         seqno : 1
+       credits : 100.0
+         wager : 0
+      dealerID : 654
+        action : joining
+[Dealer] received message from [Player] :
+          uuid : 7787
+         seqno : 1
+       credits : 100.0
+         wager : 0
+      dealerID : 654
+        action : joining
+2 messages received at 20 ms after publishing.
+[Dealer] ~~~~~~~~|Message 0|~~~~~~~~
+[Dealer] Player 2180 has joined the table.
+[Dealer] ~~~~~~~~|Message 1|~~~~~~~~
+[Dealer] Player 7787 has joined the table.
+490 ms after publishing.
+[Dealer] I'm moving on from you.
+[Dealer] A player is required for wagers.
+[Dealer] Current credits in bank: 500.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 2
+players @ table: 2
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+        action : waiting
+        in hand:
+     target id : 2180
+[Dealer] Sent message at 490 ms from System Time.
+[Dealer] Local timer at 490 ms after publishing.
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 2
+players @ table: 2
+===================
+
+== [Player] received message from [Dealer] :
+
+Players in seat 1:
+          uuid : 2180
+         wager : 0
+          uuid : 654
+         seqno : 2
+players @ table: 2
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 0
+        payout : 0.0
+        in hand:
+        payout : 0.0
+        in hand:
+===================
+Players in seat 2:
+===================
+Players in seat 2:
+          uuid : 7787
+          uuid : 7787
+         wager : 0
+         wager : 0
+        payout : 0.0
+        in hand:
+        payout : 0.0
+        in hand:
+===================
+        action : waiting
+        in hand:
+===================
+        action : waiting
+        in hand:
+     target id : 2180
+     target id : 2180
+[Player] Seat number is: 1
+[Player] Seat number is: 0
+[Player] I have joined a game at seat 0
+[Player] I have joined a game at seat 1
+[Player] I am starting the wagering sequence
+[Player] I am starting the wagering sequence
+490 ms after publishing.
+[Dealer] Player 2180will be kicked in 1 messages.
+[Dealer] A player is required for wagers.
+[Dealer] Current credits in bank: 500.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 3
+players @ table: 2
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+        action : waiting
+        in hand:
+     target id : 2180
+[Dealer] Sent message at 980 ms from System Time.
+[Dealer] Local timer at 490 ms after publishing.
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 3
+players @ table: 2
+===================
+Players in seat 1:
+          uuid : 2180
+
+== [Player] received message from [Dealer] :
+
+         wager : 0
+          uuid : 654
+        payout : 0.0
+        in hand:
+         seqno : 3
+===================
+players @ table: 2
+===================
+Players in seat 1:
+Players in seat 2:
+          uuid : 2180
+          uuid : 7787
+         wager : 0
+         wager : 0
+        payout : 0.0
+        in hand:
+        payout : 0.0
+        in hand:
+===================
+Players in seat 2:
+===================
+        action : waiting
+        in hand:
+          uuid : 7787
+     target id : 2180
+         wager : 0
+        payout : 0.0
+        in hand:
+[Player] Message sent to dealer :
+===================
+        action : waiting
+        in hand:
+          uuid : 2180
+     target id : 2180
+         seqno : 2
+       credits : 100.0
+         wager : 1
+      dealerID : 654
+        action : wagering
+[Player] A wager has been made.
+[Player] I'm actually in game!
+[Dealer] received message from [Player] :
+          uuid : 2180
+         seqno : 2
+       credits : 100.0
+         wager : 1
+      dealerID : 654
+        action : wagering
+1 messages received at 20 ms after publishing.
+[Dealer] ~~~~~~~~|Message 0|~~~~~~~~
+[Dealer] Setting wager
+[Dealer] Player 2180 has chosen to wager 1 credits.
+490 ms after publishing.
+[Dealer] I'm moving on from you.
+[Dealer] A player is required for wagers.
+[Dealer] Current credits in bank: 500.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 4
+players @ table: 2
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+        action : waiting
+        in hand:
+     target id : 7787
+[Dealer] Sent message at 1470 ms from System Time.
+[Dealer] Local timer at 490 ms after publishing.
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+
+== [Player] received message from [Dealer] :
+
+         seqno : 4
+players @ table: 2
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+          uuid : 654
+        payout : 0.0
+        in hand:
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 0
+         seqno : 4
+        payout : 0.0
+        in hand:
+===================
+        action : waiting
+        in hand:
+players @ table: 2
+     target id : 7787
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+        action : waiting
+        in hand:
+     target id : 7787
+[Player] Message sent to dealer :
+          uuid : 7787
+         seqno : 2
+       credits : 100.0
+         wager : 1
+      dealerID : 654
+        action : wagering
+[Player] A wager has been made.
+[Player] I'm actually in game!
+[Dealer] received message from [Player] :
+          uuid : 7787
+         seqno : 2
+       credits : 100.0
+         wager : 1
+      dealerID : 654
+        action : wagering
+1 messages received at 20 ms after publishing.
+[Dealer] ~~~~~~~~|Message 0|~~~~~~~~
+[Dealer] Setting wager
+[Dealer] Player 7787 has chosen to wager 1 credits.
+[Player] [Subscriber] Ready ...
+[Player] [Publisher] Ready ...
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 4
+players @ table: 2
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+        action : waiting
+        in hand:
+     target id : 7787
+[Player] Message sent to dealer :
+          uuid : 504
+         seqno : 1
+       credits : 100.0
+         wager : 0
+      dealerID : 654
+        action : joining
+Why do you do these things?
+490 ms after publishing.
+[Dealer] Not all players have made a wager.
+[Dealer] Not all players have made a wager.
+[Dealer] Not all players have made a wager.
+[Dealer] End of table reached.
+[Dealer] A player is required for wagers.
+[Dealer] Current credits in bank: 500.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 5
+players @ table: 2
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 1
+        payout : 0.0
+        in hand:
+===================
+        action : waiting
+        in hand:
+     target id : 0
+[Dealer] Sent message at 1960 ms from System Time.
+
+== [Player] received message from [Dealer] :
+
+[Dealer] Local timer at 490 ms after publishing.
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 5
+players @ table: 2
+===================
+          uuid : 654
+         seqno : 5
+players @ table: 2
+===================
+Players in seat 1:
+Players in seat 1:
+          uuid : 2180
+          uuid : 2180
+         wager : 1
+         wager : 1
+        payout : 0.0
+        in hand:
+        payout : 0.0
+        in hand:
+===================
+===================
+Players in seat 2:
+Players in seat 2:
+          uuid : 7787
+          uuid : 7787
+         wager : 1
+         wager : 1
+        payout : 0.0
+        in hand:
+        payout : 0.0
+        in hand:
+===================
+        action : waiting
+        in hand:
+===================
+        action : waiting
+        in hand:
+     target id : 0
+     target id : 0
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 5
+players @ table: 2
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 1
+        payout : 0.0
+        in hand:
+===================
+        action : waiting
+        in hand:
+     target id : 0
+501 ms after publishing.
+[Dealer] Not all players have made a wager.
+[Dealer] Not all players have made a wager.
+1 messages until game starts.
+[Dealer] Not all players have made a wager.
+[Dealer] Not all players have made a wager.
+[Dealer] Not all players have made a wager.
+[Dealer] A player is required for wagers.
+[Dealer] Current credits in bank: 500.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 6
+players @ table: 2
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 1
+        payout : 0.0
+        in hand:
+===================
+        action : waiting
+        in hand:
+     target id : 0
+[Dealer] Sent message at 2461 ms from System Time.
+[Dealer] Local timer at 501 ms after publishing.
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+
+== [Player] received message from [Dealer] :
+
+         seqno : 6
+          uuid : 654
+players @ table: 2
+===================
+
+== [Player] received message from [Dealer] :
+
+         seqno : 6
+          uuid : 654
+Players in seat 1:
+         seqno : 6
+players @ table: 2
+===================
+players @ table: 2
+===================
+Players in seat 1:
+          uuid : 2180
+          uuid : 2180
+Players in seat 1:
+         wager : 1
+         wager : 1
+        payout : 0.0
+        in hand:
+          uuid : 2180
+===================
+        payout : 0.0
+        in hand:
+Players in seat 2:
+         wager : 1
+          uuid : 7787
+===================
+         wager : 1
+        payout : 0.0
+        in hand:
+        payout : 0.0
+        in hand:
+Players in seat 2:
+===================
+        action : waiting
+        in hand:
+===================
+     target id : 0
+          uuid : 7787
+[Player] Message sent to dealer :
+Players in seat 2:
+          uuid : 504
+         wager : 1
+         seqno : 2
+          uuid : 7787
+       credits : 100.0
+        payout : 0.0
+        in hand:
+         wager : 0
+         wager : 1
+      dealerID : 654
+        action : joining
+===================
+        action : waiting
+        in hand:
+        payout : 0.0
+        in hand:
+     target id : 0
+===================
+        action : waiting
+        in hand:
+     target id : 0
+Why do you do these things?
+490 ms after publishing.
+[Dealer] Not all players have made a wager.
+[Dealer] Not all players have made a wager.
+0 messages until game starts.
+[Dealer] Not all players have made a wager.
+[Dealer] The BlackJack game has started. Will soon commence dealing.
+[Dealer] Not all players have made a wager.
+[Dealer] Not all players have made a wager.
+[Dealer] The BlackJack game has started. Will soon commence dealing.
+[Dealer] Giving myself some cards.
+Card coming your way!
+           suite :H
+      base_value :3
+         visible :false
+Card coming your way!
+           suite :D
+      base_value :8
+         visible :true
+[Dealer] Giving player 0  some cards.
+Card coming your way!
+           suite :S
+      base_value :2
+         visible :true
+Card coming your way!
+           suite :C
+      base_value :3
+         visible :true
+[Dealer] Giving player 1  some cards.
+Card coming your way!
+           suite :S
+      base_value :6
+         visible :true
+Card coming your way!
+           suite :S
+      base_value :K
+         visible :true
+
+
+Every player receives 2 card.
+
+[Dealer] Current credits in bank: 500.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 7
+players @ table: 2
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :2
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :H
+      base_value :3
+         visible :false
+Cards index: 0
+           suite :D
+      base_value :8
+         visible :true
+Cards index: 1
+     target id : 0
+[Dealer] Sent message at 2951 ms from System Time.
+[Dealer] Local timer at 490 ms after publishing.
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 7
+players @ table: 2
+===================
+
+== [Player] received message from [Dealer] :
+
+Players in seat 1:
+          uuid : 654
+         seqno : 7
+players @ table: 2
+===================
+          uuid : 2180
+         wager : 1
+Players in seat 1:
+        payout : 0.0
+        in hand:
+          uuid : 2180
+           suite :S
+      base_value :2
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 1
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+        payout : 0.0
+        in hand:
+===================
+        action : dealing
+        in hand:
+           suite :H
+      base_value :3
+         visible :false
+           suite :D
+      base_value :8
+         visible :true
+           suite :S
+      base_value :2
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+     target id : 0
+===================
+[Player] Seat number is: 0
+Players in seat 2:
+[Player] Seat number is: 0
+          uuid : 7787
+         wager : 1
+        payout : 0.0
+        in hand:
+[Player] I am preparing to hit or stay
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :H
+      base_value :3
+         visible :false
+           suite :D
+      base_value :8
+         visible :true
+     target id : 0
+[Player] Seat number is: 1
+[Player] Seat number is: 1
+[Player] I am preparing to hit or stay
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 7
+players @ table: 2
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :2
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :H
+      base_value :3
+         visible :false
+           suite :D
+      base_value :8
+         visible :true
+     target id : 0
+490 ms after publishing.
+[Dealer] Targeting next player for response.
+[Dealer] Player 2180: Hit or stay?
+[Dealer] Current credits in bank: 500.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 8
+players @ table: 2
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :2
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :H
+      base_value :3
+         visible :false
+Cards index: 0
+           suite :D
+      base_value :8
+         visible :true
+Cards index: 1
+     target id : 2180
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 8
+players @ table: 2
+===================
+
+== [Player] received message from [Dealer] :
+
+Players in seat 1:
+          uuid : 654
+          uuid : 2180
+         seqno : 8
+         wager : 1
+players @ table: 2
+===================
+        payout : 0.0
+        in hand:
+Players in seat 1:
+[Dealer] Sent message at 3441 ms from System Time.
+          uuid : 2180
+           suite :S
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 8
+players @ table: 2
+===================
+Players in seat 1:
+         wager : 1
+[Dealer] Local timer at 490 ms after publishing.
+        payout : 0.0
+        in hand:
+          uuid : 2180
+      base_value :2
+         visible :true
+         wager : 1
+           suite :S
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :2
+           suite :C
+      base_value :3
+         visible :true
+      base_value :2
+           suite :C
+      base_value :3
+         visible :true
+===================
+         visible :true
+         visible :true
+           suite :C
+===================
+Players in seat 2:
+Players in seat 2:
+      base_value :3
+         visible :true
+          uuid : 7787
+          uuid : 7787
+         wager : 1
+         wager : 1
+        payout : 0.0
+        in hand:
+===================
+           suite :S
+      base_value :6
+        payout : 0.0
+        in hand:
+         visible :true
+Players in seat 2:
+           suite :S
+           suite :S
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :H
+      base_value :3
+         visible :false
+           suite :D
+      base_value :8
+         visible :true
+     target id : 2180
+          uuid : 7787
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :H
+      base_value :3
+         visible :false
+           suite :D
+      base_value :8
+         visible :true
+     target id : 2180
+[Player] Message sent to dealer :
+          uuid : 504
+         seqno : 3
+       credits : 100.0
+         wager : 0
+      dealerID : 654
+        action : joining
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :H
+      base_value :3
+         visible :false
+           suite :D
+      base_value :8
+         visible :true
+     target id : 2180
+[Player] I am going to request a card (Hit).
+[Player] Message sent to dealer :
+          uuid : 2180
+         seqno : 3
+       credits : 100.0
+         wager : 1
+      dealerID : 654
+        action : requesting a card
+[Player] My hand has a value of 5
+Why do you do these things?
+[Dealer] received message from [Player] :
+          uuid : 2180
+         seqno : 3
+       credits : 100.0
+         wager : 1
+      dealerID : 654
+        action : requesting a card
+1 messages received at 20 ms after publishing.
+[Dealer] ~~~~~~~~|Message 0|~~~~~~~~
+[Dealer] A card has been requested.
+Card coming your way!
+           suite :D
+      base_value :9
+         visible :true
+491 ms after publishing.
+[Dealer] Player 2180: Hit or stay?
+[Dealer] Current credits in bank: 500.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 9
+players @ table: 2
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :2
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+           suite :D
+      base_value :9
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :H
+      base_value :3
+         visible :false
+Cards index: 0
+           suite :D
+      base_value :8
+         visible :true
+Cards index: 1
+     target id : 2180
+[Dealer] Sent message at 3932 ms from System Time.
+[Dealer] Local timer at 491 ms after publishing.
+
+== [Player] received message from [Dealer] :
+
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+          uuid : 654
+         seqno : 9
+players @ table: 2
+===================
+         seqno : 9
+players @ table: 2
+===================
+Players in seat 1:
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+          uuid : 2180
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :2
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+           suite :D
+      base_value :9
+         visible :true
+===================
+Players in seat 2:
+         wager : 1
+          uuid : 7787
+        payout : 0.0
+        in hand:
+         wager : 1
+           suite :S
+      base_value :2
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+           suite :D
+      base_value :9
+         visible :true
+        payout : 0.0
+        in hand:
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 1
+           suite :S
+      base_value :6
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :H
+      base_value :3
+         visible :false
+           suite :D
+      base_value :8
+         visible :true
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+     target id : 2180
+===================
+        action : dealing
+        in hand:
+           suite :H
+      base_value :3
+         visible :false
+           suite :D
+      base_value :8
+         visible :true
+     target id : 2180
+[Player] Seat number is: 0
+[Player] I am going to request a card (Hit).
+[Player] Message sent to dealer :
+          uuid : 2180
+         seqno : 4
+       credits : 100.0
+         wager : 1
+      dealerID : 654
+        action : requesting a card
+[Player] My hand has a value of 14
+[Dealer] received message from [Player] :
+          uuid : 2180
+         seqno : 4
+       credits : 100.0
+         wager : 1
+      dealerID : 654
+        action : requesting a card
+1 messages received at 20 ms after publishing.
+[Dealer] ~~~~~~~~|Message 0|~~~~~~~~
+[Dealer] A card has been requested.
+Card coming your way!
+           suite :D
+      base_value :Q
+         visible :true
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 9
+players @ table: 2
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :2
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+           suite :D
+      base_value :9
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :H
+      base_value :3
+         visible :false
+           suite :D
+      base_value :8
+         visible :true
+     target id : 2180
+490 ms after publishing.
+[Dealer] Player 2180: Hit or stay?
+[Dealer] Current credits in bank: 500.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 10
+players @ table: 2
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :2
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+           suite :D
+      base_value :9
+         visible :true
+           suite :D
+      base_value :Q
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :H
+      base_value :3
+         visible :false
+Cards index: 0
+           suite :D
+      base_value :8
+         visible :true
+Cards index: 1
+     target id : 2180
+[Dealer] Sent message at 4422 ms from System Time.
+[Dealer] Local timer at 490 ms after publishing.
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 10
+players @ table: 2
+===================
+Players in seat 1:
+
+== [Player] received message from [Dealer] :
+
+          uuid : 2180
+          uuid : 654
+         seqno : 10
+players @ table: 2
+===================
+         wager : 1
+Players in seat 1:
+        payout : 0.0
+        in hand:
+          uuid : 2180
+           suite :S
+         wager : 1
+      base_value :2
+        payout : 0.0
+        in hand:
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+           suite :D
+      base_value :9
+         visible :true
+           suite :D
+      base_value :Q
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :H
+      base_value :3
+         visible :false
+           suite :D
+      base_value :8
+         visible :true
+     target id : 2180
+[Player] Seat number is: 0
+[Player] I am going to stop requesting (Stay).
+[Player] Message sent to dealer :
+          uuid : 2180
+         seqno : 5
+       credits : 100.0
+         wager : 1
+      dealerID : 654
+        action : none
+           suite :S
+      base_value :2
+[Player] My hand has a value of 24
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+           suite :D
+      base_value :9
+         visible :true
+           suite :D
+      base_value :Q
+         visible :true
+[Player] Looking for collecting message
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :H
+      base_value :3
+         visible :false
+           suite :D
+      base_value :8
+         visible :true
+     target id : 2180
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 10
+players @ table: 2
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :2
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+           suite :D
+      base_value :9
+         visible :true
+           suite :D
+      base_value :Q
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :H
+      base_value :3
+         visible :false
+           suite :D
+      base_value :8
+         visible :true
+     target id : 2180
+[Player] Message sent to dealer :
+          uuid : 504
+         seqno : 4
+       credits : 100.0
+         wager : 0
+      dealerID : 654
+        action : joining
+Why do you do these things?
+[Dealer] received message from [Player] :
+          uuid : 2180
+         seqno : 5
+       credits : 100.0
+         wager : 1
+      dealerID : 654
+        action : none
+1 messages received at 20 ms after publishing.
+[Dealer] ~~~~~~~~|Message 0|~~~~~~~~
+[Dealer] Player 2180 has chosen to stay hand.
+490 ms after publishing.
+[Dealer] Targeting next player for response.
+[Dealer] Player 7787: Hit or stay?
+[Dealer] Current credits in bank: 500.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 11
+players @ table: 2
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :2
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+           suite :D
+      base_value :9
+         visible :true
+           suite :D
+      base_value :Q
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :H
+      base_value :3
+         visible :false
+Cards index: 0
+           suite :D
+      base_value :8
+         visible :true
+Cards index: 1
+     target id : 7787
+[Dealer] Sent message at 4912 ms from System Time.
+[Dealer] Local timer at 490 ms after publishing.
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 11
+players @ table: 2
+===================
+Players in seat 1:
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 11
+players @ table: 2
+===================
+          uuid : 2180
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+         wager : 1
+        payout : 0.0
+        in hand:
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :2
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+           suite :S
+      base_value :2
+           suite :D
+      base_value :9
+         visible :true
+         visible :true
+           suite :C
+      base_value :3
+           suite :D
+      base_value :Q
+         visible :true
+===================
+         visible :true
+           suite :D
+      base_value :9
+         visible :true
+           suite :D
+      base_value :Q
+         visible :true
+Players in seat 2:
+          uuid : 7787
+         wager : 1
+===================
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :H
+      base_value :3
+         visible :false
+           suite :D
+      base_value :8
+         visible :true
+Players in seat 2:
+          uuid : 7787
+     target id : 7787
+         wager : 1
+[Player] I am going to request a card (Hit).
+        payout : 0.0
+        in hand:
+[Player] Message sent to dealer :
+           suite :S
+      base_value :6
+          uuid : 7787
+         visible :true
+         seqno : 3
+           suite :S
+       credits : 100.0
+      base_value :K
+         wager : 1
+         visible :true
+      dealerID : 654
+        action : ===================
+        action : dealing
+        in hand:
+requesting a card
+           suite :H
+      base_value :3
+         visible :false
+           suite :D
+      base_value :8
+[Player] My hand has a value of 16
+         visible :true
+     target id : 7787
+[Dealer] received message from [Player] :
+          uuid : 7787
+         seqno : 3
+       credits : 100.0
+         wager : 1
+      dealerID : 654
+        action : requesting a card
+1 messages received at 40 ms after publishing.
+[Dealer] ~~~~~~~~|Message 0|~~~~~~~~
+[Dealer] A card has been requested.
+Card coming your way!
+           suite :S
+      base_value :6
+         visible :true
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 11
+players @ table: 2
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :2
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+           suite :D
+      base_value :9
+         visible :true
+           suite :D
+      base_value :Q
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :H
+      base_value :3
+         visible :false
+           suite :D
+      base_value :8
+         visible :true
+     target id : 7787
+490 ms after publishing.
+[Dealer] Player 7787: Hit or stay?
+[Dealer] Current credits in bank: 500.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 12
+players @ table: 2
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :2
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+           suite :D
+      base_value :9
+         visible :true
+           suite :D
+      base_value :Q
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+           suite :S
+      base_value :6
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :H
+      base_value :3
+         visible :false
+Cards index: 0
+           suite :D
+      base_value :8
+         visible :true
+Cards index: 1
+     target id : 7787
+[Dealer] Sent message at 5402 ms from System Time.
+[Dealer] Local timer at 490 ms after publishing.
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 12
+players @ table: 2
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :2
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+           suite :D
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 12
+players @ table: 2
+===================
+      base_value :9
+Players in seat 1:
+
+== [Player] received message from [Dealer] :
+
+         visible :true
+          uuid : 654
+          uuid : 2180
+         wager : 1
+         seqno : 12
+           suite :D
+      base_value :Q
+players @ table: 2
+        payout : 0.0
+        in hand:
+===================
+         visible :true
+Players in seat 1:
+           suite :S
+      base_value :2
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+           suite :D
+      base_value :9
+         visible :true
+           suite :D
+      base_value :Q
+         visible :true
+          uuid : 2180
+===================
+         wager : 1
+===================
+Players in seat 2:
+        payout : 0.0
+        in hand:
+Players in seat 2:
+          uuid : 7787
+         wager : 1
+           suite :S
+          uuid : 7787
+         wager : 1
+      base_value :2
+        payout : 0.0
+        in hand:
+         visible :true
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :6
+           suite :C
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+           suite :S
+      base_value :6
+         visible :true
+      base_value :3
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+           suite :S
+      base_value :6
+         visible :true
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :H
+      base_value :3
+         visible :false
+           suite :D
+      base_value :8
+         visible :true
+           suite :D
+      base_value :9
+===================
+        action : dealing
+        in hand:
+           suite :H
+      base_value :3
+         visible :false
+           suite :D
+      base_value :8
+         visible :true
+         visible :true
+     target id : 7787
+           suite :D
+      base_value :Q
+     target id : 7787
+         visible :true
+[Player] Message sent to dealer :
+===================
+[Player] Seat number is: 1
+Players in seat 2:
+          uuid : 504
+         seqno : 5
+          uuid : 7787
+[Player] I am going to stop requesting (Stay).
+         wager : 1
+       credits : 100.0
+         wager : 0
+      dealerID : 654
+        action : joining
+        payout : 0.0
+        in hand:
+[Player] Message sent to dealer :
+           suite :S
+          uuid : 7787
+      base_value :6
+         seqno : 4
+         visible :true
+       credits : 100.0
+           suite :S
+      base_value :K
+         wager : 1
+      dealerID : 654
+        action : none
+         visible :true
+[Player] My hand has a value of 22
+           suite :S
+      base_value :6
+         visible :true
+===================
+        action : dealing
+        in hand:
+[Player] Looking for collecting message
+           suite :H
+      base_value :3
+         visible :false
+           suite :D
+      base_value :8
+         visible :true
+     target id : 7787
+Why do you do these things?
+[Dealer] received message from [Player] :
+          uuid : 7787
+         seqno : 4
+       credits : 100.0
+         wager : 1
+      dealerID : 654
+        action : none
+1 messages received at 40 ms after publishing.
+[Dealer] ~~~~~~~~|Message 0|~~~~~~~~
+[Dealer] Player 7787 has chosen to stay hand.
+490 ms after publishing.
+[Dealer] Dealing phase should be done... Probably.
+[Dealer] Player 0: Hit or stay?
+[Dealer] Current credits in bank: 500.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 13
+players @ table: 2
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :2
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+           suite :D
+      base_value :9
+         visible :true
+           suite :D
+      base_value :Q
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+           suite :S
+      base_value :6
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :H
+      base_value :3
+         visible :false
+Cards index: 0
+           suite :D
+      base_value :8
+         visible :true
+Cards index: 1
+     target id : 0
+[Dealer] Sent message at 5892 ms from System Time.
+[Dealer] Local timer at 490 ms after publishing.
+
+== [Player] received message from [Dealer] :
+
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+          uuid : 654
+         seqno : 13
+players @ table: 2
+===================
+         seqno : 13
+players @ table: 2
+===================
+Players in seat 1:
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :2
+         visible :true
+          uuid : 2180
+         wager : 1
+           suite :C
+      base_value :3
+        payout : 0.0
+        in hand:
+         visible :true
+           suite :S
+      base_value :2
+           suite :D
+      base_value :9
+         visible :true
+         visible :true
+           suite :C
+      base_value :3
+           suite :D
+      base_value :Q
+         visible :true
+         visible :true
+           suite :D
+      base_value :9
+===================
+         visible :true
+Players in seat 2:
+           suite :D
+          uuid : 7787
+      base_value :Q
+         wager : 1
+         visible :true
+        payout : 0.0
+        in hand:
+===================
+           suite :S
+      base_value :6
+Players in seat 2:
+         visible :true
+          uuid : 7787
+           suite :S
+      base_value :K
+         wager : 1
+         visible :true
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :6
+           suite :S
+      base_value :6
+         visible :true
+         visible :true
+===================
+        action :            suite :S
+      base_value :K
+         visible :true
+dealing
+        in hand:
+           suite :S
+      base_value :6
+           suite :H
+      base_value :3
+         visible :true
+         visible :false
+===================
+        action : dealing
+        in hand:
+           suite :D
+           suite :H
+      base_value :3
+      base_value :8
+         visible :false
+         visible :true
+           suite :D
+      base_value :8
+     target id : 0
+         visible :true
+     target id : 0
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 13
+players @ table: 2
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :2
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+           suite :D
+      base_value :9
+         visible :true
+           suite :D
+      base_value :Q
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+           suite :S
+      base_value :6
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :H
+      base_value :3
+         visible :false
+           suite :D
+      base_value :8
+         visible :true
+     target id : 0
+490 ms after publishing.
+I reveal my trap card!
+           suite :H
+      base_value :3
+         visible :true
+           suite :D
+      base_value :8
+         visible :true
+
+
+My next trick revolves around 11
+Card coming your way!
+           suite :D
+      base_value :K
+         visible :true
+Maybe I'll be better next time with 21
+[Dealer] Dealt cards to self.
+[Dealer] Finished dealing. Preparing to divy up the payouts.
+[Dealer] Current credits in bank: 500.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 14
+players @ table: 2
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :2
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+           suite :D
+      base_value :9
+         visible :true
+           suite :D
+      base_value :Q
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+           suite :S
+      base_value :6
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :H
+      base_value :3
+         visible :true
+Cards index: 0
+           suite :D
+      base_value :8
+         visible :true
+Cards index: 1
+           suite :D
+      base_value :K
+         visible :true
+Cards index: 2
+     target id : 0
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 14
+players @ table: 2
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :2
+         visible :true
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 14
+players @ table: 2
+===================
+           suite :C
+
+== [Player] received message from [Dealer] :
+
+[Dealer] Sent message at 6382 ms from System Time.
+          uuid : 654
+         seqno : 14
+players @ table: 2
+===================
+      base_value :3
+Players in seat 1:
+         visible :true
+           suite :D
+      base_value :9
+         visible :true
+           suite :D
+      base_value :Q
+Players in seat 1:
+[Dealer] Local timer at 490 ms after publishing.
+          uuid : 2180
+         wager : 1
+         visible :true
+          uuid : 2180
+===================
+        payout : 0.0
+        in hand:
+Players in seat 2:
+         wager : 1
+          uuid : 7787
+         wager : 1
+           suite :S
+        payout : 0.0
+        in hand:
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :6
+      base_value :2
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+===================
+        action : dealing
+        in hand:
+         visible :true
+           suite :H
+      base_value :3
+         visible :true
+           suite :D
+      base_value :8
+         visible :true
+           suite :D
+      base_value :K
+         visible :true
+      base_value :2
+     target id : 0
+           suite :C
+      base_value :3
+         visible :true
+         visible :true
+           suite :D
+      base_value :9
+[Player] Message sent to dealer :
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+           suite :D
+      base_value :9
+         visible :true
+           suite :D
+      base_value :Q
+         visible :true
+           suite :D
+          uuid : 504
+      base_value :Q
+===================
+         visible :true
+         seqno : 6
+===================
+Players in seat 2:
+Players in seat 2:
+       credits : 100.0
+         wager : 0
+      dealerID : 654
+        action : joining
+          uuid : 7787
+         wager : 1
+          uuid : 7787
+        payout : 0.0
+        in hand:
+         wager : 1
+           suite :S
+        payout : 0.0
+        in hand:
+      base_value :6
+           suite :S
+      base_value :6
+         visible :true
+         visible :true
+           suite :S
+           suite :S
+      base_value :K
+      base_value :K
+         visible :true
+         visible :true
+           suite :S
+           suite :S
+      base_value :6
+         visible :true
+      base_value :6
+===================
+        action : dealing
+        in hand:
+         visible :true
+           suite :H
+      base_value :3
+         visible :true
+           suite :D
+      base_value :8
+         visible :true
+           suite :D
+      base_value :K
+===================
+        action : dealing
+        in hand:
+         visible :true
+           suite :H
+     target id : 0
+      base_value :3
+         visible :true
+           suite :D
+      base_value :8
+         visible :true
+           suite :D
+      base_value :K
+         visible :true
+     target id : 0
+[Dealer] received message from [Player] :
+          uuid : 504
+         seqno : 6
+       credits : 100.0
+         wager : 0
+      dealerID : 654
+        action : joining
+1 messages received at 20 ms after publishing.
+[Dealer] ~~~~~~~~|Message 0|~~~~~~~~
+[Dealer] Player 504 has joined the table.
+490 ms after publishing.
+[Dealer] Collecting from players.
+[Dealer] Current credits in bank: 502.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 15
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 0
+        payout : 1.0
+        in hand:
+           suite :S
+      base_value :2
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+           suite :D
+      base_value :9
+         visible :true
+           suite :D
+      base_value :Q
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 0
+        payout : 1.0
+        in hand:
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+           suite :S
+      base_value :6
+         visible :true
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+        action : collecting
+        in hand:
+           suite :H
+      base_value :3
+         visible :true
+Cards index: 0
+           suite :D
+      base_value :8
+         visible :true
+Cards index: 1
+           suite :D
+      base_value :K
+         visible :true
+Cards index: 2
+     target id : 0
+[Dealer] Sent message at 6872 ms from System Time.
+
+== [Player] received message from [Dealer] :
+
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 15
+players @ table: 3
+===================
+          uuid : 654
+         seqno : 15
+players @ table: 3
+===================
+[Dealer] Local timer at 490 ms after publishing.
+Players in seat 1:
+          uuid : 2180
+         wager : 0
+        payout : 1.0
+        in hand:
+           suite :S
+      base_value :2
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+           suite :D
+      base_value :9
+         visible :true
+           suite :D
+      base_value :Q
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 0
+Players in seat 1:
+          uuid : 2180
+         wager : 0
+        payout : 1.0
+        in hand:
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+           suite :S
+      base_value :6
+         visible :true
+        payout : 1.0
+        in hand:
+           suite :S
+      base_value :2
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+           suite :D
+      base_value :9
+         visible :true
+           suite :D
+      base_value :Q
+         visible :true
+===================
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 0
+Players in seat 3:
+          uuid : 504
+         wager : 0
+        payout : 1.0
+        in hand:
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+           suite :S
+      base_value :6
+         visible :true
+        payout : 0.0
+        in hand:
+===================
+===================
+        action : paying
+        in hand:
+           suite :H
+      base_value :3
+         visible :true
+           suite :D
+      base_value :8
+         visible :true
+           suite :D
+      base_value :K
+         visible :true
+Players in seat 3:
+          uuid : 504
+         wager : 0
+     target id : 0
+        payout : 0.0
+        in hand:
+[Player] Dealer is collecting credits!
+===================
+        action : paying
+        in hand:
+           suite :H
+      base_value :3
+         visible :true
+           suite :D
+      base_value :8
+         visible :true
+           suite :D
+      base_value :K
+         visible :true
+[Player] Seat number is: 1
+     target id : 0
+[Player] Dealer is collecting credits!
+[Player] Seat number is: 0
+[Player] We lost! We now have 99.0 credits
+[Player] We lost! We now have 99.0 credits
+[Player] Looking for paying message
+[Player] Looking for paying message
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 15
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 0
+        payout : 1.0
+        in hand:
+           suite :S
+      base_value :2
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+           suite :D
+      base_value :9
+         visible :true
+           suite :D
+      base_value :Q
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 0
+        payout : 1.0
+        in hand:
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+           suite :S
+      base_value :6
+         visible :true
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+        action : paying
+        in hand:
+           suite :H
+      base_value :3
+         visible :true
+           suite :D
+      base_value :8
+         visible :true
+           suite :D
+      base_value :K
+         visible :true
+     target id : 0
+[Player] Seat number is: 2
+[Player] I have joined a game at seat 2
+[Player] I am starting the wagering sequence
+490 ms after publishing.
+[Dealer] Paying players.
+[Dealer] Current credits in bank: 502.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 16
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 0
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :2
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+           suite :D
+      base_value :9
+         visible :true
+           suite :D
+      base_value :Q
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 0
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+           suite :S
+      base_value :6
+         visible :true
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+        action : paying
+        in hand:
+           suite :H
+      base_value :3
+         visible :true
+Cards index: 0
+           suite :D
+      base_value :8
+         visible :true
+Cards index: 1
+           suite :D
+      base_value :K
+         visible :true
+Cards index: 2
+     target id : 0
+[Dealer] Sent message at 7362 ms from System Time.
+[Dealer] Local timer at 490 ms after publishing.
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+
+== [Player] received message from [Dealer] :
+
+         seqno : 16
+          uuid : 654
+         seqno : 16
+players @ table: 3
+===================
+players @ table: 3
+===================
+Players in seat 1:
+
+== [Player] received message from [Dealer] :
+
+Players in seat 1:
+          uuid : 654
+          uuid : 2180
+         seqno : 16
+          uuid : 2180
+         wager : 0
+players @ table: 3
+===================
+         wager : 0
+Players in seat 1:
+        payout : 0.0
+        in hand:
+          uuid : 2180
+        payout : 0.0
+        in hand:
+         wager : 0
+           suite :S
+      base_value :2
+         visible :true
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :2
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+           suite :D
+      base_value :9
+         visible :true
+           suite :D
+      base_value :Q
+         visible :true
+           suite :S
+      base_value :2
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+           suite :D
+      base_value :9
+         visible :true
+           suite :D
+      base_value :Q
+         visible :true
+           suite :C
+      base_value :3
+         visible :true
+           suite :D
+      base_value :9
+         visible :true
+           suite :D
+      base_value :Q
+         visible :true
+===================
+===================
+Players in seat 2:
+===================
+          uuid : 7787
+Players in seat 2:
+         wager : 0
+Players in seat 2:
+          uuid : 7787
+         wager : 0
+        payout : 0.0
+        in hand:
+          uuid : 7787
+           suite :S
+      base_value :6
+         visible :true
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+           suite :S
+      base_value :6
+         visible :true
+           suite :S
+      base_value :K
+         visible :true
+         wager : 0
+           suite :S
+      base_value :6
+         visible :true
+===================
+===================
+        payout : 0.0
+        in hand:
+Players in seat 3:
+Players in seat 3:
+          uuid : 504
+           suite :S
+      base_value :6
+         visible :true
+         wager : 0
+          uuid : 504
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :K
+         visible :true
+           suite :S
+      base_value :6
+         visible :true
+===================
+        action :          wager : 0
+collecting
+        in hand:
+===================
+           suite :H
+      base_value :3
+         visible :true
+           suite :D
+      base_value :8
+         visible :true
+           suite :D
+      base_value :K
+         visible :true
+        payout : 0.0
+        in hand:
+     target id : 0
+Players in seat 3:
+[Player] Dealer is paying out credits!
+===================
+        action : [Player] Seat number is: 0
+          uuid : 504
+[Player] I am removing my cards from my hand.
+collecting
+        in hand:
+[Player] The round has ended.
+[Player] I am starting the wagering sequence
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+        action : collecting
+        in hand:
+           suite :H
+      base_value :3
+         visible :true
+           suite :D
+      base_value :8
+         visible :true
+           suite :D
+      base_value :K
+         visible :true
+     target id : 0
+[Player] Dealer is paying out credits!
+[Player] Seat number is: 1
+[Player] I am removing my cards from my hand.
+[Player] The round has ended.
+[Player] I am starting the wagering sequence
+           suite :H
+      base_value :3
+         visible :true
+           suite :D
+      base_value :8
+         visible :true
+           suite :D
+      base_value :K
+         visible :true
+     target id : 0
+510 ms after publishing.
+[Dealer] The round has ended.
+[Dealer] I'm moving on from you.
+[Dealer] A player is required for wagers.
+[Dealer] Current credits in bank: 502.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 17
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+        action : waiting
+        in hand:
+     target id : 2180
+[Dealer] Sent message at 7882 ms from System Time.
+[Dealer] Local timer at 520 ms after publishing.
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 17
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+        action : waiting
+        in hand:
+     target id : 2180
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 17
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+        action : waiting
+        in hand:
+     target id : 2180
+[Player] Message sent to dealer :
+          uuid : 2180
+         seqno : 6
+       credits : 99.0
+         wager : 1
+      dealerID : 654
+        action : wagering
+[Player] A wager has been made.
+[Player] I'm actually in game!
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 17
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+        action : waiting
+        in hand:
+     target id : 2180
+[Dealer] received message from [Player] :
+          uuid : 2180
+         seqno : 6
+       credits : 99.0
+         wager : 1
+      dealerID : 654
+        action : wagering
+1 messages received at 40 ms after publishing.
+[Dealer] ~~~~~~~~|Message 0|~~~~~~~~
+[Dealer] Setting wager
+[Dealer] Player 2180 has chosen to wager 1 credits.
+500 ms after publishing.
+[Dealer] I'm moving on from you.
+[Dealer] A player is required for wagers.
+[Dealer] Current credits in bank: 502.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 18
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+        action : waiting
+        in hand:
+     target id : 7787
+[Dealer] Sent message at 8382 ms from System Time.
+[Dealer] Local timer at 500 ms after publishing.
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 18
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+        action : waiting
+        in hand:
+     target id : 7787
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 18
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+        action : waiting
+        in hand:
+     target id : 7787
+[Player] Message sent to dealer :
+          uuid : 7787
+         seqno : 5
+       credits : 99.0
+         wager : 2
+      dealerID : 654
+        action : wagering
+[Player] A wager has been made.
+[Player] I'm actually in game!
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 18
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+        action : waiting
+        in hand:
+     target id : 7787
+[Dealer] received message from [Player] :
+          uuid : 7787
+         seqno : 5
+       credits : 99.0
+         wager : 2
+      dealerID : 654
+        action : wagering
+1 messages received at 40 ms after publishing.
+[Dealer] ~~~~~~~~|Message 0|~~~~~~~~
+[Dealer] Setting wager
+[Dealer] Player 7787 has chosen to wager 2 credits.
+490 ms after publishing.
+[Dealer] I'm moving on from you.
+[Dealer] A player is required for wagers.
+[Dealer] Current credits in bank: 502.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 19
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 2
+        payout : 0.0
+        in hand:
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 0
+        payout : 0.0
+        in hand:
+===================
+        action : waiting
+        in hand:
+     target id : 504
+[Dealer] Sent message at 8872 ms from System Time.
+[Dealer] Local timer at 490 ms after publishing.
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 19
+players @ table: 3
+===================
+
+== [Player] received message from [Dealer] :
+
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+Players in seat 1:
+         seqno : 19
+players @ table: 3
+===================
+          uuid : 654
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+         seqno : 19
+players @ table: 3
+===================
+===================
+        payout : 0.0
+        in hand:
+Players in seat 2:
+          uuid : 7787
+         wager : 2
+Players in seat 1:
+        payout : 0.0
+        in hand:
+===================
+===================
+          uuid : 2180
+Players in seat 3:
+          uuid : 504
+         wager : 0
+Players in seat 2:
+        payout : 0.0
+        in hand:
+         wager : 1
+===================
+        action : waiting
+        in hand:
+          uuid : 7787
+     target id : 504
+        payout : 0.0
+        in hand:
+         wager : 2
+===================
+        payout : 0.0
+        in hand:
+Players in seat 2:
+===================
+          uuid : 7787
+Players in seat 3:
+         wager : 2
+          uuid : 504
+         wager : 0
+        payout : 0.0
+        in hand:
+        payout : 0.0
+        in hand:
+===================
+===================
+        action : waiting
+        in hand:
+Players in seat 3:
+          uuid : 504
+         wager : 0
+     target id : 504
+        payout : 0.0
+        in hand:
+===================
+        action : waiting
+        in hand:
+[Player] Message sent to dealer :
+     target id : 504
+          uuid : 504
+         seqno : 7
+       credits : 100.0
+         wager : 1
+      dealerID : 654
+        action : wagering
+[Player] A wager has been made.
+[Player] I'm actually in game!
+[Dealer] received message from [Player] :
+          uuid : 504
+         seqno : 7
+       credits : 100.0
+         wager : 1
+      dealerID : 654
+        action : wagering
+1 messages received at 20 ms after publishing.
+[Dealer] ~~~~~~~~|Message 0|~~~~~~~~
+[Dealer] Setting wager
+[Dealer] Player 504 has chosen to wager 1 credits.
+510 ms after publishing.
+[Dealer] Not all players have made a wager.
+[Dealer] Not all players have made a wager.
+[Dealer] Not all players have made a wager.
+[Dealer] End of table reached.
+[Dealer] A player is required for wagers.
+[Dealer] Current credits in bank: 502.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 20
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 2
+        payout : 0.0
+        in hand:
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 1
+        payout : 0.0
+        in hand:
+===================
+        action : waiting
+        in hand:
+     target id : 0
+[Dealer] Sent message at 9382 ms from System Time.
+[Dealer] Local timer at 510 ms after publishing.
+
+== [Player] received message from [Dealer] :
+
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 20
+players @ table: 3
+===================
+
+== [Player] received message from [Dealer] :
+
+Players in seat 1:
+          uuid : 654
+          uuid : 2180
+          uuid : 654
+         wager : 1
+         seqno : 20
+players @ table: 3
+===================
+        payout : 0.0
+        in hand:
+         seqno : 20
+===================
+Players in seat 1:
+Players in seat 2:
+players @ table: 3
+===================
+          uuid : 7787
+         wager : 2
+          uuid : 2180
+        payout : 0.0
+        in hand:
+Players in seat 1:
+===================
+         wager : 1
+Players in seat 3:
+          uuid : 504
+         wager : 1
+          uuid : 2180
+        payout : 0.0
+        in hand:
+        payout : 0.0
+        in hand:
+===================
+        action : waiting
+        in hand:
+         wager : 1
+     target id : 0
+===================
+        payout : 0.0
+        in hand:
+Players in seat 2:
+===================
+          uuid : 7787
+Players in seat 2:
+         wager : 2
+        payout : 0.0
+        in hand:
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 1
+        payout : 0.0
+        in hand:
+===================
+        action : waiting
+        in hand:
+          uuid : 7787
+     target id : 0
+         wager : 2
+        payout : 0.0
+        in hand:
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 1
+        payout : 0.0
+        in hand:
+===================
+        action : waiting
+        in hand:
+     target id : 0
+510 ms after publishing.
+[Dealer] Not all players have made a wager.
+[Dealer] Not all players have made a wager.
+1 messages until game starts.
+[Dealer] Not all players have made a wager.
+[Dealer] Not all players have made a wager.
+[Dealer] Not all players have made a wager.
+[Dealer] A player is required for wagers.
+[Dealer] Current credits in bank: 502.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 21
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 2
+        payout : 0.0
+        in hand:
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 1
+        payout : 0.0
+        in hand:
+===================
+        action : waiting
+        in hand:
+     target id : 0
+[Dealer] Sent message at 9892 ms from System Time.
+[Dealer] Local timer at 510 ms after publishing.
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 21
+players @ table: 3
+===================
+Players in seat 1:
+
+== [Player] received message from [Dealer] :
+
+          uuid : 2180
+          uuid : 654
+         wager : 1
+         seqno : 21
+        payout : 0.0
+        in hand:
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 21
+players @ table: 3
+===================
+players @ table: 3
+===================
+Players in seat 1:
+===================
+          uuid : 2180
+Players in seat 1:
+         wager : 1
+Players in seat 2:
+          uuid : 7787
+         wager : 2
+        payout : 0.0
+        in hand:
+          uuid : 2180
+===================
+        payout : 0.0
+        in hand:
+Players in seat 2:
+         wager : 1
+          uuid : 7787
+         wager : 2
+===================
+        payout : 0.0
+        in hand:
+        payout : 0.0
+        in hand:
+===================
+Players in seat 3:
+Players in seat 3:
+          uuid : 504
+         wager : 1
+===================
+        payout : 0.0
+        in hand:
+          uuid : 504
+===================
+        action : waiting
+        in hand:
+Players in seat 2:
+     target id : 0
+         wager : 1
+          uuid : 7787
+        payout : 0.0
+        in hand:
+         wager : 2
+===================
+        action : waiting
+        in hand:
+        payout : 0.0
+        in hand:
+     target id : 0
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 1
+        payout : 0.0
+        in hand:
+===================
+        action : waiting
+        in hand:
+     target id : 0
+510 ms after publishing.
+[Dealer] Not all players have made a wager.
+[Dealer] Not all players have made a wager.
+0 messages until game starts.
+[Dealer] Not all players have made a wager.
+[Dealer] The BlackJack game has started. Will soon commence dealing.
+[Dealer] Not all players have made a wager.
+[Dealer] Not all players have made a wager.
+[Dealer] The BlackJack game has started. Will soon commence dealing.
+[Dealer] Giving myself some cards.
+Card coming your way!
+           suite :S
+      base_value :3
+         visible :false
+Card coming your way!
+           suite :S
+      base_value :Q
+         visible :true
+[Dealer] Giving player 0  some cards.
+Card coming your way!
+           suite :D
+      base_value :T
+         visible :true
+Card coming your way!
+           suite :H
+      base_value :2
+         visible :true
+[Dealer] Giving player 1  some cards.
+Card coming your way!
+           suite :D
+      base_value :2
+         visible :true
+Card coming your way!
+           suite :C
+      base_value :8
+         visible :true
+[Dealer] Giving player 2  some cards.
+Card coming your way!
+           suite :C
+      base_value :6
+         visible :true
+Card coming your way!
+           suite :C
+      base_value :K
+         visible :true
+
+
+Every player receives 2 card.
+
+[Dealer] Current credits in bank: 502.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 22
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 2
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+Cards index: 0
+           suite :S
+      base_value :Q
+         visible :true
+Cards index: 1
+     target id : 0
+[Dealer] Sent message at 10402 ms from System Time.
+[Dealer] Local timer at 510 ms after publishing.
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 22
+players @ table: 3
+===================
+Players in seat 1:
+
+== [Player] received message from [Dealer] :
+
+          uuid : 2180
+         wager : 1
+          uuid : 654
+        payout : 0.0
+        in hand:
+         seqno : 22
+players @ table: 3
+===================
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+Players in seat 1:
+===================
+
+== [Player] received message from [Dealer] :
+
+Players in seat 2:
+          uuid : 2180
+          uuid : 7787
+         wager : 2
+          uuid : 654
+         seqno : 22
+players @ table: 3
+===================
+        payout : 0.0
+        in hand:
+         wager : 1
+           suite :D
+      base_value :2
+         visible :true
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+           suite :C
+      base_value :8
+         visible :true
+        payout : 0.0
+        in hand:
+===================
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+Players in seat 3:
+           suite :D
+      base_value :T
+         visible :true
+          uuid : 504
+         wager : 1
+===================
+        payout : 0.0
+        in hand:
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+Players in seat 2:
+===================
+        action : dealing
+        in hand:
+===================
+           suite :S
+      base_value :3
+         visible :false
+          uuid : 7787
+           suite :S
+      base_value :Q
+         visible :true
+Players in seat 2:
+          uuid : 7787
+         wager : 2
+     target id : 0
+         wager : 2
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+[Player] Seat number is: 0
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+===================
+[Player] Seat number is: 0
+===================
+Players in seat 3:
+[Player] I am preparing to hit or stay
+Players in seat 3:
+          uuid : 504
+          uuid : 504
+         wager : 1
+         wager : 1
+        payout : 0.0
+        in hand:
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+           suite :S
+      base_value :Q
+         visible :true
+           suite :S
+      base_value :3
+         visible :false
+           suite :S
+      base_value :Q
+         visible :true
+     target id : 0
+     target id : 0
+[Player] Seat number is: 1
+[Player] Seat number is: 2
+[Player] Seat number is: 1
+[Player] Seat number is: 2
+[Player] I am preparing to hit or stay
+[Player] I am preparing to hit or stay
+490 ms after publishing.
+[Dealer] Targeting next player for response.
+[Dealer] Player 2180: Hit or stay?
+[Dealer] Current credits in bank: 502.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 23
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 2
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+Cards index: 0
+           suite :S
+      base_value :Q
+         visible :true
+Cards index: 1
+     target id : 2180
+[Dealer] Sent message at 10892 ms from System Time.
+[Dealer] Local timer at 490 ms after publishing.
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 23
+players @ table: 3
+===================
+Players in seat 1:
+
+== [Player] received message from [Dealer] :
+
+          uuid : 2180
+         wager : 1
+          uuid : 654
+         seqno : 23
+players @ table: 3
+===================
+        payout : 0.0
+        in hand:
+Players in seat 1:
+
+== [Player] received message from [Dealer] :
+
+           suite :D
+      base_value :T
+          uuid : 654
+         seqno : 23
+players @ table: 3
+===================
+          uuid : 2180
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 2
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+           suite :S
+      base_value :Q
+         visible :true
+     target id : 2180
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 2
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+           suite :S
+      base_value :Q
+         visible :true
+     target id : 2180
+[Player] I am going to request a card (Hit).
+[Player] Message sent to dealer :
+          uuid : 2180
+         seqno : 7
+       credits : 99.0
+         wager : 1
+      dealerID : 654
+        action : requesting a card
+[Player] My hand has a value of 12
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 2
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+           suite :S
+      base_value :Q
+         visible :true
+     target id : 2180
+[Dealer] received message from [Player] :
+          uuid : 2180
+         seqno : 7
+       credits : 99.0
+         wager : 1
+      dealerID : 654
+        action : requesting a card
+1 messages received at 40 ms after publishing.
+[Dealer] ~~~~~~~~|Message 0|~~~~~~~~
+[Dealer] A card has been requested.
+Card coming your way!
+           suite :C
+      base_value :5
+         visible :true
+490 ms after publishing.
+[Dealer] Player 2180: Hit or stay?
+[Dealer] Current credits in bank: 502.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 24
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 2
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+Cards index: 0
+           suite :S
+      base_value :Q
+         visible :true
+Cards index: 1
+     target id : 2180
+[Dealer] Sent message at 11392 ms from System Time.
+[Dealer] Local timer at 500 ms after publishing.
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 24
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 24
+players @ table: 3
+===================
+        payout : 0.0
+        in hand:
+Players in seat 1:
+           suite :D
+      base_value :T
+         visible :true
+          uuid : 2180
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+         wager : 1
+===================
+        payout : 0.0
+        in hand:
+Players in seat 2:
+           suite :D
+      base_value :T
+          uuid : 7787
+         visible :true
+         wager : 2
+           suite :H
+      base_value :2
+         visible :true
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :5
+         visible :true
+           suite :D
+      base_value :2
+         visible :true
+===================
+           suite :C
+      base_value :8
+         visible :true
+Players in seat 2:
+===================
+          uuid : 7787
+Players in seat 3:
+         wager : 2
+          uuid : 504
+        payout : 0.0
+        in hand:
+         wager : 1
+           suite :D
+      base_value :2
+         visible :true
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :8
+         visible :true
+           suite :C
+      base_value :6
+         visible :true
+===================
+           suite :C
+      base_value :K
+         visible :true
+Players in seat 3:
+===================
+        action :           uuid : 504
+         wager : 1
+dealing
+        in hand:
+        payout : 0.0
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+           suite :C
+      base_value :6
+         visible :true
+           suite :S
+      base_value :Q
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+     target id : 2180
+===================
+        action : dealing
+        in hand:
+[Player] Seat number is: 0
+           suite :S
+      base_value :3
+         visible :false
+[Player] I am going to stop requesting (Stay).
+           suite :S
+      base_value :Q
+         visible :true
+[Player] Message sent to dealer :
+     target id : 2180
+          uuid : 2180
+         seqno : 8
+       credits : 99.0
+         wager : 1
+      dealerID : 654
+        action : none
+[Player] My hand has a value of 17
+[Player] Looking for collecting message
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 24
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 2
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+           suite :S
+      base_value :Q
+         visible :true
+     target id : 2180
+[Dealer] received message from [Player] :
+          uuid : 2180
+         seqno : 8
+       credits : 99.0
+         wager : 1
+      dealerID : 654
+        action : none
+1 messages received at 30 ms after publishing.
+[Dealer] ~~~~~~~~|Message 0|~~~~~~~~
+[Dealer] Player 2180 has chosen to stay hand.
+490 ms after publishing.
+[Dealer] Targeting next player for response.
+[Dealer] Player 7787: Hit or stay?
+[Dealer] Current credits in bank: 502.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 25
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 2
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+Cards index: 0
+           suite :S
+      base_value :Q
+         visible :true
+Cards index: 1
+     target id : 7787
+[Dealer] Sent message at 11882 ms from System Time.
+[Dealer] Local timer at 490 ms after publishing.
+
+== [Player] received message from [Dealer] :
+
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+          uuid : 654
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 25
+players @ table: 3
+===================
+         seqno : 25
+players @ table: 3
+===================
+Players in seat 1:
+         seqno : 25
+players @ table: 3
+===================
+          uuid : 2180
+Players in seat 1:
+         wager : 1
+Players in seat 1:
+        payout : 0.0
+        in hand:
+          uuid : 2180
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+          uuid : 2180
+===================
+         wager : 1
+Players in seat 2:
+          uuid : 7787
+         wager : 2
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+        payout : 0.0
+        in hand:
+===================
+        payout : 0.0
+        in hand:
+Players in seat 3:
+          uuid : 504
+         wager : 1
+           suite :D
+      base_value :T
+         visible :true
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+           suite :S
+      base_value :Q
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+     target id : 7787
+===================
+===================
+Players in seat 2:
+Players in seat 2:
+[Player] I am going to request a card (Hit).
+          uuid : 7787
+          uuid : 7787
+[Player] Message sent to dealer :
+         wager : 2
+          uuid : 7787
+         wager : 2
+        payout : 0.0
+        in hand:
+         seqno : 6
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+       credits : 99.0
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+         wager : 2
+===================
+      dealerID : 654
+        action : requesting a card
+===================
+Players in seat 3:
+[Player] My hand has a value of 10
+Players in seat 3:
+          uuid : 504
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+           suite :S
+      base_value :Q
+         visible :true
+     target id : 7787
+          uuid : 504
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+           suite :S
+      base_value :Q
+         visible :true
+     target id : 7787
+[Dealer] received message from [Player] :
+          uuid : 7787
+         seqno : 6
+       credits : 99.0
+         wager : 2
+      dealerID : 654
+        action : requesting a card
+1 messages received at 30 ms after publishing.
+[Dealer] ~~~~~~~~|Message 0|~~~~~~~~
+[Dealer] A card has been requested.
+Card coming your way!
+           suite :H
+      base_value :5
+         visible :true
+500 ms after publishing.
+[Dealer] Player 7787: Hit or stay?
+[Dealer] Current credits in bank: 502.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 26
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 2
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+Cards index: 0
+           suite :S
+      base_value :Q
+         visible :true
+Cards index: 1
+     target id : 7787
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 26
+players @ table: 3
+===================
+
+== [Player] received message from [Dealer] :
+
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+          uuid : 654
+[Dealer] Sent message at 12382 ms from System Time.
+        payout : 0.0
+        in hand:
+[Dealer] Local timer at 500 ms after publishing.
+         seqno : 26
+players @ table: 3
+===================
+           suite :D
+      base_value :T
+         visible :true
+
+== [Player] received message from [Dealer] :
+
+Players in seat 1:
+          uuid : 654
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+         seqno : 26
+players @ table: 3
+===================
+          uuid : 2180
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+===================
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+         wager : 1
+===================
+Players in seat 2:
+Players in seat 2:
+        payout : 0.0
+        in hand:
+          uuid : 7787
+          uuid : 7787
+         wager : 2
+         wager : 2
+           suite :D
+      base_value :T
+         visible :true
+        payout : 0.0
+        in hand:
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+===================
+===================
+===================
+Players in seat 3:
+Players in seat 3:
+Players in seat 2:
+          uuid : 504
+          uuid : 504
+         wager : 1
+         wager : 1
+          uuid : 7787
+         wager : 2
+        payout : 0.0
+        in hand:
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :2
+           suite :C
+      base_value :K
+         visible :true
+           suite :C
+      base_value :6
+         visible :true
+===================
+        action : dealing
+        in hand:
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :S
+      base_value :3
+         visible :false
+           suite :S
+      base_value :Q
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+     target id : 7787
+===================
+===================
+        action : dealing
+        in hand:
+[Player] Seat number is: 1
+Players in seat 3:
+          uuid : 504
+         wager : 1
+[Player] I am going to request a card (Hit).
+           suite :S
+      base_value :3
+         visible :false
+[Player] Message sent to dealer :
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+          uuid : 7787
+           suite :S
+      base_value :Q
+         visible :true
+         seqno : 7
+===================
+       credits : 99.0
+     target id : 7787
+         wager : 2
+      dealerID : 654
+        action : requesting a card
+[Player] My hand has a value of 15
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+           suite :S
+      base_value :Q
+         visible :true
+     target id : 7787
+[Dealer] received message from [Player] :
+          uuid : 7787
+         seqno : 7
+       credits : 99.0
+         wager : 2
+      dealerID : 654
+        action : requesting a card
+1 messages received at 20 ms after publishing.
+[Dealer] ~~~~~~~~|Message 0|~~~~~~~~
+[Dealer] A card has been requested.
+Card coming your way!
+           suite :H
+      base_value :7
+         visible :true
+500 ms after publishing.
+[Dealer] Player 7787: Hit or stay?
+[Dealer] Current credits in bank: 502.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 27
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 2
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+Cards index: 0
+           suite :S
+      base_value :Q
+         visible :true
+Cards index: 1
+     target id : 7787
+[Dealer] Sent message at 12882 ms from System Time.
+[Dealer] Local timer at 500 ms after publishing.
+
+== [Player] received message from [Dealer] :
+
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 27
+players @ table: 3
+===================
+          uuid : 654
+         seqno : 27
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+
+== [Player] received message from [Dealer] :
+
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+        payout : 0.0
+        in hand:
+===================
+          uuid : 654
+Players in seat 2:
+          uuid : 7787
+         wager : 2
+           suite :D
+      base_value :T
+         visible :true
+        payout : 0.0
+        in hand:
+         seqno : 27
+players @ table: 3
+===================
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+Players in seat 3:
+===================
+          uuid : 504
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+         wager : 1
+Players in seat 2:
+        payout : 0.0
+        in hand:
+===================
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+           suite :S
+      base_value :Q
+         visible :true
+          uuid : 7787
+         wager : 2
+     target id : 7787
+Players in seat 2:
+          uuid : 7787
+         wager : 2
+[Player] Seat number is: 1
+        payout : 0.0
+        in hand:
+        payout : 0.0
+[Player] I am going to stop requesting (Stay).
+           suite :D
+      base_value :2
+         visible :true
+[Player] Message sent to dealer :
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+          uuid : 7787
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+         seqno : 8
+===================
+       credits : 99.0
+===================
+         wager : 2
+      dealerID : 654
+        action : none
+Players in seat 3:
+Players in seat 3:
+[Player] My hand has a value of 22
+          uuid : 504
+         wager : 1
+          uuid : 504
+        payout : 0.0
+        in hand:
+[Player] Looking for collecting message
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+         wager : 1
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+           suite :S
+      base_value :Q
+         visible :true
+        payout : 0.0
+        in hand:
+     target id : 7787
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+           suite :S
+      base_value :Q
+         visible :true
+     target id : 7787
+[Dealer] received message from [Player] :
+          uuid : 7787
+         seqno : 8
+       credits : 99.0
+         wager : 2
+      dealerID : 654
+        action : none
+1 messages received at 40 ms after publishing.
+[Dealer] ~~~~~~~~|Message 0|~~~~~~~~
+[Dealer] Player 7787 has chosen to stay hand.
+510 ms after publishing.
+[Dealer] Targeting next player for response.
+[Dealer] Player 504: Hit or stay?
+[Dealer] Current credits in bank: 502.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 28
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 2
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+Cards index: 0
+           suite :S
+      base_value :Q
+         visible :true
+Cards index: 1
+     target id : 504
+[Dealer] Sent message at 13392 ms from System Time.
+[Dealer] Local timer at 510 ms after publishing.
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 28
+
+== [Player] received message from [Dealer] :
+
+players @ table: 3
+===================
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 28
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 654
+          uuid : 2180
+Players in seat 1:
+         wager : 1
+         seqno : 28
+players @ table: 3
+===================
+Players in seat 1:
+        payout : 0.0
+        in hand:
+          uuid : 2180
+         wager : 1
+           suite :D
+      base_value :T
+         visible :true
+          uuid : 2180
+         wager : 1
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+        payout : 0.0
+        in hand:
+===================
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+Players in seat 2:
+===================
+           suite :D
+      base_value :T
+         visible :true
+Players in seat 2:
+          uuid : 7787
+         wager : 2
+          uuid : 7787
+        payout : 0.0
+        in hand:
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+         wager : 2
+===================
+===================
+Players in seat 3:
+        payout : 0.0
+        in hand:
+          uuid : 504
+Players in seat 2:
+         wager : 1
+           suite :D
+      base_value :2
+         visible :true
+        payout : 0.0
+        in hand:
+          uuid : 7787
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+           suite :S
+      base_value :Q
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+     target id : 504
+         wager : 2
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+===================
+Players in seat 3:
+===================
+          uuid : 504
+         wager : 1
+Players in seat 3:
+        payout : 0.0
+        in hand:
+          uuid : 504
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+         wager : 1
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+           suite :S
+      base_value :Q
+         visible :true
+        payout : 0.0
+        in hand:
+     target id : 504
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+           suite :S
+      base_value :Q
+         visible :true
+     target id : 504
+[Player] I am going to request a card (Hit).
+[Player] Message sent to dealer :
+          uuid : 504
+         seqno : 8
+       credits : 100.0
+         wager : 1
+      dealerID : 654
+        action : requesting a card
+[Player] My hand has a value of 16
+[Dealer] received message from [Player] :
+          uuid : 504
+         seqno : 8
+       credits : 100.0
+         wager : 1
+      dealerID : 654
+        action : requesting a card
+1 messages received at 40 ms after publishing.
+[Dealer] ~~~~~~~~|Message 0|~~~~~~~~
+[Dealer] A card has been requested.
+Card coming your way!
+           suite :H
+      base_value :9
+         visible :true
+490 ms after publishing.
+[Dealer] Player 504: Hit or stay?
+[Dealer] Current credits in bank: 502.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 29
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 2
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+           suite :H
+      base_value :9
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+Cards index: 0
+           suite :S
+      base_value :Q
+         visible :true
+Cards index: 1
+     target id : 504
+[Dealer] Sent message at 13882 ms from System Time.
+[Dealer] Local timer at 490 ms after publishing.
+
+== [Player] received message from [Dealer] :
+
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 29
+players @ table: 3
+===================
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 29
+players @ table: 3
+===================
+          uuid : 654
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+         seqno : 29
+           suite :D
+      base_value :T
+         visible :true
+        payout : 0.0
+        in hand:
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+players @ table: 3
+===================
+===================
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+Players in seat 2:
+Players in seat 1:
+          uuid : 7787
+===================
+         wager : 2
+          uuid : 2180
+        payout : 0.0
+        in hand:
+Players in seat 2:
+          uuid : 7787
+         wager : 2
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+         wager : 1
+===================
+        payout : 0.0
+        in hand:
+Players in seat 3:
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+          uuid : 504
+         wager : 1
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+===================
+           suite :C
+      base_value :K
+         visible :true
+           suite :H
+      base_value :9
+         visible :true
+===================
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+           suite :S
+      base_value :Q
+         visible :true
+Players in seat 2:
+     target id : 504
+Players in seat 3:
+[Player] Seat number is: 2
+          uuid : 7787
+          uuid : 504
+[Player] I am going to stop requesting (Stay).
+         wager : 2
+[Player] Message sent to dealer :
+         wager : 1
+          uuid : 504
+         seqno : 9
+        payout : 0.0
+        in hand:
+       credits : 100.0
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+           suite :H
+      base_value :9
+         visible :true
+         wager : 1
+      dealerID : 654
+        action : none
+           suite :D
+      base_value :2
+         visible :true
+===================
+        action : dealing
+        in hand:
+[Player] My hand has a value of 25
+[Player] Looking for collecting message
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+           suite :S
+      base_value :3
+         visible :false
+===================
+           suite :S
+      base_value :Q
+         visible :true
+Players in seat 3:
+     target id : 504
+          uuid : 504
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+           suite :H
+      base_value :9
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+           suite :S
+      base_value :Q
+         visible :true
+     target id : 504
+[Dealer] received message from [Player] :
+          uuid : 504
+         seqno : 9
+       credits : 100.0
+         wager : 1
+      dealerID : 654
+        action : none
+1 messages received at 20 ms after publishing.
+[Dealer] ~~~~~~~~|Message 0|~~~~~~~~
+[Dealer] Player 504 has chosen to stay hand.
+500 ms after publishing.
+[Dealer] Dealing phase should be done... Probably.
+[Dealer] Player 0: Hit or stay?
+[Dealer] Current credits in bank: 502.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 30
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 2
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+           suite :H
+      base_value :9
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+Cards index: 0
+           suite :S
+      base_value :Q
+         visible :true
+Cards index: 1
+     target id : 0
+[Dealer] Sent message at 14382 ms from System Time.
+[Dealer] Local timer at 500 ms after publishing.
+
+== [Player] received message from [Dealer] :
+
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 30
+players @ table: 3
+===================
+          uuid : 654
+Players in seat 1:
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 30
+players @ table: 3
+===================
+          uuid : 2180
+         wager : 1
+         seqno : 30
+players @ table: 3
+===================
+Players in seat 1:
+        payout : 0.0
+        in hand:
+Players in seat 1:
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+          uuid : 2180
+         visible :true
+          uuid : 2180
+         wager : 1
+===================
+         wager : 1
+Players in seat 2:
+        payout : 0.0
+        in hand:
+          uuid : 7787
+         wager : 2
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+===================
+===================
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 1
+        payout : 0.0
+        in hand:
+Players in seat 2:
+           suite :C
+      base_value :6
+         visible :true
+Players in seat 2:
+           suite :C
+      base_value :K
+         visible :true
+          uuid : 7787
+           suite :H
+      base_value :9
+         visible :true
+          uuid : 7787
+===================
+        action :          wager : 2
+dealing
+        in hand:
+           suite :S
+      base_value :3
+         wager : 2
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+         visible :false
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+           suite :S
+      base_value :Q
+         visible :true
+===================
+     target id : 0
+===================
+Players in seat 3:
+Players in seat 3:
+          uuid : 504
+          uuid : 504
+         wager : 1
+         wager : 1
+        payout : 0.0
+        in hand:
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+           suite :H
+      base_value :9
+         visible :true
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+           suite :H
+      base_value :9
+         visible :true
+===================
+        action : ===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :false
+           suite :S
+      base_value :Q
+         visible :true
+dealing
+        in hand:
+     target id : 0
+           suite :S
+      base_value :3
+         visible :false
+           suite :S
+      base_value :Q
+         visible :true
+     target id : 0
+510 ms after publishing.
+I reveal my trap card!
+           suite :S
+      base_value :3
+         visible :true
+           suite :S
+      base_value :Q
+         visible :true
+
+
+My next trick revolves around 13
+Card coming your way!
+           suite :C
+      base_value :9
+         visible :true
+Maybe I'll be better next time with 22
+[Dealer] Dealt cards to self.
+[Dealer] Finished dealing. Preparing to divy up the payouts.
+[Dealer] Current credits in bank: 502.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 31
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 2
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+           suite :H
+      base_value :9
+         visible :true
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :true
+Cards index: 0
+           suite :S
+      base_value :Q
+         visible :true
+Cards index: 1
+           suite :C
+      base_value :9
+         visible :true
+Cards index: 2
+     target id : 0
+[Dealer] Sent message at 14892 ms from System Time.
+[Dealer] Local timer at 510 ms after publishing.
+
+== [Player] received message from [Dealer] :
+
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 31
+players @ table: 3
+===================
+          uuid : 654
+Players in seat 1:
+         seqno : 31
+          uuid : 2180
+         wager : 1
+players @ table: 3
+===================
+        payout : 0.0
+        in hand:
+
+== [Player] received message from [Dealer] :
+
+           suite :D
+      base_value :T
+         visible :true
+Players in seat 1:
+           suite :H
+      base_value :2
+         visible :true
+          uuid : 654
+           suite :C
+      base_value :5
+         visible :true
+          uuid : 2180
+===================
+         seqno : 31
+players @ table: 3
+===================
+Players in seat 2:
+         wager : 1
+          uuid : 7787
+Players in seat 1:
+         wager : 2
+        payout : 0.0
+        in hand:
+        payout : 0.0
+        in hand:
+          uuid : 2180
+           suite :D
+      base_value :2
+         visible :true
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+===================
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+         wager : 1
+===================
+Players in seat 2:
+Players in seat 3:
+          uuid : 504
+         wager : 1
+        payout : 0.0
+        in hand:
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+           suite :H
+      base_value :9
+         visible :true
+          uuid : 7787
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :true
+           suite :S
+      base_value :Q
+         visible :true
+           suite :C
+      base_value :9
+         visible :true
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+     target id : 0
+         wager : 2
+===================
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+Players in seat 2:
+===================
+          uuid : 7787
+         wager : 2
+Players in seat 3:
+        payout : 0.0
+        in hand:
+          uuid : 504
+         wager : 1
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+        payout : 0.0
+        in hand:
+===================
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+           suite :H
+      base_value :9
+         visible :true
+Players in seat 3:
+          uuid : 504
+         wager : 1
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :true
+           suite :S
+      base_value :Q
+         visible :true
+           suite :C
+      base_value :9
+         visible :true
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+           suite :H
+      base_value :9
+         visible :true
+     target id : 0
+===================
+        action : dealing
+        in hand:
+           suite :S
+      base_value :3
+         visible :true
+           suite :S
+      base_value :Q
+         visible :true
+           suite :C
+      base_value :9
+         visible :true
+     target id : 0
+490 ms after publishing.
+[Dealer] Dealer busted, but I tried to collect, for no reason.
+[Dealer] Collecting from players.
+[Dealer] Current credits in bank: 502.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 32
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 2
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+           suite :H
+      base_value :9
+         visible :true
+===================
+        action : collecting
+        in hand:
+           suite :S
+      base_value :3
+         visible :true
+Cards index: 0
+           suite :S
+      base_value :Q
+         visible :true
+Cards index: 1
+           suite :C
+      base_value :9
+         visible :true
+Cards index: 2
+     target id : 0
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 32
+
+== [Player] received message from [Dealer] :
+
+[Dealer] Sent message at 15382 ms from System Time.
+[Dealer] Local timer at 490 ms after publishing.
+players @ table: 3
+===================
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 32
+players @ table: 3
+===================
+          uuid : 654
+Players in seat 1:
+Players in seat 1:
+          uuid : 2180
+         wager : 1
+          uuid : 2180
+         seqno : 32
+players @ table: 3
+===================
+         wager : 1
+        payout : 0.0
+        in hand:
+        payout : 0.0
+        in hand:
+Players in seat 1:
+           suite :D
+      base_value :T
+         visible :true
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+          uuid : 2180
+===================
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 2
+         wager : 1
+        payout : 0.0
+        in hand:
+Players in seat 2:
+           suite :D
+      base_value :2
+         visible :true
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+          uuid : 7787
+===================
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+Players in seat 3:
+         wager : 2
+          uuid : 504
+===================
+         wager : 1
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+           suite :H
+      base_value :9
+         visible :true
+Players in seat 2:
+===================
+        action : paying
+        in hand:
+===================
+           suite :S
+      base_value :3
+         visible :true
+           suite :S
+      base_value :Q
+         visible :true
+           suite :C
+      base_value :9
+         visible :true
+          uuid : 7787
+     target id : 0
+Players in seat 3:
+[Player] Dealer is collecting credits!
+         wager : 2
+        payout : 0.0
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+          uuid : 504
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 1
+[Player] Seat number is: 1
+        payout : 0.0
+        in hand:
+         wager : 1
+[Player] Looking for paying message
+           suite :C
+      base_value :6
+         visible :true
+        payout : 0.0
+        in hand:
+           suite :C
+      base_value :K
+         visible :true
+           suite :H
+      base_value :9
+         visible :true
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+           suite :H
+      base_value :9
+         visible :true
+===================
+        action : paying
+        in hand:
+           suite :S
+      base_value :3
+         visible :true
+           suite :S
+      base_value :Q
+         visible :true
+           suite :C
+      base_value :9
+         visible :true
+===================
+        action : paying
+        in hand:
+           suite :S
+      base_value :3
+         visible :true
+           suite :S
+      base_value :Q
+         visible :true
+           suite :C
+      base_value :9
+         visible :true
+     target id : 0
+     target id : 0
+[Player] Dealer is collecting credits!
+[Player] Dealer is collecting credits!
+[Player] Seat number is: 0
+[Player] Seat number is: 2
+[Player] Looking for paying message
+[Player] Looking for paying message
+500 ms after publishing.
+[Dealer] Paying players.
+[Dealer] Current credits in bank: 498.0
+
+== [Dealer] message sent :
+
+          uuid : 654
+         seqno : 33
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 0
+        payout : 1.0
+        in hand:
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 0
+        payout : 2.0
+        in hand:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+===================
+Players in seat 3:
+          uuid : 504
+         wager : 0
+        payout : 1.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+           suite :H
+      base_value :9
+         visible :true
+===================
+        action : paying
+        in hand:
+           suite :S
+      base_value :3
+         visible :true
+Cards index: 0
+           suite :S
+      base_value :Q
+         visible :true
+Cards index: 1
+           suite :C
+      base_value :9
+         visible :true
+Cards index: 2
+     target id : 0
+[Dealer] Sent message at 15882 ms from System Time.
+[Dealer] Local timer at 500 ms after publishing.
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 33
+players @ table: 3
+===================
+Players in seat 1:
+          uuid : 2180
+         wager : 0
+
+== [Player] received message from [Dealer] :
+
+        payout : 1.0
+        in hand:
+          uuid : 654
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+         seqno : 33
+===================
+
+== [Player] received message from [Dealer] :
+
+          uuid : 654
+         seqno : 33
+players @ table: 3
+===================
+Players in seat 2:
+          uuid : 7787
+         wager : 0
+players @ table: 3
+===================
+Players in seat 1:
+        payout : 2.0
+        in hand:
+Players in seat 1:
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+          uuid : 2180
+===================
+Players in seat 3:
+          uuid : 2180
+          uuid : 504
+         wager : 0
+         wager : 0
+        payout : 1.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+           suite :H
+      base_value :9
+         visible :true
+         wager : 0
+===================
+        action : collecting
+        in hand:
+           suite :S
+      base_value :3
+         visible :true
+           suite :S
+      base_value :Q
+         visible :true
+           suite :C
+      base_value :9
+         visible :true
+        payout : 1.0
+        in hand:
+     target id : 0
+[Player] Dealer is paying out credits!
+        payout : 1.0
+        in hand:
+           suite :D
+      base_value :T
+         visible :true
+           suite :D
+      base_value :T
+         visible :true
+           suite :H
+      base_value :2
+         visible :true
+           suite :C
+      base_value :5
+         visible :true
+[Player] Seat number is: 0
+===================
+           suite :H
+      base_value :2
+         visible :true
+Players in seat 2:
+          uuid : 7787
+         wager : 0
+           suite :C
+      base_value :5
+         visible :true
+[Player] We won! We now have 100.0 credits
+===================
+        payout : 2.0
+        in hand:
+[Player] I am removing my cards from my hand.
+Players in seat 2:
+[Player] The round has ended.
+           suite :D
+      base_value :2
+         visible :true
+[Player] I am starting the wagering sequence
+          uuid : 7787
+         wager : 0
+           suite :C
+      base_value :8
+         visible :true
+        payout : 2.0
+        in hand:
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+           suite :D
+      base_value :2
+         visible :true
+           suite :C
+      base_value :8
+         visible :true
+           suite :H
+      base_value :5
+         visible :true
+           suite :H
+      base_value :7
+         visible :true
+===================
+===================
+Players in seat 3:
+Players in seat 3:
+          uuid : 504
+         wager : 0
+          uuid : 504
+         wager : 0
+        payout : 1.0
+        in hand:
+        payout : 1.0
+        in hand:
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :6
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+           suite :H
+      base_value :9
+         visible :true
+           suite :C
+      base_value :K
+         visible :true
+           suite :H
+      base_value :9
+         visible :true
+===================
+        action : collecting
+        in hand:
+           suite :S
+      base_value :3
+         visible :true
+           suite :S
+      base_value :Q
+         visible :true
+           suite :C
+      base_value :9
+         visible :true
+===================
+        action : collecting
+        in hand:
+     target id : 0
+[Player] Dealer is paying out credits!
+           suite :S
+[Player] Seat number is: 2
+      base_value :3
+         visible :true
+           suite :S
+      base_value :Q
+         visible :true
+           suite :C
+      base_value :9
+         visible :true
+[Player] We won! We now have 101.0 credits
+     target id : 0
+[Player] I am removing my cards from my hand.
+[Player] Dealer is paying out credits!
+[Player] The round has ended.
+[Player] Seat number is: 1
+[Player] I am starting the wagering sequence
+[Player] We won! We now have 101.0 credits
+[Player] I am removing my cards from my hand.
+[Player] The round has ended.
+[Player] I am starting the wagering sequence
+511 ms after publishing.
+[Dealer] The round has ended.
+[Dealer] Dealer Exiting, Leaving table
+[Dealer] Dealer left with 498.0 credits in Bank
+[Dealer] Subscriber connection closed.
+Publisher connection closed.
+[Player] The dealer has left the table.
+[Player] Exiting, leaving table
+[Player] The dealer has left the table.
+[Player] Exiting, leaving table
+[Player] We left the table with 100.0 credits.
+[Player] We left the table with 101.0 credits.
+[Player] The dealer has left the table.
+[Player] Exiting, leaving table
+[Player] We left the table with 101.0 credits.
+[Player] Subscriber connection closed.
+[Player] Subscriber connection closed.
+[Player] Subscriber connection closed.
+[Player] Publisher connection closed.
+[Player] Publisher connection closed.
+[Player] Publisher connection closed.
+true

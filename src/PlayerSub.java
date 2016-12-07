@@ -57,7 +57,7 @@ public class PlayerSub
 		bjdSeq = new bjDealerSeqHolder();
 		infoSeq = new SampleInfoSeqHolder();
 
-        System.out.println ("=== [Subscriber] Ready ...");
+        System.out.println("[Player] [Subscriber] Ready ...");
 	}
 
 	/** Reads the first valid bjDealer message off the OpenSplice subscriber
@@ -122,7 +122,7 @@ public class PlayerSub
 		Sub.deleteSubscriber();
 		Sub.deleteTopic();
 		Sub.deleteParticipant();
-		System.out.println ("Subscriber connection closed.");
+		System.out.println ("[Player] Subscriber connection closed.");
 	}
 
 	/** Copies the object to prevent DDS from releasing topic data. */

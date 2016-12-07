@@ -57,7 +57,7 @@ public class DealerSub
 		bjpSeq = new bjPlayerSeqHolder();
 		infoSeq = new SampleInfoSeqHolder();
 
-		System.out.println ("=== [Subscriber] Ready ...");
+		System.out.println ("[Dealer] [Subscriber] Ready ...");
 	}
 
 	/** Pseudo-Content filter for read. The parameters will check if conditions match with the exception of joining messages
@@ -151,7 +151,7 @@ public class DealerSub
 		Sub.deleteSubscriber();
 		Sub.deleteTopic();
 		Sub.deleteParticipant();
-		System.out.println ("Subscriber connection closed.");
+		System.out.println("[Dealer] Subscriber connection closed.");
 	}
 	
 	/** Copies the object to prevent DDS from releasing topic data. **/

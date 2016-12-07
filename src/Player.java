@@ -116,7 +116,7 @@ public class Player {
 	}
 
 	public int getSeatNumber(){
-		System.out.printf("Seat number is: %d\n", seatNumber);
+		System.out.printf("[Player] Seat number is: %d\n", seatNumber);
 		return seatNumber;
 	}
 

@@ -42,7 +42,7 @@ public class DealerPub
 		dwriter = Pub.getWriter();
 		bjdWriter = bjDealerDataWriterHelper.narrow(dwriter);
 		
-		System.out.println ("=== [Publisher] Ready ...");
+		System.out.println ("[Dealer] [Publisher] Ready ...");
 	}
 
 	/** Register's the UUID value into OpenSplice.

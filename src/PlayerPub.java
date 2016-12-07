@@ -39,7 +39,7 @@ public class PlayerPub
 		dwriter = Pub.getWriter();
 		bjpWriter = bjPlayerDataWriterHelper.narrow(dwriter);
 		
-		System.out.println ("=== [Publisher] Ready ...");
+		System.out.println ("[Player] [Publisher] Ready ...");
 	}
 
 	/** Register's the UUID value into OpenSplice.
@@ -75,7 +75,7 @@ public class PlayerPub
 		Pub.deletePublisher();
 		Pub.deleteTopic();
 		Pub.deleteParticipant();
-		System.out.println ("Publisher connection closed.");
+		System.out.println ("[Player] Publisher connection closed.");
 	}
 
 	/** Prints all values of the bjDealer object, primarily for debugging purposes.
