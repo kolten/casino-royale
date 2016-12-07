@@ -122,15 +122,18 @@ public class Hand {
 	 * @return true if the value was an Ace and a ten point card. **/
 	public static boolean blackJack(card hand[])
 	{
-		if(hand != null && hand.length != 21)
+		if(hand != null && hand.length == 21)
 		{
-			if(isValidCard(hand[1]) && isValidCard(hand[2]) && !isValidCard(hand[3]))
+			// System.out.println("[Debug] Hand is good?");
+			if(isValidCard(hand[0]) && isValidCard(hand[1]) && !isValidCard(hand[2]))
 			{
-				switch(hand[1].base_value)
+				// System.out.println("[Debug] 2 cards found");
+				switch(hand[0].base_value)
 				{
 					case 'A':
-						if(hand[2].base_value == 'T' || hand[2].base_value == 'J' || hand[2].base_value == 'Q' || hand[2].base_value == 'K')
+						if(hand[1].base_value == 'T' || hand[1].base_value == 'J' || hand[1].base_value == 'Q' || hand[1].base_value == 'K')
 						{
+							// System.out.println("[Debug] 10 point found in 0");
 							return true;
 						}
 						return false;
@@ -138,7 +141,8 @@ public class Hand {
 					case 'J':
 					case 'Q':
 					case 'K':
-						if(hand[2].base_value == 'A')
+						System.out.println("[Debug] 10 point found 1");
+						if(hand[1].base_value == 'A')
 						{
 							return true;
 						}

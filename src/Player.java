@@ -116,7 +116,7 @@ public class Player {
 	}
 
 	public int getSeatNumber(){
-		System.out.printf("[Player] Seat number is: %d\n", seatNumber);
+		System.out.printf("[Player " + getUuid() + "] Seat number is: %d\n", seatNumber);
 		return seatNumber;
 	}
 
@@ -227,5 +227,10 @@ public class Player {
 	*/
 	public void endGame(){
 		hand.emptyHand();
+	}
+
+	public Hand getHand()
+	{
+		return hand;
 	}
 }

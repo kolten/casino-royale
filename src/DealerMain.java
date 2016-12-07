@@ -56,7 +56,7 @@ public class DealerMain {
 					//Empty table and shuffling loop that will repeat until at least one player has joined.
 				while(dealer.getActivePlayers() == 0 || dealer.sameAction(bjd_action.shuffling)) {
 
-					System.out.println("[Dealer] Table is being set, please wait.");
+					System.out.println("[Dealer " + dealer.getUuid() + "] Table is being set, please wait.");
 
 					pubSubAction(buffer, pubBuffer, bjd_action.shuffling);
 
@@ -66,7 +66,7 @@ public class DealerMain {
 				dealer.nextSeat(noReply);	//Targets the next player.
 				noReply = true;
 
-				System.out.println("[Dealer] A player is required for wagers.");
+				System.out.println("[Dealer " + dealer.getUuid() + "] A player is required for wagers.");
 
 				noReply = pubSubAction(buffer, pubBuffer, bjd_action.waiting);
 				
@@ -76,14 +76,14 @@ public class DealerMain {
 				}
 				else if(noReply && dealer.stillWagering()){		//Kick timer starts here iff there are players still wagering.
 					kcount++;
-					System.out.println("[Dealer] Player " + dealer.getTarget_uuid() + "will be kicked in " + (2 - kcount) + " messages.");
+					//System.out.println("[Dealer " + dealer.getUuid() + "] Player " + dealer.getTarget_uuid() + "will be kicked in " + (2 - kcount) + " messages.");
 				}
 				else if(!dealer.stillWagering() && dealer.getActivePlayers() < MAX_PLAYERS.value){
 					jcount++;
 					System.out.println((2-jcount) + " messages until game starts.");
 				}
 				if(kcount >= 2 && dealer.stillWagering()){		//Kick timer resets after player has been kicked.
-					System.out.println("[Dealer] Player " + dealer.getTarget_uuid() + " has been kicked from table.");
+					System.out.println("[Dealer " + dealer.getUuid() + "] Player " + dealer.getTarget_uuid() + " has been kicked from table.");
 					//dealer.kickPlayer(dealer.getTarget_uuid());
 					//noReply = false;
 					kcount = 0;
@@ -93,7 +93,7 @@ public class DealerMain {
 				if(!dealer.stillWagering() && (dealer.isFullTable() || jcount >= 2) && !dealer.startGame()){
 						//Start game will check credits and will only enter this conditional if dealer has insufficient credits.
 						//The waiting phase will repeat 4 times (or 30s).
-					System.out.println("[Dealer] Restocking credits; Please wait for 30s until restocking has finished.");
+					System.out.println("[Dealer " + dealer.getUuid() + "] Restocking credits; Please wait for 30s until restocking has finished.");
 					jcount = 0;
 					while(jcount < 4){
 						pubSubAction(buffer, pubBuffer, bjd_action.shuffling);
@@ -112,7 +112,7 @@ public class DealerMain {
 
 				//Special conditional waiting phase if table is full and all have wagered. Does nothing.
 			if(dealer.isFullTable() && !dealer.stillWagering()){
-				System.out.println("[Dealer] All players have wagered. Dealing will start soon.");
+				System.out.println("[Dealer " + dealer.getUuid() + "] All players have wagered. Dealing will start soon.");
 
 				pubSubAction(buffer, pubBuffer, bjd_action.shuffling);
 			}
@@ -132,7 +132,7 @@ public class DealerMain {
 				noReply = true;			//No Reply or None elicits that they are staying hand.
 										//Seats only change when a hand is stayed.
 
-				System.out.println("[Dealer] Player " + dealer.getTarget_uuid() + ": Hit or stay?");
+				System.out.println("[Dealer " + dealer.getUuid() + "] Player " + dealer.getTarget_uuid() + ": Hit or stay?");
 
 				noReply = pubSubAction(buffer, pubBuffer, bjd_action.dealing);
 				
@@ -144,13 +144,13 @@ public class DealerMain {
 
 			dealer.dealSelf();
 
-			System.out.println("[Dealer] Finished dealing. Preparing to divy up the payouts.");
+			System.out.println("[Dealer " + dealer.getUuid() + "] Finished dealing. Preparing to divy up the payouts.");
 
 			pubSubAction(buffer, pubBuffer, bjd_action.shuffling);
 
 			dealer.collecting();
 
-			System.out.println("[Dealer] Collecting from players.");
+			System.out.println("[Dealer " + dealer.getUuid() + "] Collecting from players.");
 
 			pubSubAction(buffer, pubBuffer, bjd_action.collecting);
 
@@ -158,13 +158,13 @@ public class DealerMain {
 
 			dealer.paying();
 
-			System.out.println("[Dealer] Paying players.");
+			System.out.println("[Dealer " + dealer.getUuid() + "] Paying players.");
 
 			pubSubAction(buffer, pubBuffer, bjd_action.paying);
 
 			dealer.endGame();
 
-			System.out.println("[Dealer] The round has ended.");
+			System.out.println("[Dealer " + dealer.getUuid() + "] The round has ended.");
 			gameCount++;
 			noReply = false;
 			stillDealing = true;
@@ -172,8 +172,8 @@ public class DealerMain {
 			jcount = 0;
 		}
 
-		System.out.println("[Dealer] Dealer Exiting, Leaving table");
-		System.out.println("[Dealer] Dealer left with " + dealer.getBank().getCredits() + " credits in Bank");
+		System.out.println("[Dealer " + dealer.getUuid() + "] Dealer Exiting, Leaving table");
+		System.out.println("[Dealer " + dealer.getUuid() + "] Dealer left with " + dealer.getBank().getCredits() + " credits in Bank");
 		Timer.wait(buffer);
 		
 		sub.close();
@@ -192,8 +192,8 @@ public class DealerMain {
 		int j;
 
 		pub.write(dealer.getMsg());
-		System.out.println("[Dealer] Sent message at " + systimer.getTimeMs() + " ms from System Time.");
-		System.out.println("[Dealer] Local timer at " + timer.getTimeMs() + " ms after publishing.");
+		System.out.println("[Dealer " + dealer.getUuid() + "] Sent message at " + systimer.getTimeMs() + " ms from System Time.");
+		System.out.println("[Dealer " + dealer.getUuid() + "] Local timer at " + timer.getTimeMs() + " ms after publishing.");
 		
 		timer.start();
 
@@ -208,38 +208,38 @@ public class DealerMain {
 			if(playerMessages != null && !playerMessages.isEmpty()){
 				System.out.println(playerMessages.size() + " messages received at " + timer.getTimeMs() + " ms after publishing.");
 				for(j = 0; j < playerMessages.size(); j++){
-					System.out.println("[Dealer] ~~~~~~~~|Message " + j + "|~~~~~~~~");
+					System.out.println("[Dealer " + dealer.getUuid() + "] ~~~~~~~~|Message " + j + "|~~~~~~~~");
 					switch(playerMessages.get(j).action.value()){
 					case CR.bjp_action._joining:
-						System.out.println("[Dealer] Player " + playerMessages.get(j).uuid + " has joined the table.");
+						System.out.println("[Dealer " + dealer.getUuid() + "] Player " + playerMessages.get(j).uuid + " has joined the table.");
 						dealer.join(playerMessages.get(j));
 						break;
 					case CR.bjp_action._wagering:
 						if(noReply && action.value() == bjd_action._waiting){
 							dealer.setWagertoPlayer(playerMessages.get(j));
-							System.out.println("[Dealer] Player " + playerMessages.get(j).uuid + " has chosen to wager " + playerMessages.get(j).wager + " credits.");
+							System.out.println("[Dealer " + dealer.getUuid() + "] Player " + playerMessages.get(j).uuid + " has chosen to wager " + playerMessages.get(j).wager + " credits.");
 							noReply = false;
 						}
 						break;
 					case CR.bjp_action._exiting:
 						if(noReply && action.value() == bjd_action._waiting){
-							System.out.println("[Dealer] Player " + playerMessages.get(j).uuid + " has chosen to leave.");
+							System.out.println("[Dealer " + dealer.getUuid() + "] Player " + playerMessages.get(j).uuid + " has chosen to leave.");
 							dealer.kickPlayer(playerMessages.get(j).uuid);;
 							noReply = false;
 						}
 						break;
 					case CR.bjp_action._requesting_a_card:
 						if(noReply && action.value() == bjd_action._dealing){
-							System.out.println("[Dealer] A card has been requested.");
+							System.out.println("[Dealer " + dealer.getUuid() + "] A card has been requested.");
 							noReply = !dealer.giving_Card(playerMessages.get(j).uuid);
 						}
 						break;
 					case CR.bjp_action._none:	//None response is interpreted as the no response.
 						if(noReply && action.value() == bjd_action._dealing){
-							System.out.println("[Dealer] Player " + playerMessages.get(j).uuid + " has chosen to stay hand.");
+							System.out.println("[Dealer " + dealer.getUuid() + "] Player " + playerMessages.get(j).uuid + " has chosen to stay hand.");
 							break;
 						}
-					default: System.out.println("[Dealer] Function has failed."); break;
+					default: System.out.println("[Dealer " + dealer.getUuid() + "] Function has failed."); break;
 					}
 				}
 			}

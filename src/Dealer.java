@@ -76,7 +76,7 @@ public class Dealer {
 	/** Creates the player's current message to be passed to the OpenSplice publisher
 	  * @return bjDealer message that contains all the significant values of DealerFactory **/
 	public bjDealer getMsg(){
-		System.out.println("[Dealer] Current credits in bank: " + bank.getCredits());
+		System.out.println("[Dealer " + getUuid() + "] Current credits in bank: " + bank.getCredits());
 		bjDealer temp = new bjDealer(uuid, seqno, active_players, players, action, hand.getHand(), target_uuid);
 		seqno++;
 		return 	temp;
@@ -105,7 +105,7 @@ public class Dealer {
 				return true;
 			}
 		}
-		System.out.println("[Dealer] Not all players have made a wager.");
+		System.out.println("[Dealer " + getUuid() + "] Not all players have made a wager.");
 		return false;
 	}
 
@@ -153,7 +153,7 @@ public class Dealer {
 			for(i = 0; i < getActivePlayers(); i++)
 			{
 				if(players[i].uuid == msg.uuid){
-					System.out.println("[Dealer] You're already at the table, user " + msg.uuid);
+					System.out.println("[Dealer " + getUuid() + "] You're already at the table, user " + msg.uuid);
 					notAtTable = false;
 				}
 			}
@@ -164,11 +164,11 @@ public class Dealer {
 				setActivePlayers(getActivePlayers() + 1);
 			}
 			else if(notAtTable){
-				System.out.println("[Dealer] Player " + msg.uuid + " does not have enough credits to play.");
+				System.out.println("[Dealer " + getUuid() + "] Player " + msg.uuid + " does not have enough credits to play.");
 			}
 		}
 		else {
-			System.out.println("[Dealer] Table's full. Stop bothering.");
+			System.out.println("[Dealer " + getUuid() + "] Table's full. Stop bothering.");
 		}
 	}
 
@@ -180,7 +180,7 @@ public class Dealer {
 			int i;
 			for(i = 0; i < MAX_PLAYERS.value; i++){
 				if(msg.uuid == players[i].uuid){
-					System.out.println("[Dealer] Setting wager");
+					System.out.println("[Dealer " + getUuid() + "] Setting wager");
 					players[i].wager = msg.wager;
 					i = MAX_PLAYERS.value;
 				}
@@ -212,7 +212,7 @@ public class Dealer {
 		if(checkCredits()){
 			setNumberAtTable(getActivePlayers());
 			resetSeating();
-			System.out.println("[Dealer] The BlackJack game has started. Will soon commence dealing.");
+			System.out.println("[Dealer " + getUuid() + "] The BlackJack game has started. Will soon commence dealing.");
 			return true;	
 		}
 		System.out.println("startGame() returns... False! :( )");
@@ -228,14 +228,14 @@ public class Dealer {
 	public void dealingInitial(){
 		int i;
 		action = bjd_action.dealing;
-		System.out.println("[Dealer] Giving myself some cards.");
+		System.out.println("[Dealer " + getUuid() + "] Giving myself some cards.");
 		card temp = deck.drawCard(false);
 		hand.addCard(new card(temp.suite, temp.base_value, temp.visible));
 		temp = null;
 		temp = deck.drawCard(true);
 		hand.addCard(new card(temp.suite, temp.base_value, temp.visible));
 		for(i = 0; i < getNumberAtTable(); i++){
-			System.out.println("[Dealer] Giving player " + i + "  some cards.");
+			System.out.println("[Dealer " + getUuid() + "] Giving player " + i + "  some cards.");
 			temp = null;
 			temp = deck.drawCard(true);
 			players[i].cards[0] = new card(temp.suite, temp.base_value, temp.visible);
@@ -289,7 +289,7 @@ public class Dealer {
 		}
 
 		// System.out.println("I received the luck of the gods. May the Casino Gods have mercy on thy soul.");
-		System.out.println("[Dealer] Dealt cards to self.");
+		System.out.println("[Dealer " + getUuid() + "] Dealt cards to self.");
 	}
 
 	/** Finds and calculates payouts for the loser's of the game.**/
@@ -309,7 +309,7 @@ public class Dealer {
 		}
 		else
 		{
-			System.out.println("[Dealer] Dealer busted, but I tried to collect, for no reason.");
+			System.out.println("[Dealer " + getUuid() + "] Dealer busted, but I tried to collect, for no reason.");
 		}
 	}
 
@@ -323,6 +323,7 @@ public class Dealer {
 				players[i].payout = (float)(players[i].wager);
 				if(Hand.blackJack(players[i].cards)){
 					players[i].payout = 1.5f * players[i].payout;
+					System.out.println("[Dealer " + getUuid() + "] Blackjack!");
 				}
 				players[i].wager = 0;
 				bank.subtractCredits(players[i].payout);
@@ -368,23 +369,23 @@ public class Dealer {
 	public void nextSeat(boolean noReply){
 		if(getNumberAtTable() == 0 && !noReply){
 			if(getActivePlayers() > getTargetSeat()){
-				System.out.println("[Dealer] I'm moving on from you.");
+				System.out.println("[Dealer " + getUuid() + "] I'm moving on from you.");
 				setTargetSeat(getTargetSeat()+1);
 				setTarget_uuid(players[targetSeat-1].uuid);
 			}
 			else if(getActivePlayers() == getTargetSeat()){
-				System.out.println("[Dealer] End of table reached.");
+				System.out.println("[Dealer " + getUuid() + "] End of table reached.");
 				setTarget_uuid(0);
 			}
 		}
 		else if(getNumberAtTable() > 0 && noReply){
 			if(getNumberAtTable() > getTargetSeat()){
-				System.out.println("[Dealer] Targeting next player for response.");
+				System.out.println("[Dealer " + getUuid() + "] Targeting next player for response.");
 				setTargetSeat(getTargetSeat()+1);
 				setTarget_uuid(players[getTargetSeat()-1].uuid);
 			}
 			else if(getNumberAtTable() == getTargetSeat()){
-				System.out.println("[Dealer] Dealing phase should be done... Probably.");
+				System.out.println("[Dealer " + getUuid() + "] Dealing phase should be done... Probably.");
 				setTarget_uuid(0);
 			}
 		}

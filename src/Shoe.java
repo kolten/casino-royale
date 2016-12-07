@@ -149,6 +149,47 @@ public class Shoe {
 	public void setDeck(card[] deck) {
 		this.deck = deck;
 	}
+
+	public void stackDeck()
+	{
+    	// create a deck with aces instead of 2, 3, 4 for more blackjacks
+		//Set global variables
+		deck = new card[SIZE];
+		cardsUsed = 0;
+
+		//Populate deck with 52 unique cards 6 times.
+		int i, j, k;
+		char base, suite = '1';
+		for(i = 0; i < 4; i++){
+			base = '1';
+			switch(suite){
+				case 'C': suite = 'H'; break;
+				case 'H': suite = 'D'; break;
+				case 'D': suite = 'S'; break;
+				default: suite = 'C'; break;
+			}
+			for(j = 0; j < 13; j++){
+				switch(base){
+					case '9': base = 'T'; break;
+					case 'T': base = 'J'; break;
+					case 'J': base = 'Q'; break;
+					case 'Q': base = 'K'; break;
+					case 'K': base = 'A'; break;
+					default: base++; break;
+				}
+				for(k = 0; k < 6; k++){
+					if(base=='2'||base=='3'||base=='4'||base=='5')
+						deck[cardsUsed]=new card(suite, 'A', false);
+					else if(base=='6'||base=='7'||base=='8')
+						deck[cardsUsed]=new card(suite, 'K', false);
+					else
+						deck[cardsUsed]=new card(suite, base, false);
+					cardsUsed++;
+				}
+			}
+		}
+		cardsUsed = 0;
+	}
 	
 	
 }

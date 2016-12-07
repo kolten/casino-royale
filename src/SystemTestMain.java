@@ -37,6 +37,7 @@ public class SystemTestMain {
         Thread dThread = new Thread () {
             public void run () {
                 DealerMain dMain = new DealerMain();
+                dMain.getDealer().getDeck().stackDeck(); // stack the deck with more aces
                 dMain.run("Casino Royale", "bjDealer", "bjPlayer",shortBuffer,longBuffer);
             }
         };
