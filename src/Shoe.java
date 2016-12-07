@@ -10,7 +10,7 @@ Licensed under Creative Commons Attribution Noncommercial Sharealike 3.0.
 + Six decks of 52 cards are instantiated.
 + getCardsLeft() changed to getCardsUsed()
 + added variables size and MIN_CARDS_USED
-*/
+ */
 public class Shoe {
 	private int cardsUsed;	//Index of where to draw the card and how many have cards are left
 	private card deck[];	//Array of all 312 cards used
@@ -28,19 +28,19 @@ public class Shoe {
 		for(i = 0; i < 4; i++){
 			base = '1';
 			switch(suite){
-				case 'C': suite = 'H'; break;
-				case 'H': suite = 'D'; break;
-				case 'D': suite = 'S'; break;
-				default: suite = 'C'; break;
+			case 'C': suite = 'H'; break;
+			case 'H': suite = 'D'; break;
+			case 'D': suite = 'S'; break;
+			default: suite = 'C'; break;
 			}
 			for(j = 0; j < 13; j++){
 				switch(base){
-					case '9': base = 'T'; break;
-					case 'T': base = 'J'; break;
-					case 'J': base = 'Q'; break;
-					case 'Q': base = 'K'; break;
-					case 'K': base = 'A'; break;
-					default: base++; break;
+				case '9': base = 'T'; break;
+				case 'T': base = 'J'; break;
+				case 'J': base = 'Q'; break;
+				case 'Q': base = 'K'; break;
+				case 'K': base = 'A'; break;
+				default: base++; break;
 				}
 				for(k = 0; k < 6; k++){
 					deck[cardsUsed]=new card(suite, base, false);
@@ -55,7 +55,7 @@ public class Shoe {
 		shuffle();
 	}
 
-	
+
 	/** Constructor that initializes the entire deck of SIZE with or without shuffling **/
 	public Shoe(boolean shuffle){
 		//Set global variables
@@ -68,19 +68,19 @@ public class Shoe {
 		for(i = 0; i < 4; i++){
 			base = '1';
 			switch(suite){
-				case 'C': suite = 'H'; break;
-				case 'H': suite = 'D'; break;
-				case 'D': suite = 'S'; break;
-				default: suite = 'C'; break;
+			case 'C': suite = 'H'; break;
+			case 'H': suite = 'D'; break;
+			case 'D': suite = 'S'; break;
+			default: suite = 'C'; break;
 			}
 			for(j = 0; j < 13; j++){
 				switch(base){
-					case '9': base = 'T'; break;
-					case 'T': base = 'J'; break;
-					case 'J': base = 'Q'; break;
-					case 'Q': base = 'K'; break;
-					case 'K': base = 'A'; break;
-					default: base++; break;
+				case '9': base = 'T'; break;
+				case 'T': base = 'J'; break;
+				case 'J': base = 'Q'; break;
+				case 'Q': base = 'K'; break;
+				case 'K': base = 'A'; break;
+				default: base++; break;
 				}
 				for(k = 0; k < 6; k++){
 					deck[cardsUsed]=new card(suite, base, false);
@@ -109,16 +109,19 @@ public class Shoe {
 		}
 		cardsUsed = 0;
 	}
-	
+
 	/** Draws the card at the top of the deck at the index cardsUsed.
 	 * @param isVisible boolean to set the card.
 	 * @return  clone of card object at index cardsUsed from deck.*/
 	public card drawCard(boolean isVisible){
-		card toSend = new card(deck[cardsUsed].suite, deck[cardsUsed].base_value, isVisible);
-		cardsUsed++;
-		System.out.println("Card coming your way!");
-		Hand.printCard(toSend);
-		return toSend;
+		if(cardsUsed < 312){
+			card toSend = new card(deck[cardsUsed].suite, deck[cardsUsed].base_value, isVisible);
+			cardsUsed++;
+			System.out.println("Card coming your way!");
+			Hand.printCard(toSend);
+			return toSend;
+		}
+		return null;
 	}
 
 	/**============ Getters && Setters ===================**/
@@ -152,7 +155,7 @@ public class Shoe {
 
 	public void stackDeck()
 	{
-    	// create a deck with aces instead of 2, 3, 4 for more blackjacks
+		// create a deck with aces instead of 2, 3, 4 for more blackjacks
 		//Set global variables
 		deck = new card[SIZE];
 		cardsUsed = 0;
@@ -163,19 +166,19 @@ public class Shoe {
 		for(i = 0; i < 4; i++){
 			base = '1';
 			switch(suite){
-				case 'C': suite = 'H'; break;
-				case 'H': suite = 'D'; break;
-				case 'D': suite = 'S'; break;
-				default: suite = 'C'; break;
+			case 'C': suite = 'H'; break;
+			case 'H': suite = 'D'; break;
+			case 'D': suite = 'S'; break;
+			default: suite = 'C'; break;
 			}
 			for(j = 0; j < 13; j++){
 				switch(base){
-					case '9': base = 'T'; break;
-					case 'T': base = 'J'; break;
-					case 'J': base = 'Q'; break;
-					case 'Q': base = 'K'; break;
-					case 'K': base = 'A'; break;
-					default: base++; break;
+				case '9': base = 'T'; break;
+				case 'T': base = 'J'; break;
+				case 'J': base = 'Q'; break;
+				case 'Q': base = 'K'; break;
+				case 'K': base = 'A'; break;
+				default: base++; break;
 				}
 				for(k = 0; k < 6; k++){
 					if(base=='2'||base=='3'||base=='4'||base=='5')
@@ -190,6 +193,6 @@ public class Shoe {
 		}
 		cardsUsed = 0;
 	}
-	
-	
+
+
 }
