@@ -17,7 +17,7 @@ public class DealerMain {
 		}
 	}
 
-	private Dealer dealer;
+	private Dealer dealer = new Dealer();
 	private DealerSub sub;
 	private DealerPub pub;
 	private Timer timer;
@@ -42,13 +42,11 @@ public class DealerMain {
 		boolean stillDealing = true;	//Boolean to check if all players had stayed hand.
 
 		/** Factory and PubSub instantiation **/
-		dealer = new Dealer();						//Dealer factory to produce bjDealer objects.
 		sub = new DealerSub(partition, subTopic);	// Sub needs to have the same topic name as the dealer pub
 		pub = new DealerPub(partition, pubTopic);	// Vice versa
-		timer = new Timer();						//Timer to keep publish time.
+		timer = new Timer();
 		systimer = new Timer();
-		playerMessages = new ArrayList<bjPlayer>();
-
+		
 		timer.start();
 		systimer.start();
 		while(gameCount < 2){
@@ -274,62 +272,6 @@ public class DealerMain {
 	}
 
 	/**
-	 * @return the sub
-	 */
-	public DealerSub getSub() {
-		return sub;
-	}
-
-	/**
-	 * @param sub the sub to set
-	 */
-	public void setSub(DealerSub sub) {
-		this.sub = sub;
-	}
-
-	/**
-	 * @return the pub
-	 */
-	public DealerPub getPub() {
-		return pub;
-	}
-
-	/**
-	 * @param pub the pub to set
-	 */
-	public void setPub(DealerPub pub) {
-		this.pub = pub;
-	}
-
-	/**
-	 * @return the timer
-	 */
-	public Timer getTimer() {
-		return timer;
-	}
-
-	/**
-	 * @param timer the timer to set
-	 */
-	public void setTimer(Timer timer) {
-		this.timer = timer;
-	}
-
-	/**
-	 * @return the systimer
-	 */
-	public Timer getSystimer() {
-		return systimer;
-	}
-
-	/**
-	 * @param systimer the systimer to set
-	 */
-	public void setSystimer(Timer systimer) {
-		this.systimer = systimer;
-	}
-
-	/**
 	 * @return the playerMessages
 	 */
 	public ArrayList<bjPlayer> getPlayerMessages() {
@@ -342,6 +284,4 @@ public class DealerMain {
 	public void setPlayerMessages(ArrayList<bjPlayer> playerMessages) {
 		this.playerMessages = playerMessages;
 	}
-
-
 }

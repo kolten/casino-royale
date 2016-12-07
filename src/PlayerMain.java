@@ -2,7 +2,7 @@ import CR.*; // idl stuff
 
 public class PlayerMain{
 
-	Player player;
+	Player player = new Player();
 	PlayerSub sub;
 	PlayerPub pub;
 	int seatCount;
@@ -37,7 +37,6 @@ public class PlayerMain{
 	*/
 	public void run(String partition, String pubTopic, String subtopic, int bufferLong)
 	{
-		player = new Player();
 		sub = new PlayerSub(partition, subtopic); // Sub needs to have the same topic name as the dealer pub
 		pub = new PlayerPub(partition, pubTopic); // Vice versa
 		timer = new Timer();
