@@ -419,6 +419,11 @@ public class Dealer {
 	public int getUuid() {
 		return uuid;
 	}
+	
+	public int setUuid(int id) {
+		uuid = id;
+		return uuid;
+	}
 
 	/**
 	 * @return the seqno

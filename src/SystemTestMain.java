@@ -19,24 +19,28 @@ public class SystemTestMain {
         Thread pThread = new Thread () {
             public void run () {
                 PlayerMain pMain = new PlayerMain();
+                pMain.player.setUuid(101);
                 pMain.run("Casino Royale", "bjPlayer", "bjDealer",pauseBuffer);
             }
         };
         Thread pThread2 = new Thread () {
             public void run () {
                 PlayerMain pMain = new PlayerMain();
+                pMain.player.setUuid(202);
                 pMain.run("Casino Royale", "bjPlayer", "bjDealer",pauseBuffer);
             }
         };
         Thread pThread3 = new Thread () {
             public void run () {
                 PlayerMain pMain = new PlayerMain();
+                pMain.player.setUuid(303);
                 pMain.run("Casino Royale", "bjPlayer", "bjDealer",pauseBuffer);
             }
         };
         Thread dThread = new Thread () {
             public void run () {
                 DealerMain dMain = new DealerMain();
+                dMain.getDealer().setUuid(13);
                 dMain.getDealer().getDeck().stackDeck(); // stack the deck with more aces
                 dMain.run("Casino Royale", "bjDealer", "bjPlayer",shortBuffer,longBuffer);
             }
