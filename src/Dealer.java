@@ -204,6 +204,7 @@ public class Dealer {
 				}
 			}
 		}
+		
 	}
 	
 	/** Kicks players with matching uuid from table. 

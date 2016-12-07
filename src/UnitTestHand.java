@@ -1,5 +1,4 @@
 import org.junit.Test;
-import org.junit.Ignore;
 import static org.junit.Assert.assertEquals;
 import CR.card;
 
@@ -8,12 +7,6 @@ public class UnitTestHand {
 	final int HAND_START = 0;
 	final boolean BLACKJACK = true;
 	final boolean NOT_BLACKJACK = false;
-	final boolean VALID_CARD = true;
-	final boolean INVALID_CARD = true;
-	final card NULL_CARD = new card('\0', '\0', true);
-	final card NULL_HAND[] = { NULL_CARD, NULL_CARD, NULL_CARD, NULL_CARD, NULL_CARD, NULL_CARD, NULL_CARD,
-			NULL_CARD, NULL_CARD, NULL_CARD, NULL_CARD, NULL_CARD, NULL_CARD, NULL_CARD,
-			NULL_CARD, NULL_CARD, NULL_CARD, NULL_CARD, NULL_CARD, NULL_CARD, NULL_CARD};
 	Hand hand = new Hand();
 
 	@Test
@@ -224,6 +217,11 @@ public class UnitTestHand {
 		hand.addCard(new card('C', 'A', true));
 		assertEquals(12, hand.getHandValue());
 		hand.emptyHand();
+		hand.addCard(new card('C', '2', true));
+		hand.addCard(new card('C', 'A', true));
+		hand.addCard(new card('C', 'K', true));
+		assertEquals(13, hand.getHandValue());
+		hand.emptyHand();
 	}
 	
 	@Test
@@ -241,6 +239,12 @@ public class UnitTestHand {
 			hand.emptyHand();
 			hand.addCard(new card(suite, 'K', true));
 			hand.addCard(new card(suite, 'A', true));
+			assertEquals(BLACKJACK, Hand.blackJack(hand.getHand()));
+			hand.addCard(new card(suite, '2', true));
+			assertEquals(NOT_BLACKJACK, Hand.blackJack(hand.getHand()));
+			hand.emptyHand();
+			hand.addCard(new card(suite, 'A', true));
+			hand.addCard(new card(suite, 'Q', true));
 			assertEquals(BLACKJACK, Hand.blackJack(hand.getHand()));
 			hand.addCard(new card(suite, '2', true));
 			assertEquals(NOT_BLACKJACK, Hand.blackJack(hand.getHand()));

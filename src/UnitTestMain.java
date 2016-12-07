@@ -27,5 +27,12 @@ public class UnitTestMain {
 			System.out.println(failure.toString());
 		}
 		System.out.println(timerTest.wasSuccessful());
+		
+		Result handTest = JUnitCore.runClasses(UnitTestHand.class);
+		
+		for (Failure failure : handTest.getFailures())	{
+			System.out.println(failure.toString());
+		}
+		System.out.println(handTest.wasSuccessful());
     }
 }
