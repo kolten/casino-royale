@@ -16,7 +16,7 @@ public class Shoe {
 	private card deck[];	//Array of all 312 cards used
 	public static final int SIZE = 312;	//Size of deck.
 
-	/** Constructor that initializes the entire deck of SIZE **/
+	/** Constructor that initializes the entire deck of SIZE with shuffling **/
 	public Shoe(){
 		//Set global variables
 		deck = new card[SIZE];
@@ -53,6 +53,49 @@ public class Shoe {
 		shuffle();
 		shuffle();
 		shuffle();
+	}
+
+	
+	/** Constructor that initializes the entire deck of SIZE with or without shuffling **/
+	public Shoe(boolean shuffle){
+		//Set global variables
+		deck = new card[SIZE];
+		cardsUsed = 0;
+
+		//Populate deck with 52 unique cards 6 times.
+		int i, j, k;
+		char base, suite = '1';
+		for(i = 0; i < 4; i++){
+			base = '1';
+			switch(suite){
+				case 'C': suite = 'H'; break;
+				case 'H': suite = 'D'; break;
+				case 'D': suite = 'S'; break;
+				default: suite = 'C'; break;
+			}
+			for(j = 0; j < 13; j++){
+				switch(base){
+					case '9': base = 'T'; break;
+					case 'T': base = 'J'; break;
+					case 'J': base = 'Q'; break;
+					case 'Q': base = 'K'; break;
+					case 'K': base = 'A'; break;
+					default: base++; break;
+				}
+				for(k = 0; k < 6; k++){
+					deck[cardsUsed]=new card(suite, base, false);
+					cardsUsed++;
+				}
+			}
+		}
+		cardsUsed = 0;
+		if(shuffle)
+		{
+			shuffle();
+			shuffle();
+			shuffle();
+			shuffle();
+		}
 	}
 
 	/** Shuffles deck by randomly swapping from the top to bottom.**/
