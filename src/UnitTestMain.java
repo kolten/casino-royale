@@ -13,6 +13,7 @@ public class UnitTestMain {
         }
             
         System.out.println(dealerTest.wasSuccessful());
+        
 		// test the UnitTestBank class
 		Result bankTest = JUnitCore.runClasses(UnitTestBank.class);
 		
@@ -20,6 +21,7 @@ public class UnitTestMain {
 			System.out.println(failure.toString());
 		}
 		System.out.println(bankTest.wasSuccessful());
+		
 		// test the UnitTestTimer class
 		Result timerTest = JUnitCore.runClasses(UnitTestTimer.class);
 		
@@ -28,11 +30,20 @@ public class UnitTestMain {
 		}
 		System.out.println(timerTest.wasSuccessful());
 		
+		// test the UnitTestHand class
 		Result handTest = JUnitCore.runClasses(UnitTestHand.class);
 		
 		for (Failure failure : handTest.getFailures())	{
 			System.out.println(failure.toString());
 		}
 		System.out.println(handTest.wasSuccessful());
+		
+		// test the UnitTestBank class
+		Result shoeTest = JUnitCore.runClasses(UnitTestShoe.class);
+		
+		for (Failure failure : shoeTest.getFailures())	{
+			System.out.println(failure.toString());
+		}
+		System.out.println(shoeTest.wasSuccessful());
     }
 }
