@@ -1,7 +1,6 @@
 # casino-royale
 This readme describes how to compile and run group 2 and 4's Casino-Royale project.
 
-[toc]
 
 ## Windows ##
 ----------
