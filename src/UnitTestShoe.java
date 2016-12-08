@@ -40,6 +40,7 @@ public class UnitTestShoe {
     	}
     	for(i = 0; i < uniqueCards.size() && validCard; i++){
     		drawnCard = uniqueCards.get(i);
+    		Hand.printCard(drawnCard);
     		switch(drawnCard.suite){
 			case 'C':
 			case 'H':
@@ -63,6 +64,7 @@ public class UnitTestShoe {
 			case 'A': break;
 			default: validCard = false; break;
 			}
+    		System.out.println("isValid? " + validCard);
     	}
     	assertTrue(validCard);
     }
