@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.junit.Ignore;
 import static org.junit.Assert.*;
 
-public class SixPlayerTestMain {
+public class SevenPlayerTestMain {
 
 	static final int pauseBuffer = 600;
 	static final int shortBuffer = 20;	//Hard-coded read buffer.
@@ -35,14 +35,6 @@ public class SixPlayerTestMain {
                 pMain.run("Casino Royale", "bjPlayer", "bjDealer",pauseBuffer);
             }
         };
-        Thread dThread = new Thread () {
-            public void run () {
-                DealerMain dMain = new DealerMain();
-                dMain.getDealer().setUuid(13);
-                dMain.getDealer().getDeck().stackDeck(); // stack the deck with more aces
-                dMain.run("Casino Royale", "bjDealer", "bjPlayer",shortBuffer,longBuffer);
-            }
-        };
         Thread pThread4 = new Thread () {
             public void run () {
                 PlayerMain pMain = new PlayerMain();
@@ -64,6 +56,21 @@ public class SixPlayerTestMain {
                 pMain.run("Casino Royale", "bjPlayer", "bjDealer",pauseBuffer);
             }
         };
+        Thread pThread7 = new Thread () {
+            public void run () {
+                PlayerMain pMain = new PlayerMain();
+                pMain.player.setUuid(707);
+                pMain.run("Casino Royale", "bjPlayer", "bjDealer",pauseBuffer);
+            }
+        };
+        Thread dThread = new Thread () {
+            public void run () {
+                DealerMain dMain = new DealerMain();
+                dMain.getDealer().setUuid(13);
+                dMain.getDealer().getDeck().stackDeck(); // stack the deck with more aces
+                dMain.run("Casino Royale", "bjDealer", "bjPlayer",shortBuffer,longBuffer);
+            }
+        };
         
         // add 3 players
         pThread.start();
@@ -81,16 +88,17 @@ public class SixPlayerTestMain {
      // after some time, add another player
         Timer.wait(pauseBuffer*3);
         pThread6.start();
+        pThread7.start();
         
         // wait for the last player and dealer to terminate
-        while(pThread.isAlive() || pThread2.isAlive() || pThread3.isAlive() || pThread4.isAlive() || pThread5.isAlive() || pThread6.isAlive() ||dThread.isAlive())
+        while(pThread.isAlive() || pThread2.isAlive() || pThread3.isAlive() || pThread4.isAlive() || pThread5.isAlive() || pThread6.isAlive() || pThread7.isAlive() ||dThread.isAlive())
         {}
         assertTrue("Executables successfully ran",true);
     }
 
     public static void main(String[] args) {
         // test the SystemTestMain class
-        Result systemTest = JUnitCore.runClasses(SixPlayerTestMain.class);
+        Result systemTest = JUnitCore.runClasses(SevenPlayerTestMain.class);
             
         for (Failure failure : systemTest.getFailures()) {
             System.out.println(failure.toString());
