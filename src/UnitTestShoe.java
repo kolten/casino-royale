@@ -14,7 +14,7 @@ public class UnitTestShoe {
         System.out.println("Inside testShoeSize()");
         shoe = new Shoe(false);
         card drawnCard;
-        int i, cardCount = 0;
+        int i, cardCount = 1;
         for(i = 0; i < 313; i++){
         	drawnCard = shoe.drawCard(true);
         	if(!drawnCard.equals(null) && drawnCard != null){
