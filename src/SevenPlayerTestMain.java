@@ -67,7 +67,6 @@ public class SevenPlayerTestMain {
             public void run () {
                 DealerMain dMain = new DealerMain();
                 dMain.getDealer().setUuid(13);
-                dMain.getDealer().getDeck().stackDeck(); // stack the deck with more aces
                 dMain.run("Casino Royale", "bjDealer", "bjPlayer",shortBuffer,longBuffer);
             }
         };
