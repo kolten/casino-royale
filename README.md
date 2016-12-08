@@ -3,7 +3,6 @@ This readme describes how to compile and run group 2 and 4's Casino-Royale proje
 
 
 ## Windows ##
-----------
 This system was developed using **JDK 1.8**.
 This system requires that OpenSplice *must* installed in the *C:\HDE\... directory.*
 This system requires that environment variables be set up correctly.
@@ -19,7 +18,6 @@ The above three batch scripts contain all the necessary class paths and argument
 
 
 ## Linux ##
-----------
 1. When first opening the folder, open `javaENV.sh` with the text editor of your choice and find the following line
 `export JAVA_HOME=/usr/lib/jvm/@@JAVA_VER@@`
 2. Change `@@JAVA_VER@@` to the version of the JDK on your machine.
