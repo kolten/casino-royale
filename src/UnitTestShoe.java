@@ -16,6 +16,7 @@ public class UnitTestShoe {
         card drawnCard;
         int i, cardCount = 1;
         for(i = 0; i < 313; i++){
+        	System.out.print("#" + (i+1) + ":");
         	drawnCard = shoe.drawCard(true);
         	if(!drawnCard.equals(null) && drawnCard != null){
         		cardCount++;
@@ -33,12 +34,14 @@ public class UnitTestShoe {
         boolean validCard = true;
     	int i = 0;
     	for(i = 0; i < 312; i++){
+        	System.out.print("#" + (i+1) + ":");
     		drawnCard = shoe.drawCard(true);
     		if(uniqueCards.contains(drawnCard)){
     			uniqueCards.add(drawnCard);
     		}
     	}
     	for(i = 0; i < uniqueCards.size() && validCard; i++){
+        	System.out.print("#" + (i+1) + ":");
     		drawnCard = uniqueCards.get(i);
     		Hand.printCard(drawnCard);
     		switch(drawnCard.suite){
